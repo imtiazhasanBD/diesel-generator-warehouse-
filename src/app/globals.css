@@ -1,26 +1,185 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --primary: #F25A24;
+    --primary-hover: #D94815;
+    --dark: #0E1014;
+    --dark-surface: #14161C;
+    --border-light: #E4E5E8;
+    --border-dark: #272B33;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #FFFFFF;
+    color: #11141A;
+    overflow-x: clip;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F3F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD2D9;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Framer-style Technical Grid */
+.architectural-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+.architectural-grid-dark {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Video Overlay Gradient */
+.video-overlay-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(14, 16, 20, 0.4) 0%,
+    rgba(14, 16, 20, 0.7) 60%,
+    rgba(14, 16, 20, 0.95) 100%
+  );
+}
+
+/* Framer Signature Pill Badge */
+.framer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background-color: #F1F2F4;
+  border: 1px solid #E1E3E7;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+  letter-spacing: -0.01em;
+}
+
+.framer-badge-dark {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #E5E7EB;
+}
+
+.framer-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background-color: #F25A24;
+}
+
+/* Framer Button */
+.framer-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #F25A24;
+  color: #FFFFFF;
+  padding: 0.35rem 0.4rem 0.35rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(242, 90, 36, 0.25);
+}
+
+.framer-btn-primary:hover {
+  background-color: #D94815;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(242, 90, 36, 0.35);
+}
+
+.framer-btn-primary .btn-arrow-box {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.framer-btn-primary:hover .btn-arrow-box {
+  transform: translateX(2px) scale(1.05);
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Secondary Button */
+.framer-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #FFFFFF;
+  color: #11141A;
+  border: 1px solid #D5D8DE;
+  padding: 0.35rem 0.4rem 0.35rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.25s ease;
+}
+
+.framer-btn-outline:hover {
+  border-color: #11141A;
+  transform: translateY(-1px);
+}
+
+.framer-btn-outline .btn-arrow-box {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  background-color: #F1F2F4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.framer-btn-outline:hover .btn-arrow-box {
+  transform: translateX(2px);
+  background-color: #E4E5E8;
+}
+
+/* Video Control Button */
+.video-ctrl-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.video-ctrl-btn:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+  transform: scale(1.08);
 }
