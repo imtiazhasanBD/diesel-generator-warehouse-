@@ -61,13 +61,13 @@
   );
 }
 
-/* Framer Signature Pill Badge */
+/* Framer Signature Badge */
 .framer-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
+  border-radius: 4px;
   background-color: #F1F2F4;
   border: 1px solid #E1E3E7;
   font-size: 0.75rem;
@@ -97,7 +97,7 @@
   background-color: #F25A24;
   color: #FFFFFF;
   padding: 0.35rem 0.4rem 0.35rem 1.25rem;
-  border-radius: 9999px;
+  border-radius: 4px !important;
   font-weight: 600;
   font-size: 0.85rem;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -113,7 +113,7 @@
 .framer-btn-primary .btn-arrow-box {
   width: 2rem;
   height: 2rem;
-  border-radius: 9999px;
+  border-radius: 3px !important;
   background-color: rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
@@ -135,7 +135,7 @@
   color: #11141A;
   border: 1px solid #D5D8DE;
   padding: 0.35rem 0.4rem 0.35rem 1.25rem;
-  border-radius: 9999px;
+  border-radius: 4px !important;
   font-weight: 600;
   font-size: 0.85rem;
   transition: all 0.25s ease;
@@ -149,7 +149,7 @@
 .framer-btn-outline .btn-arrow-box {
   width: 2rem;
   height: 2rem;
-  border-radius: 9999px;
+  border-radius: 3px !important;
   background-color: #F1F2F4;
   display: flex;
   align-items: center;
@@ -166,7 +166,7 @@
 .video-ctrl-btn {
   width: 36px;
   height: 36px;
-  border-radius: 9999px;
+  border-radius: 4px !important;
   background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);

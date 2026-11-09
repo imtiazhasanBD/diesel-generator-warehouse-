@@ -77,13 +77,13 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-1.5">
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-[#F25A24]/10 text-[#F25A24] border border-[#F25A24]/20">
+                <span className="px-2.5 py-0.5 rounded-sm text-[10px] font-mono font-bold tracking-wider uppercase bg-[#F25A24]/10 text-[#F25A24] border border-[#F25A24]/20">
                   {product.brand} Genuine Series
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-slate-100 text-slate-700 border border-slate-200">
+                <span className="px-2.5 py-0.5 rounded-sm text-[10px] font-mono font-bold tracking-wider uppercase bg-slate-100 text-slate-700 border border-slate-200">
                   {product.type}
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <span className="px-2.5 py-0.5 rounded-sm text-[10px] font-mono font-bold tracking-wider uppercase bg-emerald-50 text-emerald-700 border border-emerald-200">
                   In Warehouse Stock
                 </span>
               </div>
@@ -114,7 +114,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           {/* LEFT: Product Gallery (7 Cols) */}
           <div className="lg:col-span-7 space-y-4">
             {/* Main Image Box */}
-            <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm relative flex items-center justify-center min-h-[380px] sm:min-h-[460px] overflow-hidden group">
+            <div className="bg-white rounded-md p-6 sm:p-10 border border-slate-200 shadow-sm relative flex items-center justify-center min-h-[380px] sm:min-h-[460px] overflow-hidden group">
               <img
                 src={activeImage}
                 alt={product.name}
@@ -122,13 +122,13 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               />
 
               {/* Noise Level Badge Overlay */}
-              <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-xl font-mono flex items-center gap-2 border border-white/10">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-sm font-mono flex items-center gap-2 border border-white/10">
+                <span className="w-2 h-2 rounded-sm bg-emerald-400 animate-pulse" />
                 <span>{product.noiseLevel}</span>
               </div>
 
               {/* Watermark brand tag */}
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-mono font-bold px-3 py-1 rounded-lg border border-slate-200 shadow-xs uppercase">
+              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-mono font-bold px-3 py-1 rounded-sm border border-slate-200 shadow-xs uppercase">
                 {product.brandBadgeText}
               </div>
             </div>
@@ -139,7 +139,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 <button
                   key={idx}
                   onClick={() => setActiveImage(img)}
-                  className={`w-20 h-20 rounded-2xl bg-white p-2 border-2 transition-all flex items-center justify-center shrink-0 overflow-hidden cursor-pointer ${
+                  className={`w-20 h-20 rounded-sm bg-white p-2 border-2 transition-all flex items-center justify-center shrink-0 overflow-hidden cursor-pointer ${
                     activeImage === img ? "border-[#F25A24] shadow-md scale-105" : "border-slate-200 opacity-70 hover:opacity-100"
                   }`}
                 >
@@ -153,7 +153,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           <div className="lg:col-span-5 space-y-6">
 
             {/* Power Matrix Table (Exact Match to Image 2 APD 110 A Top Table) */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div className="bg-white rounded-md border border-slate-200 shadow-sm overflow-hidden">
               <div className="bg-[#0E1014] text-white px-5 py-3 flex items-center justify-between">
                 <div className="font-mono text-xs uppercase font-bold tracking-wider flex items-center gap-2">
                   <Zap className="w-3.5 h-3.5 text-[#F25A24]" />
@@ -175,7 +175,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   <tbody className="divide-y divide-slate-100 font-semibold">
                     <tr>
                       <td className="py-3 text-slate-700 flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-[#F25A24]" />
+                        <span className="w-2 h-2 rounded-sm bg-[#F25A24]" />
                         <strong>Standby Power</strong>
                       </td>
                       <td className="py-3 text-center text-slate-950 font-bold text-sm">
@@ -190,7 +190,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     </tr>
                     <tr>
                       <td className="py-3 text-slate-700 flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-slate-400" />
+                        <span className="w-2 h-2 rounded-sm bg-slate-400" />
                         <strong>Prime Power</strong>
                       </td>
                       <td className="py-3 text-center text-slate-950 font-bold text-sm">
@@ -209,7 +209,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             </div>
 
             {/* General Features List (Matching Image 2 General Features block) */}
-            <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+            <div className="bg-white rounded-md p-5 border border-slate-200 shadow-sm space-y-3">
               <h3 className="font-heading font-black text-sm text-slate-950 uppercase tracking-wider flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-[#F25A24]" />
                 General System Features
@@ -217,7 +217,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               <ul className="space-y-2 text-xs text-slate-600">
                 {product.generalFeatures.map((feat, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#F25A24] mt-1.5 shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-sm bg-[#F25A24] mt-1.5 shrink-0" />
                     <span className="leading-relaxed">{feat}</span>
                   </li>
                 ))}
@@ -228,10 +228,10 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <div className="space-y-3 pt-2">
               <button
                 onClick={() => setIsQuoteOpen(true)}
-                className="w-full framer-btn-primary justify-center py-3.5 text-sm font-bold shadow-md cursor-pointer"
+                className="w-full framer-btn-primary rounded-sm justify-center py-3.5 text-sm font-bold shadow-md cursor-pointer"
               >
                 <span>Get an Official Quote</span>
-                <div className="btn-arrow-box">
+                <div className="btn-arrow-box rounded-sm">
                   <ArrowRight className="w-3.5 h-3.5 text-white" />
                 </div>
               </button>
@@ -239,7 +239,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
               <div className="grid grid-cols-2 gap-3">
                 <a
                   href={`#documents`}
-                  className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 py-2.5 px-3 rounded-xl text-xs font-semibold transition-colors shadow-xs"
+                  className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 py-2.5 px-3 rounded-md text-xs font-semibold transition-colors shadow-xs"
                 >
                   <Download className="w-3.5 h-3.5 text-[#F25A24]" />
                   <span>Download Spec</span>
@@ -247,7 +247,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
                 <a
                   href="tel:+8801234567890"
-                  className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 py-2.5 px-3 rounded-xl text-xs font-semibold transition-colors shadow-xs"
+                  className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 py-2.5 px-3 rounded-md text-xs font-semibold transition-colors shadow-xs"
                 >
                   <Phone className="w-3.5 h-3.5 text-emerald-600" />
                   <span>Call 24/7 Desk</span>
@@ -256,7 +256,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             </div>
 
             {/* Warehouse Stock Guarantee Card */}
-            <div className="bg-[#FAFBFD] p-4 rounded-xl border border-slate-200/80 flex items-center gap-3 text-xs text-slate-600">
+            <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-center gap-3 text-xs text-slate-600">
               <Shield className="w-5 h-5 text-[#F25A24] shrink-0" />
               <div>
                 <strong className="text-slate-900 block font-semibold">1 Year / 1,000 Hours Warranty</strong>
@@ -272,7 +272,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
            PRODUCT FEATURES & TECHNICAL SPECIFICATIONS (IMAGE 2)
            ========================================================= */}
       <section className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-10 py-12 w-full">
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
+        <div className="bg-white rounded-md p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
 
           {/* Section Heading */}
           <div className="border-b border-slate-200 pb-6">
@@ -287,7 +287,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <div className="flex items-center gap-2 overflow-x-auto pt-6 scrollbar-none">
               <button
                 onClick={() => setActiveTab("engine")}
-                className={`px-4 py-2.5 rounded-xl font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
+                className={`px-4 py-2.5 rounded-md font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
                   activeTab === "engine"
                     ? "bg-[#0E1014] text-white shadow-sm"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200"
@@ -299,7 +299,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
               <button
                 onClick={() => setActiveTab("alternator")}
-                className={`px-4 py-2.5 rounded-xl font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
+                className={`px-4 py-2.5 rounded-md font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
                   activeTab === "alternator"
                     ? "bg-[#0E1014] text-white shadow-sm"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200"
@@ -311,7 +311,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
               <button
                 onClick={() => setActiveTab("control")}
-                className={`px-4 py-2.5 rounded-xl font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
+                className={`px-4 py-2.5 rounded-md font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
                   activeTab === "control"
                     ? "bg-[#0E1014] text-white shadow-sm"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200"
@@ -323,7 +323,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
               <button
                 onClick={() => setActiveTab("canopy")}
-                className={`px-4 py-2.5 rounded-xl font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
+                className={`px-4 py-2.5 rounded-md font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
                   activeTab === "canopy"
                     ? "bg-[#0E1014] text-white shadow-sm"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200"
@@ -335,7 +335,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
               <button
                 onClick={() => setActiveTab("dimensions")}
-                className={`px-4 py-2.5 rounded-xl font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
+                className={`px-4 py-2.5 rounded-md font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
                   activeTab === "dimensions"
                     ? "bg-[#0E1014] text-white shadow-sm"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200"
@@ -350,7 +350,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           {/* Active Specification Table (Exact Layout to Reference Image 2 Table) */}
           <div className="overflow-x-auto">
             {activeTab === "engine" && (
-              <table className="w-full text-xs text-left border border-slate-200 rounded-xl overflow-hidden">
+              <table className="w-full text-xs text-left border border-slate-200 rounded-sm overflow-hidden">
                 <thead className="bg-[#FAFBFD] text-slate-500 font-mono uppercase text-[11px] border-b border-slate-200">
                   <tr>
                     <th className="py-3 px-5 font-bold w-1/3">Engine Parameter</th>
@@ -423,7 +423,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             )}
 
             {activeTab === "alternator" && (
-              <table className="w-full text-xs text-left border border-slate-200 rounded-xl overflow-hidden">
+              <table className="w-full text-xs text-left border border-slate-200 rounded-sm overflow-hidden">
                 <thead className="bg-[#FAFBFD] text-slate-500 font-mono uppercase text-[11px] border-b border-slate-200">
                   <tr>
                     <th className="py-3 px-5 font-bold w-1/3">Alternator Parameter</th>
@@ -468,7 +468,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             )}
 
             {activeTab === "control" && (
-              <table className="w-full text-xs text-left border border-slate-200 rounded-xl overflow-hidden">
+              <table className="w-full text-xs text-left border border-slate-200 rounded-sm overflow-hidden">
                 <thead className="bg-[#FAFBFD] text-slate-500 font-mono uppercase text-[11px] border-b border-slate-200">
                   <tr>
                     <th className="py-3 px-5 font-bold w-1/3">Control Parameter</th>
@@ -501,7 +501,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             )}
 
             {activeTab === "canopy" && (
-              <table className="w-full text-xs text-left border border-slate-200 rounded-xl overflow-hidden">
+              <table className="w-full text-xs text-left border border-slate-200 rounded-sm overflow-hidden">
                 <thead className="bg-[#FAFBFD] text-slate-500 font-mono uppercase text-[11px] border-b border-slate-200">
                   <tr>
                     <th className="py-3 px-5 font-bold w-1/3">Enclosure Parameter</th>
@@ -534,7 +534,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             )}
 
             {activeTab === "dimensions" && (
-              <table className="w-full text-xs text-left border border-slate-200 rounded-xl overflow-hidden">
+              <table className="w-full text-xs text-left border border-slate-200 rounded-sm overflow-hidden">
                 <thead className="bg-[#FAFBFD] text-slate-500 font-mono uppercase text-[11px] border-b border-slate-200">
                   <tr>
                     <th className="py-3 px-5 font-bold w-1/3">Physical Dimension Parameter</th>
@@ -569,7 +569,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
            OPTIONAL EQUIPMENT (MATCHING REFERENCE IMAGE 2)
            ========================================================= */}
       <section className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-10 py-6 w-full">
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
+        <div className="bg-white rounded-md p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
           <div>
             <h2 className="font-heading text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
               Optional Equipment & Custom Upgrades
@@ -583,10 +583,10 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             {product.optionalEquipment.map((opt, idx) => (
               <div
                 key={idx}
-                className="bg-[#FAFBFD] p-5 rounded-2xl border border-slate-200 hover:border-[#F25A24]/50 transition-all space-y-2 group"
+                className="bg-[#FAFBFD] p-5 rounded-md border border-slate-200 hover:border-[#F25A24]/50 transition-all space-y-2 group"
               >
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-slate-900 group-hover:bg-[#F25A24] transition-colors flex items-center justify-center text-white shrink-0">
+                  <div className="w-8 h-8 rounded-sm bg-slate-900 group-hover:bg-[#F25A24] transition-colors flex items-center justify-center text-white shrink-0">
                     <Wrench className="w-4 h-4" />
                   </div>
                   <h3 className="font-heading font-bold text-sm text-slate-900">
@@ -606,7 +606,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
            CERTIFICATES & QUALITY STANDARDS (MATCHING IMAGE 2)
            ========================================================= */}
       <section className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-10 py-6 w-full">
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-4">
+        <div className="bg-white rounded-md p-6 sm:p-10 border border-slate-200 shadow-sm space-y-4">
           <div className="flex items-center gap-2">
             <Shield className="w-5 h-5 text-[#F25A24]" />
             <h2 className="font-heading text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
@@ -622,7 +622,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             {product.certificates.map((cert, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-2.5 bg-[#FAFBFD] px-4 py-3 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800"
+                className="flex items-center gap-2.5 bg-[#FAFBFD] px-4 py-3 rounded-sm border border-slate-200 text-xs font-semibold text-slate-800"
               >
                 <Check className="w-4 h-4 text-emerald-600 shrink-0 stroke-[3]" />
                 <span>{cert}</span>
@@ -636,7 +636,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
            DOWNLOAD TECHNICAL DOCUMENTS (MATCHING REFERENCE IMAGE 2)
            ========================================================= */}
       <section id="documents" className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-10 py-6 w-full">
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
+        <div className="bg-white rounded-md p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-2">
             <FileText className="w-5 h-5 text-[#F25A24]" />
             <h2 className="font-heading text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
@@ -648,10 +648,10 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             {product.documents.map((doc, idx) => (
               <div
                 key={idx}
-                className="bg-[#FAFBFD] p-5 rounded-2xl border border-slate-200 hover:border-slate-300 transition-all flex flex-col justify-between space-y-4"
+                className="bg-[#FAFBFD] p-5 rounded-md border border-slate-200 hover:border-slate-300 transition-all flex flex-col justify-between space-y-4"
               >
                 <div className="space-y-1">
-                  <div className="w-10 h-10 rounded-xl bg-red-100 text-red-600 flex items-center justify-center font-mono font-bold text-xs mb-3">
+                  <div className="w-10 h-10 rounded-sm bg-red-100 text-red-600 flex items-center justify-center font-mono font-bold text-xs mb-3">
                     PDF
                   </div>
                   <h3 className="font-heading font-bold text-xs text-slate-900 leading-snug">
@@ -664,7 +664,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
                 <button
                   onClick={() => alert(`Starting download for ${doc.title}...`)}
-                  className="flex items-center justify-center gap-2 bg-slate-900 hover:bg-[#F25A24] text-white py-2 px-3 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+                  className="flex items-center justify-center gap-2 bg-slate-900 hover:bg-[#F25A24] text-white py-2 px-3 rounded-md text-xs font-semibold transition-colors cursor-pointer"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download File</span>
@@ -704,11 +704,11 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             {relatedProducts.map((rel) => (
               <div
                 key={rel.id}
-                className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all flex flex-col justify-between overflow-hidden group"
+                className="bg-white rounded-md border border-slate-200 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all flex flex-col justify-between overflow-hidden group"
               >
                 <div>
                   <div className="bg-[#FAFBFD] p-5 h-48 flex items-center justify-center border-b border-slate-100 overflow-hidden relative">
-                    <span className="absolute top-3 right-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-white text-slate-700 border border-slate-200">
+                    <span className="absolute top-3 right-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-sm bg-white text-slate-700 border border-slate-200">
                       {rel.brandBadgeText}
                     </span>
                     <img
@@ -726,11 +726,11 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     </Link>
 
                     <div className="grid grid-cols-2 gap-2">
-                      <div className="bg-[#F1F3F5] rounded-lg py-1.5 px-2 text-center text-xs">
+                      <div className="bg-[#F1F3F5] rounded-sm py-1.5 px-2 text-center text-xs">
                         <strong className="block text-slate-950 font-black">{rel.standbyKva} kVA</strong>
                         <span className="text-[10px] text-slate-500 font-mono">Standby</span>
                       </div>
-                      <div className="bg-[#F1F3F5] rounded-lg py-1.5 px-2 text-center text-xs">
+                      <div className="bg-[#F1F3F5] rounded-sm py-1.5 px-2 text-center text-xs">
                         <strong className="block text-slate-950 font-black">{rel.primeKva} kVA</strong>
                         <span className="text-[10px] text-slate-500 font-mono">Prime</span>
                       </div>
@@ -741,7 +741,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 <div className="p-5 pt-0">
                   <Link
                     href={`/products/${rel.slug}`}
-                    className="w-full flex items-center justify-center gap-1.5 bg-[#0E1014] hover:bg-[#F25A24] text-white py-2.5 px-3 rounded-xl text-xs font-bold transition-colors"
+                    className="w-full flex items-center justify-center gap-1.5 bg-[#0E1014] hover:bg-[#F25A24] text-white py-2.5 px-3 rounded-md text-xs font-bold transition-colors"
                   >
                     <span>View Specifications</span>
                     <ChevronRight className="w-3.5 h-3.5" />

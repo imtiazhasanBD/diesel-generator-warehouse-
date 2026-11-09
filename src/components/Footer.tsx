@@ -12,7 +12,7 @@ export default function Footer() {
 
           {/* Left: Newsletter & Bio (5 Cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <Link href="/" className="inline-block bg-white px-3.5 py-2 rounded-xl hover:opacity-95 transition-opacity">
+            <Link href="/" className="inline-block bg-white px-3.5 py-2 rounded-sm hover:opacity-95 transition-opacity">
               <img
                 src="/assets/images/diese-generator-warehouse-logo.png"
                 alt="Diesel Generator Warehouse"
@@ -38,9 +38,9 @@ export default function Footer() {
                   type="email"
                   required
                   placeholder="Enter your work email"
-                  className="w-full px-4 py-2.5 rounded-full bg-white/10 border border-white/20 text-xs text-white focus:outline-none focus:border-[#F25A24]"
+                  className="w-full px-4 py-2.5 rounded-md bg-white/10 border border-white/20 text-xs text-white focus:outline-none focus:border-[#F25A24]"
                 />
-                <button type="submit" className="framer-btn-primary shrink-0 px-4 py-2.5 cursor-pointer">
+                <button type="submit" className="framer-btn-primary rounded-sm shrink-0 px-4 py-2.5 cursor-pointer">
                   <span>Join</span>
                 </button>
               </form>

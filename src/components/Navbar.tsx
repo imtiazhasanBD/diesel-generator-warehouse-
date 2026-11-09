@@ -50,7 +50,7 @@ export default function Navbar({ onOpenQuote, onOpenSearch, activePath = "" }: N
               className={`hover:text-[#F25A24] transition-colors flex items-center gap-1.5 ${activePath === "products" ? "text-[#F25A24] font-bold" : "text-slate-950"}`}
             >
               <span>Products</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F25A24]" />
+              <span className="w-1.5 h-1.5 rounded-sm bg-[#F25A24]" />
             </Link>
             <Link href="/#industries" className="hover:text-[#F25A24] transition-colors">
               Industries
@@ -68,17 +68,17 @@ export default function Navbar({ onOpenQuote, onOpenSearch, activePath = "" }: N
             <button
               onClick={onOpenSearch}
               aria-label="Search generators"
-              className="w-9 h-9 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
+              className="w-9 h-9 rounded-md flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
             >
               <Search className="w-4 h-4" />
             </button>
 
             <button
               onClick={onOpenQuote}
-              className="hidden sm:inline-flex framer-btn-primary cursor-pointer"
+              className="hidden sm:inline-flex framer-btn-primary rounded-sm cursor-pointer"
             >
               <span>Get a quote</span>
-              <div className="btn-arrow-box">
+              <div className="btn-arrow-box rounded-sm">
                 <ArrowRight className="w-3.5 h-3.5 text-white" />
               </div>
             </button>
@@ -135,10 +135,10 @@ export default function Navbar({ onOpenQuote, onOpenSearch, activePath = "" }: N
                   setIsMobileMenuOpen(false);
                   if (onOpenQuote) onOpenQuote();
                 }}
-                className="w-full framer-btn-primary justify-center cursor-pointer"
+                className="w-full framer-btn-primary rounded-sm justify-center cursor-pointer"
               >
                 <span>Get a quote</span>
-                <div className="btn-arrow-box">
+                <div className="btn-arrow-box rounded-sm">
                   <ArrowRight className="w-3.5 h-3.5 text-white" />
                 </div>
               </button>

@@ -132,7 +132,7 @@ export default function ProductsPage() {
             {/* Currency & Sorting Controls */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4">
               {/* Currency Selector */}
-              <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-sm text-xs font-semibold">
+              <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-md border border-slate-200 shadow-sm text-xs font-semibold">
                 <span className="text-slate-400 font-mono">Currency:</span>
                 <select
                   value={currency}
@@ -146,7 +146,7 @@ export default function ProductsPage() {
               </div>
 
               {/* Sorting Dropdown */}
-              <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-sm text-xs font-semibold">
+              <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-md border border-slate-200 shadow-sm text-xs font-semibold">
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
@@ -174,7 +174,7 @@ export default function ProductsPage() {
                 <button
                   key={b}
                   onClick={() => setSelectedBrand(b)}
-                  className={`text-xs px-3.5 py-1.5 rounded-full font-semibold transition-all shrink-0 cursor-pointer ${
+                  className={`text-xs px-3.5 py-1.5 rounded-sm font-semibold transition-all shrink-0 cursor-pointer ${
                     selectedBrand === b
                       ? "bg-[#18181B] text-white shadow-sm"
                       : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
@@ -194,7 +194,7 @@ export default function ProductsPage() {
                 placeholder="Search kVA, model, brand..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-8 py-2 rounded-xl bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-[#F25A24] shadow-sm font-medium"
+                className="w-full pl-10 pr-8 py-2 rounded-md bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-[#F25A24] shadow-sm font-medium"
               />
               {searchQuery && (
                 <button
@@ -212,8 +212,8 @@ export default function ProductsPage() {
              4-COLUMN PRODUCT GRID (EXACT MATCH TO REFERENCE IMAGE 1)
              ========================================================= */}
         {filteredProducts.length === 0 ? (
-          <div className="bg-white rounded-3xl p-16 text-center border border-slate-200 my-8 space-y-4">
-            <div className="w-16 h-16 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
+          <div className="bg-white rounded-md p-16 text-center border border-slate-200 my-8 space-y-4">
+            <div className="w-16 h-16 rounded-md bg-slate-100 text-slate-400 flex items-center justify-center mx-auto">
               <SlidersHorizontal className="w-7 h-7" />
             </div>
             <h3 className="font-heading text-xl font-bold text-slate-900">No generators found matching criteria</h3>
@@ -226,7 +226,7 @@ export default function ProductsPage() {
                 setSelectedType("All");
                 setSearchQuery("");
               }}
-              className="framer-btn-primary mx-auto"
+              className="framer-btn-primary rounded-sm mx-auto"
             >
               <span>Reset all filters</span>
             </button>
@@ -241,14 +241,14 @@ export default function ProductsPage() {
               return (
                 <div
                   key={product.id}
-                  className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col justify-between overflow-hidden group"
+                  className="bg-white rounded-md border border-slate-200 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col justify-between overflow-hidden group"
                 >
                   <div>
                     {/* Image Area with Brand Tag in Top Right (Matching Image 1) */}
                     <div className="relative bg-[#FAFBFD] p-5 h-56 flex items-center justify-center border-b border-slate-100 overflow-hidden">
                       {/* Top Brand Watermark / Badge */}
                       <div className="absolute top-3 right-3 z-10">
-                        <span className="inline-block text-[10px] font-mono font-bold tracking-wider uppercase px-2.5 py-1 rounded bg-white/90 text-slate-700 border border-slate-200 shadow-xs">
+                        <span className="inline-block text-[10px] font-mono font-bold tracking-wider uppercase px-2.5 py-1 rounded-sm bg-white/90 text-slate-700 border border-slate-200 shadow-xs">
                           {product.brandBadgeText}
                         </span>
                       </div>
@@ -273,7 +273,7 @@ export default function ProductsPage() {
 
                       {/* Dual Spec Pill Badges (Matching Image 1: [XX kVA Standby] [XX kVA Prime]) */}
                       <div className="grid grid-cols-2 gap-2 mt-4 mb-4">
-                        <div className="bg-[#F1F3F5] rounded-lg py-2 px-2.5 text-center border border-slate-200/70">
+                        <div className="bg-[#F1F3F5] rounded-sm py-2 px-2.5 text-center border border-slate-200/70">
                           <span className="block font-heading font-black text-sm sm:text-base text-slate-950 leading-tight">
                             {product.standbyKva} kVA
                           </span>
@@ -282,7 +282,7 @@ export default function ProductsPage() {
                           </span>
                         </div>
 
-                        <div className="bg-[#F1F3F5] rounded-lg py-2 px-2.5 text-center border border-slate-200/70">
+                        <div className="bg-[#F1F3F5] rounded-sm py-2 px-2.5 text-center border border-slate-200/70">
                           <span className="block font-heading font-black text-sm sm:text-base text-slate-950 leading-tight">
                             {product.primeKva} kVA
                           </span>
@@ -320,7 +320,7 @@ export default function ProductsPage() {
                   <div className="p-5 pt-0">
                     <Link
                       href={`/products/${product.slug}`}
-                      className="w-full flex items-center justify-center gap-2 bg-[#0E1014] hover:bg-[#F25A24] text-white py-3 px-4 rounded-xl text-xs font-bold transition-colors shadow-xs group/btn cursor-pointer"
+                      className="w-full flex items-center justify-center gap-2 bg-[#0E1014] hover:bg-[#F25A24] text-white py-3 px-4 rounded-md text-xs font-bold transition-colors shadow-xs group/btn cursor-pointer"
                     >
                       <span>{displayPrice}</span>
                       <ChevronRight className="w-3.5 h-3.5 text-white/80 group-hover/btn:translate-x-0.5 transition-transform" />
@@ -338,7 +338,7 @@ export default function ProductsPage() {
         <div className="mt-12 pt-8 border-t border-slate-200 flex items-center justify-center gap-2">
           <button
             onClick={() => setCurrentPage(1)}
-            className={`w-9 h-9 rounded-lg font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${
+            className={`w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${
               currentPage === 1 ? "bg-[#F25A24] text-white shadow-sm" : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
             }`}
           >
@@ -346,7 +346,7 @@ export default function ProductsPage() {
           </button>
           <button
             onClick={() => setCurrentPage(2)}
-            className={`w-9 h-9 rounded-lg font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${
+            className={`w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${
               currentPage === 2 ? "bg-[#F25A24] text-white shadow-sm" : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
             }`}
           >
@@ -354,7 +354,7 @@ export default function ProductsPage() {
           </button>
           <button
             onClick={() => setCurrentPage(3)}
-            className={`w-9 h-9 rounded-lg font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${
+            className={`w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${
               currentPage === 3 ? "bg-[#F25A24] text-white shadow-sm" : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
             }`}
           >
@@ -362,32 +362,32 @@ export default function ProductsPage() {
           </button>
           <button
             onClick={() => setCurrentPage(4)}
-            className="w-9 h-9 rounded-lg font-bold text-xs flex items-center justify-center bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer"
+            className="w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer"
           >
             4
           </button>
           <span className="text-slate-400 font-bold px-1">...</span>
           <button
             onClick={() => setCurrentPage(8)}
-            className="w-9 h-9 rounded-lg font-bold text-xs flex items-center justify-center bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer"
+            className="w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer"
           >
             8
           </button>
           <button
             onClick={() => setCurrentPage(9)}
-            className="w-9 h-9 rounded-lg font-bold text-xs flex items-center justify-center bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer"
+            className="w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer"
           >
             9
           </button>
           <button
             onClick={() => setCurrentPage(10)}
-            className="w-9 h-9 rounded-lg font-bold text-xs flex items-center justify-center bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer"
+            className="w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer"
           >
             10
           </button>
           <button
             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, 10))}
-            className="h-9 px-3 rounded-lg font-bold text-xs flex items-center gap-1 bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer"
+            className="h-9 px-3 rounded-sm font-bold text-xs flex items-center gap-1 bg-white text-slate-700 hover:bg-slate-100 border border-slate-200 cursor-pointer"
           >
             <span>Next</span>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -397,7 +397,7 @@ export default function ProductsPage() {
         {/* =========================================================
              SEO / INFORMATIONAL BRAND CATEGORY SECTION (IMAGE 1)
              ========================================================= */}
-        <section className="mt-16 bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-sm">
+        <section className="mt-16 bg-white rounded-md p-8 sm:p-12 border border-slate-200 shadow-sm">
           <div className="space-y-4 max-w-4xl">
             <h3 className="font-heading text-xl sm:text-2xl font-black text-[#F25A24] uppercase tracking-tight">
               DIESEL GENERATORS FOR SALE BY BRAND AND SIZE
@@ -433,7 +433,7 @@ export default function ProductsPage() {
                 <button
                   key={cap}
                   onClick={() => setSearchQuery(cap.replace(/\s/g, ""))}
-                  className="px-2.5 py-1 rounded bg-[#FAFBFD] hover:bg-slate-200 border border-slate-200 transition-colors text-slate-700 cursor-pointer"
+                  className="px-2.5 py-1 rounded-sm bg-[#FAFBFD] hover:bg-slate-200 border border-slate-200 transition-colors text-slate-700 cursor-pointer"
                 >
                   {cap}
                 </button>

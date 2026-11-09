@@ -48,19 +48,19 @@ export default function QuoteModal({
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative overflow-hidden max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-md max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-200 relative overflow-hidden max-h-[90vh] overflow-y-auto"
           >
             {/* Top Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:text-black hover:bg-slate-200 transition-colors cursor-pointer"
+              className="absolute top-5 right-5 w-8 h-8 rounded-sm bg-slate-100 flex items-center justify-center text-slate-500 hover:text-black hover:bg-slate-200 transition-colors cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
 
             {isSubmitted ? (
               <div className="py-12 text-center space-y-4">
-                <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                <div className="w-16 h-16 rounded-md bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
                   <CheckCircle className="w-8 h-8" />
                 </div>
                 <h3 className="font-heading font-black text-2xl text-slate-900">Quote Request Received!</h3>
@@ -82,7 +82,7 @@ export default function QuoteModal({
                 </p>
 
                 {/* Sizing Slider */}
-                <div className="bg-[#FAFBFD] p-4 sm:p-5 rounded-2xl border border-slate-200 mb-6 space-y-3">
+                <div className="bg-[#FAFBFD] p-4 sm:p-5 rounded-md border border-slate-200 mb-6 space-y-3">
                   <div className="flex justify-between items-center text-xs font-semibold text-slate-700">
                     <span className="flex items-center gap-1.5">
                       <Sliders className="w-3.5 h-3.5 text-[#F25A24]" />
@@ -119,7 +119,7 @@ export default function QuoteModal({
                         type="text"
                         required
                         placeholder="e.g. Apex Spinning Ltd."
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
+                        className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
                       />
                     </div>
                     <div>
@@ -128,7 +128,7 @@ export default function QuoteModal({
                         type="text"
                         required
                         placeholder="Full name & designation"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
+                        className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
                       />
                     </div>
                   </div>
@@ -140,7 +140,7 @@ export default function QuoteModal({
                         type="tel"
                         required
                         placeholder="+880 17XX-XXXXXX"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
+                        className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
                       />
                     </div>
                     <div>
@@ -148,7 +148,7 @@ export default function QuoteModal({
                       <select
                         value={selectedDivision}
                         onChange={(e) => setSelectedDivision(e.target.value)}
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24] bg-white"
+                        className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24] bg-white"
                       >
                         <option>Dhaka Division (Gazipur, Savar, Narayanganj)</option>
                         <option>Chattogram Division (Port, KEPZ, Agrabad)</option>
@@ -165,12 +165,12 @@ export default function QuoteModal({
                     <textarea
                       rows={2}
                       placeholder="e.g. Need 4-pole ATS panel, dual sync, or underground fuel piping..."
-                      className="w-full px-4 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
+                      className="w-full px-4 py-2 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
                     />
                   </div>
 
                   <div className="pt-2">
-                    <button type="submit" className="w-full framer-btn-primary justify-center py-3 text-sm font-semibold cursor-pointer">
+                    <button type="submit" className="w-full framer-btn-primary rounded-sm justify-center py-3 text-sm font-semibold cursor-pointer">
                       <span>Submit RFQ & Get Official Pricing</span>
                     </button>
                   </div>

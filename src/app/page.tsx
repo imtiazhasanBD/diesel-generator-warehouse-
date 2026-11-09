@@ -200,7 +200,7 @@ const SALES_REGIONS = [
   }
 ];
 
-// 3D Tilt Card Wrapper Component using Motion
+// Professional Card Wrapper Component with Subtle Industrial Elevation
 function TiltCard({
   children,
   className = ""
@@ -208,35 +208,12 @@ function TiltCard({
   children: React.ReactNode;
   className?: string;
 }) {
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    setRotateX(((y - centerY) / centerY) * -6);
-    setRotateY(((x - centerX) / centerX) * 6);
-  };
-
-  const handleMouseLeave = () => {
-    setRotateX(0);
-    setRotateY(0);
-  };
-
   return (
-    <motion.div
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      animate={{ rotateX, rotateY }}
-      transition={{ type: "spring", damping: 20, stiffness: 300 }}
-      style={{ perspective: 1000 }}
-      className={`transition-shadow duration-300 ${className}`}
+    <div
+      className={`transition-all duration-300 hover:shadow-md hover:border-slate-300 ${className}`}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -302,7 +279,7 @@ export default function Home() {
 
       {/* Motion Scroll Progress Indicator Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#F25A24] to-[#FF8A50] origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-[#F25A24] origin-left z-50"
         style={{ scaleX }}
       />
 
@@ -330,7 +307,7 @@ export default function Home() {
               <a href="#schematic" className="hover:text-[#F25A24] transition-colors">Engineering</a>
               <Link href="/products" className="hover:text-[#F25A24] transition-colors font-bold text-slate-950 flex items-center gap-1">
                 <span>Products</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#F25A24]" />
+                <span className="w-1.5 h-1.5 rounded-sm bg-[#F25A24]" />
               </Link>
               <a href="#industries" className="hover:text-[#F25A24] transition-colors">Industries</a>
               <a href="#projects" className="hover:text-[#F25A24] transition-colors">Case Studies</a>
@@ -342,7 +319,7 @@ export default function Home() {
               <button
                 onClick={() => setIsSearchModalOpen(true)}
                 aria-label="Search"
-                className="w-9 h-9 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+                className="w-9 h-9 rounded-md flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
               >
                 <Search className="w-4 h-4" />
               </button>
@@ -352,7 +329,7 @@ export default function Home() {
                 className="hidden sm:inline-flex framer-btn-primary rounded-sm"
               >
                 <span>Get a quote</span>
-                <div className="btn-arrow-box">
+                <div className="btn-arrow-box rounded-sm">
                   <ArrowRight className="w-3.5 h-3.5 text-white" />
                 </div>
               </button> 
@@ -393,10 +370,10 @@ export default function Home() {
                     setIsMobileMenuOpen(false);
                     setIsQuoteModalOpen(true);
                   }}
-                  className="w-full framer-btn-primary justify-center"
+                  className="w-full framer-btn-primary rounded-sm justify-center"
                 >
                   <span>Get a quote</span>
-                  <div className="btn-arrow-box">
+                  <div className="btn-arrow-box rounded-sm">
                     <ArrowRight className="w-3.5 h-3.5 text-white" />
                   </div>
                 </button>
@@ -453,10 +430,10 @@ export default function Home() {
                 <div>
                   <a
                     href="#capabilities"
-                    className="inline-flex items-center gap-3.5 bg-[#18181B] hover:bg-black text-white px-5 py-3 rounded-md text-sm font-semibold transition-all group shadow-sm cursor-pointer"
+                    className="inline-flex items-center gap-3.5 bg-[#18181B] hover:bg-black text-white px-5 py-3 rounded-sm text-sm font-semibold transition-all group shadow-sm cursor-pointer"
                   >
                     <span>Explore our capabilities</span>
-                    <div className="w-7 h-7 rounded-md bg-[#F25A24] flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform flex-shrink-0">
+                    <div className="w-7 h-7 rounded-sm bg-[#F25A24] flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform flex-shrink-0">
                       <ArrowRight className="w-4 h-4" />
                     </div>
                   </a>
@@ -472,7 +449,7 @@ export default function Home() {
               </div>
               <div className="text-center font-bold tracking-widest text-[11px] text-slate-400 flex items-center justify-center gap-2">
                 <span>SCROLL DOWN</span>
-                <ArrowDown className="w-3.5 h-3.5 animate-bounce text-[#F25A24]" />
+                <ArrowDown className="w-3.5 h-3.5 text-[#F25A24]" />
               </div>
               <div className="text-right">
                 23.8103° N, 90.4125° E
@@ -500,14 +477,14 @@ export default function Home() {
             <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 z-30 flex items-center gap-2">
               <button
                 onClick={togglePlay}
-                className="w-10 h-10 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-black/90 transition-all cursor-pointer shadow-lg"
+                className="w-10 h-10 rounded-sm bg-black/65 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-black/90 transition-all cursor-pointer shadow-lg"
                 aria-label="Toggle Video Playback"
               >
                 {isPlaying ? <Pause className="w-4 h-4 text-white" /> : <Play className="w-4 h-4 text-white ml-0.5" />}
               </button>
               <button
                 onClick={toggleMute}
-                className="w-10 h-10 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-black/90 transition-all cursor-pointer shadow-lg"
+                className="w-10 h-10 rounded-sm bg-black/65 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-black/90 transition-all cursor-pointer shadow-lg"
                 aria-label="Toggle Video Sound"
               >
                 {isMuted ? <VolumeX className="w-4 h-4 text-white" /> : <Volume2 className="w-4 h-4 text-white" />}
@@ -549,16 +526,16 @@ export default function Home() {
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4 pt-2">
-                  <a href="#capabilities" className="framer-btn-primary">
+                  <a href="#capabilities" className="framer-btn-primary rounded-sm">
                     <span>Learn more about us</span>
-                    <div className="btn-arrow-box">
+                    <div className="btn-arrow-box rounded-sm">
                       <ArrowRight className="w-3.5 h-3.5 text-white" />
                     </div>
                   </a>
 
-                  <a href="#products" className="framer-btn-outline">
+                  <a href="#products" className="framer-btn-outline rounded-sm">
                     <span>Download technical brochure</span>
-                    <div className="btn-arrow-box">
+                    <div className="btn-arrow-box rounded-sm">
                       <Download className="w-3.5 h-3.5 text-slate-700" />
                     </div>
                   </a>
@@ -586,7 +563,7 @@ export default function Home() {
               {/* Element 3: 20+ Delivering Excellence Circle */}
               <TiltCard className="flex flex-col items-center justify-center text-center p-8 bg-[#F6F7F9] rounded-full aspect-square max-w-[260px] mx-auto w-full border border-slate-200 relative group">
                 <span className="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">
-                  // 2005-2K26 //
+                  // 2005-2026 //
                 </span>
                 <span className="font-heading text-4xl sm:text-5xl font-black text-[#F25A24]">
                   20<span className="text-slate-950">+</span>
@@ -600,7 +577,7 @@ export default function Home() {
               </TiltCard>
 
               {/* Element 4: Capsule Photo with Rating */}
-              <TiltCard className="relative rounded-full sm:rounded-3xl lg:rounded-full overflow-hidden aspect-square max-w-[260px] mx-auto w-full shadow-lg group">
+              <TiltCard className="relative rounded-full overflow-hidden aspect-square max-w-[260px] mx-auto w-full shadow-lg group">
                 <img src="/assets/images/engineer-capsule.jpg" alt="Industrial Engineer in Plant" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-6 text-white text-center">
                   <div className="flex items-center justify-center gap-1 text-amber-400 text-xs mb-1">
@@ -628,7 +605,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 lg:mb-16 gap-6">
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
-                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-full inline-block" />
+                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                   <span>Our Capabilities</span>
                 </div>
                 <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.08]">
@@ -639,10 +616,10 @@ export default function Home() {
 
               <button
                 onClick={() => openQuoteForLocation("All Divisions")}
-                className="inline-flex items-center gap-3.5 bg-[#18181B] hover:bg-black text-white px-5 py-2.5 rounded-md text-sm font-semibold transition-all group shadow-sm self-start md:self-auto cursor-pointer"
+                className="inline-flex items-center gap-3.5 bg-[#18181B] hover:bg-black text-white px-5 py-2.5 rounded-sm text-sm font-semibold transition-all group shadow-sm self-start md:self-auto cursor-pointer"
               >
                 <span>Explore all capabilities</span>
-                <div className="w-7 h-7 rounded-md bg-[#F25A24] flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform flex-shrink-0">
+                <div className="w-7 h-7 rounded-sm bg-[#F25A24] flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform flex-shrink-0">
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </button>
@@ -731,10 +708,10 @@ export default function Home() {
             </div>
 
             {/* Nationwide Delivery Notice */}
-            <div className="p-4 sm:p-5 rounded-lg bg-white border border-slate-200 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6 group">
+            <div className="p-4 sm:p-5 rounded-md bg-white border border-slate-200 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6 group">
               {/* Left: Location Pin Circle + Coverage Text */}
               <div className="flex items-center gap-3.5 sm:gap-4">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FFF5F1] border border-[#FFE7DE] flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-sm bg-[#FFF5F1] border border-[#FFE7DE] flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5 text-[#F25A24]" />
                 </div>
                 <div>
@@ -841,12 +818,12 @@ export default function Home() {
                   onClick={() => setActiveHotspot("canopy")}
                   className="absolute top-[48%] left-[7.5%] w-7 h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
                 >
-                  <span className="absolute inset-0 rounded-full bg-[#F25A24]/40 animate-ping" />
+                  {activeHotspot === "canopy" && <span className="absolute inset-0 rounded-sm bg-[#F25A24]/40 animate-ping" />}
                   <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[10px] font-black transition-all ${activeHotspot === "canopy" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
                     }`}>
                     1
                   </span>
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-black/95 text-white text-[11px] font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap border border-white/20 shadow-2xl pointer-events-none">
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-black/95 text-white text-[11px] font-semibold px-3 py-1.5 rounded-sm whitespace-nowrap border border-white/20 shadow-2xl pointer-events-none">
                     Acoustic Canopy Shell (&lt;68 dBA)
                   </div>
                 </div>
@@ -856,12 +833,12 @@ export default function Home() {
                   onClick={() => setActiveHotspot("engine")}
                   className="absolute top-[32%] left-[37%] w-7 h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
                 >
-                  <span className="absolute inset-0 rounded-full bg-[#F25A24]/40 animate-ping" />
+                  {activeHotspot === "engine" && <span className="absolute inset-0 rounded-sm bg-[#F25A24]/40 animate-ping" />}
                   <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[10px] font-black transition-all ${activeHotspot === "engine" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
                     }`}>
                     2
                   </span>
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-black/95 text-white text-[11px] font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap border border-white/20 shadow-2xl pointer-events-none">
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-black/95 text-white text-[11px] font-semibold px-3 py-1.5 rounded-sm whitespace-nowrap border border-white/20 shadow-2xl pointer-events-none">
                     Heavy Cast Flywheel & Core
                   </div>
                 </div>
@@ -871,12 +848,12 @@ export default function Home() {
                   onClick={() => setActiveHotspot("alternator")}
                   className="absolute top-[52%] left-[71.5%] w-7 h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
                 >
-                  <span className="absolute inset-0 rounded-full bg-[#F25A24]/40 animate-ping" />
+                  {activeHotspot === "alternator" && <span className="absolute inset-0 rounded-sm bg-[#F25A24]/40 animate-ping" />}
                   <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[10px] font-black transition-all ${activeHotspot === "alternator" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
                     }`}>
                     3
                   </span>
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-black/95 text-white text-[11px] font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap border border-white/20 shadow-2xl pointer-events-none">
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-black/95 text-white text-[11px] font-semibold px-3 py-1.5 rounded-sm whitespace-nowrap border border-white/20 shadow-2xl pointer-events-none">
                     100% Copper Brushless Alternator
                   </div>
                 </div>
@@ -889,7 +866,7 @@ export default function Home() {
               {/* Card 1: Engine Core */}
               <div
                 onClick={() => setActiveHotspot("engine")}
-                className={`p-5 rounded-2xl bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "engine"
+                className={`p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "engine"
                     ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
                     : "border-white/[0.08] hover:border-white/20"
                   }`}
@@ -897,7 +874,7 @@ export default function Home() {
                 <h4 className="font-heading font-bold text-base text-white mb-3">
                   Heavy Diesel Engine Block
                 </h4>
-                <div className="w-full h-36 rounded-xl overflow-hidden bg-slate-900 border border-white/10 mb-5 relative group">
+                <div className="w-full h-36 rounded-sm overflow-hidden bg-slate-900 border border-white/10 mb-5 relative group">
                   <img
                     src="/assets/images/engine-circle.jpg"
                     alt="Diesel Engine Turbocharger Block"
@@ -923,7 +900,7 @@ export default function Home() {
               {/* Card 2: Acoustic Canopy */}
               <div
                 onClick={() => setActiveHotspot("canopy")}
-                className={`p-5 rounded-2xl bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "canopy"
+                className={`p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "canopy"
                     ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
                     : "border-white/[0.08] hover:border-white/20"
                   }`}
@@ -931,7 +908,7 @@ export default function Home() {
                 <h4 className="font-heading font-bold text-base text-white mb-3">
                   Soundproof Canopy Enclosure
                 </h4>
-                <div className="w-full h-36 rounded-xl overflow-hidden bg-slate-900 border border-white/10 mb-5 relative group">
+                <div className="w-full h-36 rounded-sm overflow-hidden bg-slate-900 border border-white/10 mb-5 relative group">
                   <img
                     src="/assets/images/yellow-silent.jpg"
                     alt="Soundproof Canopy Housing"
@@ -957,7 +934,7 @@ export default function Home() {
               {/* Card 3: Control & ATS Panels */}
               <div
                 onClick={() => setActiveHotspot("controller")}
-                className={`p-5 rounded-2xl bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "controller"
+                className={`p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "controller"
                     ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
                     : "border-white/[0.08] hover:border-white/20"
                   }`}
@@ -965,7 +942,7 @@ export default function Home() {
                 <h4 className="font-heading font-bold text-base text-white mb-3">
                   Electrical Control & ATS Panels
                 </h4>
-                <div className="w-full h-36 rounded-xl overflow-hidden bg-slate-900 border border-white/10 mb-5 relative group">
+                <div className="w-full h-36 rounded-sm overflow-hidden bg-slate-900 border border-white/10 mb-5 relative group">
                   <img
                     src="/assets/images/gen-control-panel.jpg"
                     alt="Deep Sea Digital Generator Control Panel"
@@ -991,7 +968,7 @@ export default function Home() {
               {/* Card 4: Alternator & Rotor Shaft */}
               <div
                 onClick={() => setActiveHotspot("alternator")}
-                className={`p-5 rounded-2xl bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "alternator"
+                className={`p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "alternator"
                     ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
                     : "border-white/[0.08] hover:border-white/20"
                   }`}
@@ -999,7 +976,7 @@ export default function Home() {
                 <h4 className="font-heading font-bold text-base text-white mb-3">
                   100% Copper Brushless Alternator
                 </h4>
-                <div className="w-full h-36 rounded-xl overflow-hidden bg-slate-900 border border-white/10 mb-5 relative group">
+                <div className="w-full h-36 rounded-sm overflow-hidden bg-slate-900 border border-white/10 mb-5 relative group">
                   <img
                     src="/assets/images/gen-alternator-shaft.jpg"
                     alt="Alternator Copper Stator & Rotor Shaft"
@@ -1039,10 +1016,10 @@ export default function Home() {
                 </a>
                 <button
                   onClick={() => setIsQuoteModalOpen(true)}
-                  className="framer-btn-primary bg-[#F25A24] text-white px-5 py-2.5 rounded-xl text-xs font-bold inline-flex items-center gap-2 hover:bg-[#d94917] transition-all group cursor-pointer shadow-sm"
+                  className="framer-btn-primary bg-[#F25A24] text-white px-5 py-2.5 rounded-sm text-xs font-bold inline-flex items-center gap-2 hover:bg-[#d94917] transition-all group cursor-pointer shadow-sm"
                 >
                   <span>View all products</span>
-                  <div className="w-6 h-6 rounded-lg bg-black/20 flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform">
+                  <div className="w-6 h-6 rounded-sm bg-black/20 flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </div>
                 </button>
@@ -1070,9 +1047,9 @@ export default function Home() {
                 </h2>
               </div>
 
-              <Link href="/products" className="framer-btn-outline cursor-pointer">
+              <Link href="/products" className="framer-btn-outline rounded-sm cursor-pointer">
                 <span>View all products</span>
-                <div className="btn-arrow-box">
+                <div className="btn-arrow-box rounded-sm">
                   <ArrowRight className="w-3.5 h-3.5 text-slate-700" />
                 </div>
               </Link>
@@ -1082,11 +1059,11 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
               {/* Product 1 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-2xl p-6 border border-slate-200 flex flex-col justify-between">
+              <TiltCard className="bg-[#FAFBFD] rounded-md p-6 border border-slate-200 flex flex-col justify-between">
                 <div>
                   <Link href="/products/100kva-perkins-silent-genset" className="block">
-                    <div className="h-44 w-full rounded-xl overflow-hidden bg-white mb-5 flex items-center justify-center p-2 border border-slate-100 group">
-                      <img src="/assets/images/perkins-blue.jpg" alt="Perkins 100 kVA" className="h-full w-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300" />
+                    <div className="h-44 w-full rounded-sm overflow-hidden bg-white mb-5 flex items-center justify-center p-2 border border-slate-100 group">
+                      <img src="/assets/images/perkins-blue.jpg" alt="Perkins 100 kVA" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
                     </div>
                     <h3 className="font-heading font-bold text-base text-slate-950 hover:text-[#F25A24] transition-colors">Perkins 100 kVA Silent Genset</h3>
                   </Link>
@@ -1112,30 +1089,30 @@ export default function Home() {
                 </div>
                 <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
                   <Link href="/products/100kva-perkins-silent-genset" className="text-xs font-bold text-slate-900 hover:text-[#F25A24]">View Specifications</Link>
-                  <Link href="/products/100kva-perkins-silent-genset" className="w-7 h-7 rounded-full bg-slate-950 text-white flex items-center justify-center hover:bg-[#F25A24] transition-colors">
+                  <Link href="/products/100kva-perkins-silent-genset" className="w-7 h-7 rounded-sm bg-slate-950 text-white flex items-center justify-center hover:bg-[#F25A24] transition-colors">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </TiltCard>
 
               {/* Product 2 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-2xl p-6 border border-slate-200 flex flex-col justify-between">
+              <TiltCard className="bg-[#FAFBFD] rounded-md p-6 border border-slate-200 flex flex-col justify-between">
                 <div>
                   <Link href="/products/25kva-cummins-silent-generator" className="block">
-                    <div className="h-44 w-full rounded-xl overflow-hidden bg-white mb-5 flex items-center justify-center p-2 border border-slate-100 group">
-                      <img src="/assets/images/project-green.jpg" alt="Cummins 250 kVA" className="h-full w-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300" />
+                    <div className="h-44 w-full rounded-sm overflow-hidden bg-white mb-5 flex items-center justify-center p-2 border border-slate-100 group">
+                      <img src="/assets/images/project-green.jpg" alt="Cummins 25 kVA Silent Generator" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
                     </div>
-                    <h3 className="font-heading font-bold text-base text-slate-950 hover:text-[#F25A24] transition-colors">Cummins 250 kVA Industrial</h3>
+                    <h3 className="font-heading font-bold text-base text-slate-950 hover:text-[#F25A24] transition-colors">Cummins 25 kVA Silent Generator</h3>
                   </Link>
 
                   <div className="mt-4 pt-4 border-t border-slate-200/80 space-y-2 text-xs">
                     <div className="flex justify-between">
                       <span className="text-slate-400">Engine:</span>
-                      <span className="font-semibold text-slate-800">Cummins 6LTAA8.9-G2</span>
+                      <span className="font-semibold text-slate-800">Cummins 4BT3.9-G1</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-slate-400">Alternator:</span>
-                      <span className="font-semibold text-slate-800">Stamford UCDI274K</span>
+                      <span className="font-semibold text-slate-800">Stamford UCI224D</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-slate-400">Duty:</span>
@@ -1149,18 +1126,18 @@ export default function Home() {
                 </div>
                 <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
                   <Link href="/products/25kva-cummins-silent-generator" className="text-xs font-bold text-slate-900 hover:text-[#F25A24]">View Specifications</Link>
-                  <Link href="/products/25kva-cummins-silent-generator" className="w-7 h-7 rounded-full bg-slate-950 text-white flex items-center justify-center hover:bg-[#F25A24] transition-colors">
+                  <Link href="/products/25kva-cummins-silent-generator" className="w-7 h-7 rounded-sm bg-slate-950 text-white flex items-center justify-center hover:bg-[#F25A24] transition-colors">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </TiltCard>
 
               {/* Product 3 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-2xl p-6 border border-slate-200 flex flex-col justify-between">
+              <TiltCard className="bg-[#FAFBFD] rounded-md p-6 border border-slate-200 flex flex-col justify-between">
                 <div>
                   <Link href="/products/30kva-diesel-generator" className="block">
-                    <div className="h-44 w-full rounded-xl overflow-hidden bg-white mb-5 flex items-center justify-center p-2 border border-slate-100 group">
-                      <img src="/assets/images/canopy-white-20k.jpg" alt="Ricardo 30 kVA" className="h-full w-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300" />
+                    <div className="h-44 w-full rounded-sm overflow-hidden bg-white mb-5 flex items-center justify-center p-2 border border-slate-100 group">
+                      <img src="/assets/images/canopy-white-20k.jpg" alt="Ricardo 30 kVA" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
                     </div>
                     <h3 className="font-heading font-bold text-base text-slate-950 hover:text-[#F25A24] transition-colors">Ricardo 30 kVA Silent Canopy</h3>
                   </Link>
@@ -1186,18 +1163,18 @@ export default function Home() {
                 </div>
                 <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
                   <Link href="/products/30kva-diesel-generator" className="text-xs font-bold text-slate-900 hover:text-[#F25A24]">View Specifications</Link>
-                  <Link href="/products/30kva-diesel-generator" className="w-7 h-7 rounded-full bg-slate-950 text-white flex items-center justify-center hover:bg-[#F25A24] transition-colors">
+                  <Link href="/products/30kva-diesel-generator" className="w-7 h-7 rounded-sm bg-slate-950 text-white flex items-center justify-center hover:bg-[#F25A24] transition-colors">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </TiltCard>
 
               {/* Product 4 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-2xl p-6 border border-slate-200 flex flex-col justify-between">
+              <TiltCard className="bg-[#FAFBFD] rounded-md p-6 border border-slate-200 flex flex-col justify-between">
                 <div>
                   <Link href="/products/apd-110-a-diesel-generator" className="block">
-                    <div className="h-44 w-full rounded-xl overflow-hidden bg-white mb-5 flex items-center justify-center p-2 border border-slate-100 group">
-                      <img src="/assets/images/yellow-silent.jpg" alt="APD 110 A" className="h-full w-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-300" />
+                    <div className="h-44 w-full rounded-sm overflow-hidden bg-white mb-5 flex items-center justify-center p-2 border border-slate-100 group">
+                      <img src="/assets/images/yellow-silent.jpg" alt="APD 110 A" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
                     </div>
                     <h3 className="font-heading font-bold text-base text-slate-950 hover:text-[#F25A24] transition-colors">APD 110 A Industrial Diesel</h3>
                   </Link>
@@ -1223,7 +1200,7 @@ export default function Home() {
                 </div>
                 <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
                   <Link href="/products/apd-110-a-diesel-generator" className="text-xs font-bold text-slate-900 hover:text-[#F25A24]">View Specifications</Link>
-                  <Link href="/products/apd-110-a-diesel-generator" className="w-7 h-7 rounded-full bg-slate-950 text-white flex items-center justify-center hover:bg-[#F25A24] transition-colors">
+                  <Link href="/products/apd-110-a-diesel-generator" className="w-7 h-7 rounded-sm bg-slate-950 text-white flex items-center justify-center hover:bg-[#F25A24] transition-colors">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -1260,7 +1237,7 @@ export default function Home() {
                     <button
                       key={key}
                       onClick={() => setActiveIndustry(key)}
-                      className={`w-full text-left p-4 rounded-xl border font-heading font-bold text-sm transition-all flex items-center justify-between ${isActive
+                      className={`w-full text-left p-4 rounded-md border font-heading font-bold text-sm transition-all flex items-center justify-between ${isActive
                           ? "bg-white text-slate-900 shadow-sm border-slate-300"
                           : "border-transparent text-slate-500 hover:bg-white hover:text-slate-900"
                         }`}
@@ -1273,7 +1250,7 @@ export default function Home() {
               </div>
 
               {/* Dynamic Showcase Card */}
-              <div className="lg:col-span-8 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="lg:col-span-8 bg-white rounded-md p-6 sm:p-10 border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -1299,16 +1276,16 @@ export default function Home() {
                     <ul className="space-y-2.5 pt-2">
                       {INDUSTRY_DATA[activeIndustry].bullets.map((b, idx) => (
                         <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-700">
-                          <span className="w-4 h-4 rounded-full bg-orange-100 text-[#F25A24] flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">✓</span>
+                          <span className="w-4 h-4 rounded-sm bg-orange-100 text-[#F25A24] flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">✓</span>
                           <span>{b}</span>
                         </li>
                       ))}
                     </ul>
 
                     <div className="pt-4">
-                      <button onClick={() => setIsQuoteModalOpen(true)} className="framer-btn-primary">
+                      <button onClick={() => setIsQuoteModalOpen(true)} className="framer-btn-primary rounded-sm">
                         <span>Explore this solution</span>
-                        <div className="btn-arrow-box">
+                        <div className="btn-arrow-box rounded-sm">
                           <ArrowRight className="w-3.5 h-3.5 text-white" />
                         </div>
                       </button>
@@ -1317,7 +1294,7 @@ export default function Home() {
                 </AnimatePresence>
 
                 {/* Dynamic Image */}
-                <div className="relative rounded-2xl overflow-hidden h-[340px] shadow-lg">
+                <div className="relative rounded-sm overflow-hidden h-[340px] shadow-lg">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={activeIndustry}
@@ -1358,10 +1335,10 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
               {/* Case 1 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-3xl overflow-hidden border border-slate-200 group flex flex-col justify-between">
+              <TiltCard className="bg-[#FAFBFD] rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
                 <div className="h-64 sm:h-72 overflow-hidden relative">
                   <img src="/assets/images/project-green.jpg" alt="Commercial Building Motijheel" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white font-mono text-[10px]">
+                  <span className="absolute top-4 left-4 px-3 py-1 rounded-sm bg-black/60 backdrop-blur-md text-white font-mono text-[10px]">
                     // MOTIJHEEL, DHAKA //
                   </span>
                 </div>
@@ -1381,10 +1358,10 @@ export default function Home() {
               </TiltCard>
 
               {/* Case 2 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-3xl overflow-hidden border border-slate-200 group flex flex-col justify-between">
+              <TiltCard className="bg-[#FAFBFD] rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
                 <div className="h-64 sm:h-72 overflow-hidden relative">
                   <img src="/assets/images/hero-gen.jpg" alt="Textile Factory Gazipur" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white font-mono text-[10px]">
+                  <span className="absolute top-4 left-4 px-3 py-1 rounded-sm bg-black/60 backdrop-blur-md text-white font-mono text-[10px]">
                     // GAZIPUR INDUSTRIAL //
                   </span>
                 </div>
@@ -1404,10 +1381,10 @@ export default function Home() {
               </TiltCard>
 
               {/* Case 3 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-3xl overflow-hidden border border-slate-200 group flex flex-col justify-between">
+              <TiltCard className="bg-[#FAFBFD] rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
                 <div className="h-64 sm:h-72 overflow-hidden relative">
                   <img src="/assets/images/commercial-white.jpg" alt="Hospital Sylhet" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white font-mono text-[10px]">
+                  <span className="absolute top-4 left-4 px-3 py-1 rounded-sm bg-black/60 backdrop-blur-md text-white font-mono text-[10px]">
                     // SYLHET HEALTHCARE //
                   </span>
                 </div>
@@ -1427,10 +1404,10 @@ export default function Home() {
               </TiltCard>
 
               {/* Case 4 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-3xl overflow-hidden border border-slate-200 group flex flex-col justify-between">
+              <TiltCard className="bg-[#FAFBFD] rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
                 <div className="h-64 sm:h-72 overflow-hidden relative">
                   <img src="/assets/images/perkins-blue.jpg" alt="Industrial Project Narayanganj" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white font-mono text-[10px]">
+                  <span className="absolute top-4 left-4 px-3 py-1 rounded-sm bg-black/60 backdrop-blur-md text-white font-mono text-[10px]">
                     // NARAYANGANJ EXPORT //
                   </span>
                 </div>
@@ -1493,21 +1470,21 @@ export default function Home() {
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2 text-xs">
-              <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-slate-200">
+              <span className="px-4 py-2 rounded-sm bg-white/10 backdrop-blur-md border border-white/20 text-slate-200">
                 ✓ 100% Load-Bank Certified
               </span>
-              <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-slate-200">
+              <span className="px-4 py-2 rounded-sm bg-white/10 backdrop-blur-md border border-white/20 text-slate-200">
                 ✓ Zero Downtime ATS Sync
               </span>
-              <span className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-slate-200">
+              <span className="px-4 py-2 rounded-sm bg-white/10 backdrop-blur-md border border-white/20 text-slate-200">
                 ✓ 24/7 Rapid Emergency Support
               </span>
             </div>
 
             <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-              <button onClick={() => setIsQuoteModalOpen(true)} className="framer-btn-primary px-8 py-3.5 text-sm">
+              <button onClick={() => setIsQuoteModalOpen(true)} className="framer-btn-primary rounded-sm px-8 py-3.5 text-sm">
                 <span>Schedule site inspection</span>
-                <div className="btn-arrow-box">
+                <div className="btn-arrow-box rounded-sm">
                   <ArrowRight className="w-4 h-4 text-white" />
                 </div>
               </button>
@@ -1546,7 +1523,7 @@ export default function Home() {
                 </blockquote>
 
                 <div className="flex items-center gap-4 pt-4 border-t border-slate-100">
-                  <img src="/assets/images/client-portrait.jpg" alt="Plant Operations Director" className="w-12 h-12 rounded-full object-cover" />
+                  <img src="/assets/images/client-portrait.jpg" alt="Plant Operations Director" className="w-12 h-12 rounded-md object-cover" />
                   <div>
                     <h4 className="font-heading font-bold text-slate-900 text-sm">Engr. Tariqul Islam</h4>
                     <p className="text-xs text-slate-500">Head of Plant Operations, Dhaka Industrial Zone</p>
@@ -1555,7 +1532,7 @@ export default function Home() {
               </div>
 
               {/* Right: Trust Metrics & Corporate Bangladeshi Conglomerates */}
-              <div className="lg:col-span-6 bg-[#0E1014] rounded-3xl p-8 sm:p-10 text-white space-y-8 shadow-xl">
+              <div className="lg:col-span-6 bg-[#0E1014] rounded-md p-8 sm:p-10 text-white space-y-8 shadow-xl">
 
                 <div className="grid grid-cols-3 gap-4 border-b border-white/10 pb-8 text-center sm:text-left">
                   <div>
@@ -1577,11 +1554,11 @@ export default function Home() {
                     // PARTNER CONGLOMERATES //
                   </span>
                   <div className="grid grid-cols-5 gap-3 items-center text-center">
-                    <div className="text-sm font-black text-[#0066B2] tracking-wider">BEXIMCO</div>
-                    <div className="text-sm font-bold text-[#00A651]">■ SQUARE</div>
-                    <div className="text-sm font-black text-[#EC008C] tracking-wide">brac</div>
-                    <div className="text-sm font-black text-[#E2136E]">bKash</div>
-                    <div className="text-sm font-black text-[#004B93] tracking-widest">WALTON</div>
+                    <div className="text-sm font-black text-slate-400 hover:text-white transition-colors tracking-wider">BEXIMCO</div>
+                    <div className="text-sm font-bold text-slate-400 hover:text-white transition-colors">■ SQUARE</div>
+                    <div className="text-sm font-black text-slate-400 hover:text-white transition-colors tracking-wide">brac</div>
+                    <div className="text-sm font-black text-slate-400 hover:text-white transition-colors">bKash</div>
+                    <div className="text-sm font-black text-slate-400 hover:text-white transition-colors tracking-widest">WALTON</div>
                   </div>
                 </div>
 
@@ -1609,9 +1586,9 @@ export default function Home() {
                 </h2>
               </div>
 
-              <a href="#" className="framer-btn-outline">
+              <a href="#" className="framer-btn-outline rounded-sm">
                 <span>View all blogs</span>
-                <div className="btn-arrow-box">
+                <div className="btn-arrow-box rounded-sm">
                   <ArrowRight className="w-3.5 h-3.5 text-slate-700" />
                 </div>
               </a>
@@ -1619,7 +1596,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-              <TiltCard className="bg-white rounded-2xl overflow-hidden border border-slate-200 group flex flex-col justify-between">
+              <TiltCard className="bg-white rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
                 <div>
                   <div className="h-52 overflow-hidden">
                     <img src="/assets/images/hero-gen.jpg" alt="How to choose generator" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -1639,7 +1616,7 @@ export default function Home() {
                 </div>
               </TiltCard>
 
-              <TiltCard className="bg-white rounded-2xl overflow-hidden border border-slate-200 group flex flex-col justify-between">
+              <TiltCard className="bg-white rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
                 <div>
                   <div className="h-52 overflow-hidden">
                     <img src="/assets/images/engineer-hero.jpg" alt="Maintenance tips" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -1659,7 +1636,7 @@ export default function Home() {
                 </div>
               </TiltCard>
 
-              <TiltCard className="bg-white rounded-2xl overflow-hidden border border-slate-200 group flex flex-col justify-between">
+              <TiltCard className="bg-white rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
                 <div>
                   <div className="h-52 overflow-hidden">
                     <img src="/assets/images/yellow-silent.jpg" alt="Diesel vs silent" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -1695,7 +1672,7 @@ export default function Home() {
 
             {/* Left: Newsletter & Bio (5 Cols) */}
             <div className="lg:col-span-5 space-y-6">
-              <a href="#" className="inline-block bg-white px-3.5 py-2 rounded-xl hover:opacity-95 transition-opacity">
+              <a href="#" className="inline-block bg-white px-3.5 py-2 rounded-sm hover:opacity-95 transition-opacity">
                 <img
                   src="/assets/images/diese-generator-warehouse-logo.png"
                   alt="Diesel Generator Warehouse"
@@ -1711,8 +1688,8 @@ export default function Home() {
                   // STAY CONNECTED //
                 </span>
                 <form className="flex items-center gap-2 max-w-sm" onSubmit={(e) => { e.preventDefault(); alert("Subscribed to technical newsletter!"); }}>
-                  <input type="email" required placeholder="Enter your work email" className="w-full px-4 py-2.5 rounded-full bg-white/10 border border-white/20 text-xs text-white focus:outline-none focus:border-[#F25A24]" />
-                  <button type="submit" className="framer-btn-primary shrink-0 px-4 py-2.5">
+                  <input type="email" required placeholder="Enter your work email" className="w-full px-4 py-2.5 rounded-md bg-white/10 border border-white/20 text-xs text-white focus:outline-none focus:border-[#F25A24]" />
+                  <button type="submit" className="framer-btn-primary rounded-sm shrink-0 px-4 py-2.5">
                     <span>Join</span>
                   </button>
                 </form>
@@ -1793,11 +1770,11 @@ export default function Home() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-slate-200"
+              className="bg-white rounded-md max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-slate-200"
             >
               <button
                 onClick={() => setIsQuoteModalOpen(false)}
-                className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors"
+                className="absolute top-5 right-5 w-8 h-8 rounded-sm bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors"
                 aria-label="Close"
               >
                 <X className="w-4 h-4" />
@@ -1812,7 +1789,7 @@ export default function Home() {
               <p className="text-xs text-slate-500 mb-6">Calculate the required generator kVA rating for your electrical load.</p>
 
               {/* Calculator */}
-              <div className="bg-[#F7F7F8] p-5 rounded-2xl border border-slate-200 mb-6 space-y-4">
+              <div className="bg-[#F7F7F8] p-5 rounded-md border border-slate-200 mb-6 space-y-4">
                 <div className="flex justify-between items-center text-xs font-bold text-slate-800">
                   <span>Estimated Facility Load (kW):</span>
                   <span className="font-mono text-base font-black text-[#F25A24]">{kwLoad} kW</span>
@@ -1835,12 +1812,12 @@ export default function Home() {
               <form onSubmit={(e) => { e.preventDefault(); alert("Quote request submitted! An engineer will call you within 2 hours."); setIsQuoteModalOpen(false); }} className="space-y-3">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">Company / Full Name</label>
-                  <input type="text" required placeholder="Hassan Ahmed" className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]" />
+                  <input type="text" required placeholder="Hassan Ahmed" className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]" />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-1">Phone Number</label>
-                    <input type="tel" required placeholder="+880 17XXXXXXXX" className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]" />
+                    <input type="tel" required placeholder="+880 17XXXXXXXX" className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-1">Installation Division / City</label>
@@ -1849,13 +1826,13 @@ export default function Home() {
                       value={selectedRegion}
                       onChange={(e) => setSelectedRegion(e.target.value)}
                       placeholder="e.g. Dhaka, Gazipur, Sylhet, Khulna"
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
+                      className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
                     />
                   </div>
                 </div>
-                <button type="submit" className="framer-btn-primary w-full py-3 justify-center mt-3">
+                <button type="submit" className="framer-btn-primary rounded-sm w-full py-3 justify-center mt-3">
                   <span>Submit Request</span>
-                  <div className="btn-arrow-box">
+                  <div className="btn-arrow-box rounded-sm">
                     <ArrowRight className="w-3.5 h-3.5 text-white" />
                   </div>
                 </button>
@@ -1880,7 +1857,7 @@ export default function Home() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white rounded-2xl max-w-lg w-full p-5 shadow-2xl border border-slate-200"
+              className="bg-white rounded-md max-w-lg w-full p-5 shadow-2xl border border-slate-200"
             >
               <div className="flex items-center gap-3 border-b border-slate-200 pb-3">
                 <Search className="w-4 h-4 text-slate-400" />
@@ -1897,10 +1874,10 @@ export default function Home() {
               <div className="pt-3 space-y-2 text-xs">
                 <span className="font-mono text-[10px] text-slate-400 font-bold uppercase">// POPULAR SEARCHES //</span>
                 <div className="flex flex-wrap gap-2 pt-1">
-                  <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-[#F25A24] cursor-pointer">Perkins 100 kVA</span>
-                  <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-[#F25A24] cursor-pointer">Cummins 250 kVA</span>
-                  <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-[#F25A24] cursor-pointer">Deep Sea AMF Panel</span>
-                  <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-[#F25A24] cursor-pointer">Acoustic Canopy</span>
+                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-[#F25A24] cursor-pointer">Perkins 100 kVA</span>
+                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-[#F25A24] cursor-pointer">Cummins 250 kVA</span>
+                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-[#F25A24] cursor-pointer">Deep Sea AMF Panel</span>
+                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-[#F25A24] cursor-pointer">Acoustic Canopy</span>
                 </div>
               </div>
             </motion.div>
