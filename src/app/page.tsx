@@ -3,10 +3,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "motion/react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import {
   Search,
   ArrowRight,
-  Menu,
   X,
   Play,
   Pause,
@@ -19,8 +20,6 @@ import {
   Wrench,
   CheckCircle,
   ChevronRight,
-  Phone,
-  Mail,
   MapPin,
   Star,
   ArrowDown
@@ -242,11 +241,10 @@ export default function Home() {
   const recommendedKva = Math.ceil((kwLoad / 0.8) * 1.25);
   const fuelRate = (recommendedKva * 0.22).toFixed(1);
 
-  // Modals & Mobile Nav
+  // Modals
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [selectedRegion, setSelectedRegion] = useState("Dhaka Division");
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Helper to open quote pre-populated with division
   const openQuoteForLocation = (region: string) => {
@@ -283,105 +281,12 @@ export default function Home() {
         style={{ scaleX }}
       />
 
-      {/* =========================================================
-           NAVIGATION BAR (FRAMER STYLE)
-           ========================================================= */}
-      <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
-        <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
-          <div className="flex items-center justify-between h-20">
-
-            {/* Logo */}
-            <a href="#" className="flex items-center gap-3 group">
-              <img
-                src="/assets/images/diese-generator-warehouse-logo.png"
-                alt="Diesel Generator Warehouse"
-                className="h-9 sm:h-11 w-auto object-contain py-0.5"
-              />
-            </a>
-
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-8 text-[13px] font-semibold text-slate-600">
-              <a href="#hero" className="text-slate-950 hover:text-[#F25A24] transition-colors">Home</a>
-              <a href="#about" className="hover:text-[#F25A24] transition-colors">About</a>
-              <a href="#capabilities" className="hover:text-[#F25A24] transition-colors">Capabilities</a>
-              <a href="#schematic" className="hover:text-[#F25A24] transition-colors">Engineering</a>
-              <Link href="/products" className="hover:text-[#F25A24] transition-colors font-bold text-slate-950 flex items-center gap-1">
-                <span>Products</span>
-                <span className="w-1.5 h-1.5 rounded-sm bg-[#F25A24]" />
-              </Link>
-              <a href="#industries" className="hover:text-[#F25A24] transition-colors">Industries</a>
-              <a href="#projects" className="hover:text-[#F25A24] transition-colors">Case Studies</a>
-              <a href="#blog" className="hover:text-[#F25A24] transition-colors">Blog</a>
-            </nav>
-
-            {/* Right Action Buttons */}
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => setIsSearchModalOpen(true)}
-                aria-label="Search"
-                className="w-9 h-9 rounded-md flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
-              >
-                <Search className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={() => setIsQuoteModalOpen(true)}
-                className="hidden sm:inline-flex framer-btn-primary rounded-sm"
-              >
-                <span>Get a quote</span>
-                <div className="btn-arrow-box rounded-sm">
-                  <ArrowRight className="w-3.5 h-3.5 text-white" />
-                </div>
-              </button> 
-
-              {/* Mobile Hamburger */}
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 text-slate-700 hover:text-black"
-                aria-label="Toggle Navigation"
-              >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Mobile Drawer */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="lg:hidden border-t border-slate-200 bg-white px-6 py-5 space-y-3 text-sm font-semibold overflow-hidden"
-            >
-              <a href="#hero" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-900 py-1">Home</a>
-              <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">About</a>
-              <a href="#capabilities" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">Capabilities</a>
-              <a href="#schematic" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">Engineering</a>
-              <Link href="/products" onClick={() => setIsMobileMenuOpen(false)} className="block text-[#F25A24] font-bold py-1">Browse Generators Lineup (Products)</Link>
-              <a href="#industries" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">Industries</a>
-              <a href="#projects" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">Case Studies</a>
-              <a href="#blog" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">Blog</a>
-              <div className="pt-3">
-                <button
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    setIsQuoteModalOpen(true);
-                  }}
-                  className="w-full framer-btn-primary rounded-sm justify-center"
-                >
-                  <span>Get a quote</span>
-                  <div className="btn-arrow-box rounded-sm">
-                    <ArrowRight className="w-3.5 h-3.5 text-white" />
-                  </div>
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+      {/* Header Navigation */}
+      <Header
+        onOpenQuote={() => setIsQuoteModalOpen(true)}
+        onOpenSearch={() => setIsSearchModalOpen(true)}
+        activePath="home"
+      />
 
       <main>
         {/* =========================================================
@@ -1662,98 +1567,8 @@ export default function Home() {
         </section>
       </main>
 
-      {/* =========================================================
-           FOOTER (FRAMER TEMPLATE STYLE)
-           ========================================================= */}
-      <footer id="contact" className="bg-[#0E1014] text-white pt-20 pb-12 border-t border-slate-800">
-        <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-slate-800">
-
-            {/* Left: Newsletter & Bio (5 Cols) */}
-            <div className="lg:col-span-5 space-y-6">
-              <a href="#" className="inline-block bg-white px-3.5 py-2 rounded-sm hover:opacity-95 transition-opacity">
-                <img
-                  src="/assets/images/diese-generator-warehouse-logo.png"
-                  alt="Diesel Generator Warehouse"
-                  className="h-8 w-auto object-contain"
-                />
-              </a>
-              <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
-                Diesel Generator Warehouse is Bangladesh&apos;s leading heavy power equipment supplier. Direct importer and distributor of Perkins, Cummins, Stamford, and Ricardo power plants with nationwide installation and 24/7 service.
-              </p>
-
-              <div className="space-y-3 pt-2">
-                <span className="font-mono text-[10px] uppercase font-bold text-slate-400 block tracking-wider">
-                  // STAY CONNECTED //
-                </span>
-                <form className="flex items-center gap-2 max-w-sm" onSubmit={(e) => { e.preventDefault(); alert("Subscribed to technical newsletter!"); }}>
-                  <input type="email" required placeholder="Enter your work email" className="w-full px-4 py-2.5 rounded-md bg-white/10 border border-white/20 text-xs text-white focus:outline-none focus:border-[#F25A24]" />
-                  <button type="submit" className="framer-btn-primary rounded-sm shrink-0 px-4 py-2.5">
-                    <span>Join</span>
-                  </button>
-                </form>
-              </div>
-            </div>
-
-            {/* Col 2: Products (2 Cols) */}
-            <div className="lg:col-span-2 space-y-3">
-              <h4 className="font-mono font-bold text-xs text-white uppercase tracking-wider">// PRODUCTS //</h4>
-              <ul className="space-y-2 text-xs text-slate-400">
-                <li><a href="#products" className="hover:text-white transition-colors">Perkins (UK)</a></li>
-                <li><a href="#products" className="hover:text-white transition-colors">Cummins (USA)</a></li>
-                <li><a href="#products" className="hover:text-white transition-colors">Ricardo (Silent)</a></li>
-                <li><a href="#products" className="hover:text-white transition-colors">Caterpillar (CAT)</a></li>
-                <li><a href="#products" className="hover:text-white transition-colors">Custom ATS Panels</a></li>
-              </ul>
-            </div>
-
-            {/* Col 3: Company (2 Cols) */}
-            <div className="lg:col-span-2 space-y-3">
-              <h4 className="font-mono font-bold text-xs text-white uppercase tracking-wider">// COMPANY //</h4>
-              <ul className="space-y-2 text-xs text-slate-400">
-                <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#capabilities" className="hover:text-white transition-colors">Capabilities</a></li>
-                <li><a href="#projects" className="hover:text-white transition-colors">Case Studies</a></li>
-                <li><a href="#blog" className="hover:text-white transition-colors">Insights</a></li>
-                <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
-              </ul>
-            </div>
-
-            {/* Col 4: Contact & Coordinates (3 Cols) */}
-            <div className="lg:col-span-3 space-y-3">
-              <h4 className="font-mono font-bold text-xs text-white uppercase tracking-wider">// CONTACT INFO //</h4>
-              <ul className="space-y-2.5 text-xs text-slate-400">
-                <li className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-[#F25A24]" />
-                  <span>+880 1234-567890</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-[#F25A24]" />
-                  <span>sales@dieselgeneratorwarehouse.com</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <MapPin className="w-3.5 h-3.5 text-[#F25A24] mt-0.5" />
-                  <span>House 12, Road 7, Motijheel, Dhaka, Bangladesh</span>
-                </li>
-                <li className="font-mono text-[10px] text-slate-500 pt-2">
-                  23.8103° N, 90.4125° E // DHAKA HQ
-                </li>
-              </ul>
-            </div>
-
-          </div>
-
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-            <p>© 2026 Diesel Generator Warehouse BD. All rights reserved.</p>
-            <div className="flex items-center gap-6">
-              <a href="#" className="hover:text-slate-400">Privacy Policy</a>
-              <a href="#" className="hover:text-slate-400">Terms of Service</a>
-            </div>
-          </div>
-
-        </div>
-      </footer>
+      {/* Footer */}
+      <Footer />
 
       {/* =========================================================
            MODAL 1: GET A QUOTE WITH LOAD CALCULATOR
