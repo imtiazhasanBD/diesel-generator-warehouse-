@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
@@ -349,13 +349,13 @@ export default function Home() {
 
               <button
                 onClick={() => setIsQuoteModalOpen(true)}
-                className="hidden sm:inline-flex framer-btn-primary"
+                className="hidden sm:inline-flex framer-btn-primary rounded-sm"
               >
                 <span>Get a quote</span>
                 <div className="btn-arrow-box">
                   <ArrowRight className="w-3.5 h-3.5 text-white" />
                 </div>
-              </button>
+              </button> 
 
               {/* Mobile Hamburger */}
               <button
@@ -453,10 +453,10 @@ export default function Home() {
                 <div>
                   <a
                     href="#capabilities"
-                    className="inline-flex items-center gap-3.5 bg-[#18181B] hover:bg-black text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all group shadow-sm cursor-pointer"
+                    className="inline-flex items-center gap-3.5 bg-[#18181B] hover:bg-black text-white px-5 py-3 rounded-md text-sm font-semibold transition-all group shadow-sm cursor-pointer"
                   >
                     <span>Explore our capabilities</span>
-                    <div className="w-7 h-7 rounded-lg bg-[#F25A24] flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform flex-shrink-0">
+                    <div className="w-7 h-7 rounded-md bg-[#F25A24] flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform flex-shrink-0">
                       <ArrowRight className="w-4 h-4" />
                     </div>
                   </a>
@@ -627,9 +627,9 @@ export default function Home() {
             {/* Header matching exact reference screenshot */}
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 lg:mb-16 gap-6">
               <div className="space-y-4">
-                <div className="framer-badge">
-                  <span className="framer-badge-dot" />
-                  <span>What we do</span>
+                <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
+                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-full inline-block" />
+                  <span>Our Capabilities</span>
                 </div>
                 <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.08]">
                   Scalable <span className="text-[#F25A24]">capabilities</span><br />
@@ -639,17 +639,17 @@ export default function Home() {
 
               <button
                 onClick={() => openQuoteForLocation("All Divisions")}
-                className="inline-flex items-center gap-3.5 bg-[#18181B] hover:bg-black text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition-all group shadow-sm self-start md:self-auto cursor-pointer"
+                className="inline-flex items-center gap-3.5 bg-[#18181B] hover:bg-black text-white px-5 py-2.5 rounded-md text-sm font-semibold transition-all group shadow-sm self-start md:self-auto cursor-pointer"
               >
                 <span>Explore all capabilities</span>
-                <div className="w-7 h-7 rounded-lg bg-[#F25A24] flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform flex-shrink-0">
+                <div className="w-7 h-7 rounded-md bg-[#F25A24] flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform flex-shrink-0">
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </button>
             </div>
 
             {/* Sticky Stacking Cards Container (One on top of another as you scroll) */}
-            <div className="relative pb-36">
+            <div className="relative pb-20">
               {SALES_REGIONS.map((region, index) => (
                 <div
                   key={region.id}
@@ -660,16 +660,18 @@ export default function Home() {
                   className="sticky top-[76px] md:top-[var(--stack-top)] bg-[#F4F4F6] border-t border-slate-300/90 pt-8 pb-16 transition-shadow group"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-12 items-start gap-6 lg:gap-8">
-                    {/* 1. Left Minimalist Technical Icon */}
+                    {/* 1. Left Index Number Badge */}
                     <div className="hidden lg:flex lg:col-span-1 items-start justify-center pt-1">
-                      <div className="w-12 h-12 rounded-xl bg-white border border-slate-200 flex items-center justify-center group-hover:border-orange-200 transition-colors shadow-sm">
-                        {region.icon}
+                      <div className="w-12 h-12 rounded-sm bg-[#EAEBED] border border-slate-300/60 flex items-center justify-center group-hover:bg-[#E2E4E9] group-hover:border-slate-400/80 transition-colors shadow-xs select-none">
+                        <span className="font-heading text-2xl font-black text-slate-950 tracking-tight">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
                       </div>
                     </div>
 
                     {/* 2. Thumbnail Image */}
                     <div className="md:col-span-4 lg:col-span-3">
-                      <div className="relative w-full h-44 sm:h-48 rounded-xl overflow-hidden shadow-sm bg-slate-200 border border-slate-200">
+                      <div className="relative w-full h-44 sm:h-48 rounded-md overflow-hidden shadow-sm bg-slate-200 border border-slate-200">
                         <img
                           src={region.image}
                           alt={region.title}
@@ -677,7 +679,7 @@ export default function Home() {
                         />
                         <div className="absolute top-3 left-3 lg:hidden">
                           <span className="inline-block px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider">
-                            {region.title}
+                            {String(index + 1).padStart(2, "0")} · {region.title}
                           </span>
                         </div>
                       </div>
@@ -716,7 +718,7 @@ export default function Home() {
                     <div className="md:col-span-1 flex justify-end pt-1">
                       <button
                         onClick={() => openQuoteForLocation(region.title)}
-                        className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#F25A24] hover:bg-[#d94917] text-white flex items-center justify-center transition-all group-hover:scale-110 shadow-sm cursor-pointer"
+                        className="w-10 h-10 sm:w-11 sm:h-11 rounded-sm bg-[#F25A24] hover:bg-[#d94917] text-white flex items-center justify-center transition-all group-hover:scale-110 shadow-sm cursor-pointer"
                         title={`Request quote for ${region.title}`}
                         aria-label={`Get quote for ${region.title}`}
                       >
@@ -729,28 +731,45 @@ export default function Home() {
             </div>
 
             {/* Nationwide Delivery Notice */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-200 text-[#F25A24] flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-6 h-6" />
+            <div className="p-4 sm:p-5 rounded-lg bg-white border border-slate-200 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6 group">
+              {/* Left: Location Pin Circle + Coverage Text */}
+              <div className="flex items-center gap-3.5 sm:gap-4">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FFF5F1] border border-[#FFE7DE] flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5 text-[#F25A24]" />
                 </div>
                 <div>
-                  <h4 className="font-heading font-bold text-base text-slate-950">
+                  <h4 className="font-heading font-black text-sm sm:text-base text-slate-950 leading-snug">
                     Delivering to all 64 Districts across Bangladesh
                   </h4>
-                  <p className="text-xs text-slate-600 mt-0.5">
+                  <p className="text-xs text-slate-500 font-normal mt-0.5">
                     Rajshahi, Barishal, Rangpur, Mymensingh, Cumilla, Bogura, Pabna & nationwide project sites.
                   </p>
                 </div>
               </div>
+
+              {/* Right: Bangladesh Map + Nationwide Network Action */}
               <button
                 onClick={() => openQuoteForLocation("All 64 Districts Nationwide")}
-                className="framer-btn-primary whitespace-nowrap text-xs cursor-pointer"
+                className="flex items-center gap-3 sm:gap-4 self-end md:self-auto cursor-pointer pl-0 md:pl-4 group/btn text-left hover:opacity-95 transition-all"
+                aria-label="Nationwide Sales & Service Network"
               >
-                <span>Check Delivery & Stock for Your City</span>
-                <div className="btn-arrow-box">
-                  <ArrowRight className="w-3.5 h-3.5 text-white" />
+                <div className="w-8 h-10 shrink-0 flex items-center justify-center">
+                  <img
+                    src="/assets/images/bd-map.svg"
+                    alt="Bangladesh Nationwide Network"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
+                <div className="h-8 w-px bg-slate-200 shrink-0" />
+                <div>
+                  <span className="block text-xs font-bold text-[#F25A24] leading-tight">
+                    Nationwide
+                  </span>
+                  <span className="block text-xs sm:text-sm font-bold text-slate-950 leading-tight whitespace-nowrap">
+                    Sales & Service Network
+                  </span>
+                </div>
+                <ArrowRight className="w-4 h-4 text-[#F25A24] group-hover/btn:translate-x-1 transition-transform shrink-0 ml-1" />
               </button>
             </div>
 
