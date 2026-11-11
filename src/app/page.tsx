@@ -417,22 +417,95 @@ export default function Home() {
         <section id="about" className="py-20 lg:py-28 bg-[#FFFFFF] border-b border-slate-200">
           <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
 
-            {/* Top Row: Badge & Statement */}
+            {/* Top Row: Badge + Team Collage & Statement */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start pb-16"
+              className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start pb-16"
             >
-              <div className="lg:col-span-3">
-                <div className="framer-badge">
-                  <span className="framer-badge-dot" />
-                  <span>Who we are</span>
+              <div className="lg:col-span-4">
+                {/* Pill Badge */}
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] text-[13px] font-semibold text-[#111214]">
+                  <span className="w-2 h-2 rounded-[2px] bg-[#F25A24]" />
+                  <span>Who We are</span>
+                </div>
+
+                {/* Staggered 4-Portrait Team Collage */}
+                <div className="mt-9 relative w-fit">
+                  {/* Top-Right Orange Sparkle Rays */}
+                  <svg
+                    className="absolute -top-6 right-5 w-8 h-6 text-[#F25A24] pointer-events-none"
+                    viewBox="0 0 36 28"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M8 21L6 8M18 19L22 5M24 23L33 15"
+                      stroke="currentColor"
+                      strokeWidth="2.4"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+
+                  <div className="flex items-start relative">
+                    <div className="w-[68px] h-[112px] mt-5 rounded-tl-[18px] rounded-tr-[6px] rounded-br-[6px] rounded-bl-[14px] border-[2.5px] border-white shadow-[0_6px_18px_rgba(15,23,42,0.08)] overflow-hidden relative z-10 bg-slate-100">
+                      <img
+                        src="/assets/images/team-1.jpg"
+                        alt="Engineering specialist"
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+
+                    <div className="w-[98px] h-[152px] -ml-3.5 rounded-tl-[22px] rounded-tr-[10px] rounded-br-[22px] rounded-bl-[10px] border-[3px] border-white shadow-[0_12px_28px_rgba(15,23,42,0.14)] overflow-hidden relative z-30 bg-slate-100">
+                      <img
+                        src="/assets/images/team-2.jpg"
+                        alt="Lead power engineer"
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+
+                    <div className="w-[68px] h-[112px] -ml-2 mt-4 rounded-tl-[8px] rounded-tr-[16px] rounded-br-[12px] rounded-bl-[8px] border-[2.5px] border-white shadow-[0_6px_18px_rgba(15,23,42,0.08)] overflow-hidden relative z-20 bg-slate-100">
+                      <img
+                        src="/assets/images/team-3.jpg"
+                        alt="Technical operations engineer"
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+
+                    <div className="w-[48px] h-[68px] -ml-1.5 mt-7 rounded-tl-[6px] rounded-tr-[12px] rounded-br-[10px] rounded-bl-[6px] border-[2.5px] border-white shadow-[0_4px_12px_rgba(15,23,42,0.08)] overflow-hidden relative z-10 bg-slate-100">
+                      <img
+                        src="/assets/images/team-4.jpg"
+                        alt="Field support engineer"
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Overlapping 10+ Experts Badge */}
+                  <div className="absolute -bottom-3 right-0 z-40 w-[74px] h-[68px] rounded-[16px] bg-gradient-to-br from-[#FF7024] to-[#F25A24] border-[2.5px] border-white shadow-[0_10px_24px_rgba(242,90,36,0.35)] flex flex-col items-center justify-center text-white">
+                    <span className="font-heading text-[22px] font-extrabold leading-none tracking-tight">
+                      10+
+                    </span>
+                    <span className="text-[11px] font-medium leading-tight mt-0.5 opacity-95">
+                      Experts
+                    </span>
+                  </div>
+                </div>
+
+                {/* Bottom Caption with Vertical Orange Bar */}
+                <div className="mt-8 flex items-stretch gap-3">
+                  <span className="w-[3px] rounded-full bg-[#F25A24] shrink-0" />
+                  <p className="font-heading text-[18px] sm:text-[19px] font-bold text-[#11141A] leading-[1.25] tracking-[-0.02em]">
+                    Team of passionate
+                    <br />
+                    professionals
+                  </p>
                 </div>
               </div>
 
-              <div className="lg:col-span-9 space-y-6">
+              <div className="lg:col-span-8 space-y-6">
                 <h2 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-black text-slate-950 leading-[1.05] tracking-tight">
                   Driven by technology, backed by experience, focused on
                   <span className="text-[#F25A24]"> power</span> excellence
@@ -1717,7 +1790,7 @@ export default function Home() {
         {/* =========================================================
              SECTION 10: INSIGHTS & ARTICLES (FRAMER BLOG)
              ========================================================= */}
-        <section id="blog" className="py-20 lg:py-28 bg-[#FFFFFF] border-b border-slate-200">
+        <section id="blog" className="pb-20 lg:pb-28 bg-[#FFFFFF]">
           <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
 
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
