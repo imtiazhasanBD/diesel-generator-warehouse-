@@ -65,7 +65,7 @@ const INDUSTRY_DATA = {
       "Dual-genset automatic load sharing",
       "SCADA & IoT remote fuel telemetry"
     ],
-    image: "/assets/images/hero-gen.jpg",
+    image: "https://www.borgenmagazine.com/wp-content/uploads/2020/08/garment-workers-in-Bangladesh-1.jpg",
     icon: Factory
   },
   commercial: {
@@ -77,7 +77,7 @@ const INDUSTRY_DATA = {
       "Under 8-second AMF auto transfer",
       "Compact basement & rooftop footprint"
     ],
-    image: "/assets/images/commercial-white.jpg",
+    image: "https://www.vgssbs.com/assets/images/products/pro-11.jpg",
     icon: Building2
   },
   hospitals: {
@@ -89,7 +89,7 @@ const INDUSTRY_DATA = {
       "Hospital-grade critical exhaust silencers",
       "Priority 24/7 emergency service support"
     ],
-    image: "/assets/images/yellow-silent.jpg",
+    image: "https://amcarehospital.com/wp-content/uploads/2023/12/Are-Hospitals-Making-as-Much-Money-as-You-Think1.jpg",
     icon: HeartPulse
   },
   datacenters: {
@@ -101,7 +101,7 @@ const INDUSTRY_DATA = {
       "72-hour bulk fuel reserve system",
       "N+1 microprocessor sync panels"
     ],
-    image: "/assets/images/perkins-blue.jpg",
+    image: "https://www.abalone-tech.com/wp-content/uploads/2023/11/DATA-CENTER-1.jpg",
     icon: Server
   },
   construction: {
@@ -321,10 +321,10 @@ export default function Home() {
           <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10 pt-8 pb-8 sm:pt-12 sm:pb-10">
             
             {/* Top Pill Badge */}
-            <div className="framer-badge mb-6 sm:mb-8">
-              <span className="framer-badge-dot" />
-              <span>Direct Diesel Generator Warehouse Stock & Engineering</span>
-            </div>
+                        <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
+                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+                  <span>Direct Diesel Generator Warehouse Stock & Engineering</span>
+                </div>
 
             {/* 2-Column Main Hero Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
@@ -429,9 +429,9 @@ export default function Home() {
             >
               <div className="lg:col-span-4">
                 {/* Pill Badge */}
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] text-[13px] font-semibold text-[#111214]">
-                  <span className="w-2 h-2 rounded-[2px] bg-[#F25A24]" />
-                  <span>Who We are</span>
+                <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
+                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+                  <span>Who we are</span>
                 </div>
 
                 {/* Staggered 4-Portrait Team Collage */}
@@ -795,12 +795,10 @@ export default function Home() {
             {/* 3. Top Header: Badge on Left + 50,000+ Metric on Right */}
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start mb-12 lg:mb-16">
               {/* Col 1: Badge */}
-              <div>
-                <div className="framer-badge framer-badge-dark">
-                  <span className="framer-badge-dot" />
+                <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight text-white">
+                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                   <span>What we manufacture</span>
                 </div>
-              </div>
 
               {/* Col 2 & 3: Grid alignment space */}
               <div className="hidden lg:block lg:col-span-2" />
@@ -1050,8 +1048,8 @@ export default function Home() {
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-6">
               <div className="space-y-3">
-                <div className="framer-badge">
-                  <span className="framer-badge-dot" />
+                             <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
+                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                   <span>What we supply</span>
                 </div>
                 <h2 className="font-heading text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
@@ -1331,7 +1329,7 @@ export default function Home() {
           <div className="relative z-20 max-w-[1400px] mx-auto px-5 sm:px-6">
             {/* Centered header lockup */}
             <div className="flex flex-col items-center text-center mb-10 sm:mb-12">
-              <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-white border border-slate-200/90 shadow-[0_1px_2px_rgba(0,0,0,0.03)] text-[10px] font-medium text-slate-700 mb-3">
+              <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-white border border-slate-200/90 shadow-[0_1px_2px_rgba(0,0,0,0.03)] text-[10px] font-medium text-slate-700 mb-3">
                 <span className="w-1.5 h-1.5 rounded-[1px] bg-[#D4400F]" />
                 <span>Build for every industry</span>
               </div>
@@ -1447,8 +1445,8 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 lg:mb-10 gap-4">
               <div className="space-y-3">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-[0_1px_2px_rgba(0,0,0,0.03)] text-xs font-medium text-slate-700">
-                  <span className="w-1.5 h-1.5 rounded-[1px] bg-[#D4380A]" />
+                              <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
+                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                   <span>Real-world success</span>
                 </div>
                 <h2 className="font-heading text-2xl sm:text-4xl lg:text-[40px] font-bold text-[#141518] tracking-[-0.03em] leading-[1.08]">
@@ -1679,10 +1677,10 @@ export default function Home() {
               className="max-w-[650px]"
             >
               {/* Pill Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[6px] bg-white/[0.04] border border-white/[0.14] backdrop-blur-md text-[12px] font-medium text-slate-200 mb-6">
-                <span className="w-2 h-2 rounded-full bg-[#F25A24]" />
-                <span>Open a Conversation</span>
-              </div>
+                           <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight text-white">
+                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+                  <span>Open a Conversation</span>
+                </div>
 
               {/* 2-Line Headline */}
               <h2 className="font-heading text-3xl sm:text-5xl lg:text-[48px] font-extrabold text-white tracking-[-0.025em] leading-[1.12]">
@@ -1770,8 +1768,8 @@ export default function Home() {
               <div className="lg:col-span-5">
                 {/* Badge with extending hairline */}
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[6px] bg-white border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] text-xs font-medium text-slate-800 shrink-0">
-                    <span className="w-2 h-2 rounded-[2px] bg-[#F25A24]" />
+                  <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
+                    <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                     <span>Build on Trust</span>
                   </div>
                   <div className="h-px flex-1 bg-gradient-to-r from-slate-200/80 to-transparent" />
@@ -1930,8 +1928,8 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-[0_1px_2px_rgba(0,0,0,0.03)] text-xs font-medium text-slate-700">
-                  <span className="w-1.5 h-1.5 rounded-[1px] bg-[#D4380A]" />
+                               <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
+                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                   <span>Insights & Article</span>
                 </div>
                 <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#141518] tracking-[-0.03em] leading-[1.08]">
