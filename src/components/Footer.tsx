@@ -1,113 +1,239 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
-import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function Footer() {
-  return (
-    <footer id="contact" className="bg-[#0E1014] text-white pt-20 pb-12 border-t border-slate-800">
-      <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-16 border-b border-slate-800">
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
 
-          {/* Left: Newsletter & Bio (5 Cols) */}
-          <div className="lg:col-span-5 space-y-6">
-            <Link href="/" className="inline-block bg-white px-3.5 py-2 rounded-sm hover:opacity-95 transition-opacity">
-              <img
-                src="/assets/images/diese-generator-warehouse-logo.png"
-                alt="Diesel Generator Warehouse"
-                className="h-8 w-auto object-contain"
-              />
-            </Link>
-            <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
-              Diesel Generator Warehouse is Bangladesh&apos;s leading heavy power equipment supplier. Direct importer and distributor of Perkins, Cummins, Stamford, and Ricardo power plants with nationwide installation and 24/7 service.
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setSubscribed(true);
+    setEmail("");
+  };
+
+  return (
+    <footer
+      id="contact"
+      className="relative bg-[#111113] text-white pt-24 lg:pt-32 pb-20 lg:pb-28 overflow-hidden"
+    >
+      {/* Ambient Diagonal Warm Orange Glows (Top-Right & Bottom-Left) */}
+      <div
+        className="absolute -top-24 -right-24 w-[460px] h-[460px] sm:w-[620px] sm:h-[620px] rounded-full pointer-events-none select-none z-0 blur-[100px]"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(212, 56, 10, 0.56) 0%, rgba(160, 36, 7, 0.24) 45%, transparent 72%)",
+        }}
+      />
+      <div
+        className="absolute -bottom-32 -left-24 w-[460px] h-[460px] sm:w-[620px] sm:h-[620px] rounded-full pointer-events-none select-none z-0 blur-[105px]"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(212, 56, 10, 0.50) 0%, rgba(155, 34, 6, 0.22) 45%, transparent 72%)",
+        }}
+      />
+
+      {/* 4-Column Vertical Dashed Architectural Grid Lines */}
+      <div className="absolute inset-0 max-w-[1400px] mx-auto px-6 sm:px-10 pointer-events-none z-0 hidden lg:block">
+        <div className="w-full h-full grid grid-cols-4 border-x border-dashed border-white/[0.08]">
+          <div className="border-r border-dashed border-white/[0.08] h-full" />
+          <div className="border-r border-dashed border-white/[0.08] h-full" />
+          <div className="border-r border-dashed border-white/[0.08] h-full" />
+          <div className="h-full" />
+        </div>
+      </div>
+
+      {/* Giant Edge-to-Edge Bottom Watermark */}
+      <div className="absolute bottom-0 left-0 right-0 max-w-[1400px] mx-auto px-4 sm:px-8 pointer-events-none select-none z-0 overflow-hidden">
+        <div className="font-heading font-black uppercase text-white/[0.04] text-[clamp(50px,13vw,196px)] leading-[0.76] tracking-[-0.03em] text-center whitespace-nowrap translate-y-[18%]">
+          GENERATORS
+        </div>
+      </div>
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10">
+        {/* 4-Column Content Grid Aligned to Architectural Columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-0">
+          {/* Col 1: Stay Connected + Newsletter */}
+          <div className="lg:pr-8">
+            <h3 className="font-heading text-[18px] font-semibold text-white/90 tracking-[-0.015em] mb-3">
+              Stay connected
+            </h3>
+            <p className="text-[13px] text-[#8E9096] leading-[1.55] max-w-[240px] mb-5">
+              Join our newsletter for tips, updates, and project highlights
             </p>
 
-            <div className="space-y-3 pt-2">
-              <span className="font-mono text-[10px] uppercase font-bold text-slate-400 block tracking-wider">
-                // STAY CONNECTED //
-              </span>
-              <form
-                className="flex items-center gap-2 max-w-sm"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  alert("Thank you! You are subscribed to Diesel Generator Warehouse technical updates.");
+            <form
+              onSubmit={handleSubscribe}
+              className="flex items-center justify-between bg-[#151618]/90 border border-white/[0.1] rounded-[6px_6px_12px_6px] p-1.5 pl-4 max-w-[300px] focus-within:border-white/25 transition-colors"
+            >
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (subscribed) setSubscribed(false);
                 }}
+                placeholder={subscribed ? "Subscribed!" : "Enter your email"}
+                className="bg-transparent text-[13px] text-white placeholder:text-[#787A80] focus:outline-none w-full min-w-0 pr-2"
+              />
+              <button
+                type="submit"
+                aria-label="Subscribe to newsletter"
+                className="w-9 h-9 rounded-[4px_4px_9px_4px] bg-white hover:bg-slate-100 text-[#111214] flex items-center justify-center shrink-0 transition-transform hover:translate-x-0.5 cursor-pointer"
               >
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter your work email"
-                  className="w-full px-4 py-2.5 rounded-md bg-white/10 border border-white/20 text-xs text-white focus:outline-none focus:border-[#F25A24]"
-                />
-                <button type="submit" className="framer-btn-primary shrink-0 cursor-pointer">
-                  <span>Join</span>
-                  <div className="btn-arrow-box">
-                    <ArrowRight className="w-3.5 h-3.5 text-white" />
-                  </div>
-                </button>
-              </form>
+                <ArrowRight className="w-4 h-4" strokeWidth={2} />
+              </button>
+            </form>
+          </div>
+
+          {/* Col 2: Links (2 Sub-Columns) */}
+          <div className="lg:px-6">
+            <h3 className="font-heading text-[18px] font-semibold text-white/90 tracking-[-0.015em] mb-4">
+              Links
+            </h3>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-[13.5px]">
+              <div className="space-y-3">
+                <Link
+                  href="/"
+                  className="block text-[#D4380A] hover:text-[#F25A24] font-medium transition-colors"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/products"
+                  className="block text-white/85 hover:text-white transition-colors"
+                >
+                  Products
+                </Link>
+                <Link
+                  href="/#capabilities"
+                  className="block text-white/85 hover:text-white transition-colors"
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/#blog"
+                  className="block text-white/85 hover:text-white transition-colors"
+                >
+                  Blog
+                </Link>
+              </div>
+
+              <div className="space-y-3">
+                <Link
+                  href="/#projects"
+                  className="block text-white/85 hover:text-white transition-colors"
+                >
+                  Case Studies
+                </Link>
+                <Link
+                  href="/#schematic"
+                  className="block text-white/85 hover:text-white transition-colors"
+                >
+                  Engineering
+                </Link>
+                <Link
+                  href="/#industries"
+                  className="block text-white/85 hover:text-white transition-colors"
+                >
+                  Industries
+                </Link>
+                <Link
+                  href="/#about"
+                  className="block text-white/85 hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+              </div>
             </div>
           </div>
 
-          {/* Col 2: Products (2 Cols) */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="font-mono font-bold text-xs text-white uppercase tracking-wider">// PRODUCTS //</h4>
-            <ul className="space-y-2 text-xs text-slate-400">
-              <li><Link href="/products?brand=Perkins" className="hover:text-white transition-colors">Perkins (UK)</Link></li>
-              <li><Link href="/products?brand=Cummins" className="hover:text-white transition-colors">Cummins (USA)</Link></li>
-              <li><Link href="/products?brand=Ricardo" className="hover:text-white transition-colors">Ricardo (Silent)</Link></li>
-              <li><Link href="/products?brand=FG+Wilson" className="hover:text-white transition-colors">FG Wilson (Belfast)</Link></li>
-              <li><Link href="/products?brand=Aksa" className="hover:text-white transition-colors">Aksa Heavy Industrial</Link></li>
-              <li><Link href="/products" className="text-[#F25A24] font-semibold hover:underline">View All Generators →</Link></li>
-            </ul>
+          {/* Col 3: Contact Info */}
+          <div className="lg:px-6">
+            <h3 className="font-heading text-[18px] font-semibold text-white/90 tracking-[-0.015em] mb-4">
+              Contact Info
+            </h3>
+            <div className="space-y-2.5 text-[13.5px] text-white/85">
+              <a
+                href="tel:+8801234567890"
+                className="block hover:text-white transition-colors"
+              >
+                +880 1234-567890
+              </a>
+              <a
+                href="mailto:sales@dieselgeneratorwarehouse.com"
+                className="block hover:text-white transition-colors break-all"
+              >
+                sales@dieselgeneratorwarehouse.com
+              </a>
+              <p className="text-[12.5px] text-[#8E9096] pt-1">
+                House 12, Road 7, Motijheel, Dhaka
+              </p>
+            </div>
           </div>
 
-          {/* Col 3: Company (2 Cols) */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="font-mono font-bold text-xs text-white uppercase tracking-wider">// COMPANY //</h4>
-            <ul className="space-y-2 text-xs text-slate-400">
-              <li><Link href="/#about" className="hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="/#capabilities" className="hover:text-white transition-colors">Capabilities</Link></li>
-              <li><Link href="/#schematic" className="hover:text-white transition-colors">Engineering CAD</Link></li>
-              <li><Link href="/#projects" className="hover:text-white transition-colors">Case Studies</Link></li>
-              <li><Link href="/#blog" className="hover:text-white transition-colors">Insights</Link></li>
-              <li><Link href="/#contact" className="hover:text-white transition-colors">Contact</Link></li>
-            </ul>
-          </div>
-
-          {/* Col 4: Contact & Coordinates (3 Cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="font-mono font-bold text-xs text-white uppercase tracking-wider">// CONTACT INFO //</h4>
-            <ul className="space-y-2.5 text-xs text-slate-400">
-              <li className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#F25A24]" />
-                <a href="tel:+8801234567890" className="hover:text-white transition-colors">+880 1234-567890</a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#F25A24]" />
-                <a href="mailto:sales@dieselgeneratorwarehouse.com" className="hover:text-white transition-colors">sales@dieselgeneratorwarehouse.com</a>
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#F25A24] mt-0.5 shrink-0" />
-                <span>House 12, Road 7, Motijheel, Dhaka, Bangladesh</span>
-              </li>
-              <li className="font-mono text-[10px] text-slate-500 pt-2">
-                23.8103° N, 90.4125° E // DHAKA HQ
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© 2026 Diesel Generator Warehouse BD. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-slate-400">Privacy Policy</a>
-            <a href="#" className="hover:text-slate-400">Terms of Service</a>
+          {/* Col 4: Business Hours */}
+          <div className="lg:pl-6">
+            <h3 className="font-heading text-[18px] font-semibold text-white/90 tracking-[-0.015em] mb-4">
+              Hours
+            </h3>
+            <div className="space-y-2.5 text-[13.5px] text-[#8E9096]">
+              <p>Sat – Thu: 9:00am - 6:00pm</p>
+              <p>Friday: Closed</p>
+              <p className="text-[#D4380A] font-medium">24/7 Field Support</p>
+            </div>
           </div>
         </div>
 
+        {/* Bottom Copyright & Social Row */}
+        <div className="mt-20 lg:mt-28 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[12.5px]">
+          <p className="text-white/45">
+            © 2026 Diesel Generator Warehouse. All rights reserved.
+          </p>
+
+          <div className="flex items-center gap-6 text-white/60">
+            <a
+              href="#"
+              className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.5 9H16l-.5 3h-2v9h-3v-9H9V9h1.5V7.2C10.5 4.9 11.9 3.5 14.3 3.5c.9 0 1.7.1 1.7.1v2.6h-1.2c-1 0-1.3.6-1.3 1.3V9z" />
+              </svg>
+              <span>Facebook</span>
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <svg
+                className="w-3.5 h-3.5 stroke-current fill-none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" className="fill-current stroke-none" />
+              </svg>
+              <span>Instagram</span>
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              <span>Twitter</span>
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );
