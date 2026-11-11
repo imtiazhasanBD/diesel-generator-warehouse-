@@ -1618,90 +1618,68 @@ export default function Home() {
         {/* =========================================================
              SECTION 10: INSIGHTS & ARTICLES (FRAMER BLOG)
              ========================================================= */}
-        <section id="blog" className="py-20 lg:py-28 bg-[#F7F7F8] border-b border-slate-200">
+        <section id="blog" className="py-20 lg:py-28 bg-[#FFFFFF] border-b border-slate-200">
           <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
 
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
-              <div className="space-y-3">
-                <div className="framer-badge">
-                  <span className="framer-badge-dot" />
-                  <span>Insights & Articles</span>
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-[0_1px_2px_rgba(0,0,0,0.03)] text-xs font-medium text-slate-700">
+                  <span className="w-1.5 h-1.5 rounded-[1px] bg-[#D4380A]" />
+                  <span>Insights & Article</span>
                 </div>
-                <h2 className="font-heading text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
-                  Latest from our <span className="text-[#F25A24]">blog</span>
+                <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#141518] tracking-[-0.03em] leading-[1.08]">
+                  Latest from our <span className="text-[#D4380A]">blog</span>
                 </h2>
               </div>
 
-              <a href="#" className="framer-btn-outline rounded-sm">
+              <a href="#" className="framer-btn-dark self-start sm:self-auto cursor-pointer">
                 <span>View all blogs</span>
-                <div className="btn-arrow-box rounded-sm">
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-700" />
+                <div className="btn-arrow-box">
+                  <ArrowRight className="w-3.5 h-3.5 text-white" />
                 </div>
               </a>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "How to calculate accurate kVA sizing for industrial facilities",
+                  image: "/assets/images/engine-circle.jpg",
+                  alt: "Diesel engine turbocharger and wiring",
+                },
+                {
+                  title: "Diesel generator maintenance for peak plant efficiency",
+                  image: "/assets/images/gen-control-panel.jpg",
+                  alt: "Digital generator control panel",
+                },
+                {
+                  title: "Acoustic attenuation: Why canopy engineering matters",
+                  image: "/assets/images/gen-alternator-shaft.jpg",
+                  alt: "Brushless alternator rotor shaft",
+                },
+              ].map((post, idx) => (
+                <a
+                  key={idx}
+                  href="#"
+                  className="relative rounded-[6px] overflow-hidden h-[340px] sm:h-[360px] lg:h-[380px] group block bg-[#141518]"
+                >
+                  <img
+                    src={post.image}
+                    alt={post.alt}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/15" />
 
-              <TiltCard className="bg-white rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
-                <div>
-                  <div className="h-52 overflow-hidden">
-                    <img src="/assets/images/hero-gen.jpg" alt="How to choose generator" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  </div>
-                  <div className="p-6">
-                    <span className="text-xs font-mono text-slate-400">// JULY 12, 2026 //</span>
-                    <h3 className="font-heading font-bold text-base text-slate-950 group-hover:text-[#F25A24] transition-colors mt-2 leading-snug">
-                      How to calculate accurate kVA sizing for industrial facilities
+                  <div className="relative z-10 h-full flex flex-col justify-end p-6 sm:p-7">
+                    <h3 className="font-heading font-semibold text-[20px] sm:text-[22px] text-white tracking-[-0.02em] leading-[1.22] mb-3">
+                      {post.title}
                     </h3>
+                    <span className="inline-block w-fit text-[13px] font-medium text-[#D4380A] group-hover:text-[#F25A24] underline underline-offset-4 decoration-[#D4380A] group-hover:decoration-[#F25A24] transition-colors">
+                      Read full blog
+                    </span>
                   </div>
-                </div>
-                <div className="px-6 pb-6 pt-0">
-                  <a href="#" className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900 group-hover:text-[#F25A24]">
-                    <span>Read full article</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </TiltCard>
-
-              <TiltCard className="bg-white rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
-                <div>
-                  <div className="h-52 overflow-hidden">
-                    <img src="/assets/images/engineer-hero.jpg" alt="Maintenance tips" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  </div>
-                  <div className="p-6">
-                    <span className="text-xs font-mono text-slate-400">// MAY 30, 2026 //</span>
-                    <h3 className="font-heading font-bold text-base text-slate-950 group-hover:text-[#F25A24] transition-colors mt-2 leading-snug">
-                      Diesel generator preventative maintenance checklist for peak efficiency
-                    </h3>
-                  </div>
-                </div>
-                <div className="px-6 pb-6 pt-0">
-                  <a href="#" className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900 group-hover:text-[#F25A24]">
-                    <span>Read full article</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </TiltCard>
-
-              <TiltCard className="bg-white rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
-                <div>
-                  <div className="h-52 overflow-hidden">
-                    <img src="/assets/images/yellow-silent.jpg" alt="Diesel vs silent" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  </div>
-                  <div className="p-6">
-                    <span className="text-xs font-mono text-slate-400">// MAY 14, 2026 //</span>
-                    <h3 className="font-heading font-bold text-base text-slate-950 group-hover:text-[#F25A24] transition-colors mt-2 leading-snug">
-                      Acoustic attenuation: Why canopy engineering matters for urban installations
-                    </h3>
-                  </div>
-                </div>
-                <div className="px-6 pb-6 pt-0">
-                  <a href="#" className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-900 group-hover:text-[#F25A24]">
-                    <span>Read full article</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </TiltCard>
-
+                </a>
+              ))}
             </div>
 
           </div>
