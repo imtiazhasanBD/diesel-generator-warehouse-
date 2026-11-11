@@ -228,10 +228,10 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <div className="space-y-3 pt-2">
               <button
                 onClick={() => setIsQuoteOpen(true)}
-                className="w-full framer-btn-primary rounded-sm justify-center py-3.5 text-sm font-bold shadow-md cursor-pointer"
+                className="w-full framer-btn-primary justify-between cursor-pointer"
               >
                 <span>Get an Official Quote</span>
-                <div className="btn-arrow-box rounded-sm">
+                <div className="btn-arrow-box">
                   <ArrowRight className="w-3.5 h-3.5 text-white" />
                 </div>
               </button>

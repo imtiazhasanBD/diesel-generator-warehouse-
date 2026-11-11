@@ -226,9 +226,12 @@ export default function ProductsPage() {
                 setSelectedType("All");
                 setSearchQuery("");
               }}
-              className="framer-btn-primary rounded-sm mx-auto"
+              className="framer-btn-primary mx-auto cursor-pointer"
             >
               <span>Reset all filters</span>
+              <div className="btn-arrow-box">
+                <ArrowRight className="w-3.5 h-3.5 text-white" />
+              </div>
             </button>
           </div>
         ) : (

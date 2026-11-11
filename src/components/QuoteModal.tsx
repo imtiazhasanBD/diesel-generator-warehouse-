@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, Sliders, CheckCircle } from "lucide-react";
+import { X, Sliders, CheckCircle, ArrowRight } from "lucide-react";
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -170,8 +170,11 @@ export default function QuoteModal({
                   </div>
 
                   <div className="pt-2">
-                    <button type="submit" className="w-full framer-btn-primary rounded-sm justify-center py-3 text-sm font-semibold cursor-pointer">
+                    <button type="submit" className="w-full framer-btn-primary justify-between cursor-pointer">
                       <span>Submit RFQ & Get Official Pricing</span>
+                      <div className="btn-arrow-box">
+                        <ArrowRight className="w-3.5 h-3.5 text-white" />
+                      </div>
                     </button>
                   </div>
                 </form>

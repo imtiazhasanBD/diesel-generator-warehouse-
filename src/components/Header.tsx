@@ -135,10 +135,10 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
                   setIsMobileMenuOpen(false);
                   if (onOpenQuote) onOpenQuote();
                 }}
-                className="w-full framer-btn-primary rounded-sm justify-center cursor-pointer"
+                className="w-full framer-btn-primary justify-between cursor-pointer"
               >
                 <span>Get a quote</span>
-                <div className="btn-arrow-box rounded-sm">
+                <div className="btn-arrow-box">
                   <ArrowRight className="w-3.5 h-3.5 text-white" />
                 </div>
               </button>

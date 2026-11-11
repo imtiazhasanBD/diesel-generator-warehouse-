@@ -345,11 +345,11 @@ export default function Home() {
                 <div>
                   <a
                     href="#capabilities"
-                    className="inline-flex items-center gap-3.5 bg-[#18181B] hover:bg-black text-white px-5 py-3 rounded-sm text-sm font-semibold transition-all group shadow-sm cursor-pointer"
+                    className="framer-btn-dark cursor-pointer"
                   >
                     <span>Explore our capabilities</span>
-                    <div className="w-7 h-7 rounded-sm bg-[#F25A24] flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform flex-shrink-0">
-                      <ArrowRight className="w-4 h-4" />
+                    <div className="btn-arrow-box">
+                      <ArrowRight className="w-4 h-4 text-white" />
                     </div>
                   </a>
                 </div>
@@ -440,19 +440,17 @@ export default function Home() {
                   We provide comprehensive industrial power generation solutions with world-class engineering, verified imported UK & USA engines, and 24/7 dedicated after-sales support across Bangladesh.
                 </p>
 
-                <div className="flex flex-wrap items-center gap-4 pt-2">
-                  <a href="#capabilities" className="framer-btn-primary rounded-sm">
+                <div className="flex flex-wrap items-center gap-6 pt-2">
+                  <a href="#capabilities" className="framer-btn-dark cursor-pointer">
                     <span>Learn more about us</span>
-                    <div className="btn-arrow-box rounded-sm">
+                    <div className="btn-arrow-box">
                       <ArrowRight className="w-3.5 h-3.5 text-white" />
                     </div>
                   </a>
 
-                  <a href="#products" className="framer-btn-outline rounded-sm">
-                    <span>Download technical brochure</span>
-                    <div className="btn-arrow-box rounded-sm">
-                      <Download className="w-3.5 h-3.5 text-slate-700" />
-                    </div>
+                  <a href="#products" className="inline-flex items-center gap-2 text-sm font-medium text-[#D4380A] hover:text-[#B82E07] transition-colors cursor-pointer">
+                    <span>Download brochure</span>
+                    <Download className="w-4 h-4" />
                   </a>
                 </div>
               </div>
@@ -531,11 +529,11 @@ export default function Home() {
 
               <button
                 onClick={() => openQuoteForLocation("All Divisions")}
-                className="inline-flex items-center gap-3.5 bg-[#18181B] hover:bg-black text-white px-5 py-2.5 rounded-sm text-sm font-semibold transition-all group shadow-sm self-start md:self-auto cursor-pointer"
+                className="framer-btn-dark self-start md:self-auto cursor-pointer"
               >
                 <span>Explore all capabilities</span>
-                <div className="w-7 h-7 rounded-sm bg-[#F25A24] flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform flex-shrink-0">
-                  <ArrowRight className="w-4 h-4" />
+                <div className="btn-arrow-box">
+                  <ArrowRight className="w-4 h-4 text-white" />
                 </div>
               </button>
             </div>
@@ -610,7 +608,7 @@ export default function Home() {
                     <div className="md:col-span-1 flex justify-end pt-1">
                       <button
                         onClick={() => openQuoteForLocation(region.title)}
-                        className="w-10 h-10 sm:w-11 sm:h-11 rounded-sm bg-[#F25A24] hover:bg-[#d94917] text-white flex items-center justify-center transition-all group-hover:scale-110 shadow-sm cursor-pointer"
+                        className="framer-icon-btn w-10 h-10 sm:w-11 sm:h-11 group-hover:scale-105 shadow-xs cursor-pointer"
                         title={`Request quote for ${region.title}`}
                         aria-label={`Get quote for ${region.title}`}
                       >
@@ -953,11 +951,11 @@ export default function Home() {
                 </a>
                 <button
                   onClick={() => setIsQuoteModalOpen(true)}
-                  className="framer-btn-primary bg-[#F25A24] text-white px-5 py-2.5 rounded-sm text-xs font-bold inline-flex items-center gap-2 hover:bg-[#d94917] transition-all group cursor-pointer shadow-sm"
+                  className="framer-btn-primary cursor-pointer"
                 >
                   <span>View all products</span>
-                  <div className="w-6 h-6 rounded-sm bg-black/20 flex items-center justify-center text-white group-hover:translate-x-0.5 transition-transform">
-                    <ArrowRight className="w-3.5 h-3.5" />
+                  <div className="btn-arrow-box">
+                    <ArrowRight className="w-3.5 h-3.5 text-white" />
                   </div>
                 </button>
               </div>
@@ -1026,7 +1024,7 @@ export default function Home() {
                 </div>
                 <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
                   <Link href="/products/100kva-perkins-silent-genset" className="text-xs font-bold text-slate-900 hover:text-[#F25A24]">View Specifications</Link>
-                  <Link href="/products/100kva-perkins-silent-genset" className="w-7 h-7 rounded-sm bg-slate-950 text-white flex items-center justify-center hover:bg-[#F25A24] transition-colors">
+                  <Link href="/products/100kva-perkins-silent-genset" className="framer-icon-btn w-7 h-7">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -1063,7 +1061,7 @@ export default function Home() {
                 </div>
                 <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
                   <Link href="/products/25kva-cummins-silent-generator" className="text-xs font-bold text-slate-900 hover:text-[#F25A24]">View Specifications</Link>
-                  <Link href="/products/25kva-cummins-silent-generator" className="w-7 h-7 rounded-sm bg-slate-950 text-white flex items-center justify-center hover:bg-[#F25A24] transition-colors">
+                  <Link href="/products/25kva-cummins-silent-generator" className="framer-icon-btn w-7 h-7">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -1100,7 +1098,7 @@ export default function Home() {
                 </div>
                 <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
                   <Link href="/products/30kva-diesel-generator" className="text-xs font-bold text-slate-900 hover:text-[#F25A24]">View Specifications</Link>
-                  <Link href="/products/30kva-diesel-generator" className="w-7 h-7 rounded-sm bg-slate-950 text-white flex items-center justify-center hover:bg-[#F25A24] transition-colors">
+                  <Link href="/products/30kva-diesel-generator" className="framer-icon-btn w-7 h-7">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -1137,7 +1135,7 @@ export default function Home() {
                 </div>
                 <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
                   <Link href="/products/apd-110-a-diesel-generator" className="text-xs font-bold text-slate-900 hover:text-[#F25A24]">View Specifications</Link>
-                  <Link href="/products/apd-110-a-diesel-generator" className="w-7 h-7 rounded-sm bg-slate-950 text-white flex items-center justify-center hover:bg-[#F25A24] transition-colors">
+                  <Link href="/products/apd-110-a-diesel-generator" className="framer-icon-btn w-7 h-7">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -1530,9 +1528,9 @@ export default function Home() {
             </div>
 
             <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-              <button onClick={() => setIsQuoteModalOpen(true)} className="framer-btn-primary rounded-sm px-8 py-3.5 text-sm">
+              <button onClick={() => setIsQuoteModalOpen(true)} className="framer-btn-primary cursor-pointer">
                 <span>Schedule site inspection</span>
-                <div className="btn-arrow-box rounded-sm">
+                <div className="btn-arrow-box">
                   <ArrowRight className="w-4 h-4 text-white" />
                 </div>
               </button>
@@ -1788,9 +1786,9 @@ export default function Home() {
                     />
                   </div>
                 </div>
-                <button type="submit" className="framer-btn-primary rounded-sm w-full py-3 justify-center mt-3">
+                <button type="submit" className="framer-btn-primary w-full justify-between mt-3 cursor-pointer">
                   <span>Submit Request</span>
-                  <div className="btn-arrow-box rounded-sm">
+                  <div className="btn-arrow-box">
                     <ArrowRight className="w-3.5 h-3.5 text-white" />
                   </div>
                 </button>

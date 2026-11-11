@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -40,8 +40,11 @@ export default function Footer() {
                   placeholder="Enter your work email"
                   className="w-full px-4 py-2.5 rounded-md bg-white/10 border border-white/20 text-xs text-white focus:outline-none focus:border-[#F25A24]"
                 />
-                <button type="submit" className="framer-btn-primary rounded-sm shrink-0 px-4 py-2.5 cursor-pointer">
+                <button type="submit" className="framer-btn-primary shrink-0 cursor-pointer">
                   <span>Join</span>
+                  <div className="btn-arrow-box">
+                    <ArrowRight className="w-3.5 h-3.5 text-white" />
+                  </div>
                 </button>
               </form>
             </div>
