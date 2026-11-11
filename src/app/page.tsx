@@ -513,7 +513,7 @@ export default function Home() {
         {/* =========================================================
              SECTION 3: WHAT WE DO / SCALABLE CAPABILITIES (FRAMER STACKING CARDS)
              ========================================================= */}
-        <section id="capabilities" className="py-20 lg:py-28 bg-[#F4F4F6] border-b border-slate-300/80">
+        <section id="capabilities" className="py-20 lg:py-28">
           <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
 
             {/* Header matching exact reference screenshot */}
@@ -549,7 +549,7 @@ export default function Home() {
                     "--stack-top": `calc(84px + ${index * 72}px)`,
                     zIndex: 10 + index,
                   } as React.CSSProperties}
-                  className="sticky top-[76px] md:top-[var(--stack-top)] bg-[#F4F4F6] border-t border-slate-300/90 pt-8 pb-16 transition-shadow group"
+                  className="sticky top-[76px] md:top-[var(--stack-top)] bg-white border-t border-slate-300/90 pt-8 pb-16 transition-shadow group"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-12 items-start gap-6 lg:gap-8">
                     {/* 1. Left Index Number Badge */}
@@ -671,24 +671,46 @@ export default function Home() {
         {/* =========================================================
              SECTION 4: WHAT WE MANUFACTURE / EXPLODED CAD BLUEPRINT & PRECISION SPEC
              ========================================================= */}
-        <section id="schematic" className="relative bg-[#121214] text-white overflow-hidden py-24 lg:py-32 border-b border-white/10">
+        <section id="schematic" className="relative bg-[#121214] text-white overflow-hidden pt-[290px] sm:pt-[340px] lg:pt-[390px] pb-24 lg:pb-32">
 
-          {/* 1. Glowing Orange Dome Curve from Reference */}
-          <div className="absolute top-0 left-0 right-0 h-[480px] pointer-events-none select-none overflow-hidden z-0">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(242,90,36,0.55)_0%,rgba(242,90,36,0.18)_45%,transparent_70%)]" />
-            <img
-              src="/assets/images/orange-glow-dome.png"
-              alt=""
-              className="w-full h-full object-cover object-top opacity-95 mix-blend-screen scale-105"
+          {/* 1. Glowing Orange Dome Curve (White Top -> Fiery Orange Arch -> Dark Base) */}
+          <div className="absolute top-0 left-0 right-0 h-[400px] sm:h-[460px] lg:h-[520px] pointer-events-none select-none overflow-hidden z-0">
+            {/* Pure white top backdrop transitioning cleanly to dark base */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 38%, #121214 78%, #121214 100%)",
+              }}
             />
+
+            {/* Smoothly blurred convex orange-red dome arch */}
+            <div
+              className="
+                absolute left-[-18%] w-[136%]
+                top-[62px] sm:top-[76px] lg:top-[88px]
+                h-[310px] sm:h-[360px] lg:h-[400px]
+                rounded-tl-[50%_140px] rounded-tr-[50%_140px]
+                sm:rounded-tl-[50%_170px] sm:rounded-tr-[50%_170px]
+                lg:rounded-tl-[50%_195px] lg:rounded-tr-[50%_195px]
+                blur-[30px] sm:blur-[38px] lg:blur-[44px]
+              "
+              style={{
+                background:
+                  "linear-gradient(180deg, #EB4614 0%, #DF3A0C 28%, #BC2907 56%, #5A1404 80%, rgba(18,18,20,0) 100%)",
+              }}
+            />
+
+            {/* Bottom feather into exact #121214 background */}
+            <div className="absolute bottom-0 left-0 right-0 h-[150px] bg-gradient-to-b from-transparent to-[#121214]" />
           </div>
 
-          {/* 2. Full-Height 4 Architectural Vertical Grid Lines */}
-          <div className="absolute inset-0 max-w-[1400px] mx-auto px-6 sm:px-10 pointer-events-none z-0 hidden lg:block">
-            <div className="w-full h-full grid grid-cols-4 border-x border-white/[0.08]">
-              <div className="border-r border-white/[0.08] h-full" />
-              <div className="border-r border-white/[0.08] h-full" />
-              <div className="border-r border-white/[0.08] h-full" />
+          {/* 2. Full-Height 4 Architectural Vertical Grid Lines (emerging below the dome) */}
+          <div className="absolute inset-0 max-w-[1400px] mx-auto px-6 sm:px-10 pointer-events-none z-0 hidden lg:block [mask-image:linear-gradient(to_bottom,transparent_0px,transparent_280px,black_410px)]">
+            <div className="w-full h-full grid grid-cols-4 border-x border-dashed border-white/[0.1]">
+              <div className="border-r border-dashed border-white/[0.1] h-full" />
+              <div className="border-r border-dashed border-white/[0.1] h-full" />
+              <div className="border-r border-dashed border-white/[0.1] h-full" />
               <div className="h-full" />
             </div>
           </div>
