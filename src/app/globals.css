@@ -245,3 +245,21 @@
   background-color: rgba(255, 255, 255, 0.35);
   transform: scale(1.08);
 }
+
+/* Smooth Infinite Marquee */
+@keyframes partner-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-partner-marquee {
+  animation: partner-marquee 18s linear infinite;
+}
+
+.animate-partner-marquee:hover {
+  animation-play-state: paused;
+}

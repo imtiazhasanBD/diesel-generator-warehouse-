@@ -21,13 +21,15 @@ import {
   CheckCircle,
   Check,
   MapPin,
-  Star,
   ArrowDown,
   Factory,
   Building2,
   HeartPulse,
   Server,
-  HardHat
+  HardHat,
+  Layers,
+  ShieldCheck,
+  Headset
 } from "lucide-react";
 
 // Interactive Hotspots Data
@@ -1541,77 +1543,174 @@ export default function Home() {
         {/* =========================================================
              SECTION 9: BUILT ON TRUST / TESTIMONIALS & CLIENT LOGOS
              ========================================================= */}
-        <section className="py-20 lg:py-28 bg-[#FFFFFF] border-b border-slate-200">
-          <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
+        <section className="relative py-20 lg:py-28 bg-[#FCFCFD] overflow-hidden">
+          {/* Subtle Diagonal Architectural Background Accents */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none select-none absolute inset-0 overflow-hidden z-0"
+          >
+            {/* Soft diagonal grey light sweep */}
+            <div className="absolute -top-20 right-[-10%] w-[55%] h-[130%] bg-gradient-to-br from-slate-100/70 via-slate-100/30 to-transparent -skew-x-[26deg]" />
+            {/* Bottom-left subtle warm peach glow */}
+            <div className="absolute -bottom-24 -left-16 w-72 h-72 rounded-full bg-[#F25A24]/[0.07] blur-3xl" />
+          </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
-              <div className="lg:col-span-6 space-y-6">
-                <div className="framer-badge">
-                  <span className="framer-badge-dot" />
-                  <span>Build on trust</span>
+              {/* Left Column: Badge + Heading + Description + Peach Testimonial Card */}
+              <div className="lg:col-span-5">
+                {/* Badge with extending hairline */}
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[6px] bg-white border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] text-xs font-medium text-slate-800 shrink-0">
+                    <span className="w-2 h-2 rounded-[2px] bg-[#F25A24]" />
+                    <span>Build on Trust</span>
+                  </div>
+                  <div className="h-px flex-1 bg-gradient-to-r from-slate-200/80 to-transparent" />
                 </div>
 
-                <h2 className="font-heading text-3xl sm:text-5xl font-black text-slate-950 leading-tight">
-                  Trusted by <span className="text-[#F25A24]">clients</span>, proven by results
+                <h2 className="font-heading text-3xl sm:text-5xl lg:text-[44px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.08]">
+                  Trusted by <span className="text-[#F25A24]">clients,</span>
+                  <br />
+                  proven by results
                 </h2>
 
-                <div className="flex items-center gap-1 text-amber-500">
-                  <Star className="w-4 h-4 fill-amber-500" />
-                  <Star className="w-4 h-4 fill-amber-500" />
-                  <Star className="w-4 h-4 fill-amber-500" />
-                  <Star className="w-4 h-4 fill-amber-500" />
-                  <Star className="w-4 h-4 fill-amber-500" />
-                </div>
+                <p className="text-[15px] text-[#5B6270] leading-[1.6] mt-4 max-w-[430px]">
+                  From factory setup to continuous power support, we deliver reliable, engineered generator solutions that keep businesses running without interruption.
+                </p>
 
-                <blockquote className="text-base sm:text-lg text-slate-700 italic leading-relaxed pt-1">
-                  &quot;Diesel Generator Warehouse engineered and commissioned our 500 kVA Perkins silent generator flawlessly. When the grid fluctuated during high-load manufacturing shifts, our plant ran without missing a single beat.&quot;
-                </blockquote>
+                {/* Warm Peach Testimonial Box */}
+                <div className="mt-7 bg-[#FFF6F2] rounded-md p-6 sm:p-7 border border-[#F25A24]/10">
+                  {/* Double Quote Mark */}
+                  <svg
+                    className="w-6 h-5 text-[#F25A24] fill-current mb-3"
+                    viewBox="0 0 28 22"
+                    aria-hidden="true"
+                  >
+                    <path d="M11.2 12.6c0 4.6-3.1 8.1-7.8 9.2L2 19.3c2.6-.9 4.2-2.7 4.5-5H2.2C.9 14.3 0 13.4 0 12.1V3.2C0 1.9.9 1 2.2 1h6.8C10.3 1 11.2 1.9 11.2 3.2v9.4zm16.8 0c0 4.6-3.1 8.1-7.8 9.2l-1.4-2.5c2.6-.9 4.2-2.7 4.5-5h-4.3c-1.3 0-2.2-.9-2.2-2.2V3.2c0-1.3.9-2.2 2.2-2.2h6.8c1.3 0 2.2.9 2.2 2.2v9.4z" />
+                  </svg>
 
-                <div className="flex items-center gap-4 pt-4 border-t border-slate-100">
-                  <img src="/assets/images/client-portrait.jpg" alt="Plant Operations Director" className="w-12 h-12 rounded-md object-cover" />
-                  <div>
-                    <h4 className="font-heading font-bold text-slate-900 text-sm">Engr. Tariqul Islam</h4>
-                    <p className="text-xs text-slate-500">Head of Plant Operations, Dhaka Industrial Zone</p>
+                  <blockquote className="text-[13.5px] sm:text-[14px] italic text-[#1E2430] leading-[1.6]">
+                    &ldquo;Diesel Generator Warehouse engineered and commissioned our 500 kVA Perkins silent generator flawlessly. When the grid fluctuated during high-load manufacturing shifts, our plant ran without missing a single beat.&rdquo;
+                  </blockquote>
+
+                  <div className="mt-5 flex items-center gap-3.5">
+                    <img
+                      src="/assets/images/client-portrait.jpg"
+                      alt="Engr. Tariqul Islam"
+                      className="w-11 h-11 rounded-[6px] object-cover object-top shrink-0"
+                    />
+                    <div className="w-[1.5px] h-9 bg-[#F25A24]/60 shrink-0" />
+                    <div>
+                      <h4 className="font-heading font-bold text-[#0F172A] text-[13.5px] leading-tight">
+                        Engr. Tariqul Islam
+                      </h4>
+                      <p className="text-[12px] text-[#646B78] mt-0.5 leading-snug">
+                        Head of Plant Operations, Dhaka Industrial Zone
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Right: Trust Metrics & Corporate Bangladeshi Conglomerates */}
-              <div className="lg:col-span-6 bg-[#0E1014] rounded-md p-8 sm:p-10 text-white space-y-8 shadow-xl">
+              {/* Right Column: Layered Generator Card + Floating Metrics + Partner Logos */}
+              <div className="lg:col-span-7 relative">
+                {/* Skewed Top-Right Peach Decorative Frame Behind Card */}
+                <div
+                  aria-hidden="true"
+                  className="hidden lg:block absolute -top-12 right-[12%] w-[260px] h-[140px] rounded-md border border-[#F25A24]/30 bg-gradient-to-br from-[#FFF4EF]/90 via-[#FFF8F5]/50 to-transparent -skew-x-[28deg] z-0"
+                />
 
-                <div className="grid grid-cols-3 gap-4 border-b border-white/10 pb-8 text-center sm:text-left">
-                  <div>
-                    <span className="font-heading text-3xl sm:text-4xl font-black text-white">500+</span>
-                    <p className="text-[10px] uppercase font-mono tracking-wider text-slate-400 mt-1">Gensets Delivered</p>
+                <div className="relative z-10 bg-white rounded-md shadow-[0_14px_40px_rgba(15,23,42,0.08)] border border-slate-200/70 overflow-hidden">
+                  {/* Top Photo */}
+                  <div className="relative h-[220px] sm:h-[260px] lg:h-[285px] w-full overflow-hidden bg-slate-900">
+                    <img
+                      src="/assets/images/project-green.jpg"
+                      alt="Industrial Generator Room Installation"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <div>
-                    <span className="font-heading text-3xl sm:text-4xl font-black text-white">99.8%</span>
-                    <p className="text-[10px] uppercase font-mono tracking-wider text-slate-400 mt-1">Uptime Reliability</p>
+
+                  {/* Overlapping Elevated White Metrics Strip */}
+                  <div className="relative z-10 mx-4 sm:mx-7 -mt-12 sm:-mt-16 bg-white rounded-md shadow-[0_10px_30px_rgba(15,23,42,0.08)] border border-slate-100 py-5 sm:py-6 px-3 sm:px-6">
+                    <div className="grid grid-cols-3 divide-x divide-slate-200/80 text-center">
+                      <div className="px-2">
+                        <Layers className="w-5 h-5 sm:w-6 sm:h-6 text-[#F25A24] mx-auto mb-2" strokeWidth={1.75} />
+                        <div className="font-heading text-xl sm:text-[28px] font-extrabold text-[#0F172A] tracking-tight leading-none">
+                          500+
+                        </div>
+                        <p className="text-[9px] sm:text-[10.5px] font-semibold uppercase tracking-[0.06em] text-[#64748B] mt-1.5">
+                          Gensets Delivered
+                        </p>
+                      </div>
+
+                      <div className="px-2">
+                        <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-[#F25A24] mx-auto mb-2" strokeWidth={1.75} />
+                        <div className="font-heading text-xl sm:text-[28px] font-extrabold text-[#0F172A] tracking-tight leading-none">
+                          99.8%
+                        </div>
+                        <p className="text-[9px] sm:text-[10.5px] font-semibold uppercase tracking-[0.06em] text-[#64748B] mt-1.5">
+                          Uptime Reliability
+                        </p>
+                      </div>
+
+                      <div className="px-2">
+                        <Headset className="w-5 h-5 sm:w-6 sm:h-6 text-[#F25A24] mx-auto mb-2" strokeWidth={1.75} />
+                        <div className="font-heading text-xl sm:text-[28px] font-extrabold text-[#0F172A] tracking-tight leading-none">
+                          24/7
+                        </div>
+                        <p className="text-[9px] sm:text-[10.5px] font-semibold uppercase tracking-[0.06em] text-[#64748B] mt-1.5">
+                          Field Support
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <span className="font-heading text-3xl sm:text-4xl font-black text-white">24/7</span>
-                    <p className="text-[10px] uppercase font-mono tracking-wider text-slate-400 mt-1">Field Support</p>
+
+                  {/* Bottom Partner Collaborates Marquee Strip */}
+                  <div className="px-6 sm:px-8 py-5 sm:py-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.08em] text-[#64748B] leading-[1.35] shrink-0">
+                      Partner
+                      <br className="hidden sm:block" />{" "}
+                      Collaborates
+                    </span>
+                    <div className="hidden sm:block w-[1.5px] h-7 bg-[#F25A24]/70 shrink-0" />
+                    <div className="w-full min-w-0 flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+                      <div className="flex w-max items-center animate-partner-marquee">
+                        {[0, 1].map((dupIndex) => (
+                          <div
+                            key={dupIndex}
+                            aria-hidden={dupIndex === 1}
+                            className="flex items-center gap-8 sm:gap-10 pr-8 sm:pr-10 shrink-0"
+                          >
+                            <span className="font-heading text-[13px] font-black text-[#111214] tracking-wider whitespace-nowrap">
+                              BEXIMCO
+                            </span>
+                            <span className="inline-flex items-center gap-1 font-heading text-[13px] font-extrabold text-[#1E3A8A] tracking-tight whitespace-nowrap">
+                              <span className="w-2.5 h-2.5 bg-[#1E3A8A] rounded-[2px] inline-block shrink-0" />
+                              <span>SQUARE</span>
+                            </span>
+                            <span className="inline-flex items-center gap-1 font-heading text-[15px] font-black text-[#7E22CE] tracking-tight whitespace-nowrap">
+                              <span className="w-2.5 h-2.5 rounded-xs border-2 border-[#7E22CE] inline-block rotate-45 shrink-0" />
+                              <span>brac</span>
+                            </span>
+                            <span className="inline-flex items-center gap-0.5 font-heading text-[14px] font-black text-[#E11D48] tracking-tight whitespace-nowrap">
+                              <span>bKash</span>
+                              <svg className="w-3.5 h-3.5 fill-current -mt-0.5" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M3 13l7-9 4 6 7-4-6 10-5-3-7 0z" />
+                              </svg>
+                            </span>
+                            <span className="font-heading text-[13px] font-black text-[#1D4ED8] tracking-wide whitespace-nowrap">
+                              WALTON
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                <div className="space-y-4">
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-slate-400 block">
-                    // PARTNER CONGLOMERATES //
-                  </span>
-                  <div className="grid grid-cols-5 gap-3 items-center text-center">
-                    <div className="text-sm font-black text-slate-400 hover:text-white transition-colors tracking-wider">BEXIMCO</div>
-                    <div className="text-sm font-bold text-slate-400 hover:text-white transition-colors">■ SQUARE</div>
-                    <div className="text-sm font-black text-slate-400 hover:text-white transition-colors tracking-wide">brac</div>
-                    <div className="text-sm font-black text-slate-400 hover:text-white transition-colors">bKash</div>
-                    <div className="text-sm font-black text-slate-400 hover:text-white transition-colors tracking-widest">WALTON</div>
-                  </div>
-                </div>
-
               </div>
 
             </div>
-
           </div>
         </section>
 
