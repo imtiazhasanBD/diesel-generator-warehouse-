@@ -1440,115 +1440,123 @@ export default function Home() {
         </section>
 
         {/* =========================================================
-             SECTION 7: REAL-WORLD SUCCESS / CASE STUDIES
+             SECTION 7: REAL-WORLD SUCCESS / CASE STUDIES (COMPACT)
              ========================================================= */}
-        <section id="projects" className="py-20 lg:py-28 bg-[#FFFFFF] border-b border-slate-200">
+        <section id="projects" className="py-14 lg:py-16 bg-[#FFFFFF] border-b border-slate-200">
           <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
 
-            <div className="space-y-3 mb-14">
-              <div className="framer-badge">
-                <span className="framer-badge-dot" />
-                <span>Real-world success</span>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 lg:mb-10 gap-4">
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-[0_1px_2px_rgba(0,0,0,0.03)] text-xs font-medium text-slate-700">
+                  <span className="w-1.5 h-1.5 rounded-[1px] bg-[#D4380A]" />
+                  <span>Real-world success</span>
+                </div>
+                <h2 className="font-heading text-2xl sm:text-4xl lg:text-[40px] font-bold text-[#141518] tracking-[-0.03em] leading-[1.08]">
+                  Real <span className="text-[#D4380A]">results</span> from real projects
+                </h2>
               </div>
-              <h2 className="font-heading text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
-                Real <span className="text-[#F25A24]">results</span> from real projects
-              </h2>
+
+              <button
+                type="button"
+                onClick={() => setIsQuoteModalOpen(true)}
+                className="framer-btn-dark self-start sm:self-auto cursor-pointer"
+              >
+                <span>Discuss your project</span>
+                <div className="btn-arrow-box">
+                  <ArrowRight className="w-3.5 h-3.5 text-white" />
+                </div>
+              </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+              {[
+                {
+                  location: "Motijheel, Dhaka",
+                  spec: "250 kVA Standby Backup",
+                  metric: "< 6s AMF Transfer",
+                  title: "Zero-Downtime Standby for 20-Story Commercial Tower",
+                  desc: "Acoustic canopy genset integrated with automatic mains failure ATS for uninterrupted elevator and server power.",
+                  image: "/assets/images/project-green.jpg",
+                  alt: "Commercial Building Motijheel",
+                },
+                {
+                  location: "Gazipur Industrial",
+                  spec: "1000 kVA Synchronized",
+                  metric: "2,000+ Looms Powered",
+                  title: "Dual Synchronized Prime Power for Export Garments",
+                  desc: "Parallel load-sharing Cummins diesel generators maintaining continuous production across automated textile floors.",
+                  image: "/assets/images/hero-gen.jpg",
+                  alt: "Textile Factory Gazipur",
+                },
+                {
+                  location: "Sylhet Healthcare",
+                  spec: "500 kVA Life-Safety",
+                  metric: "350-Bed ICU Backup",
+                  title: "Critical Power Security for Specialized Medical Center",
+                  desc: "Hospital-grade critical silencers and redundant automated failover protecting ICUs and surgical theatres.",
+                  image: "/assets/images/commercial-white.jpg",
+                  alt: "Hospital Sylhet",
+                },
+                {
+                  location: "Narayanganj Export",
+                  spec: "750 kVA Heavy Duty",
+                  metric: "High-Torque Prime",
+                  title: "Synchronous Generation for Heavy Fabrication Plant",
+                  desc: "UK-assembled Perkins genset engineered with high transient motor-starting capacity for rolling machinery.",
+                  image: "/assets/images/perkins-blue.jpg",
+                  alt: "Industrial Project Narayanganj",
+                },
+              ].map((project, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => setIsQuoteModalOpen(true)}
+                  className="bg-[#FAFBFD] hover:bg-white rounded-[8px] overflow-hidden border border-slate-200/90 hover:border-slate-300 hover:shadow-[0_10px_28px_rgba(15,23,42,0.06)] transition-all duration-300 group flex flex-col sm:flex-row cursor-pointer"
+                >
+                  {/* Left Compact Photo */}
+                  <div className="relative sm:w-[205px] md:w-[220px] h-[175px] sm:h-auto shrink-0 overflow-hidden bg-slate-900">
+                    <img
+                      src={project.image}
+                      alt={project.alt}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <span className="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-[4px] bg-black/65 backdrop-blur-md text-white text-[10px] font-medium tracking-wide border border-white/10">
+                      {project.location}
+                    </span>
+                  </div>
 
-              {/* Case 1 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
-                <div className="h-64 sm:h-72 overflow-hidden relative">
-                  <img src="/assets/images/project-green.jpg" alt="Commercial Building Motijheel" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-sm bg-black/60 backdrop-blur-md text-white font-mono text-[10px]">
-                    // MOTIJHEEL, DHAKA //
-                  </span>
-                </div>
-                <div className="p-8">
-                  <span className="text-xs font-mono font-bold text-[#F25A24] block mb-1">250 kVA Standby Backup</span>
-                  <h3 className="font-heading font-bold text-xl text-slate-950 mb-2 leading-snug">
-                    Zero-Downtime Standby Architecture for 20-Story Commercial Tower
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6">
-                    Engineered an acoustic canopy generator system integrated with automatic mains failure ATS, ensuring elevator and data center continuity under 6 seconds.
-                  </p>
-                  <button onClick={() => setIsQuoteModalOpen(true)} className="text-xs font-bold text-slate-950 hover:text-[#F25A24] inline-flex items-center gap-1.5">
-                    <span>View case study</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </TiltCard>
+                  {/* Right Compact Details */}
+                  <div className="p-5 flex flex-col justify-between flex-1 min-w-0">
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#FFF3EE] text-[#D4380A] text-[10.5px] font-semibold">
+                          {project.spec}
+                        </span>
+                        <span className="text-[11px] font-mono font-medium text-slate-400">
+                          {project.metric}
+                        </span>
+                      </div>
 
-              {/* Case 2 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
-                <div className="h-64 sm:h-72 overflow-hidden relative">
-                  <img src="/assets/images/hero-gen.jpg" alt="Textile Factory Gazipur" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-sm bg-black/60 backdrop-blur-md text-white font-mono text-[10px]">
-                    // GAZIPUR INDUSTRIAL //
-                  </span>
-                </div>
-                <div className="p-8">
-                  <span className="text-xs font-mono font-bold text-[#F25A24] block mb-1">1000 kVA Synchronized Setup</span>
-                  <h3 className="font-heading font-bold text-xl text-slate-950 mb-2 leading-snug">
-                    Dual Synchronized Prime Power for Export Garments Manufacturing
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6">
-                    Installed parallel load-sharing Cummins diesel generators maintaining synchronized continuous power supply across 2,000 spinning looms.
-                  </p>
-                  <button onClick={() => setIsQuoteModalOpen(true)} className="text-xs font-bold text-slate-950 hover:text-[#F25A24] inline-flex items-center gap-1.5">
-                    <span>View case study</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </TiltCard>
+                      <h3 className="font-heading font-bold text-[16px] sm:text-[17px] text-[#141518] group-hover:text-[#D4380A] transition-colors leading-snug mb-1.5">
+                        {project.title}
+                      </h3>
 
-              {/* Case 3 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
-                <div className="h-64 sm:h-72 overflow-hidden relative">
-                  <img src="/assets/images/commercial-white.jpg" alt="Hospital Sylhet" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-sm bg-black/60 backdrop-blur-md text-white font-mono text-[10px]">
-                    // SYLHET HEALTHCARE //
-                  </span>
-                </div>
-                <div className="p-8">
-                  <span className="text-xs font-mono font-bold text-[#F25A24] block mb-1">500 kVA Life-Safety Backup</span>
-                  <h3 className="font-heading font-bold text-xl text-slate-950 mb-2 leading-snug">
-                    Critical Power Security for 350-Bed Specialized Medical Facility
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6">
-                    Implemented hospital-grade critical silencers and redundant automated failover mechanisms safeguarding intensive care and surgical theatres.
-                  </p>
-                  <button onClick={() => setIsQuoteModalOpen(true)} className="text-xs font-bold text-slate-950 hover:text-[#F25A24] inline-flex items-center gap-1.5">
-                    <span>View case study</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </TiltCard>
+                      <p className="text-[12.5px] text-[#5C5E64] leading-[1.5] line-clamp-2">
+                        {project.desc}
+                      </p>
+                    </div>
 
-              {/* Case 4 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-md overflow-hidden border border-slate-200 group flex flex-col justify-between">
-                <div className="h-64 sm:h-72 overflow-hidden relative">
-                  <img src="/assets/images/perkins-blue.jpg" alt="Industrial Project Narayanganj" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-sm bg-black/60 backdrop-blur-md text-white font-mono text-[10px]">
-                    // NARAYANGANJ EXPORT //
-                  </span>
+                    <div className="pt-3 mt-3 border-t border-slate-200/70 flex items-center justify-between">
+                      <span className="text-[12px] font-semibold text-[#141518] group-hover:text-[#D4380A] transition-colors">
+                        View case study
+                      </span>
+                      <span className="framer-icon-btn w-7 h-7">
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-8">
-                  <span className="text-xs font-mono font-bold text-[#F25A24] block mb-1">750 kVA Heavy Duty Perkins</span>
-                  <h3 className="font-heading font-bold text-xl text-slate-950 mb-2 leading-snug">
-                    High-Torque Synchronous Generation for Heavy Machinery Fabrication
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed mb-6">
-                    Supplied UK-assembled Perkins genset configured with heavy-duty transient motor starting capacity for sheet-metal rolling machinery.
-                  </p>
-                  <button onClick={() => setIsQuoteModalOpen(true)} className="text-xs font-bold text-slate-950 hover:text-[#F25A24] inline-flex items-center gap-1.5">
-                    <span>View case study</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </TiltCard>
-
+              ))}
             </div>
 
           </div>
