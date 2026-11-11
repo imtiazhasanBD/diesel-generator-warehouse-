@@ -1,0 +1,32 @@
+[2026-11-09T23:04:34.349Z] INFO  [McpProxy] [trace=98c9eee570f0b287a4cd65974dadf2b6] Attached to MCP daemon 136255 (v0.99.17) for /run/media/imtiazbd/Development/HTML/Nexrox_Digital/diesel-generator
+[2026-11-09T23:04:36.700Z] INFO  [McpServer] [trace=bbd402b80582265a1856d4a843952580] MCP runtime ready: 10/10 built-in (insideRepo=true) + 0 platform tool(s), gate=open, manifest=fetch-failed
+[2026-11-09T23:04:36.918Z] INFO  [McpServer] MCP client connected: antigravity-client/v1.0.0 (unmapped — candidate for CLIENTINFO_AGENTS)
+[2026-11-09T23:04:37.662Z] INFO  [McpProxy] [trace=a0bd75b9b587f1151b596b601e2396b3] Attached to MCP daemon 136255 (v0.99.17) for /run/media/imtiazbd/Development/HTML/Nexrox_Digital/diesel-generator
+[2026-11-09T23:04:38.125Z] INFO  [McpServer] [trace=bbd402b80582265a1856d4a843952580] MCP runtime ready: 10/10 built-in (insideRepo=true) + 0 platform tool(s), gate=open, manifest=fetch-failed
+[2026-11-09T23:04:38.140Z] INFO  [McpServer] MCP client connected: antigravity-client/v1.0.0 (unmapped — candidate for CLIENTINFO_AGENTS)
+[2026-11-09T23:09:41.626Z] INFO  [McpCommand] [trace=bbd402b80582265a1856d4a843952580] MCP daemon exited: idle
+[2026-11-10T14:26:57.392Z] INFO  [McpProxy] [trace=bccbf99ff37775a848d686e7c451ba52] Spawned MCP daemon (pid 244425) for /run/media/imtiazbd/Development/HTML/Nexrox_Digital/diesel-generator
+[2026-11-10T14:26:59.959Z] INFO  [UpdateCheck] [trace=f9a34eb24d8801d2776fb0c19a769478] Spawned detached update-check refresh (PID: 244530)
+[2026-11-10T14:27:00.509Z] INFO  [StorageFactory] [trace=f9a34eb24d8801d2776fb0c19a769478] StorageFactory.create: route=uncutover, projectPath=/run/media/imtiazbd/Development/HTML/Nexrox_Digital/diesel-generator
+[2026-11-10T14:27:02.275Z] INFO  [McpServer] [trace=f9a34eb24d8801d2776fb0c19a769478] MCP runtime ready: 10/10 built-in (insideRepo=true) + 0 platform tool(s), gate=open, manifest=fetch-failed
+[2026-11-10T14:27:02.281Z] INFO  [McpDaemon] [trace=f9a34eb24d8801d2776fb0c19a769478] MCP daemon listening on /tmp/.jolli-mcp-1000/1b972f7eec247dad.sock (cwd=/run/media/imtiazbd/Development/HTML/Nexrox_Digital/diesel-generator, version=0.99.17)
+[2026-11-10T14:27:02.371Z] INFO  [McpProxy] [trace=bccbf99ff37775a848d686e7c451ba52] Attached to MCP daemon 244425 (v0.99.17) for /run/media/imtiazbd/Development/HTML/Nexrox_Digital/diesel-generator
+[2026-11-10T14:27:02.796Z] INFO  [McpServer] [trace=f9a34eb24d8801d2776fb0c19a769478] MCP runtime ready: 10/10 built-in (insideRepo=true) + 0 platform tool(s), gate=open, manifest=fetch-failed
+[2026-11-10T14:27:02.874Z] INFO  [McpServer] MCP client connected: antigravity-client/v1.0.0 (unmapped — candidate for CLIENTINFO_AGENTS)
+[2026-11-10T14:27:09.628Z] INFO  [EnsureGlobalDaemon] [trace=55f9f3ea5995195c59a46dc370b9a024] spawned global daemon ensure helper (pid 244777)
+[2026-11-10T14:28:33.344Z] INFO  [McpProxy] [trace=e914393b0e75b7a22f24d65e8ee00ed9] Attached to MCP daemon 244425 (v0.99.17) for /run/media/imtiazbd/Development/HTML/Nexrox_Digital/diesel-generator
+[2026-11-10T14:28:35.325Z] INFO  [McpServer] [trace=f9a34eb24d8801d2776fb0c19a769478] MCP runtime ready: 10/10 built-in (insideRepo=true) + 0 platform tool(s), gate=open, manifest=fetch-failed
+[2026-11-10T14:28:35.332Z] INFO  [McpServer] MCP client connected: antigravity-client/v1.0.0 (unmapped — candidate for CLIENTINFO_AGENTS)
+[2026-11-10T14:56:46.799Z] INFO  [McpCommand] [trace=f9a34eb24d8801d2776fb0c19a769478] MCP daemon exited: idle
+[2026-11-11T16:20:03.625Z] INFO  [McpProxy] [trace=c10023ab3bb0fe305072c0624ccb001b] Spawned MCP daemon (pid 315838) for /run/media/imtiazbd/Development/HTML/Nexrox_Digital/diesel-generator
+[2026-11-11T16:20:04.696Z] INFO  [UpdateCheck] [trace=8e012ad63ca6ac53cb3b93579dd2f23a] Spawned detached update-check refresh (PID: 315882)
+[2026-11-11T16:20:05.005Z] INFO  [StorageFactory] [trace=8e012ad63ca6ac53cb3b93579dd2f23a] StorageFactory.create: route=uncutover, projectPath=/run/media/imtiazbd/Development/HTML/Nexrox_Digital/diesel-generator
+[2026-11-11T16:20:07.678Z] INFO  [McpServer] [trace=8e012ad63ca6ac53cb3b93579dd2f23a] MCP runtime ready: 10/10 built-in (insideRepo=true) + 0 platform tool(s), gate=open, manifest=fetch-failed
+[2026-11-11T16:20:07.719Z] INFO  [McpDaemon] [trace=8e012ad63ca6ac53cb3b93579dd2f23a] MCP daemon listening on /tmp/.jolli-mcp-1000/1b972f7eec247dad.sock (cwd=/run/media/imtiazbd/Development/HTML/Nexrox_Digital/diesel-generator, version=0.99.17)
+[2026-11-11T16:20:07.831Z] INFO  [McpProxy] [trace=c10023ab3bb0fe305072c0624ccb001b] Attached to MCP daemon 315838 (v0.99.17) for /run/media/imtiazbd/Development/HTML/Nexrox_Digital/diesel-generator
+[2026-11-11T16:20:08.335Z] INFO  [McpServer] [trace=8e012ad63ca6ac53cb3b93579dd2f23a] MCP runtime ready: 10/10 built-in (insideRepo=true) + 0 platform tool(s), gate=open, manifest=fetch-failed
+[2026-11-11T16:20:08.806Z] INFO  [McpServer] MCP client connected: antigravity-client/v1.0.0 (unmapped — candidate for CLIENTINFO_AGENTS)
+[2026-11-11T16:20:12.210Z] INFO  [EnsureGlobalDaemon] [trace=c7c294c185432317b4011ac9abd59621] spawned global daemon ensure helper (pid 316044)
+[2026-11-11T16:25:12.469Z] INFO  [McpProxy] [trace=b09afd8325e7db1c907e51477f4a41a8] Attached to MCP daemon 315838 (v0.99.17) for /run/media/imtiazbd/Development/HTML/Nexrox_Digital/diesel-generator
+[2026-11-11T16:25:14.017Z] INFO  [McpServer] [trace=8e012ad63ca6ac53cb3b93579dd2f23a] MCP runtime ready: 10/10 built-in (insideRepo=true) + 0 platform tool(s), gate=open, manifest=fetch-failed
+[2026-11-11T16:25:14.028Z] INFO  [McpServer] MCP client connected: antigravity-client/v1.0.0 (unmapped — candidate for CLIENTINFO_AGENTS)

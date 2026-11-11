@@ -19,10 +19,15 @@ import {
   Sliders,
   Wrench,
   CheckCircle,
-  ChevronRight,
+  Check,
   MapPin,
   Star,
-  ArrowDown
+  ArrowDown,
+  Factory,
+  Building2,
+  HeartPulse,
+  Server,
+  HardHat
 } from "lucide-react";
 
 // Interactive Hotspots Data
@@ -48,59 +53,64 @@ const HOTSPOTS = {
 // Industry Solutions Data
 const INDUSTRY_DATA = {
   manufacturing: {
-    title: "Manufacturing & Garment Industries",
-    desc: "Uninterrupted prime power engineered for high-throughput production lines, textile weaving mills, and automated machinery across Bangladesh.",
+    label: "Manufacturing & Garments",
+    cardTitle: "Manufacturing",
+    desc: "Uninterrupted prime power built for high-throughput production lines, textile mills, and automated factories.",
     bullets: [
-      "Heavy-duty continuous duty cycle with 110% overload margin",
-      "Automatic sync between dual gensets for peak-shift sharing",
-      "Full SCADA & IoT remote fuel telemetry"
+      "110% continuous overload capacity",
+      "Dual-genset automatic load sharing",
+      "SCADA & IoT remote fuel telemetry"
     ],
     image: "/assets/images/hero-gen.jpg",
-    tag: "// PRIME POWER SPEC //"
+    icon: Factory
   },
   commercial: {
-    title: "Commercial Towers & Corporate HQs",
-    desc: "Acoustically insulated standby power systems for corporate hubs and high-rise commercial complexes ensuring zero downtime.",
+    label: "Commercial & High-Rise",
+    cardTitle: "Commercial & High-Rise",
+    desc: "Acoustically insulated standby power systems engineered for corporate towers and commercial hubs with zero downtime.",
     bullets: [
-      "Ultra-silent acoustic canopy (<68 dBA at 7 meters)",
-      "Under 8-second automatic mains failure (AMF) transfer",
-      "Compact footprint optimized for basement & rooftop installation"
+      "Ultra-silent canopy (<68 dBA at 7m)",
+      "Under 8-second AMF auto transfer",
+      "Compact basement & rooftop footprint"
     ],
     image: "/assets/images/commercial-white.jpg",
-    tag: "// STANDBY POWER SPEC //"
+    icon: Building2
   },
   hospitals: {
-    title: "Hospitals & Critical Healthcare Facilities",
-    desc: "Life-safety backup power engineered to power intensive care units, diagnostic imaging suites, and operating theatres without a millisecond of interruption.",
+    label: "Hospitals & Healthcare",
+    cardTitle: "Healthcare",
+    desc: "Life-safety backup power engineered for ICUs, diagnostic suites, and operating theatres without interruption.",
     bullets: [
-      "Dual ATS fast-transfer with uninterruptible UPS coordination",
-      "Hospital-grade critical silencers with zero exhaust backflow",
-      "Priority 24/7 emergency rapid maintenance contract"
+      "Dual ATS fast-transfer coordination",
+      "Hospital-grade critical exhaust silencers",
+      "Priority 24/7 emergency service support"
     ],
     image: "/assets/images/yellow-silent.jpg",
-    tag: "// LIFE-SAFETY SPEC //"
+    icon: HeartPulse
   },
   datacenters: {
-    title: "Data Centers & Critical Telecom HQs",
-    desc: "Tier III & IV compliant power infrastructure built with fault-tolerant redundancy and clean harmonic sine-wave output.",
+    label: "Data Centers & Telecom",
+    cardTitle: "Data Centers",
+    desc: "Tier III & IV compliant power infrastructure built with fault-tolerant redundancy and clean sine-wave output.",
     bullets: [
-      "Permanent magnet generator (PMG) excitation for clean waveform",
-      "Underground bulk fuel transfer system with 72-hour reserve",
-      "Microprocessor synchronizing panel with N+1 redundancy"
+      "PMG excitation for clean waveform",
+      "72-hour bulk fuel reserve system",
+      "N+1 microprocessor sync panels"
     ],
     image: "/assets/images/perkins-blue.jpg",
-    tag: "// TELECOM SPEC //"
+    icon: Server
   },
   construction: {
-    title: "Infrastructure & Construction Sites",
-    desc: "Rugged, weather-resistant mobile power units built for severe outdoor environments, heavy piling machinery, and bridge construction.",
+    label: "Infrastructure & Sites",
+    cardTitle: "Infrastructure",
+    desc: "Rugged weather-resistant power units built for outdoor environments, heavy piling, and bridge construction.",
     bullets: [
-      "Heavy-duty skid base with integrated crane lifting eyelets",
-      "High ambient tropical radiator designed for +50°C operation",
-      "Lockable steel fuel fill neck with anti-siphon protection"
+      "Heavy-duty skid with crane lift points",
+      "+50°C tropicalized cooling radiator",
+      "Lockable anti-siphon steel fuel tank"
     ],
     image: "/assets/images/industrial-site.jpg",
-    tag: "// HEAVY MOBILE SPEC //"
+    icon: HardHat
   }
 };
 
@@ -1119,105 +1129,216 @@ export default function Home() {
         {/* =========================================================
              SECTION 6: BUILT FOR EVERY INDUSTRY (VERTICAL TABS)
              ========================================================= */}
-        <section id="industries" className="py-20 lg:py-28 bg-[#F7F7F8] border-b border-slate-200">
-          <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
+        <section
+          id="industries"
+          className="relative py-16 sm:py-24 lg:py-32 bg-[#F4F4F5] border-b border-slate-200 overflow-hidden"
+        >
+          {/* Vertical architectural grid lines */}
+          <div className="absolute inset-0 max-w-[1400px] mx-auto px-5 sm:px-6 pointer-events-none z-0 hidden lg:block">
+            <div className="w-full h-full grid grid-cols-4 border-x border-slate-200/70">
+              <div className="border-r border-slate-200/70 h-full" />
+              <div className="border-r border-slate-200/70 h-full" />
+              <div className="border-r border-slate-200/70 h-full" />
+              <div className="h-full" />
+            </div>
+          </div>
 
-            <div className="space-y-3 mb-12">
-              <div className="framer-badge">
-                <span className="framer-badge-dot" />
-                <span>Built for every industry</span>
+          {/* Floating decorative thumbnails */}
+          <div className="absolute inset-0 max-w-[1400px] mx-auto pointer-events-none select-none z-10 hidden lg:block">
+            {/* Top-left: generator powerhouse */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 16 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.55, ease: "easeOut" }}
+              className="absolute top-6 left-[6.1%] w-[100px] h-[110px] z-10"
+            >
+              <motion.div
+                animate={{ y: [0, -8, 0], rotate: [0, 1.5, 0] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+                className="w-full h-full rounded-[6px] overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.09)] border border-black/[0.06] bg-white"
+              >
+                <img src="/assets/images/hero-gen.jpg" alt="" className="w-full h-full object-cover" />
+              </motion.div>
+            </motion.div>
+
+            {/* Left: commercial standby */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 16 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.55, delay: 0.08, ease: "easeOut" }}
+              className="absolute top-[133px] left-[2.5%] w-[92px] h-[76px] z-0"
+            >
+              <motion.div
+                animate={{ y: [0, 7, 0], rotate: [0, -1.5, 0] }}
+                transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut" }}
+                className="w-full h-full rounded-[6px] overflow-hidden shadow-[0_4px_14px_rgba(0,0,0,0.06)] border border-black/[0.06] bg-white"
+              >
+                <img src="/assets/images/commercial-white.jpg" alt="" className="w-full h-full object-cover" />
+              </motion.div>
+            </motion.div>
+
+            {/* Top-right: industrial site */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 16 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.55, delay: 0.14, ease: "easeOut" }}
+              className="absolute top-[39px] right-[4.7%] w-[116px] h-[124px]"
+            >
+              <motion.div
+                animate={{ y: [0, -10, 0], rotate: [0, -1.2, 0] }}
+                transition={{ duration: 6.1, repeat: Infinity, ease: "easeInOut" }}
+                className="w-full h-full rounded-[6px] overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.09)] border border-black/[0.06] bg-white"
+              >
+                <img src="/assets/images/industrial-site.jpg" alt="" className="w-full h-full object-cover" />
+              </motion.div>
+            </motion.div>
+
+            {/* Bottom-left: control panel */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 16 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.55, delay: 0.2, ease: "easeOut" }}
+              className="absolute bottom-7 left-[4.7%] w-[108px] h-[104px]"
+            >
+              <motion.div
+                animate={{ y: [0, 8, 0], rotate: [0, 1.2, 0] }}
+                transition={{ duration: 6.8, repeat: Infinity, ease: "easeInOut" }}
+                className="w-full h-full rounded-[6px] overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.09)] border border-black/[0.06] bg-white"
+              >
+                <img src="/assets/images/gen-control-panel.jpg" alt="" className="w-full h-full object-cover" />
+              </motion.div>
+            </motion.div>
+
+            {/* Bottom-right: Perkins diesel unit */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 16 }}
+              whileInView={{ opacity: 0.9, scale: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.55, delay: 0.26, ease: "easeOut" }}
+              className="absolute bottom-5 right-[11.3%] w-[92px] h-[74px]"
+            >
+              <motion.div
+                animate={{ y: [0, -7, 0], rotate: [0, 1.4, 0] }}
+                transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
+                className="w-full h-full rounded-[6px] overflow-hidden shadow-[0_6px_16px_rgba(0,0,0,0.06)] border border-black/[0.06] bg-white"
+              >
+                <img src="/assets/images/perkins-blue.jpg" alt="" className="w-full h-full object-cover" />
+              </motion.div>
+            </motion.div>
+          </div>
+
+          <div className="relative z-20 max-w-[1400px] mx-auto px-5 sm:px-6">
+            {/* Centered header lockup */}
+            <div className="flex flex-col items-center text-center mb-10 sm:mb-12">
+              <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-white border border-slate-200/90 shadow-[0_1px_2px_rgba(0,0,0,0.03)] text-[10px] font-medium text-slate-700 mb-3">
+                <span className="w-1.5 h-1.5 rounded-[1px] bg-[#D4400F]" />
+                <span>Build for every industry</span>
               </div>
-              <h2 className="font-heading text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
-                Power <span className="text-[#F25A24]">solutions</span> for every industry
+              <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#141518] tracking-[-0.03em] leading-[1.08]">
+                Manufacturing <span className="text-[#D4400F]">solutions</span>
+                <br />
+                for every industry
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-
-              {/* Vertical Tabs */}
-              <div className="lg:col-span-4 space-y-2">
-                {(Object.keys(INDUSTRY_DATA) as Array<keyof typeof INDUSTRY_DATA>).map((key) => {
-                  const isActive = activeIndustry === key;
-                  return (
-                    <button
-                      key={key}
-                      onClick={() => setActiveIndustry(key)}
-                      className={`w-full text-left p-4 rounded-md border font-heading font-bold text-sm transition-all flex items-center justify-between ${isActive
-                          ? "bg-white text-slate-900 shadow-sm border-slate-300"
-                          : "border-transparent text-slate-500 hover:bg-white hover:text-slate-900"
-                        }`}
-                    >
-                      <span className="capitalize">{key === "datacenters" ? "Data Centers & Telecom" : key === "manufacturing" ? "Manufacturing & Garments" : key === "commercial" ? "Commercial & High-Rise" : key === "hospitals" ? "Hospitals & Healthcare" : "Construction & Infrastructure"}</span>
-                      <ChevronRight className={`w-4 h-4 transition-transform ${isActive ? "text-[#F25A24] translate-x-1" : "text-slate-400"}`} />
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Dynamic Showcase Card */}
-              <div className="lg:col-span-8 bg-white rounded-md p-6 sm:p-10 border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeIndustry}
-                    initial={{ opacity: 0, x: -15 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 15 }}
-                    transition={{ duration: 0.3 }}
-                    className="space-y-4"
-                  >
-                    <span className="font-mono text-[11px] font-bold text-[#F25A24] uppercase tracking-wider block">
-                      {INDUSTRY_DATA[activeIndustry].tag}
-                    </span>
-
-                    <h3 className="font-heading text-2xl sm:text-3xl font-black text-slate-950 leading-tight">
-                      {INDUSTRY_DATA[activeIndustry].title}
-                    </h3>
-
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      {INDUSTRY_DATA[activeIndustry].desc}
-                    </p>
-
-                    <ul className="space-y-2.5 pt-2">
-                      {INDUSTRY_DATA[activeIndustry].bullets.map((b, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-700">
-                          <span className="w-4 h-4 rounded-sm bg-orange-100 text-[#F25A24] flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">✓</span>
-                          <span>{b}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="pt-4">
-                      <button onClick={() => setIsQuoteModalOpen(true)} className="framer-btn-primary rounded-sm">
-                        <span>Explore this solution</span>
-                        <div className="btn-arrow-box rounded-sm">
-                          <ArrowRight className="w-3.5 h-3.5 text-white" />
-                        </div>
+            <div className="grid grid-cols-1 lg:grid-cols-[max-content_1fr] gap-8 lg:gap-30 items-start">
+              {/* Vertical tabs with continuous left track */}
+              <div className="min-w-0">
+                <div className="relative border-l-2 border-[#DCDCE0]">
+                  {(Object.keys(INDUSTRY_DATA) as Array<keyof typeof INDUSTRY_DATA>).map((key) => {
+                    const isActive = activeIndustry === key;
+                    return (
+                      <button
+                        key={key}
+                        type="button"
+                        onClick={() => setActiveIndustry(key)}
+                        className={`relative w-full text-left pl-4 sm:pl-5 py-2 sm:py-2.5 font-heading text-[18px] sm:text-2xl tracking-[-0.015em] leading-[1.3] transition-colors cursor-pointer block ${isActive
+                            ? "text-[#141518] font-semibold"
+                            : "text-[#6E7075] hover:text-[#141518] font-medium"
+                          }`}
+                      >
+                        {isActive && (
+                          <motion.span
+                            layoutId="industryActiveTrack"
+                            transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                            className="absolute -left-[2px] top-0 bottom-0 w-[2px] bg-[#D4400F]"
+                          />
+                        )}
+                        <span className="sm:whitespace-nowrap">{INDUSTRY_DATA[key].label}</span>
                       </button>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-
-                {/* Dynamic Image */}
-                <div className="relative rounded-sm overflow-hidden h-[340px] shadow-lg">
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={activeIndustry}
-                      src={INDUSTRY_DATA[activeIndustry].image}
-                      alt={INDUSTRY_DATA[activeIndustry].title}
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="w-full h-full object-cover"
-                    />
-                  </AnimatePresence>
+                    );
+                  })}
                 </div>
-
               </div>
 
-            </div>
+              {/* Showcase card (image left, content right) */}
+              <div className="min-w-0 w-full bg-white rounded-[8px] p-4 sm:p-5 border border-black/[0.04] shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 items-stretch">
+                  {/* Left: photo */}
+                  <div className="relative rounded-[6px] overflow-hidden h-[270px] bg-slate-100">
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={activeIndustry}
+                        src={INDUSTRY_DATA[activeIndustry].image}
+                        alt={INDUSTRY_DATA[activeIndustry].cardTitle}
+                        initial={{ opacity: 0, scale: 1.03 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="w-full h-full object-cover"
+                      />
+                    </AnimatePresence>
+                  </div>
 
+                  {/* Right: icon + title + description + checklist */}
+                  <div className="flex min-w-0">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={activeIndustry}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.25 }}
+                        className="flex flex-col justify-between w-full min-w-0"
+                      >
+                        <div>
+                          <div className="w-7 h-7 rounded-[5px] bg-[#141518] text-white flex items-center justify-center mb-3">
+                            {(() => {
+                              const IndustryIcon = INDUSTRY_DATA[activeIndustry].icon;
+                              return <IndustryIcon className="w-3.5 h-3.5" />;
+                            })()}
+                          </div>
+
+                          <h3 className="font-heading text-[20px] font-medium text-[#141518] tracking-[-0.02em] leading-snug mb-2">
+                            {INDUSTRY_DATA[activeIndustry].cardTitle}
+                          </h3>
+
+                          <p className="text-[14px] text-[#5C5E64] leading-[1.5] md:max-w-[250px]">
+                            {INDUSTRY_DATA[activeIndustry].desc}
+                          </p>
+                        </div>
+
+                        <ul className="space-y-1 mt-5">
+                          {INDUSTRY_DATA[activeIndustry].bullets.map((b, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-start gap-2 text-[11px] sm:text-[10.5px] leading-4 font-medium text-[#2A2B2F]"
+                            >
+                              <Check className="w-2.5 h-2.5 text-[#D4400F] shrink-0 mt-[3px]" strokeWidth={2.5} />
+                              <span>{b}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
