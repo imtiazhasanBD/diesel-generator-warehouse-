@@ -29,7 +29,9 @@ import {
   HardHat,
   Layers,
   ShieldCheck,
-  Headset
+  Headset,
+  Zap,
+  MessageSquare
 } from "lucide-react";
 
 // Interactive Hotspots Data
@@ -1555,62 +1557,187 @@ export default function Home() {
         {/* =========================================================
              SECTION 8: FULL-WIDTH AMBIENT VIDEO CTA BANNER
              ========================================================= */}
-        <section className="relative py-28 lg:py-36 overflow-hidden bg-slate-950 text-white flex items-center justify-center">
+        <section className="relative py-24 sm:py-28 lg:py-32 overflow-hidden bg-[#090D14] text-white">
 
+          {/* Full-Bleed Ambient Background Video (Cinematic Industrial Footage) */}
           <video
             autoPlay
             loop
             muted
             playsInline
             poster="/assets/images/industrial-site.jpg"
-            className="absolute inset-0 w-full h-full object-cover opacity-40 scale-105"
+            className="absolute inset-0 w-full h-full object-cover object-center scale-[1.03] brightness-[0.78] contrast-[1.12] saturate-[0.95]"
           >
-            <source src="/assets/videos/DG Set Working Explained .mp4" type="video/mp4" />
+            <source src="/assets/videos/manufact-hero.mp4" type="video/mp4" />
           </video>
 
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+          {/* Top & Bottom Edge Vignette for Seamless Section Transitions */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 z-[1] pointer-events-none bg-gradient-to-b from-[#090D14]/65 via-transparent to-[#090D14]/75"
+          />
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative z-10 max-w-[1000px] mx-auto px-6 text-center space-y-8"
+          {/* Left-Dark-to-Right-Clear Atmospheric Gradient Scrim */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 z-[1] lg:hidden bg-[#090D14]/85"
+          />
+          <div
+            aria-hidden="true"
+            className="hidden lg:block absolute inset-0 z-[1] pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(90deg, #090D14 0%, #090D14 38%, rgba(9, 13, 20, 0.90) 52%, rgba(9, 13, 20, 0.42) 72%, rgba(9, 13, 20, 0.18) 100%)",
+            }}
+          />
+
+          {/* Subtle Left Ambient Orange Glow */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none select-none absolute -left-24 top-1/2 -translate-y-1/2 w-[380px] h-[380px] rounded-full bg-[#F25A24]/[0.07] blur-[110px] z-[1]"
+          />
+
+          {/* Clip Path Definition for Smoked Architectural Glass Overlay */}
+          <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+            <defs>
+              <clipPath id="section8-glass-clip" clipPathUnits="objectBoundingBox">
+                <path d="M 0.515 1 L 0.918 0.155 Q 0.93 0.135 0.946 0.135 L 1 0.135 L 1 1 Z" />
+              </clipPath>
+            </defs>
+          </svg>
+
+          {/* Smoked Frosted Glass Panel with Bottom-Left Orange Edge Sheen */}
+          <div
+            aria-hidden="true"
+            className="hidden lg:block absolute inset-0 pointer-events-none z-[2] backdrop-blur-[4px]"
+            style={{
+              clipPath: "url(#section8-glass-clip)",
+              WebkitClipPath: "url(#section8-glass-clip)",
+              background:
+                "radial-gradient(circle at 53% 98%, rgba(242, 90, 36, 0.24) 0%, rgba(242, 90, 36, 0.07) 26%, rgba(9, 13, 20, 0.28) 60%, rgba(9, 13, 20, 0.42) 100%)",
+            }}
+          />
+
+          {/* Glowing Orange Diagonal-to-Horizontal Edge Line + Subtle Glass Highlight */}
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 1440 720"
+            preserveAspectRatio="none"
+            className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none z-[3]"
           >
-            <div className="framer-badge framer-badge-dark mx-auto">
-              <span className="framer-badge-dot" />
-              <span>Open a conversation</span>
-            </div>
+            <defs>
+              <linearGradient id="section8-orange-line" x1="51%" y1="100%" x2="100%" y2="14%">
+                <stop offset="0%" stopColor="#FF7A2F" stopOpacity="0.95" />
+                <stop offset="45%" stopColor="#F25A24" stopOpacity="0.55" />
+                <stop offset="84%" stopColor="#FF7A2F" stopOpacity="0.95" />
+                <stop offset="100%" stopColor="#FF8C42" stopOpacity="0.85" />
+              </linearGradient>
+            </defs>
+            {/* Outer soft orange glow */}
+            <path
+              d="M 742 720 L 1322 112 Q 1339 97 1362 97 L 1440 97"
+              fill="none"
+              stroke="#F25A24"
+              strokeWidth="7"
+              strokeOpacity="0.3"
+              vectorEffect="non-scaling-stroke"
+              style={{ filter: "blur(4px)" }}
+            />
+            {/* Crisp inner bright orange laser edge */}
+            <path
+              d="M 742 720 L 1322 112 Q 1339 97 1362 97 L 1440 97"
+              fill="none"
+              stroke="url(#section8-orange-line)"
+              strokeWidth="1.75"
+              vectorEffect="non-scaling-stroke"
+            />
+            {/* Subtle parallel inner glass specular highlight */}
+            <path
+              d="M 758 720 L 1328 122 Q 1344 108 1366 108 L 1440 108"
+              fill="none"
+              stroke="rgba(255,255,255,0.07)"
+              strokeWidth="1"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
 
-            <h2 className="font-heading text-4xl sm:text-6xl font-black text-white leading-tight">
-              Ready to power your next <span className="text-[#F25A24]">industrial project?</span>
-            </h2>
+          {/* Left-Aligned Foreground Content */}
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="max-w-[650px]"
+            >
+              {/* Pill Badge */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[6px] bg-white/[0.04] border border-white/[0.14] backdrop-blur-md text-[12px] font-medium text-slate-200 mb-6">
+                <span className="w-2 h-2 rounded-full bg-[#F25A24]" />
+                <span>Open a Conversation</span>
+              </div>
 
-            <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto leading-relaxed">
-              Contact our technical engineering team for certified on-site load evaluation, civil foundation guidance, and customized quotations.
-            </p>
+              {/* 2-Line Headline */}
+              <h2 className="font-heading text-3xl sm:text-5xl lg:text-[48px] font-extrabold text-white tracking-[-0.025em] leading-[1.12]">
+                Ready to power your next
+                <br />
+                <span className="text-[#F25A24]">industrial project?</span>
+              </h2>
 
-            <div className="flex flex-wrap items-center justify-center gap-3 pt-2 text-xs">
-              <span className="px-4 py-2 rounded-sm bg-white/10 backdrop-blur-md border border-white/20 text-slate-200">
-                ✓ 100% Load-Bank Certified
-              </span>
-              <span className="px-4 py-2 rounded-sm bg-white/10 backdrop-blur-md border border-white/20 text-slate-200">
-                ✓ Zero Downtime ATS Sync
-              </span>
-              <span className="px-4 py-2 rounded-sm bg-white/10 backdrop-blur-md border border-white/20 text-slate-200">
-                ✓ 24/7 Rapid Emergency Support
-              </span>
-            </div>
+              {/* Supporting Copy */}
+              <p className="text-[14.5px] sm:text-[15.5px] text-slate-300/90 max-w-[540px] leading-[1.6] mt-4">
+                Contact our technical engineering team for certified on-site load evaluation, civil foundation guidance, and customized quotations.
+              </p>
 
-            <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-              <button onClick={() => setIsQuoteModalOpen(true)} className="framer-btn-primary cursor-pointer">
-                <span>Schedule site inspection</span>
-                <div className="btn-arrow-box">
-                  <ArrowRight className="w-4 h-4 text-white" />
+              {/* 3 Glass Feature Pills */}
+              <div className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-[600px]">
+                <div className="bg-[#121923]/80 backdrop-blur-md border border-white/[0.09] hover:border-[#F25A24]/35 transition-colors rounded-[8px] px-3.5 py-3 flex items-center gap-3">
+                  <Zap className="w-5 h-5 text-[#F25A24] shrink-0" strokeWidth={1.9} />
+                  <span className="text-[12px] font-medium text-slate-200 leading-[1.3]">
+                    100% Load-Bank
+                    <br />
+                    Certified
+                  </span>
                 </div>
-              </button>
-            </div>
-          </motion.div>
+
+                <div className="bg-[#121923]/80 backdrop-blur-md border border-white/[0.09] hover:border-[#F25A24]/35 transition-colors rounded-[8px] px-3.5 py-3 flex items-center gap-3">
+                  <ShieldCheck className="w-5 h-5 text-[#F25A24] shrink-0" strokeWidth={1.9} />
+                  <span className="text-[12px] font-medium text-slate-200 leading-[1.3]">
+                    Zero Downtime
+                    <br />
+                    ATS Sync
+                  </span>
+                </div>
+
+                <div className="bg-[#121923]/80 backdrop-blur-md border border-white/[0.09] hover:border-[#F25A24]/35 transition-colors rounded-[8px] px-3.5 py-3 flex items-center gap-3">
+                  <Headset className="w-5 h-5 text-[#F25A24] shrink-0" strokeWidth={1.9} />
+                  <span className="text-[12px] font-medium text-slate-200 leading-[1.3]">
+                    24/7 Rapid
+                    <br />
+                    Emergency Support
+                  </span>
+                </div>
+              </div>
+
+              {/* 2 Action Buttons */}
+              <div className="mt-7 flex flex-wrap items-center gap-4">
+                <button
+                  onClick={() => setIsQuoteModalOpen(true)}
+                  className="inline-flex items-center gap-3 bg-[#F25A24] hover:bg-[#D94815] text-white font-semibold text-[13.5px] px-6 py-3.5 rounded-[8px] shadow-[0_6px_20px_rgba(242,90,36,0.3)] transition-all cursor-pointer group"
+                >
+                  <span>Schedule site inspection</span>
+                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />
+                </button>
+
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2.5 bg-white/[0.04] hover:bg-white/[0.1] backdrop-blur-md border border-white/20 text-white font-semibold text-[13.5px] px-6 py-3.5 rounded-[8px] transition-all cursor-pointer"
+                >
+                  <MessageSquare className="w-4 h-4 text-slate-200" />
+                  <span>Talk to an engineer</span>
+                </a>
+              </div>
+            </motion.div>
+          </div>
         </section>
 
         {/* =========================================================
