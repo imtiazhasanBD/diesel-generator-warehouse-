@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Geist_Mono } from "next/font/google";
+import "@fontsource-variable/mona-sans";
 import "./globals.css";
 
 const monaSans = localFont({
@@ -8,10 +9,12 @@ const monaSans = localFont({
     {
       path: "./fonts/MonaSans-Variable.woff2",
       style: "normal",
+      weight: "100 900",
     },
     {
       path: "./fonts/MonaSans-VariableItalic.woff2",
       style: "italic",
+      weight: "100 900",
     },
   ],
   variable: "--font-mona-sans",

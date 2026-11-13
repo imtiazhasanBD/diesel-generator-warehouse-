@@ -63,7 +63,7 @@ export default function QuoteModal({
                 <div className="w-16 h-16 rounded-md bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
                   <CheckCircle className="w-8 h-8" />
                 </div>
-                <h3 className="font-heading font-black text-2xl text-slate-900">Quote Request Received!</h3>
+                <h3 className="font-heading font-bold text-2xl text-slate-900">Quote Request Received!</h3>
                 <p className="text-sm text-slate-600 max-w-sm mx-auto">
                   Our chief power engineering consultant will review your specifications and contact you within 2 hours with an official proposal.
                 </p>
@@ -74,7 +74,7 @@ export default function QuoteModal({
                   <span className="framer-badge-dot" />
                   <span>Official Warehouse Quotation</span>
                 </div>
-                <h3 className="font-heading font-black text-2xl sm:text-3xl text-slate-950">
+                <h3 className="font-heading font-bold text-2xl sm:text-3xl text-slate-950">
                   {defaultGeneratorName ? `Request Quote for ${defaultGeneratorName}` : "Industrial Genset Sizing & Quotation"}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 mt-2 mb-6">
@@ -88,7 +88,7 @@ export default function QuoteModal({
                       <Sliders className="w-3.5 h-3.5 text-[#F25A24]" />
                       Estimated Connected Electrical Load:
                     </span>
-                    <span className="font-mono text-base font-black text-[#F25A24]">{kwLoad} kW</span>
+                    <span className="font-mono text-base font-bold text-[#F25A24]">{kwLoad} kW</span>
                   </div>
                   <input
                     type="range"

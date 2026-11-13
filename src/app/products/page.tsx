@@ -95,7 +95,7 @@ export default function ProductsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-transparent pointer-events-none" />
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-10">
-          <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight">
+          <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight">
             Diesel Generators for Sale
           </h1>
 
@@ -122,7 +122,7 @@ export default function ProductsPage() {
         <div className="border-b border-slate-200 pb-6 mb-8">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div>
-              <h2 className="font-heading text-2xl sm:text-3xl font-black text-[#F25A24] tracking-tight uppercase">
+              <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#F25A24] tracking-tight uppercase">
                 BROWSE BY: DIESEL GENERATORS FOR SALE
               </h2>
               <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
@@ -175,11 +175,10 @@ export default function ProductsPage() {
                 <button
                   key={b}
                   onClick={() => setSelectedBrand(b)}
-                  className={`text-xs px-3.5 py-1.5 rounded-sm font-semibold transition-all shrink-0 cursor-pointer ${
-                    selectedBrand === b
+                  className={`text-xs px-3.5 py-1.5 rounded-sm font-semibold transition-all shrink-0 cursor-pointer ${selectedBrand === b
                       ? "bg-[#18181B] text-white shadow-sm"
                       : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
-                  }`}
+                    }`}
                 >
                   {b}
                 </button>
@@ -259,25 +258,22 @@ export default function ProductsPage() {
         <div className="mt-12 pt-8 border-t border-slate-200 flex items-center justify-center gap-2">
           <button
             onClick={() => setCurrentPage(1)}
-            className={`w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${
-              currentPage === 1 ? "bg-[#F25A24] text-white shadow-sm" : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
-            }`}
+            className={`w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${currentPage === 1 ? "bg-[#F25A24] text-white shadow-sm" : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
+              }`}
           >
             1
           </button>
           <button
             onClick={() => setCurrentPage(2)}
-            className={`w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${
-              currentPage === 2 ? "bg-[#F25A24] text-white shadow-sm" : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
-            }`}
+            className={`w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${currentPage === 2 ? "bg-[#F25A24] text-white shadow-sm" : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
+              }`}
           >
             2
           </button>
           <button
             onClick={() => setCurrentPage(3)}
-            className={`w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${
-              currentPage === 3 ? "bg-[#F25A24] text-white shadow-sm" : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
-            }`}
+            className={`w-9 h-9 rounded-sm font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${currentPage === 3 ? "bg-[#F25A24] text-white shadow-sm" : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
+              }`}
           >
             3
           </button>
@@ -320,7 +316,7 @@ export default function ProductsPage() {
              ========================================================= */}
         <section className="mt-16 bg-white rounded-md p-8 sm:p-12 border border-slate-200 shadow-sm">
           <div className="space-y-4 max-w-4xl">
-            <h3 className="font-heading text-xl sm:text-2xl font-black text-[#F25A24] uppercase tracking-tight">
+            <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#F25A24] uppercase tracking-tight">
               DIESEL GENERATORS FOR SALE BY BRAND AND SIZE
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">

@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
@@ -307,7 +307,7 @@ export default function Home() {
              SECTION 1: HERO SECTION (FRAMER TEMPLATE LAYOUT)
              ========================================================= */}
         <section id="hero" className="relative bg-[#F4F4F6] text-slate-950 border-b border-slate-200">
-          
+
           {/* Subtle Vertical Architectural Grid Lines */}
           <div className="absolute inset-0 max-w-[1400px] mx-auto px-6 sm:px-10 pointer-events-none z-0 hidden lg:block">
             <div className="w-full h-full grid grid-cols-4 border-x border-slate-200/60">
@@ -319,19 +319,19 @@ export default function Home() {
           </div>
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10 pt-8 pb-8 sm:pt-12 sm:pb-10">
-            
+
             {/* Top Pill Badge */}
-                        <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
-                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
-                  <span>Direct Diesel Generator Warehouse Stock & Engineering</span>
-                </div>
+            <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
+              <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+              <span>Direct Diesel Generator Warehouse Stock & Engineering</span>
+            </div>
 
             {/* 2-Column Main Hero Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              
+
               {/* Left Column: Giant Bold Headline */}
               <div className="lg:col-span-7">
-                <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-950 leading-[1.02]">
+                <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-950 leading-[1.02]">
                   From raw <span className="text-[#F25A24]">energy</span><br />
                   to uninterrupted<br />
                   production
@@ -508,7 +508,7 @@ export default function Home() {
               </div>
 
               <div className="lg:col-span-8 space-y-6">
-                <h2 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-black text-slate-950 leading-[1.05] tracking-tight">
+                <h2 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-bold text-slate-950 leading-[1.05] tracking-tight">
                   Driven by technology, backed by experience, focused on
                   <span className="text-[#F25A24]"> power</span> excellence
                 </h2>
@@ -538,7 +538,7 @@ export default function Home() {
 
               {/* Element 1: 10+ Global Brands */}
               <TiltCard className="flex flex-col items-center justify-center text-center p-8 bg-[#F6F7F9] rounded-full aspect-square max-w-[260px] mx-auto w-full border border-slate-200">
-                <span className="font-heading text-4xl sm:text-5xl font-black text-slate-950">
+                <span className="font-heading text-4xl sm:text-5xl font-bold text-slate-950">
                   10<span className="text-[#F25A24]">+</span>
                 </span>
                 <h4 className="font-heading font-bold text-slate-900 text-sm mt-1">Global Brands</h4>
@@ -555,7 +555,7 @@ export default function Home() {
                 <span className="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">
                   // 2005-2026 //
                 </span>
-                <span className="font-heading text-4xl sm:text-5xl font-black text-[#F25A24]">
+                <span className="font-heading text-4xl sm:text-5xl font-bold text-[#F25A24]">
                   20<span className="text-slate-950">+</span>
                 </span>
                 <p className="text-xs text-slate-600 max-w-[160px] mt-1 font-medium">Delivering consistent engineering excellence since day one.</p>
@@ -598,7 +598,7 @@ export default function Home() {
                   <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                   <span>Our Capabilities</span>
                 </div>
-                <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black text-slate-950 tracking-tight leading-[1.08]">
+                <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-950 tracking-tight leading-[1.08]">
                   Scalable <span className="text-[#F25A24]">capabilities</span><br />
                   for every challenge
                 </h2>
@@ -630,7 +630,7 @@ export default function Home() {
                     {/* 1. Left Index Number Badge */}
                     <div className="hidden lg:flex lg:col-span-1 items-start justify-center pt-1">
                       <div className="w-12 h-12 rounded-sm bg-[#EAEBED] border border-slate-300/60 flex items-center justify-center group-hover:bg-[#E2E4E9] group-hover:border-slate-400/80 transition-colors shadow-xs select-none">
-                        <span className="font-heading text-2xl font-black text-slate-950 tracking-tight">
+                        <span className="font-heading text-2xl font-bold text-slate-950 tracking-tight">
                           {String(index + 1).padStart(2, "0")}
                         </span>
                       </div>
@@ -705,7 +705,7 @@ export default function Home() {
                   <MapPin className="w-5 h-5 text-[#F25A24]" />
                 </div>
                 <div>
-                  <h4 className="font-heading font-black text-sm sm:text-base text-slate-950 leading-snug">
+                  <h4 className="font-heading font-bold text-sm sm:text-base text-slate-950 leading-snug">
                     Delivering to all 64 Districts across Bangladesh
                   </h4>
                   <p className="text-xs text-slate-500 font-normal mt-0.5">
@@ -795,17 +795,17 @@ export default function Home() {
             {/* 3. Top Header: Badge on Left + 50,000+ Metric on Right */}
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start mb-12 lg:mb-16">
               {/* Col 1: Badge */}
-                <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight text-white">
-                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
-                  <span>What we manufacture</span>
-                </div>
+              <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight text-white">
+                <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+                <span>What we manufacture</span>
+              </div>
 
               {/* Col 2 & 3: Grid alignment space */}
               <div className="hidden lg:block lg:col-span-2" />
 
               {/* Col 4: 50,000+ Metric */}
               <div className="lg:pl-6">
-                <div className="font-heading text-5xl lg:text-6xl font-black text-white tracking-tight leading-none">
+                <div className="font-heading text-5xl lg:text-6xl font-bold text-white tracking-tight leading-none">
                   50,000<span className="text-[#F25A24]">+</span>
                 </div>
                 <p className="text-xs text-slate-400 mt-2.5 max-w-[260px] leading-relaxed">
@@ -829,7 +829,7 @@ export default function Home() {
                   className="absolute top-[48%] left-[7.5%] w-7 h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
                 >
                   {activeHotspot === "canopy" && <span className="absolute inset-0 rounded-sm bg-[#F25A24]/40 animate-ping" />}
-                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[10px] font-black transition-all ${activeHotspot === "canopy" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
+                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[10px] font-bold transition-all ${activeHotspot === "canopy" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
                     }`}>
                     1
                   </span>
@@ -844,7 +844,7 @@ export default function Home() {
                   className="absolute top-[32%] left-[37%] w-7 h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
                 >
                   {activeHotspot === "engine" && <span className="absolute inset-0 rounded-sm bg-[#F25A24]/40 animate-ping" />}
-                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[10px] font-black transition-all ${activeHotspot === "engine" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
+                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[10px] font-bold transition-all ${activeHotspot === "engine" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
                     }`}>
                     2
                   </span>
@@ -859,7 +859,7 @@ export default function Home() {
                   className="absolute top-[52%] left-[71.5%] w-7 h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
                 >
                   {activeHotspot === "alternator" && <span className="absolute inset-0 rounded-sm bg-[#F25A24]/40 animate-ping" />}
-                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[10px] font-black transition-all ${activeHotspot === "alternator" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
+                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[10px] font-bold transition-all ${activeHotspot === "alternator" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
                     }`}>
                     3
                   </span>
@@ -877,8 +877,8 @@ export default function Home() {
               <div
                 onClick={() => setActiveHotspot("engine")}
                 className={`p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "engine"
-                    ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
-                    : "border-white/[0.08] hover:border-white/20"
+                  ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
+                  : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
                 <h4 className="font-heading font-bold text-base text-white mb-3">
@@ -911,8 +911,8 @@ export default function Home() {
               <div
                 onClick={() => setActiveHotspot("canopy")}
                 className={`p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "canopy"
-                    ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
-                    : "border-white/[0.08] hover:border-white/20"
+                  ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
+                  : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
                 <h4 className="font-heading font-bold text-base text-white mb-3">
@@ -945,8 +945,8 @@ export default function Home() {
               <div
                 onClick={() => setActiveHotspot("controller")}
                 className={`p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "controller"
-                    ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
-                    : "border-white/[0.08] hover:border-white/20"
+                  ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
+                  : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
                 <h4 className="font-heading font-bold text-base text-white mb-3">
@@ -979,8 +979,8 @@ export default function Home() {
               <div
                 onClick={() => setActiveHotspot("alternator")}
                 className={`p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "alternator"
-                    ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
-                    : "border-white/[0.08] hover:border-white/20"
+                  ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
+                  : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
                 <h4 className="font-heading font-bold text-base text-white mb-3">
@@ -1048,11 +1048,11 @@ export default function Home() {
             {/* Header */}
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-6">
               <div className="space-y-3">
-                             <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
+                <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
                   <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                   <span>What we supply</span>
                 </div>
-                <h2 className="font-heading text-3xl sm:text-5xl font-black text-slate-950 tracking-tight">
+                <h2 className="font-heading text-3xl sm:text-5xl font-bold text-slate-950 tracking-tight">
                   50,000+ kVA <span className="text-[#F25A24]">delivered</span> across Bangladesh
                 </h2>
               </div>
@@ -1352,8 +1352,8 @@ export default function Home() {
                         type="button"
                         onClick={() => setActiveIndustry(key)}
                         className={`relative w-full text-left pl-4 sm:pl-5 py-2 sm:py-2.5 font-heading text-[18px] sm:text-2xl tracking-[-0.015em] leading-[1.3] transition-colors cursor-pointer block ${isActive
-                            ? "text-[#141518] font-semibold"
-                            : "text-[#6E7075] hover:text-[#141518] font-medium"
+                          ? "text-[#141518] font-semibold"
+                          : "text-[#6E7075] hover:text-[#141518] font-medium"
                           }`}
                       >
                         {isActive && (
@@ -1445,7 +1445,7 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 lg:mb-10 gap-4">
               <div className="space-y-3">
-                              <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
+                <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
                   <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                   <span>Real-world success</span>
                 </div>
@@ -1677,10 +1677,10 @@ export default function Home() {
               className="max-w-[650px]"
             >
               {/* Pill Badge */}
-                           <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight text-white">
-                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
-                  <span>Open a Conversation</span>
-                </div>
+              <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight text-white">
+                <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+                <span>Open a Conversation</span>
+              </div>
 
               {/* 2-Line Headline */}
               <h2 className="font-heading text-3xl sm:text-5xl lg:text-[48px] font-extrabold text-white tracking-[-0.025em] leading-[1.12]">
@@ -1888,24 +1888,24 @@ export default function Home() {
                             aria-hidden={dupIndex === 1}
                             className="flex items-center gap-8 sm:gap-10 pr-8 sm:pr-10 shrink-0"
                           >
-                            <span className="font-heading text-[13px] font-black text-[#111214] tracking-wider whitespace-nowrap">
+                            <span className="font-heading text-[13px] font-bold text-[#111214] tracking-wider whitespace-nowrap">
                               BEXIMCO
                             </span>
                             <span className="inline-flex items-center gap-1 font-heading text-[13px] font-extrabold text-[#1E3A8A] tracking-tight whitespace-nowrap">
                               <span className="w-2.5 h-2.5 bg-[#1E3A8A] rounded-[2px] inline-block shrink-0" />
                               <span>SQUARE</span>
                             </span>
-                            <span className="inline-flex items-center gap-1 font-heading text-[15px] font-black text-[#7E22CE] tracking-tight whitespace-nowrap">
+                            <span className="inline-flex items-center gap-1 font-heading text-[15px] font-bold text-[#7E22CE] tracking-tight whitespace-nowrap">
                               <span className="w-2.5 h-2.5 rounded-xs border-2 border-[#7E22CE] inline-block rotate-45 shrink-0" />
                               <span>brac</span>
                             </span>
-                            <span className="inline-flex items-center gap-0.5 font-heading text-[14px] font-black text-[#E11D48] tracking-tight whitespace-nowrap">
+                            <span className="inline-flex items-center gap-0.5 font-heading text-[14px] font-bold text-[#E11D48] tracking-tight whitespace-nowrap">
                               <span>bKash</span>
                               <svg className="w-3.5 h-3.5 fill-current -mt-0.5" viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M3 13l7-9 4 6 7-4-6 10-5-3-7 0z" />
                               </svg>
                             </span>
-                            <span className="font-heading text-[13px] font-black text-[#1D4ED8] tracking-wide whitespace-nowrap">
+                            <span className="font-heading text-[13px] font-bold text-[#1D4ED8] tracking-wide whitespace-nowrap">
                               WALTON
                             </span>
                           </div>
@@ -1928,7 +1928,7 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
               <div className="space-y-4">
-                               <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
+                <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
                   <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                   <span>Insights & Article</span>
                 </div>
@@ -2024,14 +2024,14 @@ export default function Home() {
                 <span>Instant kVA Calculator</span>
               </div>
 
-              <h3 className="font-heading text-2xl font-black text-slate-950 mb-1">Request Engineering Quote</h3>
+              <h3 className="font-heading text-2xl font-bold text-slate-950 mb-1">Request Engineering Quote</h3>
               <p className="text-xs text-slate-500 mb-6">Calculate the required generator kVA rating for your electrical load.</p>
 
               {/* Calculator */}
               <div className="bg-[#F7F7F8] p-5 rounded-md border border-slate-200 mb-6 space-y-4">
                 <div className="flex justify-between items-center text-xs font-bold text-slate-800">
                   <span>Estimated Facility Load (kW):</span>
-                  <span className="font-mono text-base font-black text-[#F25A24]">{kwLoad} kW</span>
+                  <span className="font-mono text-base font-bold text-[#F25A24]">{kwLoad} kW</span>
                 </div>
                 <input
                   type="range"

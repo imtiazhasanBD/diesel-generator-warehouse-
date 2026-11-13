@@ -48,7 +48,7 @@ export default function Footer() {
 
       {/* Giant Edge-to-Edge Bottom Watermark */}
       <div className="absolute bottom-0 left-0 right-0 max-w-[1400px] mx-auto px-4 sm:px-8 pointer-events-none select-none z-0 overflow-hidden">
-        <div className="font-heading font-black uppercase text-white/[0.04] text-[clamp(50px,13vw,196px)] leading-[0.76] tracking-[-0.03em] text-center whitespace-nowrap translate-y-[18%]">
+        <div className="font-heading font-bold uppercase text-white/[0.04] text-[clamp(50px,13vw,196px)] leading-[0.76] tracking-[-0.03em] text-center whitespace-nowrap translate-y-[18%]">
           GENERATORS
         </div>
       </div>

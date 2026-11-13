@@ -93,7 +93,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
       />
 
       <main className="max-w-[1240px] mx-auto px-4 py-6 sm:py-8 w-full flex-1 space-y-8 bg-white">
-        
+
         {/* =========================================================
              1. BREADCRUMBS
              ========================================================= */}
@@ -123,7 +123,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
              2. SHOWCASE: GALLERY (LEFT) + PRODUCT INFO & SPECS (RIGHT)
              ========================================================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* LEFT: Gallery (6 Cols) */}
           <div className="lg:col-span-6 space-y-3">
             {/* Main Image Box */}
@@ -170,11 +170,10 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 <button
                   key={idx}
                   onClick={() => setActiveImageIndex(idx)}
-                  className={`h-20 sm:h-24 rounded-md border transition-all overflow-hidden p-0 block cursor-pointer ${
-                    activeImageIndex === idx
+                  className={`h-20 sm:h-24 rounded-md border transition-all overflow-hidden p-0 block cursor-pointer ${activeImageIndex === idx
                       ? "border-2 border-[#F25A24] shadow-xs"
                       : "border-slate-200 hover:border-slate-300 opacity-80 hover:opacity-100"
-                  }`}
+                    }`}
                 >
                   <img
                     src={img}
@@ -188,18 +187,18 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
           {/* RIGHT: Price, Title, Description, Specs & Actions (6 Cols) */}
           <div className="lg:col-span-6 space-y-4">
-            
+
             {/* Price on the Top */}
             <div>
               <span className="text-xs font-medium text-slate-500 block">Price (Ex. VAT)</span>
-              <div className="text-3xl sm:text-4xl font-black text-[#F25A24] tracking-tight leading-none mt-1">
+              <div className="text-3xl sm:text-4xl font-bold text-[#F25A24] tracking-tight leading-none mt-1">
                 {formattedPrice}
               </div>
             </div>
 
             {/* Product Title */}
             <div>
-              <h1 className="text-2xl sm:text-3xl lg:text-[34px] font-black text-slate-950 tracking-tight leading-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-[34px] font-bold text-slate-950 tracking-tight leading-tight">
                 {product.name}
               </h1>
               {/* Model & Engine Subtitle */}
@@ -301,46 +300,42 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
              4. TABS & MIDDLE SPECIFICATION CARD
              ========================================================= */}
         <div className="space-y-4 pt-2">
-          
+
           {/* Segmented Tabs */}
           <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
             <button
               onClick={() => setActiveTab("specifications")}
-              className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${
-                activeTab === "specifications"
+              className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${activeTab === "specifications"
                   ? "bg-[#F25A24] text-white shadow-xs"
                   : "bg-transparent text-slate-600 hover:text-slate-950 font-semibold"
-              }`}
+                }`}
             >
               Specifications
             </button>
             <button
               onClick={() => setActiveTab("features")}
-              className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${
-                activeTab === "features"
+              className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${activeTab === "features"
                   ? "bg-[#F25A24] text-white shadow-xs"
                   : "bg-transparent text-slate-600 hover:text-slate-950 font-semibold"
-              }`}
+                }`}
             >
               Features
             </button>
             <button
               onClick={() => setActiveTab("optional")}
-              className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${
-                activeTab === "optional"
+              className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${activeTab === "optional"
                   ? "bg-[#F25A24] text-white shadow-xs"
                   : "bg-transparent text-slate-600 hover:text-slate-950 font-semibold"
-              }`}
+                }`}
             >
               Optional Equipment
             </button>
             <button
               onClick={() => setActiveTab("certificates")}
-              className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${
-                activeTab === "certificates"
+              className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${activeTab === "certificates"
                   ? "bg-[#F25A24] text-white shadow-xs"
                   : "bg-transparent text-slate-600 hover:text-slate-950 font-semibold"
-              }`}
+                }`}
             >
               Certificates
             </button>
@@ -348,7 +343,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
           {/* Unified Middle Container */}
           <div className="bg-white rounded-md border border-slate-200/90 shadow-2xs p-6 sm:p-8 space-y-8">
-            
+
             {/* TAB: SPECIFICATIONS */}
             {activeTab === "specifications" && (
               <>
@@ -571,7 +566,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
              5. TECHNICAL DOCUMENTS & WARRANTY CARDS
              ========================================================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          
+
           {/* Left Card: Technical Documents (7 Cols) */}
           <div className="lg:col-span-7 bg-white rounded-md border border-slate-200/90 shadow-2xs p-6 space-y-4">
             <div className="flex items-center gap-2 text-slate-950 font-bold text-base">

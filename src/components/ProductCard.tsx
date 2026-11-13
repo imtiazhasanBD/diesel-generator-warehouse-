@@ -63,7 +63,7 @@ export default function ProductCard({
           {/* Dual Spec Pill Badges: [Standby kVA] and [Prime kVA] */}
           <div className="grid grid-cols-2 gap-2 mt-4 mb-4">
             <div className="bg-[#F1F3F5] rounded-sm py-2 px-2.5 text-center border border-slate-200/70">
-              <span className="block font-heading font-black text-sm sm:text-base text-slate-950 leading-tight">
+              <span className="block font-heading font-bold text-sm sm:text-base text-slate-950 leading-tight">
                 {product.standbyKva} kVA
               </span>
               <span className="block text-[10px] font-mono text-slate-500 uppercase font-semibold">
@@ -72,7 +72,7 @@ export default function ProductCard({
             </div>
 
             <div className="bg-[#F1F3F5] rounded-sm py-2 px-2.5 text-center border border-slate-200/70">
-              <span className="block font-heading font-black text-sm sm:text-base text-slate-950 leading-tight">
+              <span className="block font-heading font-bold text-sm sm:text-base text-slate-950 leading-tight">
                 {product.primeKva} kVA
               </span>
               <span className="block text-[10px] font-mono text-slate-500 uppercase font-semibold">
