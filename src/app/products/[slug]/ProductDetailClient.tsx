@@ -1,28 +1,30 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import {
   ChevronRight,
+  ChevronLeft,
   Download,
   Phone,
-  Mail,
-  CheckCircle,
   FileText,
   Shield,
   Zap,
-  Sliders,
-  Cpu,
-  Layers,
   ArrowRight,
-  Wrench,
   Check,
-  Star,
-  Fuel
+  Maximize2,
+  X,
+  VolumeX,
+  Settings,
+  ShieldCheck,
+  Send,
+  Home,
+  Wrench
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import QuoteModal from "@/components/QuoteModal";
+import ProductCard from "@/components/ProductCard";
 import { GeneratorProduct, PRODUCTS } from "@/data/products";
 
 interface ProductDetailClientProps {
@@ -30,730 +32,685 @@ interface ProductDetailClientProps {
 }
 
 export default function ProductDetailClient({ product }: ProductDetailClientProps) {
-  // Active Gallery Image
-  const [activeImage, setActiveImage] = useState<string>(product.image);
+  // 4 Gallery Images
+  const galleryList = useMemo(() => {
+    const list = product.galleryImages && product.galleryImages.length > 0 ? [...product.galleryImages] : [product.image];
+    if (!list.includes(product.image)) {
+      list.unshift(product.image);
+    }
+    const extraAngles = [
+      "/assets/images/gen-control-panel.jpg",
+      "/assets/images/engine-circle.jpg",
+      "/assets/images/canopy-white-20k.jpg"
+    ];
+    extraAngles.forEach((img) => {
+      if (!list.includes(img) && list.length < 4) {
+        list.push(img);
+      }
+    });
+    return list.slice(0, 4);
+  }, [product]);
 
-  // Active Technical Spec Tab (Matching Reference Image 2)
-  const [activeTab, setActiveTab] = useState<"engine" | "alternator" | "control" | "canopy" | "dimensions">("engine");
+  // Gallery state
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const activeImage = galleryList[activeImageIndex] || product.image;
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  // Quote Modal State
+  // Active Tab
+  const [activeTab, setActiveTab] = useState<"specifications" | "features" | "optional" | "certificates">("specifications");
+
+  // Quote Modal state
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
-  // Related products
-  const relatedProducts = PRODUCTS.filter((p) => p.id !== product.id).slice(0, 4);
+  // Gallery navigation
+  const handlePrevImage = () => {
+    setActiveImageIndex((prev) => (prev > 0 ? prev - 1 : galleryList.length - 1));
+  };
+
+  const handleNextImage = () => {
+    setActiveImageIndex((prev) => (prev < galleryList.length - 1 ? prev + 1 : 0));
+  };
+
+  // Price formatting
+  const formattedPrice = useMemo(() => {
+    if (product.priceValueBDT) {
+      return `BDT ${product.priceValueBDT.toLocaleString("en-IN")}`;
+    }
+    return product.priceText || "BDT 7,45,000";
+  }, [product]);
+
+  // Similar generators (4 items)
+  const similarProducts = useMemo(() => {
+    return PRODUCTS.filter((p) => p.id !== product.id).slice(0, 4);
+  }, [product.id]);
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] text-slate-900 flex flex-col font-sans">
-      <Navbar
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-[#F25A24] selection:text-white">
+      {/* Top Header */}
+      <Header
         activePath="products"
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
-      {/* =========================================================
-           TOP BREADCRUMBS & MODEL HEADER (IMAGE 2 LAYOUT)
-           ========================================================= */}
-      <section className="bg-white border-b border-slate-200 py-6">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-10">
-          {/* Breadcrumbs */}
-          <nav className="flex items-center gap-2 text-xs text-slate-500 font-medium mb-4 overflow-x-auto whitespace-nowrap">
-            <Link href="/" className="hover:text-[#F25A24] transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-            <Link href="/products" className="hover:text-[#F25A24] transition-colors">
-              Products
-            </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-            <Link href={`/products?brand=${product.brand}`} className="hover:text-[#F25A24] transition-colors">
-              {product.brand}
-            </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-            <span className="text-[#F25A24] font-semibold truncate max-w-[280px]">
-              {product.name}
-            </span>
-          </nav>
+      <main className="max-w-[1240px] mx-auto px-4 py-6 sm:py-8 w-full flex-1 space-y-8 bg-white">
+        
+        {/* =========================================================
+             1. BREADCRUMBS
+             ========================================================= */}
+        <nav className="flex items-center gap-2 text-xs text-slate-500 font-medium overflow-x-auto whitespace-nowrap">
+          <Link href="/" className="hover:text-[#F25A24] transition-colors flex items-center gap-1">
+            <Home className="w-3.5 h-3.5 text-slate-400" />
+          </Link>
+          <ChevronRight className="w-3 h-3 text-slate-400 shrink-0" />
+          <Link href="/products" className="hover:text-[#F25A24] transition-colors">
+            Products
+          </Link>
+          <ChevronRight className="w-3 h-3 text-slate-400 shrink-0" />
+          <Link href="/products" className="hover:text-[#F25A24] transition-colors">
+            Diesel Generator
+          </Link>
+          <ChevronRight className="w-3 h-3 text-slate-400 shrink-0" />
+          <Link href={`/products?brand=${product.brand}`} className="hover:text-[#F25A24] transition-colors">
+            {product.brand} Generator
+          </Link>
+          <ChevronRight className="w-3 h-3 text-slate-400 shrink-0" />
+          <span className="text-[#F25A24] font-semibold truncate max-w-[280px]">
+            {product.name}
+          </span>
+        </nav>
 
-          {/* Model Title Banner */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-              <div className="flex items-center gap-2 mb-1.5">
-                <span className="px-2.5 py-0.5 rounded-sm text-[10px] font-mono font-bold tracking-wider uppercase bg-[#F25A24]/10 text-[#F25A24] border border-[#F25A24]/20">
-                  {product.brand} Genuine Series
-                </span>
-                <span className="px-2.5 py-0.5 rounded-sm text-[10px] font-mono font-bold tracking-wider uppercase bg-slate-100 text-slate-700 border border-slate-200">
-                  {product.type}
-                </span>
-                <span className="px-2.5 py-0.5 rounded-sm text-[10px] font-mono font-bold tracking-wider uppercase bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  In Warehouse Stock
-                </span>
-              </div>
-              <h1 className="font-heading text-2xl sm:text-4xl font-black text-slate-950 tracking-tight">
-                {product.name}
-              </h1>
-            </div>
-
-            {/* Quick Pricing Badge */}
-            <div className="flex items-center gap-3">
-              <div className="text-right">
-                <span className="text-[10px] font-mono uppercase text-slate-400 font-bold block">Direct Warehouse Pricing</span>
-                <span className="text-xl sm:text-2xl font-black text-[#F25A24] font-heading">
-                  {product.priceText}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-           HERO SPLIT DETAILS VIEW (MATCHING REFERENCE IMAGE 2)
-           ========================================================= */}
-      <section className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-10 py-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-
-          {/* LEFT: Product Gallery (7 Cols) */}
-          <div className="lg:col-span-7 space-y-4">
+        {/* =========================================================
+             2. SHOWCASE: GALLERY (LEFT) + PRODUCT INFO & SPECS (RIGHT)
+             ========================================================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* LEFT: Gallery (6 Cols) */}
+          <div className="lg:col-span-6 space-y-3">
             {/* Main Image Box */}
-            <div className="bg-white rounded-md p-6 sm:p-10 border border-slate-200 shadow-sm relative flex items-center justify-center min-h-[380px] sm:min-h-[460px] overflow-hidden group">
+            <div className="bg-slate-100 rounded-md border border-slate-200/90 shadow-2xs relative w-full h-[360px] sm:h-[440px] overflow-hidden group">
               <img
                 src={activeImage}
                 alt={product.name}
-                className="max-h-[380px] sm:max-h-[420px] w-auto max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-102"
               />
 
-              {/* Noise Level Badge Overlay */}
-              <div className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-sm font-mono flex items-center gap-2 border border-white/10">
-                <span className="w-2 h-2 rounded-sm bg-emerald-400 animate-pulse" />
-                <span>{product.noiseLevel}</span>
-              </div>
+              {/* Expand Button */}
+              <button
+                onClick={() => setIsLightboxOpen(true)}
+                className="absolute top-3.5 right-3.5 bg-white/90 hover:bg-white text-slate-700 hover:text-slate-950 p-2 rounded-sm border border-slate-200 shadow-2xs transition-colors cursor-pointer z-10"
+                aria-label="Expand image"
+              >
+                <Maximize2 className="w-4 h-4" />
+              </button>
 
-              {/* Watermark brand tag */}
-              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md text-slate-800 text-[11px] font-mono font-bold px-3 py-1 rounded-sm border border-slate-200 shadow-xs uppercase">
-                {product.brandBadgeText}
-              </div>
+              {/* Prev / Next Controls */}
+              {galleryList.length > 1 && (
+                <>
+                  <button
+                    onClick={handlePrevImage}
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-md bg-white/90 hover:bg-white text-slate-700 shadow-sm border border-slate-200 flex items-center justify-center transition-all cursor-pointer z-10"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={handleNextImage}
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-md bg-white/90 hover:bg-white text-slate-700 shadow-sm border border-slate-200 flex items-center justify-center transition-all cursor-pointer z-10"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </>
+              )}
             </div>
 
-            {/* Thumbnail Gallery Strip */}
-            <div className="flex items-center gap-3 overflow-x-auto pb-2">
-              {product.galleryImages.map((img, idx) => (
+            {/* Exactly 4 Thumbnails */}
+            <div className="grid grid-cols-4 gap-2.5 sm:gap-3">
+              {galleryList.map((img, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setActiveImage(img)}
-                  className={`w-20 h-20 rounded-sm bg-white p-2 border-2 transition-all flex items-center justify-center shrink-0 overflow-hidden cursor-pointer ${
-                    activeImage === img ? "border-[#F25A24] shadow-md scale-105" : "border-slate-200 opacity-70 hover:opacity-100"
+                  onClick={() => setActiveImageIndex(idx)}
+                  className={`h-20 sm:h-24 rounded-md border transition-all overflow-hidden p-0 block cursor-pointer ${
+                    activeImageIndex === idx
+                      ? "border-2 border-[#F25A24] shadow-xs"
+                      : "border-slate-200 hover:border-slate-300 opacity-80 hover:opacity-100"
                   }`}
                 >
-                  <img src={img} alt={`View angle ${idx + 1}`} className="max-h-full max-w-full object-contain" />
+                  <img
+                    src={img}
+                    alt={`Thumbnail ${idx + 1}`}
+                    className="w-full h-full object-cover block"
+                  />
                 </button>
               ))}
             </div>
           </div>
 
-          {/* RIGHT: Power Matrix & CTAs (5 Cols - Matching Image 2) */}
-          <div className="lg:col-span-5 space-y-6">
+          {/* RIGHT: Price, Title, Description, Specs & Actions (6 Cols) */}
+          <div className="lg:col-span-6 space-y-4">
+            
+            {/* Price on the Top */}
+            <div>
+              <span className="text-xs font-medium text-slate-500 block">Price (Ex. VAT)</span>
+              <div className="text-3xl sm:text-4xl font-black text-[#F25A24] tracking-tight leading-none mt-1">
+                {formattedPrice}
+              </div>
+            </div>
 
-            {/* Power Matrix Table (Exact Match to Image 2 APD 110 A Top Table) */}
-            <div className="bg-white rounded-md border border-slate-200 shadow-sm overflow-hidden">
-              <div className="bg-[#0E1014] text-white px-5 py-3 flex items-center justify-between">
-                <div className="font-mono text-xs uppercase font-bold tracking-wider flex items-center gap-2">
-                  <Zap className="w-3.5 h-3.5 text-[#F25A24]" />
-                  Power Output Matrix (50 Hz)
+            {/* Product Title */}
+            <div>
+              <h1 className="text-2xl sm:text-3xl lg:text-[34px] font-black text-slate-950 tracking-tight leading-tight">
+                {product.name}
+              </h1>
+              {/* Model & Engine Subtitle */}
+              <div className="flex flex-wrap items-center gap-x-3 text-xs sm:text-[13px] text-slate-500 font-medium mt-1.5">
+                <span><strong className="text-slate-800">Model:</strong> P-{product.primeKva}S</span>
+                <span className="text-slate-300">|</span>
+                <span><strong className="text-slate-800">Engine:</strong> {product.specs.engineBrand} {product.specs.engineModel}</span>
+              </div>
+            </div>
+
+            {/* Short Description */}
+            <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
+              {product.shortDesc || "Reliable, compact and soundproof diesel generator for commercial and industrial applications."}
+            </p>
+
+            {/* Key Specifications Card (Matches Reference Image Exactly) */}
+            <div className="bg-white rounded-md border border-slate-200/90 shadow-2xs p-4 sm:p-5 space-y-3">
+              {/* Header with Orange Vertical Bar */}
+              <div className="flex items-center gap-2.5">
+                <span className="w-1 h-5 rounded-sm bg-[#F25A24] shrink-0" />
+                <h3 className="font-extrabold text-sm sm:text-base text-slate-950 tracking-tight">
+                  Key Specifications
+                </h3>
+              </div>
+
+              {/* 2-Column Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-8 text-xs sm:text-[13px]">
+                {/* Left Column */}
+                <div className="divide-y divide-slate-100">
+                  <div className="py-2.5 flex items-center justify-between">
+                    <span className="font-bold text-slate-950">Prime Power</span>
+                    <span className="font-medium text-slate-800 text-right">{product.primeKva} kVA ({product.primeKw} kW)</span>
+                  </div>
+                  <div className="py-2.5 flex items-center justify-between">
+                    <span className="font-bold text-slate-950">Standby Power</span>
+                    <span className="font-medium text-slate-800 text-right">{product.standbyKva} kVA ({product.standbyKw} kW)</span>
+                  </div>
+                  <div className="py-2.5 flex items-center justify-between">
+                    <span className="font-bold text-slate-950">Frequency</span>
+                    <span className="font-medium text-slate-800 text-right">{product.frequencyHz || 50} Hz</span>
+                  </div>
                 </div>
-                <span className="text-[10px] font-mono text-slate-400">PF: 0.8 Lagging</span>
-              </div>
 
-              <div className="p-4 sm:p-5">
-                <table className="w-full text-xs">
-                  <thead>
-                    <tr className="border-b border-slate-200 text-slate-400 font-mono text-[11px] uppercase">
-                      <th className="text-left pb-2 font-semibold">Rating</th>
-                      <th className="text-center pb-2 font-semibold">kVA</th>
-                      <th className="text-center pb-2 font-semibold">kW</th>
-                      <th className="text-right pb-2 font-semibold">Current (A)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 font-semibold">
-                    <tr>
-                      <td className="py-3 text-slate-700 flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-sm bg-[#F25A24]" />
-                        <strong>Standby Power</strong>
-                      </td>
-                      <td className="py-3 text-center text-slate-950 font-bold text-sm">
-                        {product.standbyKva}
-                      </td>
-                      <td className="py-3 text-center text-slate-950 font-bold text-sm">
-                        {product.standbyKw}
-                      </td>
-                      <td className="py-3 text-right text-slate-600 font-mono">
-                        {Math.round((product.standbyKva * 1000) / (400 * 1.732))} A
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 text-slate-700 flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-sm bg-slate-400" />
-                        <strong>Prime Power</strong>
-                      </td>
-                      <td className="py-3 text-center text-slate-950 font-bold text-sm">
-                        {product.primeKva}
-                      </td>
-                      <td className="py-3 text-center text-slate-950 font-bold text-sm">
-                        {product.primeKw}
-                      </td>
-                      <td className="py-3 text-right text-slate-600 font-mono">
-                        {Math.round((product.primeKva * 1000) / (400 * 1.732))} A
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                {/* Right Column */}
+                <div className="divide-y divide-slate-100">
+                  <div className="py-2.5 flex items-start justify-between">
+                    <span className="font-bold text-slate-950">Voltage</span>
+                    <div className="font-medium text-slate-800 text-right leading-tight">
+                      <div>400 / 230 V</div>
+                      <div className="text-[11px] text-slate-500">(3-Phase)</div>
+                    </div>
+                  </div>
+                  <div className="py-2.5 flex items-center justify-between">
+                    <span className="font-bold text-slate-950">Engine</span>
+                    <span className="font-medium text-slate-800 text-right">{product.specs.engineBrand} {product.specs.engineModel}</span>
+                  </div>
+                  <div className="py-2.5 flex items-center justify-between">
+                    <span className="font-bold text-slate-950">Canopy</span>
+                    <span className="font-medium text-slate-800 text-right">{product.type === "Silent Canopy" ? "Silent / Weatherproof" : product.type}</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* General Features List (Matching Image 2 General Features block) */}
-            <div className="bg-white rounded-md p-5 border border-slate-200 shadow-sm space-y-3">
-              <h3 className="font-heading font-black text-sm text-slate-950 uppercase tracking-wider flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-[#F25A24]" />
-                General System Features
-              </h3>
-              <ul className="space-y-2 text-xs text-slate-600">
-                {product.generalFeatures.map((feat, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-sm bg-[#F25A24] mt-1.5 shrink-0" />
-                    <span className="leading-relaxed">{feat}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Action Buttons: Get Quote & Download Datasheet (Matching Image 2) */}
-            <div className="space-y-3 pt-2">
+            {/* Action Buttons */}
+            <div className="space-y-2.5 pt-1">
               <button
                 onClick={() => setIsQuoteOpen(true)}
-                className="w-full framer-btn-primary justify-between cursor-pointer"
+                className="w-full bg-[#F25A24] hover:bg-[#d94815] text-white py-3.5 px-5 rounded-md font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-xs cursor-pointer"
               >
-                <span>Get an Official Quote</span>
-                <div className="btn-arrow-box">
-                  <ArrowRight className="w-3.5 h-3.5 text-white" />
-                </div>
+                <span>Request a Quote</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
 
-              <div className="grid grid-cols-2 gap-3">
-                <a
-                  href={`#documents`}
-                  className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 py-2.5 px-3 rounded-md text-xs font-semibold transition-colors shadow-xs"
+              <div className="grid grid-cols-2 gap-2.5">
+                <button
+                  onClick={() => window.print()}
+                  className="w-full bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 py-2.5 px-3 rounded-md font-semibold text-xs flex items-center justify-center gap-1.5 transition-all shadow-2xs cursor-pointer"
                 >
-                  <Download className="w-3.5 h-3.5 text-[#F25A24]" />
-                  <span>Download Spec</span>
-                </a>
+                  <Download className="w-4 h-4 text-slate-700" />
+                  <span>Download Spec (PDF)</span>
+                </button>
 
                 <a
                   href="tel:+8801234567890"
-                  className="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 py-2.5 px-3 rounded-md text-xs font-semibold transition-colors shadow-xs"
+                  className="w-full bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 py-2.5 px-3 rounded-md font-semibold text-xs flex items-center justify-center gap-1.5 transition-all shadow-2xs cursor-pointer"
                 >
-                  <Phone className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Call 24/7 Desk</span>
+                  <Phone className="w-4 h-4 text-slate-700" />
+                  <span>Call 24/7 Support</span>
                 </a>
               </div>
             </div>
 
-            {/* Warehouse Stock Guarantee Card */}
-            <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-center gap-3 text-xs text-slate-600">
-              <Shield className="w-5 h-5 text-[#F25A24] shrink-0" />
-              <div>
-                <strong className="text-slate-900 block font-semibold">1 Year / 1,000 Hours Warranty</strong>
-                <span>Official factory replacement warranty with 24/7 on-site emergency mechanic support across Bangladesh.</span>
-              </div>
-            </div>
-
           </div>
+
         </div>
-      </section>
 
-      {/* =========================================================
-           PRODUCT FEATURES & TECHNICAL SPECIFICATIONS (IMAGE 2)
-           ========================================================= */}
-      <section className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-10 py-12 w-full">
-        <div className="bg-white rounded-md p-6 sm:p-10 border border-slate-200 shadow-sm space-y-8">
-
-          {/* Section Heading */}
-          <div className="border-b border-slate-200 pb-6">
-            <h2 className="font-heading text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
-              Product Features & Technical Specifications
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Detailed engineering parameters for {product.name} (50 Hz, 400V/230V, Synchronous 1500 RPM).
-            </p>
-
-            {/* Horizontal Tabs (Matching Image 2: [Diesel Engine] [Electrical] [Control Panel] [Canopy]) */}
-            <div className="flex items-center gap-2 overflow-x-auto pt-6 scrollbar-none">
-              <button
-                onClick={() => setActiveTab("engine")}
-                className={`px-4 py-2.5 rounded-md font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
-                  activeTab === "engine"
-                    ? "bg-[#0E1014] text-white shadow-sm"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                }`}
-              >
-                <Cpu className="w-3.5 h-3.5 text-[#F25A24]" />
-                <span>Diesel Engine System</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab("alternator")}
-                className={`px-4 py-2.5 rounded-md font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
-                  activeTab === "alternator"
-                    ? "bg-[#0E1014] text-white shadow-sm"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                }`}
-              >
-                <Zap className="w-3.5 h-3.5 text-[#F25A24]" />
-                <span>Electrical Alternator</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab("control")}
-                className={`px-4 py-2.5 rounded-md font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
-                  activeTab === "control"
-                    ? "bg-[#0E1014] text-white shadow-sm"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                }`}
-              >
-                <Sliders className="w-3.5 h-3.5 text-[#F25A24]" />
-                <span>Control & ATS Module</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab("canopy")}
-                className={`px-4 py-2.5 rounded-md font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
-                  activeTab === "canopy"
-                    ? "bg-[#0E1014] text-white shadow-sm"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                }`}
-              >
-                <Layers className="w-3.5 h-3.5 text-[#F25A24]" />
-                <span>Canopy & Soundproof Enclosure</span>
-              </button>
-
-              <button
-                onClick={() => setActiveTab("dimensions")}
-                className={`px-4 py-2.5 rounded-md font-bold text-xs shrink-0 transition-all flex items-center gap-2 cursor-pointer ${
-                  activeTab === "dimensions"
-                    ? "bg-[#0E1014] text-white shadow-sm"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                }`}
-              >
-                <Fuel className="w-3.5 h-3.5 text-[#F25A24]" />
-                <span>Dimensions & Fuel Capacity</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Active Specification Table (Exact Layout to Reference Image 2 Table) */}
-          <div className="overflow-x-auto">
-            {activeTab === "engine" && (
-              <table className="w-full text-xs text-left border border-slate-200 rounded-sm overflow-hidden">
-                <thead className="bg-[#FAFBFD] text-slate-500 font-mono uppercase text-[11px] border-b border-slate-200">
-                  <tr>
-                    <th className="py-3 px-5 font-bold w-1/3">Engine Parameter</th>
-                    <th className="py-3 px-5 font-bold">Factory Engineering Specification</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Manufacturer / Brand</td>
-                    <td className="py-3 px-5 text-slate-900 font-bold">{product.specs.engineBrand}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Engine Model Number</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono font-bold text-[#F25A24]">{product.specs.engineModel}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Cylinder Arrangement</td>
-                    <td className="py-3 px-5 text-slate-900">{product.specs.engineCylinders}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Air Intake Aspiration</td>
-                    <td className="py-3 px-5 text-slate-900">{product.specs.aspiration}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Bore and Stroke</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono">{product.specs.boreStroke}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Total Displacement</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono">{product.specs.displacementL}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Compression Ratio</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono">{product.specs.compressionRatio}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Rated Operating Speed</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono font-bold">{product.specs.speedRpm} RPM (50 Hz)</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Governor System</td>
-                    <td className="py-3 px-5 text-slate-900">{product.specs.governorType}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Cooling Medium</td>
-                    <td className="py-3 px-5 text-slate-900">{product.specs.coolingMethod}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Engine Lubricating Oil Capacity</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono">{product.specs.oilCapacityL}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Coolant System Capacity</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono">{product.specs.coolantCapacityL}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Fuel Consumption @ 100% Load</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono font-bold">{product.specs.fuelCons100}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Fuel Consumption @ 75% Load</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono font-bold text-emerald-700">{product.specs.fuelCons75}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Fuel Consumption @ 50% Load</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono">{product.specs.fuelCons50}</td>
-                  </tr>
-                </tbody>
-              </table>
-            )}
-
-            {activeTab === "alternator" && (
-              <table className="w-full text-xs text-left border border-slate-200 rounded-sm overflow-hidden">
-                <thead className="bg-[#FAFBFD] text-slate-500 font-mono uppercase text-[11px] border-b border-slate-200">
-                  <tr>
-                    <th className="py-3 px-5 font-bold w-1/3">Alternator Parameter</th>
-                    <th className="py-3 px-5 font-bold">Factory Engineering Specification</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Alternator Manufacturer</td>
-                    <td className="py-3 px-5 text-slate-900 font-bold">{product.specs.alternatorBrand}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Alternator Model</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono font-bold text-[#F25A24]">{product.specs.alternatorModel}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Number of Phases & Poles</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono">3 Phase 4 Wires, 4 Poles</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Insulation Class</td>
-                    <td className="py-3 px-5 text-slate-900 font-bold">{product.specs.insulationClass}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Protection Ingress Rating</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono">{product.specs.protectionDegree}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Steady State Voltage Regulation</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono font-bold text-emerald-700">{product.specs.voltageRegulation}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Power Factor</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono">{product.specs.powerFactor}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Excitation System</td>
-                    <td className="py-3 px-5 text-slate-900">Brushless, Self-Excited with AVR</td>
-                  </tr>
-                </tbody>
-              </table>
-            )}
-
-            {activeTab === "control" && (
-              <table className="w-full text-xs text-left border border-slate-200 rounded-sm overflow-hidden">
-                <thead className="bg-[#FAFBFD] text-slate-500 font-mono uppercase text-[11px] border-b border-slate-200">
-                  <tr>
-                    <th className="py-3 px-5 font-bold w-1/3">Control Parameter</th>
-                    <th className="py-3 px-5 font-bold">Factory Engineering Specification</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Control Unit Manufacturer</td>
-                    <td className="py-3 px-5 text-slate-900 font-bold">{product.specs.controllerBrand}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Module Model</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono font-bold text-[#F25A24]">{product.specs.controllerModel}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Operation Modes</td>
-                    <td className="py-3 px-5 text-slate-900">Auto Mains Failure (AMF), Manual, Remote Start, Test</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Display Type</td>
-                    <td className="py-3 px-5 text-slate-900">Backlit Graphical LCD with Multi-Lingual Support</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Automatic Protection Trips</td>
-                    <td className="py-3 px-5 text-slate-900">Low Oil Pressure, High Coolant Temp, Over/Under Speed, Over/Under Voltage, Battery Charge Fail</td>
-                  </tr>
-                </tbody>
-              </table>
-            )}
-
-            {activeTab === "canopy" && (
-              <table className="w-full text-xs text-left border border-slate-200 rounded-sm overflow-hidden">
-                <thead className="bg-[#FAFBFD] text-slate-500 font-mono uppercase text-[11px] border-b border-slate-200">
-                  <tr>
-                    <th className="py-3 px-5 font-bold w-1/3">Enclosure Parameter</th>
-                    <th className="py-3 px-5 font-bold">Factory Engineering Specification</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Canopy Build Type</td>
-                    <td className="py-3 px-5 text-slate-900 font-bold">{product.type}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Acoustic Sound Level</td>
-                    <td className="py-3 px-5 text-slate-900 font-bold text-[#F25A24] font-mono">{product.noiseLevel}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Sheet Metal Thickness</td>
-                    <td className="py-3 px-5 text-slate-900">2.5 mm Cold Rolled Steel with Electrostatic Powder Coating</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Sound Insulation Lining</td>
-                    <td className="py-3 px-5 text-slate-900">High-Density Flame-Retardant Mineral Rockwool (Class A1)</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Exhaust System</td>
-                    <td className="py-3 px-5 text-slate-900">Internal Industrial Critical Silencer with Rain Cap</td>
-                  </tr>
-                </tbody>
-              </table>
-            )}
-
-            {activeTab === "dimensions" && (
-              <table className="w-full text-xs text-left border border-slate-200 rounded-sm overflow-hidden">
-                <thead className="bg-[#FAFBFD] text-slate-500 font-mono uppercase text-[11px] border-b border-slate-200">
-                  <tr>
-                    <th className="py-3 px-5 font-bold w-1/3">Physical Dimension Parameter</th>
-                    <th className="py-3 px-5 font-bold">Factory Engineering Specification</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Overall Dimensions (L x W x H)</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono font-bold">{product.specs.dimensionsMm}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Dry Operating Weight</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono font-bold text-[#F25A24]">{product.specs.weightKg} kg</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Standard Base Fuel Tank Capacity</td>
-                    <td className="py-3 px-5 text-slate-900 font-mono font-bold">{product.fuelCapacity}</td>
-                  </tr>
-                  <tr className="hover:bg-slate-50 bg-[#FAFBFD]/50">
-                    <td className="py-3 px-5 font-semibold text-slate-700">Lifting & Handling</td>
-                    <td className="py-3 px-5 text-slate-900">Integrated Central Crane Lifting Eyelet & Forklift Pockets</td>
-                  </tr>
-                </tbody>
-              </table>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-           OPTIONAL EQUIPMENT (MATCHING REFERENCE IMAGE 2)
-           ========================================================= */}
-      <section className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-10 py-6 w-full">
-        <div className="bg-white rounded-md p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
-          <div>
-            <h2 className="font-heading text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
-              Optional Equipment & Custom Upgrades
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Engineered accessories readily integrated at our Dhaka central workshop prior to delivery.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {product.optionalEquipment.map((opt, idx) => (
-              <div
-                key={idx}
-                className="bg-[#FAFBFD] p-5 rounded-md border border-slate-200 hover:border-[#F25A24]/50 transition-all space-y-2 group"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-sm bg-slate-900 group-hover:bg-[#F25A24] transition-colors flex items-center justify-center text-white shrink-0">
-                    <Wrench className="w-4 h-4" />
-                  </div>
-                  <h3 className="font-heading font-bold text-sm text-slate-900">
-                    {opt.title}
-                  </h3>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed pl-10">
-                  {opt.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-           CERTIFICATES & QUALITY STANDARDS (MATCHING IMAGE 2)
-           ========================================================= */}
-      <section className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-10 py-6 w-full">
-        <div className="bg-white rounded-md p-6 sm:p-10 border border-slate-200 shadow-sm space-y-4">
-          <div className="flex items-center gap-2">
-            <Shield className="w-5 h-5 text-[#F25A24]" />
-            <h2 className="font-heading text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
-              Certificates & Compliance Standards
-            </h2>
-          </div>
-
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
-            All diesel generator units supplied by Diesel Generator Warehouse are fully factory-tested under simulated full load resistive test benches and strictly certified to international electrical and safety benchmarks:
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 pt-2">
-            {product.certificates.map((cert, idx) => (
-              <div
-                key={idx}
-                className="flex items-center gap-2.5 bg-[#FAFBFD] px-4 py-3 rounded-sm border border-slate-200 text-xs font-semibold text-slate-800"
-              >
-                <Check className="w-4 h-4 text-emerald-600 shrink-0 stroke-[3]" />
-                <span>{cert}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-           DOWNLOAD TECHNICAL DOCUMENTS (MATCHING REFERENCE IMAGE 2)
-           ========================================================= */}
-      <section id="documents" className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-10 py-6 w-full">
-        <div className="bg-white rounded-md p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
-          <div className="flex items-center gap-2">
-            <FileText className="w-5 h-5 text-[#F25A24]" />
-            <h2 className="font-heading text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
-              Download Technical Documentation
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {product.documents.map((doc, idx) => (
-              <div
-                key={idx}
-                className="bg-[#FAFBFD] p-5 rounded-md border border-slate-200 hover:border-slate-300 transition-all flex flex-col justify-between space-y-4"
-              >
-                <div className="space-y-1">
-                  <div className="w-10 h-10 rounded-sm bg-red-100 text-red-600 flex items-center justify-center font-mono font-bold text-xs mb-3">
-                    PDF
-                  </div>
-                  <h3 className="font-heading font-bold text-xs text-slate-900 leading-snug">
-                    {doc.title}
-                  </h3>
-                  <span className="text-[10px] font-mono text-slate-400 block">
-                    {doc.code} • {doc.fileSize}
-                  </span>
-                </div>
-
-                <button
-                  onClick={() => alert(`Starting download for ${doc.title}...`)}
-                  className="flex items-center justify-center gap-2 bg-slate-900 hover:bg-[#F25A24] text-white py-2 px-3 rounded-md text-xs font-semibold transition-colors cursor-pointer"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download File</span>
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-           RELATED / RECOMMENDED GENERATORS
-           ========================================================= */}
-      <section className="max-w-[1400px] mx-auto px-4 sm:px-8 lg:px-10 py-12 w-full">
-        <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <div className="framer-badge mb-2">
-                <span className="framer-badge-dot" />
-                <span>Warehouse Recommendations</span>
-              </div>
-              <h2 className="font-heading text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
-                Similar Diesel Generators in Stock
-              </h2>
-            </div>
-
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-2 text-xs font-bold text-slate-900 hover:text-[#F25A24] transition-colors"
+        {/* =========================================================
+             4. TABS & MIDDLE SPECIFICATION CARD
+             ========================================================= */}
+        <div className="space-y-4 pt-2">
+          
+          {/* Segmented Tabs */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+            <button
+              onClick={() => setActiveTab("specifications")}
+              className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${
+                activeTab === "specifications"
+                  ? "bg-[#F25A24] text-white shadow-xs"
+                  : "bg-transparent text-slate-600 hover:text-slate-950 font-semibold"
+              }`}
             >
-              <span>View all warehouse models</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+              Specifications
+            </button>
+            <button
+              onClick={() => setActiveTab("features")}
+              className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${
+                activeTab === "features"
+                  ? "bg-[#F25A24] text-white shadow-xs"
+                  : "bg-transparent text-slate-600 hover:text-slate-950 font-semibold"
+              }`}
+            >
+              Features
+            </button>
+            <button
+              onClick={() => setActiveTab("optional")}
+              className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${
+                activeTab === "optional"
+                  ? "bg-[#F25A24] text-white shadow-xs"
+                  : "bg-transparent text-slate-600 hover:text-slate-950 font-semibold"
+              }`}
+            >
+              Optional Equipment
+            </button>
+            <button
+              onClick={() => setActiveTab("certificates")}
+              className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${
+                activeTab === "certificates"
+                  ? "bg-[#F25A24] text-white shadow-xs"
+                  : "bg-transparent text-slate-600 hover:text-slate-950 font-semibold"
+              }`}
+            >
+              Certificates
+            </button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {relatedProducts.map((rel) => (
-              <div
-                key={rel.id}
-                className="bg-white rounded-md border border-slate-200 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all flex flex-col justify-between overflow-hidden group"
-              >
-                <div>
-                  <div className="bg-[#FAFBFD] p-5 h-48 flex items-center justify-center border-b border-slate-100 overflow-hidden relative">
-                    <span className="absolute top-3 right-3 text-[10px] font-mono font-bold px-2 py-0.5 rounded-sm bg-white text-slate-700 border border-slate-200">
-                      {rel.brandBadgeText}
-                    </span>
-                    <img
-                      src={rel.image}
-                      alt={rel.name}
-                      className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                    />
+          {/* Unified Middle Container */}
+          <div className="bg-white rounded-md border border-slate-200/90 shadow-2xs p-6 sm:p-8 space-y-8">
+            
+            {/* TAB: SPECIFICATIONS */}
+            {activeTab === "specifications" && (
+              <>
+                {/* Technical Specifications Header & Tables */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-1.5 rounded-sm bg-[#F25A24]" />
+                    <h2 className="text-base sm:text-lg font-bold text-slate-950">
+                      Technical Specifications
+                    </h2>
                   </div>
 
-                  <div className="p-5 space-y-3">
-                    <Link href={`/products/${rel.slug}`}>
-                      <h3 className="font-heading font-bold text-sm text-slate-950 group-hover:text-[#F25A24] transition-colors line-clamp-2 min-h-[40px]">
-                        {rel.name}
-                      </h3>
-                    </Link>
-
-                    <div className="grid grid-cols-2 gap-2">
-                      <div className="bg-[#F1F3F5] rounded-sm py-1.5 px-2 text-center text-xs">
-                        <strong className="block text-slate-950 font-black">{rel.standbyKva} kVA</strong>
-                        <span className="text-[10px] text-slate-500 font-mono">Standby</span>
+                  {/* 2 Side-by-Side Tables */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                    {/* Left Table */}
+                    <div className="border border-slate-200/80 rounded-md overflow-hidden divide-y divide-slate-100 text-xs sm:text-[13px]">
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-[#FAFBFD]">
+                        <span className="font-medium text-slate-600">Model</span>
+                        <span className="font-semibold text-slate-900">{product.name}</span>
                       </div>
-                      <div className="bg-[#F1F3F5] rounded-sm py-1.5 px-2 text-center text-xs">
-                        <strong className="block text-slate-950 font-black">{rel.primeKva} kVA</strong>
-                        <span className="text-[10px] text-slate-500 font-mono">Prime</span>
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-white">
+                        <span className="font-medium text-slate-600">Rated Output (Prime)</span>
+                        <span className="font-semibold text-slate-900">{product.primeKva} kVA / {product.primeKw} kW</span>
+                      </div>
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-[#FAFBFD]">
+                        <span className="font-medium text-slate-600">Rated Output (Standby)</span>
+                        <span className="font-semibold text-slate-900">{product.standbyKva} kVA / {product.standbyKw} kW</span>
+                      </div>
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-white">
+                        <span className="font-medium text-slate-600">Power Factor</span>
+                        <span className="font-semibold text-slate-900">{product.specs.powerFactor || "1.0"}</span>
+                      </div>
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-[#FAFBFD]">
+                        <span className="font-medium text-slate-600">Engine Brand</span>
+                        <span className="font-semibold text-slate-900">{product.specs.engineBrand}</span>
+                      </div>
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-white">
+                        <span className="font-medium text-slate-600">Engine Model</span>
+                        <span className="font-semibold text-slate-900">{product.specs.engineModel}</span>
+                      </div>
+                    </div>
+
+                    {/* Right Table */}
+                    <div className="border border-slate-200/80 rounded-md overflow-hidden divide-y divide-slate-100 text-xs sm:text-[13px]">
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-[#FAFBFD]">
+                        <span className="font-medium text-slate-600">Engine Type</span>
+                        <span className="font-semibold text-slate-900">{product.specs.engineCylinders || "3-Cylinder, 4-Stroke"}</span>
+                      </div>
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-white">
+                        <span className="font-medium text-slate-600">Cooling Method</span>
+                        <span className="font-semibold text-slate-900">{product.specs.coolingMethod || "Water-Cooled"}</span>
+                      </div>
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-[#FAFBFD]">
+                        <span className="font-medium text-slate-600">Displacement</span>
+                        <span className="font-semibold text-slate-900">{product.specs.displacementL ? `${product.specs.displacementL} L` : "1.131 L"}</span>
+                      </div>
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-white">
+                        <span className="font-medium text-slate-600">Fuel Consumption (75% Load)</span>
+                        <span className="font-semibold text-slate-900">{product.specs.fuelCons75 || "≈ 2.1 L/h"}</span>
+                      </div>
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-[#FAFBFD]">
+                        <span className="font-medium text-slate-600">Fuel Tank Capacity</span>
+                        <span className="font-semibold text-slate-900">{product.fuelCapacity || "50 L"}</span>
+                      </div>
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-white">
+                        <span className="font-medium text-slate-600">Dimensions (L × W × H)</span>
+                        <span className="font-semibold text-slate-900">{product.specs.dimensionsMm}</span>
+                      </div>
+                      <div className="grid grid-cols-2 py-2.5 px-4 bg-[#FAFBFD]">
+                        <span className="font-medium text-slate-600">Weight (Dry)</span>
+                        <span className="font-semibold text-slate-900">≈ {product.specs.weightKg} kg</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-5 pt-0">
-                  <Link
-                    href={`/products/${rel.slug}`}
-                    className="w-full flex items-center justify-center gap-1.5 bg-[#0E1014] hover:bg-[#F25A24] text-white py-2.5 px-3 rounded-md text-xs font-bold transition-colors"
-                  >
-                    <span>View Specifications</span>
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </Link>
+                {/* Key Features (4 Cards Row) */}
+                <div className="space-y-4 pt-4 border-t border-slate-100">
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-1.5 rounded-sm bg-[#F25A24]" />
+                    <h2 className="text-base sm:text-lg font-bold text-slate-950">
+                      Key Features
+                    </h2>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {/* Feature 1 */}
+                    <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-start gap-3">
+                      <div className="w-9 h-9 rounded-sm bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+                        <Settings className="w-4.5 h-4.5 text-[#F25A24]" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-xs sm:text-sm text-slate-900">
+                          Reliable {product.specs.engineBrand} Engine
+                        </h4>
+                        <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                          Durable and fuel efficient.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Feature 2 */}
+                    <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-start gap-3">
+                      <div className="w-9 h-9 rounded-sm bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+                        <VolumeX className="w-4.5 h-4.5 text-[#F25A24]" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-xs sm:text-sm text-slate-900">
+                          Silent Operation
+                        </h4>
+                        <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                          Soundproof canopy for low noise.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Feature 3 */}
+                    <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-start gap-3">
+                      <div className="w-9 h-9 rounded-sm bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+                        <Zap className="w-4.5 h-4.5 text-[#F25A24]" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-xs sm:text-sm text-slate-900">
+                          ATS Compatible
+                        </h4>
+                        <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                          Seamless power transfer.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Feature 4 */}
+                    <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-start gap-3">
+                      <div className="w-9 h-9 rounded-sm bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+                        <ShieldCheck className="w-4.5 h-4.5 text-[#F25A24]" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-xs sm:text-sm text-slate-900">
+                          Factory Tested
+                        </h4>
+                        <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">
+                          Load bank certified for performance.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* TAB: FEATURES */}
+            {activeTab === "features" && (
+              <div className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <span className="w-5 h-1.5 rounded-sm bg-[#F25A24]" />
+                  <h2 className="text-base sm:text-lg font-bold text-slate-950">
+                    Comprehensive System Features
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {product.generalFeatures.map((feat, idx) => (
+                    <div key={idx} className="flex items-start gap-3 bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80">
+                      <Check className="w-4 h-4 text-[#F25A24] shrink-0 mt-0.5 stroke-[2.5]" />
+                      <span className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">{feat}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
+            )}
+
+            {/* TAB: OPTIONAL EQUIPMENT */}
+            {activeTab === "optional" && (
+              <div className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <span className="w-5 h-1.5 rounded-sm bg-[#F25A24]" />
+                  <h2 className="text-base sm:text-lg font-bold text-slate-950">
+                    Optional Equipment & Upgrades
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {product.optionalEquipment.map((opt, idx) => (
+                    <div key={idx} className="bg-[#FAFBFD] p-5 rounded-md border border-slate-200/80 space-y-2">
+                      <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
+                        <Wrench className="w-4 h-4 text-[#F25A24]" />
+                        <span>{opt.title}</span>
+                      </div>
+                      <p className="text-xs text-slate-600 leading-relaxed">
+                        {opt.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* TAB: CERTIFICATES */}
+            {activeTab === "certificates" && (
+              <div className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <span className="w-5 h-1.5 rounded-sm bg-[#F25A24]" />
+                  <h2 className="text-base sm:text-lg font-bold text-slate-950">
+                    Compliance & Quality Certificates
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                  {product.certificates.map((cert, idx) => (
+                    <div key={idx} className="flex items-center gap-2.5 bg-[#FAFBFD] px-4 py-3 rounded-md border border-slate-200 text-xs font-semibold text-slate-800">
+                      <Check className="w-4 h-4 text-emerald-600 shrink-0 stroke-[3]" />
+                      <span>{cert}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+          </div>
+        </div>
+
+        {/* =========================================================
+             5. TECHNICAL DOCUMENTS & WARRANTY CARDS
+             ========================================================= */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          {/* Left Card: Technical Documents (7 Cols) */}
+          <div className="lg:col-span-7 bg-white rounded-md border border-slate-200/90 shadow-2xs p-6 space-y-4">
+            <div className="flex items-center gap-2 text-slate-950 font-bold text-base">
+              <FileText className="w-4 h-4 text-[#F25A24]" />
+              <span>Technical Documents</span>
+            </div>
+
+            <div className="space-y-3">
+              <div className="flex items-center justify-between p-3.5 rounded-md border border-slate-200/80 bg-[#FAFBFD] hover:bg-slate-50 transition-colors">
+                <div className="flex items-center gap-3">
+                  <span className="px-2 py-0.5 rounded-xs bg-red-100 text-red-600 font-mono text-[10px] font-bold">
+                    PDF
+                  </span>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">
+                      Technical Datasheet
+                    </h4>
+                    <span className="text-[11px] text-slate-400">1.2 MB · PDF</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => window.print()}
+                  className="p-2 text-slate-500 hover:text-[#F25A24] transition-colors cursor-pointer"
+                  title="Download File"
+                >
+                  <Download className="w-4 h-4" />
+                </button>
+              </div>
+
+              <div className="flex items-center justify-between p-3.5 rounded-md border border-slate-200/80 bg-[#FAFBFD] hover:bg-slate-50 transition-colors">
+                <div className="flex items-center gap-3">
+                  <span className="px-2 py-0.5 rounded-xs bg-red-100 text-red-600 font-mono text-[10px] font-bold">
+                    PDF
+                  </span>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">
+                      Operation & Maintenance Manual
+                    </h4>
+                    <span className="text-[11px] text-slate-400">3.8 MB · PDF</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => window.print()}
+                  className="p-2 text-slate-500 hover:text-[#F25A24] transition-colors cursor-pointer"
+                  title="Download File"
+                >
+                  <Download className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Card: Warranty (5 Cols) */}
+          <div className="lg:col-span-5 bg-gradient-to-br from-[#FFF9F6] to-[#FFF1EB] rounded-md border border-orange-200/70 p-6 flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute -bottom-6 -right-6 text-orange-400/15 pointer-events-none">
+              <Shield className="w-40 h-40 stroke-[1.2]" />
+            </div>
+
+            <div className="relative z-10 space-y-3">
+              <div className="flex items-center gap-2 text-slate-950 font-bold text-base">
+                <Shield className="w-4 h-4 text-[#F25A24]" />
+                <span>Warranty</span>
+              </div>
+
+              <div className="pt-2">
+                <div className="text-lg sm:text-xl font-bold text-slate-950 leading-tight">
+                  12 months or 1,000 running hours
+                </div>
+                <p className="text-xs sm:text-sm text-slate-600 mt-1 font-normal">
+                  On engine, alternator and major components.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* =========================================================
+             6. SIMILAR GENERATORS
+             ========================================================= */}
+        <div className="space-y-4 pt-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="w-5 h-1.5 rounded-sm bg-[#F25A24]" />
+              <h2 className="text-base sm:text-lg font-bold text-slate-950">
+                Similar Generators
+              </h2>
+            </div>
+
+            <Link
+              href="/products"
+              className="text-xs sm:text-sm font-semibold text-[#F25A24] hover:underline flex items-center gap-1"
+            >
+              <span>View All Products</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          {/* 4 Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {similarProducts.map((rel) => (
+              <ProductCard key={rel.id} product={rel} />
             ))}
           </div>
         </div>
-      </section>
 
+      </main>
+
+      {/* Footer */}
       <Footer />
+
+      {/* Lightbox Modal */}
+      {isLightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setIsLightboxOpen(false)}
+        >
+          <div
+            className="relative max-w-4xl w-full flex flex-col items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setIsLightboxOpen(false)}
+              className="absolute -top-12 right-0 text-white hover:text-[#F25A24] p-2 transition-colors cursor-pointer"
+              aria-label="Close"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <div className="w-full flex items-center justify-center p-6 bg-white/5 rounded-md border border-white/10 min-h-[350px]">
+              <img
+                src={activeImage}
+                alt={product.name}
+                className="max-h-[75vh] max-w-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Quote Modal */}
       <QuoteModal
