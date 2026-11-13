@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
@@ -23,13 +24,13 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: 'Geist', 'Plus Jakarta Sans', sans-serif;
+  font-family: "Mona Sans", "Mona Sans Placeholder", sans-serif;
   color: var(--text-main);
   background-color: #FFFFFF;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {
-  font-family: 'Geist', 'Plus Jakarta Sans', sans-serif;
+  font-family: "Mona Sans", "Mona Sans Placeholder", sans-serif;
   letter-spacing: -0.035em;
   font-weight: 700;
 }

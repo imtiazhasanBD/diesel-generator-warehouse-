@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-mona-sans), "Mona Sans", "Mona Sans Placeholder", sans-serif;
+  --font-heading: var(--font-mona-sans), "Mona Sans", "Mona Sans Placeholder", sans-serif;
+}
+
 @layer base {
   :root {
     --primary: #F25A24;
@@ -8,17 +13,29 @@
     --dark-surface: #14161C;
     --border-light: #E4E5E8;
     --border-dark: #272B33;
+    --font-sans: var(--font-mona-sans), "Mona Sans", "Mona Sans Placeholder", sans-serif;
+    --font-heading: var(--font-mona-sans), "Mona Sans", "Mona Sans Placeholder", sans-serif;
   }
 
   html {
     scroll-behavior: smooth;
+    font-family: var(--font-mona-sans), "Mona Sans", "Mona Sans Placeholder", sans-serif;
   }
 
   body {
     background-color: #FFFFFF;
     color: #11141A;
     overflow-x: clip;
+    font-family: var(--font-mona-sans), "Mona Sans", "Mona Sans Placeholder", sans-serif;
   }
+}
+
+.font-heading {
+  font-family: var(--font-mona-sans), "Mona Sans", "Mona Sans Placeholder", sans-serif;
+}
+
+.font-sans {
+  font-family: var(--font-mona-sans), "Mona Sans", "Mona Sans Placeholder", sans-serif;
 }
 
 /* Custom Scrollbar */
