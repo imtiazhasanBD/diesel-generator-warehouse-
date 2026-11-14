@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "motion/react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import HeroKineticTypography from "@/components/HeroKineticTypography";
 import {
   Search,
   ArrowRight,
@@ -318,7 +319,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10 pt-8 pb-8 sm:pt-12 sm:pb-10">
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10 pt-8 pb-8 sm:pt-12 sm:pb-10 hidden">
 
             {/* Top Pill Badge */}
             <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
@@ -386,14 +387,22 @@ export default function Home() {
               muted={isMuted}
               playsInline
               poster="/assets/images/hero-gen.jpg"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover brightness-[0.78] contrast-[1.08] saturate-[0.95]"
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
             >
-              <source src="/assets/videos/DG Set Working Explained .mp4" type="video/mp4" />
+              <source src="/assets/videos/hero-video.mp4" type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
+
+            {/* Cinematic Ambient Scrim & Vignette for Readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40 pointer-events-none" />
+            <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+
+            {/* Kinetic Typography Layer */}
+            <HeroKineticTypography videoRef={videoRef} isPlaying={isPlaying} />
 
             {/* Video Controls (Floating Bottom Right) */}
-            <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 z-30 flex items-center gap-2">
+            {/* <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 z-30 flex items-center gap-2">
               <button
                 onClick={togglePlay}
                 className="w-10 h-10 rounded-sm bg-black/65 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-black/90 transition-all cursor-pointer shadow-lg"
@@ -408,7 +417,7 @@ export default function Home() {
               >
                 {isMuted ? <VolumeX className="w-4 h-4 text-white" /> : <Volume2 className="w-4 h-4 text-white" />}
               </button>
-            </div>
+            </div> */}
           </div>
 
         </section>
