@@ -425,8 +425,8 @@ export default function Home() {
         {/* =========================================================
              SECTION 2: WHO WE ARE & 4-ELEMENT CIRCULAR ROW
              ========================================================= */}
-        <section id="about" className="py-20 lg:py-28 bg-[#FFFFFF] border-b border-slate-200">
-          <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
+        <section id="about" className="py-10 md:py-20 lg:py-28 bg-[#FFFFFF] border-b border-slate-200">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
 
             {/* Top Row: Badge + Team Collage & Statement */}
             <motion.div
@@ -436,15 +436,15 @@ export default function Home() {
               transition={{ duration: 0.7 }}
               className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start pb-16"
             >
-              <div className="lg:col-span-4">
+              <div className="lg:col-span-4 flex flex-col items-start">
                 {/* Pill Badge */}
                 <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
                   <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                   <span>Who we are</span>
                 </div>
 
-                {/* Staggered 4-Portrait Team Collage */}
-                <div className="mt-9 relative w-fit">
+                {/* Staggered 4-Portrait Team Collage - Centered on Mobile */}
+                <div className="mt-9 relative w-fit mx-auto lg:mx-0">
                   {/* Top-Right Orange Sparkle Rays */}
                   <svg
                     className="absolute -top-6 right-5 w-8 h-6 text-[#F25A24] pointer-events-none"
@@ -505,8 +505,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Bottom Caption with Vertical Orange Bar */}
-                <div className="mt-8 flex items-stretch gap-3">
+                {/* Bottom Caption with Vertical Orange Bar - Centered on Mobile */}
+                <div className="mt-8 flex items-stretch gap-3 mx-auto lg:mx-0">
                   <span className="w-[3px] rounded-full bg-[#F25A24] shrink-0" />
                   <p className="font-heading text-[18px] sm:text-[19px] font-bold text-[#11141A] leading-[1.25] tracking-[-0.02em]">
                     Team of passionate
@@ -542,49 +542,49 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Signature 4-Element Graphic Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-center pt-8 border-t border-slate-200">
+            {/* Signature 4-Element Graphic Row - 2 circles per row on mobile */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 items-center pt-8 border-t border-slate-200">
 
               {/* Element 1: 10+ Global Brands */}
-              <TiltCard className="flex flex-col items-center justify-center text-center p-8 bg-[#F6F7F9] rounded-full aspect-square max-w-[260px] mx-auto w-full border border-slate-200">
-                <span className="font-heading text-4xl sm:text-5xl font-bold text-slate-950">
+              <TiltCard className="flex flex-col items-center justify-center text-center p-3.5 sm:p-6 lg:p-8 bg-[#F6F7F9] rounded-full aspect-square max-w-[170px] sm:max-w-[220px] lg:max-w-[260px] mx-auto w-full border border-slate-200">
+                <span className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-950 leading-tight">
                   10<span className="text-[#F25A24]">+</span>
                 </span>
-                <h4 className="font-heading font-bold text-slate-900 text-sm mt-1">Global Brands</h4>
-                <p className="text-xs text-slate-500 max-w-[150px] mt-1">Perkins, Cummins, Ricardo, Stamford & CAT.</p>
+                <h4 className="font-heading font-bold text-slate-900 text-xs sm:text-sm mt-0.5 sm:mt-1">Global Brands</h4>
+                <p className="text-[10px] sm:text-xs text-slate-500 max-w-[125px] sm:max-w-[150px] mt-0.5 sm:mt-1 leading-tight line-clamp-2 sm:line-clamp-none">Perkins, Cummins, Ricardo, Stamford & CAT.</p>
               </TiltCard>
 
               {/* Element 2: Round Cutout of Generator Engine Macro */}
-              <TiltCard className="rounded-full overflow-hidden aspect-square max-w-[260px] mx-auto w-full shadow-md border-4 border-white">
+              <TiltCard className="rounded-full overflow-hidden aspect-square max-w-[170px] sm:max-w-[220px] lg:max-w-[260px] mx-auto w-full shadow-md border-2 sm:border-4 border-white">
                 <img src="/assets/images/engine-circle.jpg" alt="Engine block and turbocharger" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
               </TiltCard>
 
               {/* Element 3: 20+ Delivering Excellence Circle */}
-              <TiltCard className="flex flex-col items-center justify-center text-center p-8 bg-[#F6F7F9] rounded-full aspect-square max-w-[260px] mx-auto w-full border border-slate-200 relative group">
-                <span className="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">
+              <TiltCard className="flex flex-col items-center justify-center text-center p-3.5 sm:p-6 lg:p-8 bg-[#F6F7F9] rounded-full aspect-square max-w-[170px] sm:max-w-[220px] lg:max-w-[260px] mx-auto w-full border border-slate-200 relative group">
+                <span className="font-mono text-[8.5px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-0.5 sm:mb-1">
                   // 2005-2026 //
                 </span>
-                <span className="font-heading text-4xl sm:text-5xl font-bold text-[#F25A24]">
+                <span className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold text-[#F25A24] leading-tight">
                   20<span className="text-slate-950">+</span>
                 </span>
-                <p className="text-xs text-slate-600 max-w-[160px] mt-1 font-medium">Delivering consistent engineering excellence since day one.</p>
-                <div className="mt-3">
-                  <span className="w-7 h-7 rounded-full bg-slate-950 text-white flex items-center justify-center group-hover:bg-[#F25A24] transition-colors">
-                    <ArrowRight className="w-3.5 h-3.5" />
+                <p className="text-[10px] sm:text-xs text-slate-600 max-w-[125px] sm:max-w-[160px] mt-0.5 sm:mt-1 font-medium leading-tight line-clamp-2 sm:line-clamp-none">Delivering consistent engineering excellence.</p>
+                <div className="mt-1.5 sm:mt-3">
+                  <span className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-slate-950 text-white flex items-center justify-center group-hover:bg-[#F25A24] transition-colors">
+                    <ArrowRight className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
                   </span>
                 </div>
               </TiltCard>
 
               {/* Element 4: Capsule Photo with Rating */}
-              <TiltCard className="relative rounded-full overflow-hidden aspect-square max-w-[260px] mx-auto w-full shadow-lg group">
+              <TiltCard className="relative rounded-full overflow-hidden aspect-square max-w-[170px] sm:max-w-[220px] lg:max-w-[260px] mx-auto w-full shadow-lg group border-2 sm:border-4 border-white">
                 <img src="/assets/images/engineer-capsule.jpg" alt="Industrial Engineer in Plant" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-6 text-white text-center">
-                  <div className="flex items-center justify-center gap-1 text-amber-400 text-xs mb-1">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-3 sm:p-5 lg:p-6 text-white text-center">
+                  <div className="flex items-center justify-center gap-0.5 sm:gap-1 text-amber-400 text-[10px] sm:text-xs mb-0.5 sm:mb-1">
                     <span>★ 4.9</span>
                     <span className="text-slate-300">/ 5.0</span>
                   </div>
-                  <p className="text-xs font-bold leading-snug">
-                    Trusted by 500+ manufacturing industries worldwide.
+                  <p className="text-[9.5px] sm:text-xs font-bold leading-tight line-clamp-2">
+                    Trusted by 500+ industries worldwide.
                   </p>
                 </div>
               </TiltCard>
@@ -597,7 +597,7 @@ export default function Home() {
         {/* =========================================================
              SECTION 3: WHAT WE DO / SCALABLE CAPABILITIES (FRAMER STACKING CARDS)
              ========================================================= */}
-        <section id="capabilities" className="py-20 lg:py-28">
+        <section id="capabilities" className="py-10 md:py-20 lg:py-28">
           <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
 
             {/* Header matching exact reference screenshot */}
@@ -625,7 +625,7 @@ export default function Home() {
             </div>
 
             {/* Sticky Stacking Cards Container (One on top of another as you scroll) */}
-            <div className="relative pb-20">
+            <div className="relative pb:4 md:pb-20">
               {SALES_REGIONS.map((region, index) => (
                 <div
                   key={region.id}
@@ -755,7 +755,7 @@ export default function Home() {
         {/* =========================================================
              SECTION 4: WHAT WE MANUFACTURE / EXPLODED CAD BLUEPRINT & PRECISION SPEC
              ========================================================= */}
-        <section id="schematic" className="relative bg-[#121214] text-white overflow-hidden pt-[290px] sm:pt-[340px] lg:pt-[390px] pb-24 lg:pb-32">
+        <section id="schematic" className="relative bg-[#121214] text-white overflow-hidden pt-[290px] sm:pt-[340px] lg:pt-[390px] pb-10 md:pb-24 lg:pb-32">
 
           {/* 1. Glowing Orange Dome Curve (White Top -> Fiery Orange Arch -> Dark Base) */}
           <div className="absolute top-0 left-0 right-0 h-[400px] sm:h-[460px] lg:h-[520px] pointer-events-none select-none overflow-hidden z-0">
@@ -1051,22 +1051,22 @@ export default function Home() {
         {/* =========================================================
              SECTION 5: WHAT WE SUPPLY / TECHNICAL PRODUCT LINEUP
              ========================================================= */}
-        <section id="products" className="py-20 lg:py-28 bg-[#FFFFFF] border-b border-slate-200">
-          <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
+        <section id="products" className=" py-10 md:py-20 lg:py-28 bg-[#FFFFFF] border-b border-slate-200">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
 
             {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-14 gap-6">
               <div className="space-y-3">
                 <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
                   <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                   <span>What we supply</span>
                 </div>
-                <h2 className="font-heading text-3xl sm:text-5xl font-bold text-slate-950 tracking-tight">
+                <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-950 tracking-tight">
                   50,000+ kVA <span className="text-[#F25A24]">delivered</span> across Bangladesh
                 </h2>
               </div>
 
-              <Link href="/products" className="framer-btn-outline rounded-sm cursor-pointer">
+              <Link href="/products" className="framer-btn-outline rounded-sm cursor-pointer self-start sm:self-auto">
                 <span>View all products</span>
                 <div className="btn-arrow-box rounded-sm">
                   <ArrowRight className="w-3.5 h-3.5 text-slate-700" />
@@ -1074,152 +1074,164 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* 4 Technical Product Spec Table Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* 4 Technical Product Spec Table Cards - 2 per row on mobile */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
 
               {/* Product 1 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-md p-6 border border-slate-200 flex flex-col justify-between">
+              <TiltCard className="bg-[#FAFBFD] rounded-md p-3 sm:p-5 lg:p-6 border border-slate-200 flex flex-col justify-between">
                 <div>
                   <Link href="/products/100kva-perkins-silent-genset" className="block">
-                    <div className="h-44 w-full rounded-sm overflow-hidden bg-white mb-5 flex items-center justify-center p-2 border border-slate-100 group">
+                    <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
                       <img src="/assets/images/perkins-blue.jpg" alt="Perkins 100 kVA" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
                     </div>
-                    <h3 className="font-heading font-bold text-base text-slate-950 hover:text-[#F25A24] transition-colors">Perkins 100 kVA Silent Genset</h3>
+                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-[#F25A24] transition-colors line-clamp-2 leading-snug">Perkins 100 kVA Silent Genset</h3>
                   </Link>
 
-                  <div className="mt-4 pt-4 border-t border-slate-200/80 space-y-2 text-xs">
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Engine:</span>
-                      <span className="font-semibold text-slate-800">Perkins 1104A-44TG2 (UK)</span>
+                  <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Engine:</span>
+                      <span className="font-semibold text-slate-800 truncate text-right">Perkins 1104A-44TG2</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Alternator:</span>
-                      <span className="font-semibold text-slate-800">Stamford UCI274C</span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Alternator:</span>
+                      <span className="font-semibold text-slate-800 truncate text-right">Stamford UCI274C</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Noise Level:</span>
-                      <span className="font-semibold text-[#F25A24]">68 dBA @ 7m</span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Noise:</span>
+                      <span className="font-semibold text-[#F25A24] truncate text-right">68 dBA @ 7m</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Controller:</span>
-                      <span className="font-semibold text-slate-800">Deep Sea DSE6120</span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Controller:</span>
+                      <span className="font-semibold text-slate-800 truncate text-right">Deep Sea DSE6120</span>
                     </div>
                   </div>
                 </div>
-                <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
-                  <Link href="/products/100kva-perkins-silent-genset" className="text-xs font-bold text-slate-900 hover:text-[#F25A24]">View Specifications</Link>
-                  <Link href="/products/100kva-perkins-silent-genset" className="framer-icon-btn w-7 h-7">
-                    <ArrowRight className="w-3.5 h-3.5" />
+                <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
+                  <Link href="/products/100kva-perkins-silent-genset" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-[#F25A24]">
+                    <span className="hidden sm:inline">View Specifications</span>
+                    <span className="sm:hidden">View Specs</span>
+                  </Link>
+                  <Link href="/products/100kva-perkins-silent-genset" className="framer-icon-btn w-6 h-6 sm:w-7 sm:h-7 shrink-0">
+                    <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   </Link>
                 </div>
               </TiltCard>
 
               {/* Product 2 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-md p-6 border border-slate-200 flex flex-col justify-between">
+              <TiltCard className="bg-[#FAFBFD] rounded-md p-3 sm:p-5 lg:p-6 border border-slate-200 flex flex-col justify-between">
                 <div>
                   <Link href="/products/25kva-cummins-silent-generator" className="block">
-                    <div className="h-44 w-full rounded-sm overflow-hidden bg-white mb-5 flex items-center justify-center p-2 border border-slate-100 group">
+                    <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
                       <img src="/assets/images/project-green.jpg" alt="Cummins 25 kVA Silent Generator" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
                     </div>
-                    <h3 className="font-heading font-bold text-base text-slate-950 hover:text-[#F25A24] transition-colors">Cummins 25 kVA Silent Generator</h3>
+                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-[#F25A24] transition-colors line-clamp-2 leading-snug">Cummins 25 kVA Silent Generator</h3>
                   </Link>
 
-                  <div className="mt-4 pt-4 border-t border-slate-200/80 space-y-2 text-xs">
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Engine:</span>
-                      <span className="font-semibold text-slate-800">Cummins 4BT3.9-G1</span>
+                  <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Engine:</span>
+                      <span className="font-semibold text-slate-800 truncate text-right">Cummins 4BT3.9-G1</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Alternator:</span>
-                      <span className="font-semibold text-slate-800">Stamford UCI224D</span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Alternator:</span>
+                      <span className="font-semibold text-slate-800 truncate text-right">Stamford UCI224D</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Duty:</span>
-                      <span className="font-semibold text-[#F25A24]">Prime & Standby Continuous</span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Duty:</span>
+                      <span className="font-semibold text-[#F25A24] truncate text-right">Prime & Standby</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Controller:</span>
-                      <span className="font-semibold text-slate-800">PowerCommand Digital</span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Controller:</span>
+                      <span className="font-semibold text-slate-800 truncate text-right">PowerCommand</span>
                     </div>
                   </div>
                 </div>
-                <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
-                  <Link href="/products/25kva-cummins-silent-generator" className="text-xs font-bold text-slate-900 hover:text-[#F25A24]">View Specifications</Link>
-                  <Link href="/products/25kva-cummins-silent-generator" className="framer-icon-btn w-7 h-7">
-                    <ArrowRight className="w-3.5 h-3.5" />
+                <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
+                  <Link href="/products/25kva-cummins-silent-generator" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-[#F25A24]">
+                    <span className="hidden sm:inline">View Specifications</span>
+                    <span className="sm:hidden">View Specs</span>
+                  </Link>
+                  <Link href="/products/25kva-cummins-silent-generator" className="framer-icon-btn w-6 h-6 sm:w-7 sm:h-7 shrink-0">
+                    <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   </Link>
                 </div>
               </TiltCard>
 
               {/* Product 3 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-md p-6 border border-slate-200 flex flex-col justify-between">
+              <TiltCard className="bg-[#FAFBFD] rounded-md p-3 sm:p-5 lg:p-6 border border-slate-200 flex flex-col justify-between">
                 <div>
                   <Link href="/products/30kva-diesel-generator" className="block">
-                    <div className="h-44 w-full rounded-sm overflow-hidden bg-white mb-5 flex items-center justify-center p-2 border border-slate-100 group">
+                    <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
                       <img src="/assets/images/canopy-white-20k.jpg" alt="Ricardo 30 kVA" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
                     </div>
-                    <h3 className="font-heading font-bold text-base text-slate-950 hover:text-[#F25A24] transition-colors">Ricardo 30 kVA Silent Canopy</h3>
+                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-[#F25A24] transition-colors line-clamp-2 leading-snug">Ricardo 30 kVA Silent Canopy</h3>
                   </Link>
 
-                  <div className="mt-4 pt-4 border-t border-slate-200/80 space-y-2 text-xs">
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Engine:</span>
-                      <span className="font-semibold text-slate-800">Ricardo 4105ZD Turbo</span>
+                  <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Engine:</span>
+                      <span className="font-semibold text-slate-800 truncate text-right">Ricardo 4105ZD</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Alternator:</span>
-                      <span className="font-semibold text-slate-800">Stamford UCI224C</span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Alternator:</span>
+                      <span className="font-semibold text-slate-800 truncate text-right">Stamford UCI224C</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Ideal For:</span>
-                      <span className="font-semibold text-[#F25A24]">Commercial & Offices</span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Ideal:</span>
+                      <span className="font-semibold text-[#F25A24] truncate text-right">Offices & Commercial</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Controller:</span>
-                      <span className="font-semibold text-slate-800">Deep Sea DSE6120</span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Controller:</span>
+                      <span className="font-semibold text-slate-800 truncate text-right">Deep Sea DSE6120</span>
                     </div>
                   </div>
                 </div>
-                <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
-                  <Link href="/products/30kva-diesel-generator" className="text-xs font-bold text-slate-900 hover:text-[#F25A24]">View Specifications</Link>
-                  <Link href="/products/30kva-diesel-generator" className="framer-icon-btn w-7 h-7">
+                <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
+                  <Link href="/products/30kva-diesel-generator" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-[#F25A24]">
+                    <span className="hidden sm:inline">View Specifications</span>
+                    <span className="sm:hidden">View Specs</span>
+                  </Link>
+                  <Link href="/products/30kva-diesel-generator" className="framer-icon-btn w-6 h-6 sm:w-7 sm:h-7 shrink-0">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </TiltCard>
 
               {/* Product 4 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-md p-6 border border-slate-200 flex flex-col justify-between">
+              <TiltCard className="bg-[#FAFBFD] rounded-md p-3 sm:p-5 lg:p-6 border border-slate-200 flex flex-col justify-between">
                 <div>
                   <Link href="/products/apd-110-a-diesel-generator" className="block">
-                    <div className="h-44 w-full rounded-sm overflow-hidden bg-white mb-5 flex items-center justify-center p-2 border border-slate-100 group">
+                    <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
                       <img src="/assets/images/yellow-silent.jpg" alt="APD 110 A" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
                     </div>
-                    <h3 className="font-heading font-bold text-base text-slate-950 hover:text-[#F25A24] transition-colors">APD 110 A Industrial Diesel</h3>
+                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-[#F25A24] transition-colors line-clamp-2 leading-snug">APD 110 A Industrial Diesel</h3>
                   </Link>
 
-                  <div className="mt-4 pt-4 border-t border-slate-200/80 space-y-2 text-xs">
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Engine:</span>
-                      <span className="font-semibold text-slate-800">Aksa A6CRX46TI (6-Cyl)</span>
+                  <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Engine:</span>
+                      <span className="font-semibold text-slate-800 truncate text-right">Aksa A6CRX46TI</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Alternator:</span>
-                      <span className="font-semibold text-slate-800">Stamford Class H AVR</span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Alternator:</span>
+                      <span className="font-semibold text-slate-800 truncate text-right">Stamford Class H</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Application:</span>
-                      <span className="font-semibold text-[#F25A24]">Export Zones & Mills</span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Duty:</span>
+                      <span className="font-semibold text-[#F25A24] truncate text-right">Export Zones & Mills</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-slate-400">Controller:</span>
-                      <span className="font-semibold text-slate-800">DSE 7320 MKII Auto AMF</span>
+                    <div className="flex justify-between items-baseline gap-1">
+                      <span className="text-slate-400 shrink-0">Controller:</span>
+                      <span className="font-semibold text-slate-800 truncate text-right">DSE 7320 MKII</span>
                     </div>
                   </div>
                 </div>
-                <div className="pt-5 mt-5 border-t border-slate-200 flex items-center justify-between">
-                  <Link href="/products/apd-110-a-diesel-generator" className="text-xs font-bold text-slate-900 hover:text-[#F25A24]">View Specifications</Link>
-                  <Link href="/products/apd-110-a-diesel-generator" className="framer-icon-btn w-7 h-7">
+                <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
+                  <Link href="/products/apd-110-a-diesel-generator" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-[#F25A24]">
+                    <span className="hidden sm:inline">View Specifications</span>
+                    <span className="sm:hidden">View Specs</span>
+                  </Link>
+                  <Link href="/products/apd-110-a-diesel-generator" className="framer-icon-btn w-6 h-6 sm:w-7 sm:h-7 shrink-0">
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -1235,7 +1247,7 @@ export default function Home() {
              ========================================================= */}
         <section
           id="industries"
-          className="relative py-16 sm:py-24 lg:py-32 bg-[#F4F4F5] border-b border-slate-200 overflow-hidden"
+          className="relative py-10 sm:py-24 lg:py-32 bg-[#F4F4F5] border-b border-slate-200 overflow-hidden"
         >
           {/* Vertical architectural grid lines */}
           <div className="absolute inset-0 max-w-[1400px] mx-auto px-5 sm:px-6 pointer-events-none z-0 hidden lg:block">
@@ -1449,8 +1461,8 @@ export default function Home() {
         {/* =========================================================
              SECTION 7: REAL-WORLD SUCCESS / CASE STUDIES (COMPACT)
              ========================================================= */}
-        <section id="projects" className="py-14 lg:py-16 bg-[#FFFFFF] border-b border-slate-200">
-          <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
+        <section id="projects" className="py-10 md:py-14 lg:py-16 bg-[#FFFFFF] border-b border-slate-200">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
 
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 lg:mb-10 gap-4">
               <div className="space-y-3">
@@ -1475,7 +1487,8 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            {/* 2 per row on mobile screens */}
+            <div className="grid grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-5">
               {[
                 {
                   location: "Motijheel, Dhaka",
@@ -1520,45 +1533,46 @@ export default function Home() {
                   className="bg-[#FAFBFD] hover:bg-white rounded-[8px] overflow-hidden border border-slate-200/90 hover:border-slate-300 hover:shadow-[0_10px_28px_rgba(15,23,42,0.06)] transition-all duration-300 group flex flex-col sm:flex-row cursor-pointer"
                 >
                   {/* Left Compact Photo */}
-                  <div className="relative sm:w-[205px] md:w-[220px] h-[175px] sm:h-auto shrink-0 overflow-hidden bg-slate-900">
+                  <div className="relative w-full sm:w-[205px] md:w-[220px] h-28 sm:h-auto shrink-0 overflow-hidden bg-slate-900">
                     <img
                       src={project.image}
                       alt={project.alt}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <span className="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-[4px] bg-black/65 backdrop-blur-md text-white text-[10px] font-medium tracking-wide border border-white/10">
+                    <span className="absolute bottom-1.5 left-1.5 sm:bottom-2.5 sm:left-2.5 px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-[4px] bg-black/65 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-medium tracking-wide border border-white/10 truncate max-w-[90%]">
                       {project.location}
                     </span>
                   </div>
 
                   {/* Right Compact Details */}
-                  <div className="p-5 flex flex-col justify-between flex-1 min-w-0">
+                  <div className="p-3 sm:p-5 flex flex-col justify-between flex-1 min-w-0">
                     <div>
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#FFF3EE] text-[#D4380A] text-[10.5px] font-semibold">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 mb-1.5 sm:mb-2">
+                        <span className="inline-block px-1.5 sm:px-2.5 py-0.5 rounded-full bg-[#FFF3EE] text-[#D4380A] text-[9.5px] sm:text-[10.5px] font-semibold truncate self-start max-w-full">
                           {project.spec}
                         </span>
-                        <span className="text-[11px] font-mono font-medium text-slate-400">
+                        <span className="text-[9.5px] sm:text-[11px] font-mono font-medium text-slate-400 truncate">
                           {project.metric}
                         </span>
                       </div>
 
-                      <h3 className="font-heading font-bold text-[16px] sm:text-[17px] text-[#141518] group-hover:text-[#D4380A] transition-colors leading-snug mb-1.5">
+                      <h3 className="font-heading font-bold text-xs sm:text-[16px] md:text-[17px] text-[#141518] group-hover:text-[#D4380A] transition-colors leading-snug mb-1 sm:mb-1.5 line-clamp-2">
                         {project.title}
                       </h3>
 
-                      <p className="text-[12.5px] text-[#5C5E64] leading-[1.5] line-clamp-2">
+                      <p className="text-[11px] sm:text-[12.5px] text-[#5C5E64] leading-[1.4] sm:leading-[1.5] line-clamp-2 hidden sm:block">
                         {project.desc}
                       </p>
                     </div>
 
-                    <div className="pt-3 mt-3 border-t border-slate-200/70 flex items-center justify-between">
-                      <span className="text-[12px] font-semibold text-[#141518] group-hover:text-[#D4380A] transition-colors">
-                        View case study
+                    <div className="pt-2 sm:pt-3 mt-2 sm:mt-3 border-t border-slate-200/70 flex items-center justify-between">
+                      <span className="text-[10px] sm:text-[12px] font-semibold text-[#141518] group-hover:text-[#D4380A] transition-colors truncate">
+                        <span className="hidden sm:inline">View case study</span>
+                        <span className="sm:hidden">Case study</span>
                       </span>
-                      <span className="framer-icon-btn w-7 h-7">
-                        <ArrowRight className="w-3.5 h-3.5" />
+                      <span className="framer-icon-btn w-6 h-6 sm:w-7 sm:h-7 shrink-0">
+                        <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                       </span>
                     </div>
                   </div>
@@ -1572,7 +1586,7 @@ export default function Home() {
         {/* =========================================================
              SECTION 8: FULL-WIDTH AMBIENT VIDEO CTA BANNER
              ========================================================= */}
-        <section className="relative py-24 sm:py-28 lg:py-32 overflow-hidden bg-[#090D14] text-white">
+        <section className="relative py-10 sm:py-28 lg:py-32 overflow-hidden bg-[#090D14] text-white">
 
           {/* Full-Bleed Ambient Background Video (Cinematic Industrial Footage) */}
           <video
@@ -1932,7 +1946,7 @@ export default function Home() {
         {/* =========================================================
              SECTION 10: INSIGHTS & ARTICLES (FRAMER BLOG)
              ========================================================= */}
-        <section id="blog" className="pb-20 lg:pb-28 bg-[#FFFFFF]">
+        <section id="blog" className="pb-10 md:pb-20 lg:pb-28 bg-[#FFFFFF]">
           <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
 
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
