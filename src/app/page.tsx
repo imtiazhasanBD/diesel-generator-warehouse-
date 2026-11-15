@@ -1961,15 +1961,15 @@ export default function Home() {
              SECTION 10: INSIGHTS & ARTICLES (FRAMER BLOG)
              ========================================================= */}
         <section id="blog" className="pb-10 md:pb-20 lg:pb-28 bg-[#FFFFFF]">
-          <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
 
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-6">
-              <div className="space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6">
+              <div className="space-y-3 sm:space-y-4">
                 <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
                   <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                   <span>Insights & Article</span>
                 </div>
-                <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#141518] tracking-[-0.03em] leading-[1.08]">
+                <h2 className="font-heading text-2xl sm:text-5xl lg:text-[46px] font-bold text-[#141518] tracking-[-0.03em] leading-[1.08]">
                   Latest from our <span className="text-[#D4380A]">blog</span>
                 </h2>
               </div>
@@ -1982,47 +1982,112 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
+            {/* Mobile: Editorial Featured Lead + Compact Side Feed | Desktop: 3-Column Immersive Grid */}
+            {(() => {
+              const posts = [
                 {
                   title: "How to calculate accurate kVA sizing for industrial facilities",
                   image: "/assets/images/engine-circle.jpg",
                   alt: "Diesel engine turbocharger and wiring",
+                  category: "Engineering Guide",
+                  readTime: "5 min read",
                 },
                 {
                   title: "Diesel generator maintenance for peak plant efficiency",
                   image: "/assets/images/gen-control-panel.jpg",
                   alt: "Digital generator control panel",
+                  category: "Maintenance",
+                  readTime: "4 min read",
                 },
                 {
                   title: "Acoustic attenuation: Why canopy engineering matters",
                   image: "/assets/images/gen-alternator-shaft.jpg",
                   alt: "Brushless alternator rotor shaft",
+                  category: "Acoustics",
+                  readTime: "6 min read",
                 },
-              ].map((post, idx) => (
-                <a
-                  key={idx}
-                  href="#"
-                  className="relative rounded-[6px] overflow-hidden h-[340px] sm:h-[360px] lg:h-[380px] group block bg-[#141518]"
-                >
-                  <img
-                    src={post.image}
-                    alt={post.alt}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/15" />
+              ];
 
-                  <div className="relative z-10 h-full flex flex-col justify-end p-6 sm:p-7">
-                    <h3 className="font-heading font-semibold text-[20px] sm:text-[22px] text-white tracking-[-0.02em] leading-[1.22] mb-3">
-                      {post.title}
-                    </h3>
-                    <span className="inline-block w-fit text-[13px] font-medium text-[#D4380A] group-hover:text-[#F25A24] underline underline-offset-4 decoration-[#D4380A] group-hover:decoration-[#F25A24] transition-colors">
-                      Read full blog
-                    </span>
-                  </div>
-                </a>
-              ))}
-            </div>
+              return (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6">
+                  {/* Lead Story: Featured Hero on Mobile, Col 1 on Desktop */}
+                  <a
+                    href="#"
+                    className="relative rounded-[8px] md:rounded-[6px] overflow-hidden h-[290px] sm:h-[340px] md:h-[340px] sm:md:h-[360px] lg:md:h-[380px] group block bg-[#141518]"
+                  >
+                    <img
+                      src={posts[0].image}
+                      alt={posts[0].alt}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent" />
+
+                    <div className="relative z-10 h-full flex flex-col justify-end p-5 sm:p-7">
+                      <div className="flex items-center gap-2 mb-2 sm:mb-2.5">
+                        <span className="px-2 py-0.5 rounded-sm bg-[#F25A24] text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                          Featured
+                        </span>
+                        <span className="text-[11px] text-slate-300 font-medium">
+                          {posts[0].category} &bull; {posts[0].readTime}
+                        </span>
+                      </div>
+                      <h3 className="font-heading font-semibold text-[18px] sm:text-[22px] text-white tracking-[-0.02em] leading-[1.22] mb-2 sm:mb-3">
+                        {posts[0].title}
+                      </h3>
+                      <span className="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#F25A24] group-hover:translate-x-1 transition-transform">
+                        <span>Read full article</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
+                  </a>
+
+                  {/* Secondary Stories: Compact Feed on Mobile, Col 2 & 3 on Desktop */}
+                  {posts.slice(1).map((post, idx) => (
+                    <a
+                      key={idx}
+                      href="#"
+                      className="
+                        group rounded-[8px] md:rounded-[6px] overflow-hidden transition-all duration-300
+                        /* Mobile: Horizontal split news card */
+                        flex flex-row items-center p-3 gap-3.5 bg-slate-50/90 hover:bg-slate-100/90 border border-slate-200/80 shadow-xs
+                        /* Desktop (md:): Immersive full-bleed dark card */
+                        md:flex-col md:p-0 md:bg-[#141518] md:border-0 md:shadow-none md:relative md:h-[340px] sm:md:h-[360px] lg:md:h-[380px]
+                      "
+                    >
+                      {/* Image Thumbnail */}
+                      <div className="w-24 h-24 sm:w-28 sm:h-28 shrink-0 rounded-[6px] overflow-hidden relative md:w-full md:h-full md:absolute md:inset-0 md:rounded-none">
+                        <img
+                          src={post.image}
+                          alt={post.alt}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        {/* Desktop dark gradient */}
+                        <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/15" />
+                      </div>
+
+                      {/* Content Area */}
+                      <div className="flex-1 min-w-0 md:relative md:z-10 md:h-full md:flex md:flex-col md:justify-end md:p-6 sm:md:p-7">
+                        <div className="flex items-center gap-2 mb-1 md:mb-2.5">
+                          <span className="text-[10px] font-bold text-[#D4380A] uppercase tracking-wider md:text-slate-300 md:font-semibold">
+                            {post.category}
+                          </span>
+                          <span className="text-[10px] text-slate-400 md:text-slate-400">
+                            &bull; {post.readTime}
+                          </span>
+                        </div>
+                        <h3 className="font-heading font-semibold text-[14px] sm:text-[15px] md:text-[20px] sm:md:text-[22px] text-slate-900 md:text-white tracking-[-0.02em] leading-snug line-clamp-2 md:line-clamp-none mb-1.5 md:mb-3">
+                          {post.title}
+                        </h3>
+                        <span className="inline-flex items-center gap-1 text-[12px] md:text-[13px] font-medium text-[#D4380A] group-hover:text-[#F25A24] md:underline md:underline-offset-4 md:decoration-[#D4380A] md:group-hover:decoration-[#F25A24] transition-colors">
+                          <span>Read full blog</span>
+                          <ArrowRight className="w-3 h-3 md:hidden group-hover:translate-x-0.5 transition-transform" />
+                        </span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              );
+            })()}
 
           </div>
         </section>
