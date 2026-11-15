@@ -97,7 +97,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
         {/* =========================================================
              1. BREADCRUMBS
              ========================================================= */}
-        <nav className="flex items-center gap-2 text-xs text-slate-500 font-medium overflow-x-auto whitespace-nowrap">
+        <nav className="flex items-center gap-2 text-xs text-slate-500 font-medium overflow-x-auto whitespace-nowrap scrollbar-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-1">
           <Link href="/" className="hover:text-[#F25A24] transition-colors flex items-center gap-1">
             <Home className="w-3.5 h-3.5 text-slate-400" />
           </Link>
@@ -665,8 +665,8 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             </Link>
           </div>
 
-          {/* 4 Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* 4 Cards Grid - 2 per row on mobile */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {similarProducts.map((rel) => (
               <ProductCard key={rel.id} product={rel} />
             ))}
