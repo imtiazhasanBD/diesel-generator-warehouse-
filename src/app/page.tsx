@@ -755,10 +755,10 @@ export default function Home() {
         {/* =========================================================
              SECTION 4: WHAT WE MANUFACTURE / EXPLODED CAD BLUEPRINT & PRECISION SPEC
              ========================================================= */}
-        <section id="schematic" className="relative bg-[#121214] text-white overflow-hidden pt-[290px] sm:pt-[340px] lg:pt-[390px] pb-10 md:pb-24 lg:pb-32">
+        <section id="schematic" className="relative bg-[#121214] text-white overflow-hidden pt-[140px] sm:pt-[240px] lg:pt-[390px] pb-12 md:pb-24 lg:pb-32">
 
           {/* 1. Glowing Orange Dome Curve (White Top -> Fiery Orange Arch -> Dark Base) */}
-          <div className="absolute top-0 left-0 right-0 h-[400px] sm:h-[460px] lg:h-[520px] pointer-events-none select-none overflow-hidden z-0">
+          <div className="absolute top-0 left-0 right-0 h-[280px] sm:h-[400px] lg:h-[520px] pointer-events-none select-none overflow-hidden z-0">
             {/* Pure white top backdrop transitioning cleanly to dark base */}
             <div
               className="absolute inset-0"
@@ -772,12 +772,12 @@ export default function Home() {
             <div
               className="
                 absolute left-[-18%] w-[136%]
-                top-[62px] sm:top-[76px] lg:top-[88px]
-                h-[310px] sm:h-[360px] lg:h-[400px]
-                rounded-tl-[50%_140px] rounded-tr-[50%_140px]
+                top-[40px] sm:top-[76px] lg:top-[88px]
+                h-[220px] sm:h-[360px] lg:h-[400px]
+                rounded-tl-[50%_120px] rounded-tr-[50%_120px]
                 sm:rounded-tl-[50%_170px] sm:rounded-tr-[50%_170px]
                 lg:rounded-tl-[50%_195px] lg:rounded-tr-[50%_195px]
-                blur-[30px] sm:blur-[38px] lg:blur-[44px]
+                blur-[24px] sm:blur-[38px] lg:blur-[44px]
               "
               style={{
                 background:
@@ -786,11 +786,11 @@ export default function Home() {
             />
 
             {/* Bottom feather into exact #121214 background */}
-            <div className="absolute bottom-0 left-0 right-0 h-[150px] bg-gradient-to-b from-transparent to-[#121214]" />
+            <div className="absolute bottom-0 left-0 right-0 h-[100px] sm:h-[150px] bg-gradient-to-b from-transparent to-[#121214]" />
           </div>
 
           {/* 2. Full-Height 4 Architectural Vertical Grid Lines (emerging below the dome) */}
-          <div className="absolute inset-0 max-w-[1400px] mx-auto px-6 sm:px-10 pointer-events-none z-0 hidden lg:block [mask-image:linear-gradient(to_bottom,transparent_0px,transparent_280px,black_410px)]">
+          <div className="absolute inset-0 max-w-[1400px] mx-auto px-4 sm:px-10 pointer-events-none z-0 hidden lg:block [mask-image:linear-gradient(to_bottom,transparent_0px,transparent_280px,black_410px)]">
             <div className="w-full h-full grid grid-cols-4 border-x border-dashed border-white/[0.1]">
               <div className="border-r border-dashed border-white/[0.1] h-full" />
               <div className="border-r border-dashed border-white/[0.1] h-full" />
@@ -799,12 +799,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10">
+          <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-10">
 
             {/* 3. Top Header: Badge on Left + 50,000+ Metric on Right */}
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start mb-12 lg:mb-16">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-8 items-start mb-8 sm:mb-12 lg:mb-16">
               {/* Col 1: Badge */}
-              <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight text-white">
+              <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold tracking-tight text-white">
                 <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
                 <span>What we manufacture</span>
               </div>
@@ -814,17 +814,17 @@ export default function Home() {
 
               {/* Col 4: 50,000+ Metric */}
               <div className="lg:pl-6">
-                <div className="font-heading text-5xl lg:text-6xl font-bold text-white tracking-tight leading-none">
+                <div className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-none">
                   50,000<span className="text-[#F25A24]">+</span>
                 </div>
-                <p className="text-xs text-slate-400 mt-2.5 max-w-[260px] leading-relaxed">
+                <p className="text-xs text-slate-400 mt-1.5 sm:mt-2.5 max-w-[260px] leading-relaxed">
                   Precision-built diesel generators delivered to clients across industries and continents.
                 </p>
               </div>
             </div>
 
             {/* 4. Centerpiece Exploded CAD Technical Diagram */}
-            <div className="relative w-full my-6 lg:my-12 py-6 flex items-center justify-center">
+            <div className="relative w-full my-4 sm:my-6 lg:my-12 py-2 sm:py-6 flex flex-col items-center justify-center">
               <div className="w-full max-w-5xl relative">
                 <img
                   src="/assets/images/cad-exploded.svg"
@@ -835,14 +835,14 @@ export default function Home() {
                 {/* Interactive Hotspot Pin 1 (Soundproof Enclosure) */}
                 <div
                   onClick={() => setActiveHotspot("canopy")}
-                  className="absolute top-[48%] left-[7.5%] w-7 h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
+                  className="absolute top-[48%] left-[7.5%] w-6 h-6 sm:w-7 sm:h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
                 >
                   {activeHotspot === "canopy" && <span className="absolute inset-0 rounded-sm bg-[#F25A24]/40 animate-ping" />}
-                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[10px] font-bold transition-all ${activeHotspot === "canopy" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
+                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[9px] sm:text-[10px] font-bold transition-all ${activeHotspot === "canopy" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
                     }`}>
                     1
                   </span>
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-black/95 text-white text-[11px] font-semibold px-3 py-1.5 rounded-sm whitespace-nowrap border border-white/20 shadow-2xl pointer-events-none">
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-black/95 text-white text-[11px] font-semibold px-3 py-1.5 rounded-sm whitespace-nowrap border border-white/20 shadow-2xl pointer-events-none z-20">
                     Acoustic Canopy Shell (&lt;68 dBA)
                   </div>
                 </div>
@@ -850,14 +850,14 @@ export default function Home() {
                 {/* Interactive Hotspot Pin 2 (Engine Flywheel Core) */}
                 <div
                   onClick={() => setActiveHotspot("engine")}
-                  className="absolute top-[32%] left-[37%] w-7 h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
+                  className="absolute top-[32%] left-[37%] w-6 h-6 sm:w-7 sm:h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
                 >
                   {activeHotspot === "engine" && <span className="absolute inset-0 rounded-sm bg-[#F25A24]/40 animate-ping" />}
-                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[10px] font-bold transition-all ${activeHotspot === "engine" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
+                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[9px] sm:text-[10px] font-bold transition-all ${activeHotspot === "engine" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
                     }`}>
                     2
                   </span>
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-black/95 text-white text-[11px] font-semibold px-3 py-1.5 rounded-sm whitespace-nowrap border border-white/20 shadow-2xl pointer-events-none">
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-black/95 text-white text-[11px] font-semibold px-3 py-1.5 rounded-sm whitespace-nowrap border border-white/20 shadow-2xl pointer-events-none z-20">
                     Heavy Cast Flywheel & Core
                   </div>
                 </div>
@@ -865,53 +865,61 @@ export default function Home() {
                 {/* Interactive Hotspot Pin 3 (Alternator & Rotor) */}
                 <div
                   onClick={() => setActiveHotspot("alternator")}
-                  className="absolute top-[52%] left-[71.5%] w-7 h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
+                  className="absolute top-[52%] left-[71.5%] w-6 h-6 sm:w-7 sm:h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
                 >
                   {activeHotspot === "alternator" && <span className="absolute inset-0 rounded-sm bg-[#F25A24]/40 animate-ping" />}
-                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[10px] font-bold transition-all ${activeHotspot === "alternator" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
+                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[9px] sm:text-[10px] font-bold transition-all ${activeHotspot === "alternator" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
                     }`}>
                     3
                   </span>
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-black/95 text-white text-[11px] font-semibold px-3 py-1.5 rounded-sm whitespace-nowrap border border-white/20 shadow-2xl pointer-events-none">
+                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-black/95 text-white text-[11px] font-semibold px-3 py-1.5 rounded-sm whitespace-nowrap border border-white/20 shadow-2xl pointer-events-none z-20">
                     100% Copper Brushless Alternator
                   </div>
                 </div>
               </div>
+
+              {/* Mobile Active Hotspot Indicator Banner */}
+              <div className="sm:hidden mt-3 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 flex items-center gap-2 text-[11px] text-slate-300">
+                <span className="w-2 h-2 rounded-full bg-[#F25A24] animate-pulse" />
+                <span>Tap pins <strong className="text-white">1, 2, 3</strong> to inspect components below</span>
+              </div>
             </div>
 
-            {/* 5. 4 Technical Spec Cards Grid (Matching Reference Screenshot) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 pt-8 lg:pt-12 border-t border-white/[0.08]">
+            {/* 5. 4 Technical Spec Cards Grid - 2 per row on mobile screens */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 pt-6 sm:pt-8 lg:pt-12 border-t border-white/[0.08]">
 
               {/* Card 1: Engine Core */}
               <div
                 onClick={() => setActiveHotspot("engine")}
-                className={`p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "engine"
+                className={`p-3 sm:p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${activeHotspot === "engine"
                   ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
                   : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
-                <h4 className="font-heading font-bold text-base text-white mb-3">
-                  Heavy Diesel Engine Block
-                </h4>
-                <div className="w-full h-36 rounded-sm overflow-hidden bg-slate-900 border border-white/10 mb-5 relative group">
-                  <img
-                    src="/assets/images/engine-circle.jpg"
-                    alt="Diesel Engine Turbocharger Block"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="space-y-2.5 text-xs">
-                  <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-2">
-                    <span>Material</span>
-                    <span className="text-white font-medium text-right">High-Tensile Cast Alloy</span>
+                <div>
+                  <h4 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-white mb-2 sm:mb-3 line-clamp-2 leading-snug">
+                    Heavy Diesel Engine Block
+                  </h4>
+                  <div className="w-full h-24 sm:h-32 lg:h-36 rounded-sm overflow-hidden bg-slate-900 border border-white/10 mb-2.5 sm:mb-5 relative group">
+                    <img
+                      src="/assets/images/engine-circle.jpg"
+                      alt="Diesel Engine Turbocharger Block"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-2">
-                    <span>Capability</span>
-                    <span className="text-white font-medium text-right">Direct Turbo Injection</span>
-                  </div>
-                  <div className="flex justify-between items-center text-slate-400 pt-0.5">
-                    <span>Size Range</span>
-                    <span className="text-white font-medium text-right">15 kVA – 2500 kVA</span>
+                  <div className="space-y-1.5 sm:space-y-2.5 text-[10px] sm:text-xs">
+                    <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-1.5 sm:pb-2 gap-1">
+                      <span className="truncate">Material</span>
+                      <span className="text-white font-medium text-right truncate">Cast Alloy</span>
+                    </div>
+                    <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-1.5 sm:pb-2 gap-1">
+                      <span className="truncate">Capability</span>
+                      <span className="text-white font-medium text-right truncate">Turbo Inject</span>
+                    </div>
+                    <div className="flex justify-between items-center text-slate-400 pt-0.5 gap-1">
+                      <span className="truncate">Range</span>
+                      <span className="text-white font-medium text-right truncate">15–2500 kVA</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -919,33 +927,35 @@ export default function Home() {
               {/* Card 2: Acoustic Canopy */}
               <div
                 onClick={() => setActiveHotspot("canopy")}
-                className={`p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "canopy"
+                className={`p-3 sm:p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${activeHotspot === "canopy"
                   ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
                   : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
-                <h4 className="font-heading font-bold text-base text-white mb-3">
-                  Soundproof Canopy Enclosure
-                </h4>
-                <div className="w-full h-36 rounded-sm overflow-hidden bg-slate-900 border border-white/10 mb-5 relative group">
-                  <img
-                    src="/assets/images/yellow-silent.jpg"
-                    alt="Soundproof Canopy Housing"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="space-y-2.5 text-xs">
-                  <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-2">
-                    <span>Material</span>
-                    <span className="text-white font-medium text-right">2.5mm Galvanized Steel</span>
+                <div>
+                  <h4 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-white mb-2 sm:mb-3 line-clamp-2 leading-snug">
+                    Soundproof Canopy Enclosure
+                  </h4>
+                  <div className="w-full h-24 sm:h-32 lg:h-36 rounded-sm overflow-hidden bg-slate-900 border border-white/10 mb-2.5 sm:mb-5 relative group">
+                    <img
+                      src="/assets/images/yellow-silent.jpg"
+                      alt="Soundproof Canopy Housing"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-2">
-                    <span>Capability</span>
-                    <span className="text-white font-medium text-right">Acoustic Dampening (&lt;68 dBA)</span>
-                  </div>
-                  <div className="flex justify-between items-center text-slate-400 pt-0.5">
-                    <span>Size Range</span>
-                    <span className="text-white font-medium text-right">Weatherproof / Anti-Rust</span>
+                  <div className="space-y-1.5 sm:space-y-2.5 text-[10px] sm:text-xs">
+                    <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-1.5 sm:pb-2 gap-1">
+                      <span className="truncate">Material</span>
+                      <span className="text-white font-medium text-right truncate">2.5mm Steel</span>
+                    </div>
+                    <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-1.5 sm:pb-2 gap-1">
+                      <span className="truncate">Noise</span>
+                      <span className="text-white font-medium text-right truncate">&lt;68 dBA @7m</span>
+                    </div>
+                    <div className="flex justify-between items-center text-slate-400 pt-0.5 gap-1">
+                      <span className="truncate">Feature</span>
+                      <span className="text-white font-medium text-right truncate">Weatherproof</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -953,33 +963,35 @@ export default function Home() {
               {/* Card 3: Control & ATS Panels */}
               <div
                 onClick={() => setActiveHotspot("controller")}
-                className={`p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "controller"
+                className={`p-3 sm:p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${activeHotspot === "controller"
                   ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
                   : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
-                <h4 className="font-heading font-bold text-base text-white mb-3">
-                  Electrical Control & ATS Panels
-                </h4>
-                <div className="w-full h-36 rounded-sm overflow-hidden bg-slate-900 border border-white/10 mb-5 relative group">
-                  <img
-                    src="/assets/images/gen-control-panel.jpg"
-                    alt="Deep Sea Digital Generator Control Panel"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="space-y-2.5 text-xs">
-                  <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-2">
-                    <span>Material</span>
-                    <span className="text-white font-medium text-right">Electrostatic Coated Steel</span>
+                <div>
+                  <h4 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-white mb-2 sm:mb-3 line-clamp-2 leading-snug">
+                    Electrical Control & ATS Panels
+                  </h4>
+                  <div className="w-full h-24 sm:h-32 lg:h-36 rounded-sm overflow-hidden bg-slate-900 border border-white/10 mb-2.5 sm:mb-5 relative group">
+                    <img
+                      src="/assets/images/gen-control-panel.jpg"
+                      alt="Deep Sea Digital Generator Control Panel"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-2">
-                    <span>Capability</span>
-                    <span className="text-white font-medium text-right">Auto Failover (&lt;8s AMF)</span>
-                  </div>
-                  <div className="flex justify-between items-center text-slate-400 pt-0.5">
-                    <span>Size Range</span>
-                    <span className="text-white font-medium text-right">Small to Full SCADA</span>
+                  <div className="space-y-1.5 sm:space-y-2.5 text-[10px] sm:text-xs">
+                    <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-1.5 sm:pb-2 gap-1">
+                      <span className="truncate">Material</span>
+                      <span className="text-white font-medium text-right truncate">Coated Steel</span>
+                    </div>
+                    <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-1.5 sm:pb-2 gap-1">
+                      <span className="truncate">Failover</span>
+                      <span className="text-white font-medium text-right truncate">&lt;8s AMF</span>
+                    </div>
+                    <div className="flex justify-between items-center text-slate-400 pt-0.5 gap-1">
+                      <span className="truncate">System</span>
+                      <span className="text-white font-medium text-right truncate">Full SCADA</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -987,33 +999,35 @@ export default function Home() {
               {/* Card 4: Alternator & Rotor Shaft */}
               <div
                 onClick={() => setActiveHotspot("alternator")}
-                className={`p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer ${activeHotspot === "alternator"
+                className={`p-3 sm:p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${activeHotspot === "alternator"
                   ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
                   : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
-                <h4 className="font-heading font-bold text-base text-white mb-3">
-                  100% Copper Brushless Alternator
-                </h4>
-                <div className="w-full h-36 rounded-sm overflow-hidden bg-slate-900 border border-white/10 mb-5 relative group">
-                  <img
-                    src="/assets/images/gen-alternator-shaft.jpg"
-                    alt="Alternator Copper Stator & Rotor Shaft"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="space-y-2.5 text-xs">
-                  <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-2">
-                    <span>Material</span>
-                    <span className="text-white font-medium text-right">Class H Pure Copper</span>
+                <div>
+                  <h4 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-white mb-2 sm:mb-3 line-clamp-2 leading-snug">
+                    100% Copper Brushless Alternator
+                  </h4>
+                  <div className="w-full h-24 sm:h-32 lg:h-36 rounded-sm overflow-hidden bg-slate-900 border border-white/10 mb-2.5 sm:mb-5 relative group">
+                    <img
+                      src="/assets/images/gen-alternator-shaft.jpg"
+                      alt="Alternator Copper Stator & Rotor Shaft"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-2">
-                    <span>Capability</span>
-                    <span className="text-white font-medium text-right">±0.5% Digital AVR</span>
-                  </div>
-                  <div className="flex justify-between items-center text-slate-400 pt-0.5">
-                    <span>Size Range</span>
-                    <span className="text-white font-medium text-right">Balanced @ 1500 RPM</span>
+                  <div className="space-y-1.5 sm:space-y-2.5 text-[10px] sm:text-xs">
+                    <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-1.5 sm:pb-2 gap-1">
+                      <span className="truncate">Material</span>
+                      <span className="text-white font-medium text-right truncate">Class H Copper</span>
+                    </div>
+                    <div className="flex justify-between items-center text-slate-400 border-b border-white/[0.06] pb-1.5 sm:pb-2 gap-1">
+                      <span className="truncate">AVR</span>
+                      <span className="text-white font-medium text-right truncate">±0.5% Digital</span>
+                    </div>
+                    <div className="flex justify-between items-center text-slate-400 pt-0.5 gap-1">
+                      <span className="truncate">Speed</span>
+                      <span className="text-white font-medium text-right truncate">1500 RPM</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1021,21 +1035,21 @@ export default function Home() {
             </div>
 
             {/* 6. Bottom Action Footer matching Reference Screenshot */}
-            <div className="mt-14 lg:mt-18 pt-10 border-t border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-              <h3 className="font-heading text-2xl lg:text-3xl font-extrabold text-white tracking-tight max-w-lg leading-tight">
+            <div className="mt-8 sm:mt-14 lg:mt-18 pt-6 sm:pt-10 border-t border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
+              <h3 className="font-heading text-xl sm:text-2xl lg:text-3xl font-extrabold text-white tracking-tight max-w-lg leading-snug">
                 Explore our complete product range across industries.
               </h3>
-              <div className="flex items-center gap-6">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6 w-full sm:w-auto">
                 <a
                   href="#products"
-                  className="text-xs font-semibold text-slate-400 hover:text-white flex items-center gap-2 transition-colors cursor-pointer"
+                  className="text-xs font-semibold text-slate-400 hover:text-white flex items-center justify-center gap-2 transition-colors cursor-pointer py-2 sm:py-0"
                 >
                   <span>Download brochure</span>
                   <Download className="w-4 h-4 text-slate-400" />
                 </a>
                 <button
                   onClick={() => setIsQuoteModalOpen(true)}
-                  className="framer-btn-primary cursor-pointer"
+                  className="framer-btn-primary cursor-pointer w-full sm:w-auto justify-center"
                 >
                   <span>View all products</span>
                   <div className="btn-arrow-box">
