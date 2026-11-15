@@ -17,46 +17,41 @@ export const KINETIC_STEPS: KineticStep[] = [
     id: "step-1",
     type: "single",
     text: "ENGINEERED",
-    duration: 4.8,
+    duration: 4.0,
   },
   {
     id: "step-2",
     type: "single",
     text: "RELIABLE",
-    duration: 4.8,
+    duration: 4.0,
   },
   {
     id: "step-3",
     type: "single",
     text: "UNINTERRUPTED",
-    duration: 4.8,
+    duration: 4.0,
   },
   {
     id: "step-4",
     type: "single",
     text: "POWERFUL",
-    duration: 4.8,
+    duration: 4.0,
   },
   {
     id: "step-5",
     type: "duo",
     line1: "INDUSTRIAL",
     line2: "PERFORMANCE",
-    duration: 5.0,
+    duration: 4.5,
   },
   {
     id: "step-6",
     type: "statement",
     line1: "POWERING",
     line2: "YOUR INDUSTRY",
-    duration: 6.0,
+    duration: 5.0,
   },
 ];
-
-const TOTAL_CYCLE_DURATION = KINETIC_STEPS.reduce(
-  (acc, step) => acc + step.duration,
-  0
-);
 
 export interface HeroKineticTypographyProps {
   videoRef: React.RefObject<HTMLVideoElement | null>;
@@ -122,15 +117,15 @@ function ConvergingRow({
               filter: "blur(0px)",
               transition: {
                 x: {
-                  duration: shouldReduceMotion ? 0.3 : 3.8, // Very slow, leisurely, and fluid inward glide
+                  duration: shouldReduceMotion ? 0.3 : 3.0, // Slow, fluid inward glide
                   ease: [0.35, 0.05, 0.25, 1], // Smooth easeInOut curve that starts gently without any fast snap
                 },
                 opacity: {
-                  duration: shouldReduceMotion ? 0.3 : 1.8,
+                  duration: shouldReduceMotion ? 0.3 : 1.5,
                   ease: "easeOut",
                 },
                 filter: {
-                  duration: shouldReduceMotion ? 0.3 : 1.8,
+                  duration: shouldReduceMotion ? 0.3 : 1.5,
                   ease: "easeOut",
                 },
               },
@@ -175,65 +170,21 @@ export default function HeroKineticTypography({
   const [currentIndex, setCurrentIndex] = useState(0);
   const shouldReduceMotion = Boolean(useReducedMotion());
 
-  // Map video playback timestamp to active step
-  const getIndexFromTime = (time: number) => {
-    const cycleTime = Math.abs(time) % TOTAL_CYCLE_DURATION;
-    let accumulated = 0;
-    for (let i = 0; i < KINETIC_STEPS.length; i++) {
-      accumulated += KINETIC_STEPS[i].duration;
-      if (cycleTime < accumulated) {
-        return i;
-      }
-    }
-    return 0;
-  };
-
+  // Continuous step cycle timer:
+  // Advances through all steps (ENGINEERED -> RELIABLE -> UNINTERRUPTED -> POWERFUL -> ...)
+  // independently of background video loop length.
   useEffect(() => {
-    const video = videoRef.current;
+    if (!isPlaying) return;
 
-    const handleSync = () => {
-      if (!video) return;
-      if (!video.paused && !video.ended && video.readyState >= 2) {
-        const target = getIndexFromTime(video.currentTime);
-        setCurrentIndex((prev) => (prev !== target ? target : prev));
-      }
-    };
-
-    if (video) {
-      video.addEventListener("timeupdate", handleSync);
-      video.addEventListener("seeked", handleSync);
-      video.addEventListener("play", handleSync);
-      video.addEventListener("playing", handleSync);
-    }
-
-    // Smooth fallback if video is paused, buffering, or autoplay delayed
-    const fallbackTimer = setInterval(() => {
-      if (document.hidden) return;
-      const v = videoRef.current;
-      if (v && !v.paused && v.readyState >= 2) return;
-      if (isPlaying) {
+    const currentStep = KINETIC_STEPS[currentIndex] || KINETIC_STEPS[0];
+    const timer = setTimeout(() => {
+      if (!document.hidden) {
         setCurrentIndex((prev) => (prev + 1) % KINETIC_STEPS.length);
       }
-    }, 4800);
+    }, currentStep.duration * 1000);
 
-    const handleVisibility = () => {
-      if (!document.hidden && videoRef.current) {
-        handleSync();
-      }
-    };
-    document.addEventListener("visibilitychange", handleVisibility);
-
-    return () => {
-      if (video) {
-        video.removeEventListener("timeupdate", handleSync);
-        video.removeEventListener("seeked", handleSync);
-        video.removeEventListener("play", handleSync);
-        video.removeEventListener("playing", handleSync);
-      }
-      clearInterval(fallbackTimer);
-      document.removeEventListener("visibilitychange", handleVisibility);
-    };
-  }, [videoRef, isPlaying]);
+    return () => clearTimeout(timer);
+  }, [currentIndex, isPlaying]);
 
   const step = KINETIC_STEPS[currentIndex] || KINETIC_STEPS[0];
 
