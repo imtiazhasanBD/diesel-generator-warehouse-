@@ -214,6 +214,130 @@ const SALES_REGIONS = [
   }
 ];
 
+// Popular Generator Price in Bangladesh Directory Data (Residential, Commercial, Industrial)
+const PRICE_DIRECTORY_DATA = [
+  {
+    category: "Residential Generator",
+    items: [
+      {
+        title: "30 kVA Ricardo Generator Price in Bangladesh",
+        slug: "30kva-diesel-generator",
+        image: "/assets/images/yellow-silent.jpg",
+        alt: "30 kVA Ricardo Generator",
+        priceFormatted: "৳ 385,000",
+      },
+      {
+        title: "80 kVA Ricardo Generator Price in Bangladesh",
+        slug: "30kva-diesel-generator",
+        image: "/assets/images/yellow-silent.jpg",
+        alt: "80 kVA Ricardo Generator",
+        priceFormatted: "৳ 670,000",
+      },
+      {
+        title: "30 kVA CUMMINS Diesel Generator, Foreign Canopy",
+        slug: "30kva-cummins-diesel-generator",
+        image: "/assets/images/perkins-blue.jpg",
+        alt: "30 kVA CUMMINS Diesel Generator, Foreign Canopy",
+        priceFormatted: "৳ 895,000",
+      },
+      {
+        title: "100 kVA Ricardo Generator | Silent Type",
+        slug: "apd-110-a-diesel-generator",
+        image: "/assets/images/canopy-white-20k.jpg",
+        alt: "100 kVA Ricardo Generator | Silent Type",
+        priceFormatted: "৳ 795,000",
+      },
+      {
+        title: "150 kVA Ricardo Generator | Silent Type",
+        slug: "apd-110-a-diesel-generator",
+        image: "/assets/images/yellow-silent.jpg",
+        alt: "150 kVA Ricardo Generator | Silent Type",
+        priceFormatted: "৳ 970,000",
+      },
+    ],
+  },
+  {
+    category: "Commercial Generator",
+    items: [
+      {
+        title: "200 kVA Perkins (UK) Generator Price In Bangladesh",
+        slug: "100kva-perkins-silent-genset",
+        image: "/assets/images/commercial-white.jpg",
+        alt: "200 kVA Perkins (UK) Generator",
+        priceFormatted: "৳ 3,090,000",
+      },
+      {
+        title: "500 kVA Diesel Generator Price in Bangladesh",
+        slug: "apd-110-a-diesel-generator",
+        image: "/assets/images/perkins-blue.jpg",
+        alt: "500 kVA Diesel Generator",
+        priceFormatted: "৳ 3,800,000",
+      },
+      {
+        title: "250 kVA Ricardo Generator | Silent Type",
+        slug: "20kva-diesel-generator-ricardo",
+        image: "/assets/images/canopy-white-20k.jpg",
+        alt: "250 kVA Ricardo Generator | Silent Type",
+        priceFormatted: "৳ 1,395,000",
+      },
+      {
+        title: "200 kVA Ricardo Generator | Silent Type",
+        slug: "20kva-diesel-generator-ricardo",
+        image: "/assets/images/yellow-silent.jpg",
+        alt: "200 kVA Ricardo Generator | Silent Type",
+        priceFormatted: "৳ 1,160,000",
+      },
+      {
+        title: "300 kVA Diesel Generator Price in Bangladesh",
+        slug: "apd-110-a-diesel-generator",
+        image: "/assets/images/open-skid.jpg",
+        alt: "300 kVA Diesel Generator",
+        priceFormatted: "৳ 1,850,000",
+      },
+    ],
+  },
+  {
+    category: "Industrial Generator",
+    items: [
+      {
+        title: "400 kVA CUMMINS Diesel Generator",
+        slug: "30kva-cummins-diesel-generator",
+        image: "/assets/images/open-skid.jpg",
+        alt: "400 kVA CUMMINS Diesel Generator",
+        priceFormatted: "৳ 4,800,000",
+      },
+      {
+        title: "100 kVA CUMMINS Diesel Generator | Silent Type",
+        slug: "25kva-cummins-silent-generator",
+        image: "/assets/images/yellow-silent.jpg",
+        alt: "100 kVA CUMMINS Diesel Generator | Silent Type",
+        priceFormatted: "৳ 1,395,000",
+      },
+      {
+        title: "60 kVA CUMMINS Diesel Generator | Silent Type",
+        slug: "25kva-cummins-silent-generator",
+        image: "/assets/images/canopy-white-20k.jpg",
+        alt: "60 kVA CUMMINS Diesel Generator | Silent Type",
+        priceFormatted: "৳ 1,095,000",
+      },
+      {
+        title: "50 kVA CUMMINS Diesel Generator , Silent Type",
+        slug: "20kva-cummins-diesel-generator",
+        image: "/assets/images/yellow-silent.jpg",
+        alt: "50 kVA CUMMINS Diesel Generator , Silent Type",
+        priceFormatted: "৳ 995,000",
+      },
+      {
+        title: "40 kVA CUMMINS Generator, Silent Type",
+        slug: "20kva-cummins-diesel-generator",
+        image: "/assets/images/yellow-silent.jpg",
+        alt: "40 kVA CUMMINS Generator, Silent Type",
+        priceFormatted: "৳ 950,000",
+      },
+    ],
+  },
+];
+
 // Professional Card Wrapper Component with Subtle Industrial Elevation
 function TiltCard({
   children,
@@ -1065,7 +1189,7 @@ export default function Home() {
         {/* =========================================================
              SECTION 5: WHAT WE SUPPLY / TECHNICAL PRODUCT LINEUP
              ========================================================= */}
-        <section id="products" className=" py-10 md:py-20 lg:py-28 bg-[#FFFFFF] border-b border-slate-200">
+        <section id="products" className=" pt-10 md:pt-20 lg:pt-28 bg-[#FFFFFF]">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
 
             {/* Header */}
@@ -1251,6 +1375,72 @@ export default function Home() {
                 </div>
               </TiltCard>
 
+            </div>
+
+          </div>
+        </section>
+
+        {/* =========================================================
+             SECTION 5.5: BANGLADESH GENERATOR PRICE DIRECTORY
+             (RESIDENTIAL / COMMERCIAL / INDUSTRIAL)
+             ========================================================= */}
+        <section id="prices" className="py-10 md:py-16 bg-white">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
+
+            {/* Clean Section Header (No description, matching site style) */}
+            <div className="mb-8 sm:mb-12">
+              <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight mb-2">
+                <span className="w-10 h-[4px] bg-primary rounded-sm inline-block" />
+                <span>Price Catalog</span>
+              </div>
+              <h2 className="font-heading text-2xl sm:text-4xl lg:text-[42px] font-bold text-slate-950 tracking-tight">
+                Generator Price in <span className="text-primary">Bangladesh</span>
+              </h2>
+            </div>
+
+            {/* 3-Column Pure Clean Grid (Matching Uploaded Reference Layout) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+              {PRICE_DIRECTORY_DATA.map((col, colIdx) => (
+                <div key={colIdx}>
+                  {/* Category Header */}
+                  <div className="mb-5 sm:mb-6">
+                    <h3 className="font-heading font-bold text-lg sm:text-xl text-slate-950 tracking-tight">
+                      {col.category}
+                    </h3>
+                  </div>
+
+                  {/* Product Rows */}
+                  <div className="space-y-4 sm:space-y-5">
+                    {col.items.map((item, idx) => (
+                      <Link
+                        key={idx}
+                        href={`/products/${item.slug}`}
+                        className="group flex items-center gap-3.5 sm:gap-4 transition-colors"
+                      >
+                        {/* Image Thumbnail */}
+                        <div className="w-20 h-14 sm:w-22 sm:h-16 shrink-0 rounded-xs overflow-hidden bg-white border border-slate-200/90 flex items-center justify-center p-1 group-hover:border-primary/50 transition-colors">
+                          <img
+                            src={item.image}
+                            alt={item.alt}
+                            className="w-full h-full object-cover rounded-xs group-hover:scale-105 transition-transform duration-300"
+                            loading="lazy"
+                          />
+                        </div>
+
+                        {/* Title & Price */}
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-heading text-[13px] sm:text-[13.5px] font-semibold text-slate-900 group-hover:text-primary transition-colors leading-snug line-clamp-2">
+                            {item.title}
+                          </h4>
+                          <p className="font-mono text-[13px] sm:text-[14px] font-bold text-slate-950 mt-1">
+                            {item.priceFormatted}
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
 
           </div>
