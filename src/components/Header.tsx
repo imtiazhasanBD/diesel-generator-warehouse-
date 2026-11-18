@@ -58,8 +58,12 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             <Link href="/#projects" className="hover:text-primary transition-colors">
               Case Studies
             </Link>
-            <Link href="/#blog" className="hover:text-primary transition-colors">
-              Blog
+            <Link
+              href="/blog"
+              className={`hover:text-primary transition-colors flex items-center gap-1.5 ${activePath === "blog" ? "text-primary font-bold" : "text-slate-950"}`}
+            >
+              <span>Blog</span>
+              {activePath === "blog" && <span className="w-1.5 h-1.5 rounded-sm bg-primary" />}
             </Link>
           </nav>
 
@@ -126,7 +130,7 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             <Link href="/#projects" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">
               Case Studies
             </Link>
-            <Link href="/#blog" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">
+            <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className={`block py-1 ${activePath === "blog" ? "text-primary font-bold" : "text-slate-700"}`}>
               Blog
             </Link>
             <div className="pt-3">

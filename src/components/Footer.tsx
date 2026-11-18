@@ -116,7 +116,7 @@ export default function Footer() {
                   Services
                 </Link>
                 <Link
-                  href="/#blog"
+                  href="/blog"
                   className="block text-white/85 hover:text-white transition-colors"
                 >
                   Blog

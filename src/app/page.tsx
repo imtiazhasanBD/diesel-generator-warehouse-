@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroKineticTypography from "@/components/HeroKineticTypography";
 import { PRODUCTS, PRODUCTS_BY_SLUG, FEATURED_SUPPLY_SLUGS, PRICE_DIRECTORY_CATEGORIES } from "@/data/products";
+import { BLOG_POSTS } from "@/data/blogs";
 import {
   Search,
   ArrowRight,
@@ -1951,45 +1952,23 @@ export default function Home() {
                 </h2>
               </div>
 
-              <a href="#" className="framer-btn-dark self-start sm:self-auto cursor-pointer">
+              <Link href="/blog" className="framer-btn-dark self-start sm:self-auto cursor-pointer">
                 <span>View all blogs</span>
                 <div className="btn-arrow-box">
                   <ArrowRight className="w-3.5 h-3.5 text-white" />
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* Mobile: Editorial Featured Lead + Compact Side Feed | Desktop: 3-Column Immersive Grid */}
             {(() => {
-              const posts = [
-                {
-                  title: "How to calculate accurate kVA sizing for industrial facilities",
-                  image: "/assets/images/engine-circle.jpg",
-                  alt: "Diesel engine turbocharger and wiring",
-                  category: "Engineering Guide",
-                  readTime: "5 min read",
-                },
-                {
-                  title: "Diesel generator maintenance for peak plant efficiency",
-                  image: "/assets/images/gen-control-panel.jpg",
-                  alt: "Digital generator control panel",
-                  category: "Maintenance",
-                  readTime: "4 min read",
-                },
-                {
-                  title: "Acoustic attenuation: Why canopy engineering matters",
-                  image: "/assets/images/gen-alternator-shaft.jpg",
-                  alt: "Brushless alternator rotor shaft",
-                  category: "Acoustics",
-                  readTime: "6 min read",
-                },
-              ];
+              const posts = BLOG_POSTS.slice(0, 3);
 
               return (
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6">
                   {/* Lead Story: Featured Hero on Mobile, Col 1 on Desktop */}
-                  <a
-                    href="#"
+                  <Link
+                    href={`/blog/${posts[0].slug}`}
                     className="relative rounded-[8px] md:rounded-[6px] overflow-hidden h-[290px] sm:h-[340px] md:h-[340px] sm:md:h-[360px] lg:md:h-[380px] group block bg-[#141518]"
                   >
                     <img
@@ -2016,13 +1995,13 @@ export default function Home() {
                         <ArrowRight className="w-3.5 h-3.5" />
                       </span>
                     </div>
-                  </a>
+                  </Link>
 
                   {/* Secondary Stories: Compact Feed on Mobile, Col 2 & 3 on Desktop */}
-                  {posts.slice(1).map((post, idx) => (
-                    <a
-                      key={idx}
-                      href="#"
+                  {posts.slice(1).map((post) => (
+                    <Link
+                      key={post.slug}
+                      href={`/blog/${post.slug}`}
                       className="
                         group rounded-[8px] md:rounded-[6px] overflow-hidden transition-all duration-300
                         /* Mobile: Horizontal split news card */
@@ -2060,7 +2039,7 @@ export default function Home() {
                           <ArrowRight className="w-3 h-3 md:hidden group-hover:translate-x-0.5 transition-transform" />
                         </span>
                       </div>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               );
