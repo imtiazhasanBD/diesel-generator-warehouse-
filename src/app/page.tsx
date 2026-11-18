@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "mot
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroKineticTypography from "@/components/HeroKineticTypography";
+import { PRODUCTS, PRODUCTS_BY_SLUG, FEATURED_SUPPLY_SLUGS, PRICE_DIRECTORY_CATEGORIES } from "@/data/products";
 import {
   Search,
   ArrowRight,
@@ -212,130 +213,6 @@ const SALES_REGIONS = [
       "100% genuine spare parts stocking & rapid dispatch"
     ]
   }
-];
-
-// Popular Generator Price in Bangladesh Directory Data (Residential, Commercial, Industrial)
-const PRICE_DIRECTORY_DATA = [
-  {
-    category: "Residential Generator",
-    items: [
-      {
-        title: "30 kVA Ricardo Generator Price in Bangladesh",
-        slug: "30kva-diesel-generator",
-        image: "/assets/images/yellow-silent.jpg",
-        alt: "30 kVA Ricardo Generator",
-        priceFormatted: "৳ 385,000",
-      },
-      {
-        title: "80 kVA Ricardo Generator Price in Bangladesh",
-        slug: "30kva-diesel-generator",
-        image: "/assets/images/yellow-silent.jpg",
-        alt: "80 kVA Ricardo Generator",
-        priceFormatted: "৳ 670,000",
-      },
-      {
-        title: "30 kVA CUMMINS Diesel Generator, Foreign Canopy",
-        slug: "30kva-cummins-diesel-generator",
-        image: "/assets/images/perkins-blue.jpg",
-        alt: "30 kVA CUMMINS Diesel Generator, Foreign Canopy",
-        priceFormatted: "৳ 895,000",
-      },
-      {
-        title: "100 kVA Ricardo Generator | Silent Type",
-        slug: "apd-110-a-diesel-generator",
-        image: "/assets/images/canopy-white-20k.jpg",
-        alt: "100 kVA Ricardo Generator | Silent Type",
-        priceFormatted: "৳ 795,000",
-      },
-      {
-        title: "150 kVA Ricardo Generator | Silent Type",
-        slug: "apd-110-a-diesel-generator",
-        image: "/assets/images/yellow-silent.jpg",
-        alt: "150 kVA Ricardo Generator | Silent Type",
-        priceFormatted: "৳ 970,000",
-      },
-    ],
-  },
-  {
-    category: "Commercial Generator",
-    items: [
-      {
-        title: "200 kVA Perkins (UK) Generator Price In Bangladesh",
-        slug: "100kva-perkins-silent-genset",
-        image: "/assets/images/commercial-white.jpg",
-        alt: "200 kVA Perkins (UK) Generator",
-        priceFormatted: "৳ 3,090,000",
-      },
-      {
-        title: "500 kVA Diesel Generator Price in Bangladesh",
-        slug: "apd-110-a-diesel-generator",
-        image: "/assets/images/perkins-blue.jpg",
-        alt: "500 kVA Diesel Generator",
-        priceFormatted: "৳ 3,800,000",
-      },
-      {
-        title: "250 kVA Ricardo Generator | Silent Type",
-        slug: "20kva-diesel-generator-ricardo",
-        image: "/assets/images/canopy-white-20k.jpg",
-        alt: "250 kVA Ricardo Generator | Silent Type",
-        priceFormatted: "৳ 1,395,000",
-      },
-      {
-        title: "200 kVA Ricardo Generator | Silent Type",
-        slug: "20kva-diesel-generator-ricardo",
-        image: "/assets/images/yellow-silent.jpg",
-        alt: "200 kVA Ricardo Generator | Silent Type",
-        priceFormatted: "৳ 1,160,000",
-      },
-      {
-        title: "300 kVA Diesel Generator Price in Bangladesh",
-        slug: "apd-110-a-diesel-generator",
-        image: "/assets/images/open-skid.jpg",
-        alt: "300 kVA Diesel Generator",
-        priceFormatted: "৳ 1,850,000",
-      },
-    ],
-  },
-  {
-    category: "Industrial Generator",
-    items: [
-      {
-        title: "400 kVA CUMMINS Diesel Generator",
-        slug: "30kva-cummins-diesel-generator",
-        image: "/assets/images/open-skid.jpg",
-        alt: "400 kVA CUMMINS Diesel Generator",
-        priceFormatted: "৳ 4,800,000",
-      },
-      {
-        title: "100 kVA CUMMINS Diesel Generator | Silent Type",
-        slug: "25kva-cummins-silent-generator",
-        image: "/assets/images/yellow-silent.jpg",
-        alt: "100 kVA CUMMINS Diesel Generator | Silent Type",
-        priceFormatted: "৳ 1,395,000",
-      },
-      {
-        title: "60 kVA CUMMINS Diesel Generator | Silent Type",
-        slug: "25kva-cummins-silent-generator",
-        image: "/assets/images/canopy-white-20k.jpg",
-        alt: "60 kVA CUMMINS Diesel Generator | Silent Type",
-        priceFormatted: "৳ 1,095,000",
-      },
-      {
-        title: "50 kVA CUMMINS Diesel Generator , Silent Type",
-        slug: "20kva-cummins-diesel-generator",
-        image: "/assets/images/yellow-silent.jpg",
-        alt: "50 kVA CUMMINS Diesel Generator , Silent Type",
-        priceFormatted: "৳ 995,000",
-      },
-      {
-        title: "40 kVA CUMMINS Generator, Silent Type",
-        slug: "20kva-cummins-diesel-generator",
-        image: "/assets/images/yellow-silent.jpg",
-        alt: "40 kVA CUMMINS Generator, Silent Type",
-        priceFormatted: "৳ 950,000",
-      },
-    ],
-  },
 ];
 
 // Professional Card Wrapper Component with Subtle Industrial Elevation
@@ -1212,169 +1089,75 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* 4 Technical Product Spec Table Cards - 2 per row on mobile */}
+            {/* 4 Technical Product Spec Table Cards - Dynamically Driven by Global Object */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+              {FEATURED_SUPPLY_SLUGS.map((slug) => {
+                const product = PRODUCTS_BY_SLUG[slug];
+                if (!product) return null;
+                return (
+                  <TiltCard
+                    key={product.id}
+                    className="bg-[#FAFBFD] rounded-md p-3 sm:p-5 lg:p-6 border border-slate-200 flex flex-col justify-between"
+                  >
+                    <div>
+                      <Link href={`/products/${product.slug}`} className="block">
+                        <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
+                        <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-primary transition-colors line-clamp-2 leading-snug">
+                          {product.name}
+                        </h3>
+                      </Link>
 
-              {/* Product 1 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-md p-3 sm:p-5 lg:p-6 border border-slate-200 flex flex-col justify-between">
-                <div>
-                  <Link href="/products/100kva-perkins-silent-genset" className="block">
-                    <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
-                      <img src="/assets/images/perkins-blue.jpg" alt="Perkins 100 kVA" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
+                      <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
+                        <div className="flex justify-between items-baseline gap-1">
+                          <span className="text-slate-400 shrink-0">Engine:</span>
+                          <span className="font-semibold text-slate-800 truncate text-right">
+                            {product.specs.engineBrand} {product.specs.engineModel}
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-baseline gap-1">
+                          <span className="text-slate-400 shrink-0">Alternator:</span>
+                          <span className="font-semibold text-slate-800 truncate text-right">
+                            {product.specs.alternatorBrand} {product.specs.alternatorModel}
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-baseline gap-1">
+                          <span className="text-slate-400 shrink-0">Noise:</span>
+                          <span className="font-semibold text-primary truncate text-right">
+                            {product.noiseLevel}
+                          </span>
+                        </div>
+                        <div className="flex justify-between items-baseline gap-1">
+                          <span className="text-slate-400 shrink-0">Controller:</span>
+                          <span className="font-semibold text-slate-800 truncate text-right">
+                            {product.specs.controllerBrand}
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-primary transition-colors line-clamp-2 leading-snug">Perkins 100 kVA Silent Genset</h3>
-                  </Link>
-
-                  <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Engine:</span>
-                      <span className="font-semibold text-slate-800 truncate text-right">Perkins 1104A-44TG2</span>
+                    <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-primary"
+                      >
+                        <span className="hidden sm:inline">View Specifications</span>
+                        <span className="sm:hidden">View Specs</span>
+                      </Link>
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className="framer-icon-btn w-6 h-6 sm:w-7 sm:h-7 shrink-0"
+                      >
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
                     </div>
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Alternator:</span>
-                      <span className="font-semibold text-slate-800 truncate text-right">Stamford UCI274C</span>
-                    </div>
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Noise:</span>
-                      <span className="font-semibold text-primary truncate text-right">68 dBA @ 7m</span>
-                    </div>
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Controller:</span>
-                      <span className="font-semibold text-slate-800 truncate text-right">Deep Sea DSE6120</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
-                  <Link href="/products/100kva-perkins-silent-genset" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-primary">
-                    <span className="hidden sm:inline">View Specifications</span>
-                    <span className="sm:hidden">View Specs</span>
-                  </Link>
-                  <Link href="/products/100kva-perkins-silent-genset" className="framer-icon-btn w-6 h-6 sm:w-7 sm:h-7 shrink-0">
-                    <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                  </Link>
-                </div>
-              </TiltCard>
-
-              {/* Product 2 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-md p-3 sm:p-5 lg:p-6 border border-slate-200 flex flex-col justify-between">
-                <div>
-                  <Link href="/products/25kva-cummins-silent-generator" className="block">
-                    <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
-                      <img src="/assets/images/project-green.jpg" alt="Cummins 25 kVA Silent Generator" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
-                    </div>
-                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-primary transition-colors line-clamp-2 leading-snug">Cummins 25 kVA Silent Generator</h3>
-                  </Link>
-
-                  <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Engine:</span>
-                      <span className="font-semibold text-slate-800 truncate text-right">Cummins 4BT3.9-G1</span>
-                    </div>
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Alternator:</span>
-                      <span className="font-semibold text-slate-800 truncate text-right">Stamford UCI224D</span>
-                    </div>
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Duty:</span>
-                      <span className="font-semibold text-primary truncate text-right">Prime & Standby</span>
-                    </div>
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Controller:</span>
-                      <span className="font-semibold text-slate-800 truncate text-right">PowerCommand</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
-                  <Link href="/products/25kva-cummins-silent-generator" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-primary">
-                    <span className="hidden sm:inline">View Specifications</span>
-                    <span className="sm:hidden">View Specs</span>
-                  </Link>
-                  <Link href="/products/25kva-cummins-silent-generator" className="framer-icon-btn w-6 h-6 sm:w-7 sm:h-7 shrink-0">
-                    <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                  </Link>
-                </div>
-              </TiltCard>
-
-              {/* Product 3 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-md p-3 sm:p-5 lg:p-6 border border-slate-200 flex flex-col justify-between">
-                <div>
-                  <Link href="/products/30kva-diesel-generator" className="block">
-                    <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
-                      <img src="/assets/images/canopy-white-20k.jpg" alt="Ricardo 30 kVA" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
-                    </div>
-                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-primary transition-colors line-clamp-2 leading-snug">Ricardo 30 kVA Silent Canopy</h3>
-                  </Link>
-
-                  <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Engine:</span>
-                      <span className="font-semibold text-slate-800 truncate text-right">Ricardo 4105ZD</span>
-                    </div>
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Alternator:</span>
-                      <span className="font-semibold text-slate-800 truncate text-right">Stamford UCI224C</span>
-                    </div>
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Ideal:</span>
-                      <span className="font-semibold text-primary truncate text-right">Offices & Commercial</span>
-                    </div>
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Controller:</span>
-                      <span className="font-semibold text-slate-800 truncate text-right">Deep Sea DSE6120</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
-                  <Link href="/products/30kva-diesel-generator" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-primary">
-                    <span className="hidden sm:inline">View Specifications</span>
-                    <span className="sm:hidden">View Specs</span>
-                  </Link>
-                  <Link href="/products/30kva-diesel-generator" className="framer-icon-btn w-6 h-6 sm:w-7 sm:h-7 shrink-0">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </TiltCard>
-
-              {/* Product 4 */}
-              <TiltCard className="bg-[#FAFBFD] rounded-md p-3 sm:p-5 lg:p-6 border border-slate-200 flex flex-col justify-between">
-                <div>
-                  <Link href="/products/apd-110-a-diesel-generator" className="block">
-                    <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
-                      <img src="/assets/images/yellow-silent.jpg" alt="APD 110 A" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
-                    </div>
-                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-primary transition-colors line-clamp-2 leading-snug">APD 110 A Industrial Diesel</h3>
-                  </Link>
-
-                  <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Engine:</span>
-                      <span className="font-semibold text-slate-800 truncate text-right">Aksa A6CRX46TI</span>
-                    </div>
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Alternator:</span>
-                      <span className="font-semibold text-slate-800 truncate text-right">Stamford Class H</span>
-                    </div>
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Duty:</span>
-                      <span className="font-semibold text-primary truncate text-right">Export Zones & Mills</span>
-                    </div>
-                    <div className="flex justify-between items-baseline gap-1">
-                      <span className="text-slate-400 shrink-0">Controller:</span>
-                      <span className="font-semibold text-slate-800 truncate text-right">DSE 7320 MKII</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
-                  <Link href="/products/apd-110-a-diesel-generator" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-primary">
-                    <span className="hidden sm:inline">View Specifications</span>
-                    <span className="sm:hidden">View Specs</span>
-                  </Link>
-                  <Link href="/products/apd-110-a-diesel-generator" className="framer-icon-btn w-6 h-6 sm:w-7 sm:h-7 shrink-0">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </TiltCard>
-
+                  </TiltCard>
+                );
+              })}
             </div>
 
           </div>
@@ -1398,9 +1181,9 @@ export default function Home() {
               </h2>
             </div>
 
-            {/* 3-Column Pure Clean Grid (Matching Uploaded Reference Layout) */}
+            {/* 3-Column Pure Clean Grid (Dynamically Driven by Global Object) */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-              {PRICE_DIRECTORY_DATA.map((col, colIdx) => (
+              {PRICE_DIRECTORY_CATEGORIES.map((col, colIdx) => (
                 <div key={colIdx}>
                   {/* Category Header */}
                   <div className="mb-5 sm:mb-6">
@@ -1411,33 +1194,37 @@ export default function Home() {
 
                   {/* Product Rows */}
                   <div className="space-y-4 sm:space-y-5">
-                    {col.items.map((item, idx) => (
-                      <Link
-                        key={idx}
-                        href={`/products/${item.slug}`}
-                        className="group flex items-center gap-3.5 sm:gap-4 transition-colors"
-                      >
-                        {/* Image Thumbnail */}
-                        <div className="w-20 h-14 sm:w-22 sm:h-16 shrink-0 rounded-xs overflow-hidden bg-white border border-slate-200/90 flex items-center justify-center p-1 group-hover:border-primary/50 transition-colors">
-                          <img
-                            src={item.image}
-                            alt={item.alt}
-                            className="w-full h-full object-cover rounded-xs group-hover:scale-105 transition-transform duration-300"
-                            loading="lazy"
-                          />
-                        </div>
+                    {col.productSlugs.map((slug) => {
+                      const product = PRODUCTS_BY_SLUG[slug];
+                      if (!product) return null;
+                      return (
+                        <Link
+                          key={product.id}
+                          href={`/products/${product.slug}`}
+                          className="group flex items-center gap-3.5 sm:gap-4 transition-colors"
+                        >
+                          {/* Image Thumbnail */}
+                          <div className="w-20 h-14 sm:w-22 sm:h-16 shrink-0 rounded-xs overflow-hidden bg-white border border-slate-200/90 flex items-center justify-center p-1 group-hover:border-primary/50 transition-colors">
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="w-full h-full object-cover rounded-xs group-hover:scale-105 transition-transform duration-300"
+                              loading="lazy"
+                            />
+                          </div>
 
-                        {/* Title & Price */}
-                        <div className="flex-1 min-w-0">
-                          <h4 className="font-heading text-[13px] sm:text-[13.5px] font-semibold text-slate-900 group-hover:text-primary transition-colors leading-snug line-clamp-2">
-                            {item.title}
-                          </h4>
-                          <p className="font-mono text-[13px] sm:text-[14px] font-bold text-slate-950 mt-1">
-                            {item.priceFormatted}
-                          </p>
-                        </div>
-                      </Link>
-                    ))}
+                          {/* Title & Price */}
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-heading text-[13px] sm:text-[13.5px] font-semibold text-slate-900 group-hover:text-primary transition-colors leading-snug line-clamp-2">
+                              {product.name} Price in Bangladesh
+                            </h4>
+                            <p className="font-mono text-[13px] sm:text-[14px] font-bold text-slate-950 mt-1">
+                              ৳ {product.priceValueBDT.toLocaleString("en-IN")}
+                            </p>
+                          </div>
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               ))}

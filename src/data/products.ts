@@ -893,11 +893,11 @@ export const PRODUCTS: GeneratorProduct[] = [
   {
     id: "prod-13",
     slug: "30kva-diesel-generator",
-    name: "30kVA Diesel Generator",
+    name: "30 kVA Ricardo Generator",
     brand: "Ricardo",
     type: "Silent Canopy",
-    priceText: "From ৳7,55,000",
-    priceValueBDT: 755000,
+    priceText: "৳3,85,000",
+    priceValueBDT: 385000,
     standbyKva: 33.0,
     standbyKw: 26.4,
     primeKva: 30.0,
@@ -1028,11 +1028,11 @@ export const PRODUCTS: GeneratorProduct[] = [
   {
     id: "prod-15",
     slug: "30kva-cummins-diesel-generator",
-    name: "30kVA Cummins Diesel Generator",
+    name: "30 kVA CUMMINS Diesel Generator, Foreign Canopy",
     brand: "Cummins",
     type: "Silent Canopy",
-    priceText: "From ৳7,40,000",
-    priceValueBDT: 740000,
+    priceText: "৳8,95,000",
+    priceValueBDT: 895000,
     standbyKva: 33.0,
     standbyKw: 26.4,
     primeKva: 30.0,
@@ -1176,8 +1176,1165 @@ export const PRODUCTS: GeneratorProduct[] = [
       { title: "Engine Maintenance & Overhaul Manual", code: "ENG-A6CRX-TECH", fileSize: "5.1 MB PDF" }
     ]
   }
+,
+{
+  "id": "prod-17",
+  "slug": "100kva-perkins-silent-genset",
+  "name": "Perkins 100 kVA Silent Genset",
+  "brand": "Perkins",
+  "type": "Silent Canopy",
+  "priceText": "৳21,50,000",
+  "priceValueBDT": 2150000,
+  "standbyKva": 110,
+  "standbyKw": 88,
+  "primeKva": 100,
+  "primeKw": 80,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "250L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "68 dBA @ 7m",
+  "image": "/assets/images/perkins-blue.jpg",
+  "galleryImages": [
+    "/assets/images/perkins-blue.jpg",
+    "/assets/images/gen-alternator-shaft.jpg",
+    "/assets/images/gen-control-panel.jpg"
+  ],
+  "brandBadgeText": "Perkins UK",
+  "shortDesc": "Original UK Perkins 1104A-44TG2 industrial diesel generator paired with Stamford alternator and Deep Sea DSE6120 controller.",
+  "generalFeatures": [
+    "Turbocharged 4-cylinder water-cooled Perkins UK genuine diesel engine",
+    "Stamford UCI274C Class H brushless alternator with 100% copper windings",
+    "Modular acoustic soundproof canopy engineered to 68 dBA at 7 meters",
+    "Deep Sea DSE6120 MKII digital control panel with automatic mains failure (AMF)",
+    "High ambient tropical radiator (+50°C) with mechanical pusher fan"
+  ],
+  "specs": {
+    "engineBrand": "Perkins UK",
+    "engineModel": "1104A-44TG2",
+    "engineCylinders": "4 Cylinder In-line Turbo",
+    "aspiration": "Turbocharged",
+    "boreStroke": "105 x 127 mm",
+    "displacementL": "4.4 L",
+    "compressionRatio": "17.25:1",
+    "speedRpm": 1500,
+    "governorType": "Mechanical (Class A1)",
+    "coolingMethod": "Water Cooled Radiator (+50°C)",
+    "oilCapacityL": "8.0 L",
+    "coolantCapacityL": "13.0 L",
+    "fuelCons100": "22.3 L/h",
+    "fuelCons75": "17.1 L/h",
+    "fuelCons50": "11.9 L/h",
+    "alternatorBrand": "Stamford",
+    "alternatorModel": "UCI274C",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±1.0%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE6120 MKII",
+    "dimensionsMm": "2750 x 1100 x 1600 mm",
+    "weightKg": 1550
+  },
+  "optionalEquipment": [
+    {
+      "title": "ATS Panel 200A",
+      "description": "Automated generator changeover panel.",
+      "icon": "switch"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE Certified"
+  ],
+  "documents": [
+    {
+      "title": "Perkins 100kVA Datasheet",
+      "code": "PER-100K-DS",
+      "fileSize": "2.8 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-18",
+  "slug": "80kva-ricardo-generator",
+  "name": "80 kVA Ricardo Generator",
+  "brand": "Ricardo",
+  "type": "Silent Canopy",
+  "priceText": "৳6,70,000",
+  "priceValueBDT": 670000,
+  "standbyKva": 88,
+  "standbyKw": 70.4,
+  "primeKva": 80,
+  "primeKw": 64,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "200L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "68 dBA @ 7m",
+  "image": "/assets/images/yellow-silent.jpg",
+  "galleryImages": [
+    "/assets/images/yellow-silent.jpg",
+    "/assets/images/engine-circle.jpg"
+  ],
+  "brandBadgeText": "Ricardo",
+  "shortDesc": "Heavy duty 80 kVA standby diesel generator for residential buildings, garment units, and commercial plazas.",
+  "generalFeatures": [
+    "Turbocharged 4-cylinder water-cooled Ricardo series diesel engine",
+    "Stamford technology brushless alternator with automatic voltage regulator (AVR)",
+    "Weatherproof and soundproof silent canopy with electrostatic powder coating",
+    "Smart digital AMF controller with engine diagnostic protection",
+    "Base mounted steel fuel tank with fuel level indicator"
+  ],
+  "specs": {
+    "engineBrand": "Ricardo Series",
+    "engineModel": "R4105ZD-80",
+    "engineCylinders": "4 Cylinder Turbo",
+    "aspiration": "Turbocharged",
+    "boreStroke": "105 x 125 mm",
+    "displacementL": "4.33 L",
+    "compressionRatio": "17.0:1",
+    "speedRpm": 1500,
+    "governorType": "Mechanical / Electronic",
+    "coolingMethod": "Water Cooled Radiator",
+    "oilCapacityL": "14.0 L",
+    "coolantCapacityL": "20.0 L",
+    "fuelCons100": "18.5 L/h",
+    "fuelCons75": "14.0 L/h",
+    "fuelCons50": "9.5 L/h",
+    "alternatorBrand": "Stamford Type",
+    "alternatorModel": "UCI224G",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±1.0%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea / SmartGen",
+    "controllerModel": "HGM6120",
+    "dimensionsMm": "2450 x 1000 x 1400 mm",
+    "weightKg": 1350
+  },
+  "optionalEquipment": [
+    {
+      "title": "Automatic Transfer Switch",
+      "description": "Automated power changeover.",
+      "icon": "switch"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE"
+  ],
+  "documents": [
+    {
+      "title": "Technical Spec Sheet",
+      "code": "RIC-80K-DS",
+      "fileSize": "1.9 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-19",
+  "slug": "100kva-ricardo-silent-generator",
+  "name": "100 kVA Ricardo Generator | Silent Type",
+  "brand": "Ricardo",
+  "type": "Silent Canopy",
+  "priceText": "৳7,95,000",
+  "priceValueBDT": 795000,
+  "standbyKva": 110,
+  "standbyKw": 88,
+  "primeKva": 100,
+  "primeKw": 80,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "220L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "68 dBA @ 7m",
+  "image": "/assets/images/canopy-white-20k.jpg",
+  "galleryImages": [
+    "/assets/images/canopy-white-20k.jpg",
+    "/assets/images/engine-circle.jpg"
+  ],
+  "brandBadgeText": "Ricardo",
+  "shortDesc": "100 kVA Ricardo silent diesel generator engineered for continuous institutional and residential power backup.",
+  "generalFeatures": [
+    "Heavy duty 6-cylinder direct injection Ricardo diesel engine",
+    "Stamford-technology pure copper brushless alternator",
+    "Heavy acoustic attenuation enclosure with fire-retardant mineral wool",
+    "Automatic mains failure digital control panel with emergency stop",
+    "Integrated base fuel tank providing 10+ hours continuous running"
+  ],
+  "specs": {
+    "engineBrand": "Ricardo Series",
+    "engineModel": "R6105ZD",
+    "engineCylinders": "6 Cylinder In-line Turbo",
+    "aspiration": "Turbocharged",
+    "boreStroke": "105 x 130 mm",
+    "displacementL": "6.75 L",
+    "compressionRatio": "17.0:1",
+    "speedRpm": 1500,
+    "governorType": "Mechanical / Electronic",
+    "coolingMethod": "Water Cooled Radiator",
+    "oilCapacityL": "16.0 L",
+    "coolantCapacityL": "24.0 L",
+    "fuelCons100": "21.5 L/h",
+    "fuelCons75": "16.0 L/h",
+    "fuelCons50": "11.0 L/h",
+    "alternatorBrand": "Stamford Type",
+    "alternatorModel": "UCI274C",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±1.0%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE6120",
+    "dimensionsMm": "2600 x 1050 x 1500 mm",
+    "weightKg": 1500
+  },
+  "optionalEquipment": [
+    {
+      "title": "ATS 200A",
+      "description": "Automated mains failure transfer switch.",
+      "icon": "switch"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE"
+  ],
+  "documents": [
+    {
+      "title": "100 kVA Datasheet",
+      "code": "RIC-100K-DS",
+      "fileSize": "2.1 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-20",
+  "slug": "150kva-ricardo-silent-generator",
+  "name": "150 kVA Ricardo Generator | Silent Type",
+  "brand": "Ricardo",
+  "type": "Silent Canopy",
+  "priceText": "৳9,70,000",
+  "priceValueBDT": 970000,
+  "standbyKva": 165,
+  "standbyKw": 132,
+  "primeKva": 150,
+  "primeKw": 120,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "280L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "68 dBA @ 7m",
+  "image": "/assets/images/yellow-silent.jpg",
+  "galleryImages": [
+    "/assets/images/yellow-silent.jpg",
+    "/assets/images/engine-circle.jpg"
+  ],
+  "brandBadgeText": "Ricardo",
+  "shortDesc": "High capacity 150 kVA silent diesel genset for medium factories, multi-storey residential towers, and hospitals.",
+  "generalFeatures": [
+    "Turbocharged 6-cylinder intercooled Ricardo series diesel engine",
+    "Stamford type 100% copper brushless alternator",
+    "Soundproof outdoor canopy with anti-vibration rubber mounts",
+    "AMF digital microprocessor controller with comprehensive fault protection",
+    "Heavy steel sub-base fuel tank with mechanical fuel gauge"
+  ],
+  "specs": {
+    "engineBrand": "Ricardo Series",
+    "engineModel": "R6105AZLD",
+    "engineCylinders": "6 Cylinder Turbo Intercooled",
+    "aspiration": "Turbocharged & Intercooled",
+    "boreStroke": "105 x 135 mm",
+    "displacementL": "7.01 L",
+    "compressionRatio": "17.0:1",
+    "speedRpm": 1500,
+    "governorType": "Electronic Governor",
+    "coolingMethod": "Water Cooled Radiator",
+    "oilCapacityL": "18.0 L",
+    "coolantCapacityL": "28.0 L",
+    "fuelCons100": "32.0 L/h",
+    "fuelCons75": "24.0 L/h",
+    "fuelCons50": "16.5 L/h",
+    "alternatorBrand": "Stamford Type",
+    "alternatorModel": "UCI274F",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±1.0%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE6120",
+    "dimensionsMm": "2950 x 1150 x 1650 mm",
+    "weightKg": 1950
+  },
+  "optionalEquipment": [
+    {
+      "title": "ATS 300A",
+      "description": "Automated changeover switchboard.",
+      "icon": "switch"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE"
+  ],
+  "documents": [
+    {
+      "title": "Technical Datasheet",
+      "code": "RIC-150K-DS",
+      "fileSize": "2.3 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-21",
+  "slug": "200kva-perkins-uk-generator",
+  "name": "200 kVA Perkins (UK) Generator",
+  "brand": "Perkins",
+  "type": "Silent Canopy",
+  "priceText": "৳30,90,000",
+  "priceValueBDT": 3090000,
+  "standbyKva": 220,
+  "standbyKw": 176,
+  "primeKva": 200,
+  "primeKw": 160,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "400L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "70 dBA @ 7m",
+  "image": "/assets/images/commercial-white.jpg",
+  "galleryImages": [
+    "/assets/images/commercial-white.jpg",
+    "/assets/images/gen-alternator-shaft.jpg"
+  ],
+  "brandBadgeText": "Perkins UK",
+  "shortDesc": "Authentic UK Perkins 1106A-70TAG3 200 kVA generator engineered for mission-critical commercial and hospital facilities.",
+  "generalFeatures": [
+    "UK manufactured Perkins 6-cylinder turbocharged intercooled engine",
+    "Stamford UCI274H brushless alternator with Class H insulation and AVR",
+    "Heavy gauge soundproof acoustic canopy with stainless steel latches",
+    "Deep Sea DSE7320 auto mains failure telemetry module",
+    "Heavy duty sub-base fuel tank with 12+ hour capacity"
+  ],
+  "specs": {
+    "engineBrand": "Perkins UK",
+    "engineModel": "1106A-70TAG3",
+    "engineCylinders": "6 Cylinder In-line Turbo Intercooled",
+    "aspiration": "Turbocharged & Air-to-Air Charge Cooled",
+    "boreStroke": "105 x 135 mm",
+    "displacementL": "7.01 L",
+    "compressionRatio": "16.0:1",
+    "speedRpm": 1500,
+    "governorType": "Electronic Governor (ISO 8528 G2/G3)",
+    "coolingMethod": "Water Cooled Radiator (+50°C)",
+    "oilCapacityL": "16.5 L",
+    "coolantCapacityL": "21.0 L",
+    "fuelCons100": "45.8 L/h",
+    "fuelCons75": "34.7 L/h",
+    "fuelCons50": "23.1 L/h",
+    "alternatorBrand": "Stamford",
+    "alternatorModel": "UCI274H",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±0.5%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE7320 MKII",
+    "dimensionsMm": "3400 x 1200 x 1800 mm",
+    "weightKg": 2450
+  },
+  "optionalEquipment": [
+    {
+      "title": "ATS 400A",
+      "description": "Automatic transfer switch with bypass isolation.",
+      "icon": "switch"
+    }
+  ],
+  "certificates": [
+    "ISO 9001 UKAS",
+    "CE Certified"
+  ],
+  "documents": [
+    {
+      "title": "Perkins 200kVA Technical Spec",
+      "code": "PER-200K-DS",
+      "fileSize": "3.2 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-22",
+  "slug": "500kva-diesel-generator",
+  "name": "500 kVA Diesel Generator",
+  "brand": "Cummins",
+  "type": "Silent Canopy",
+  "priceText": "৳38,00,000",
+  "priceValueBDT": 3800000,
+  "standbyKva": 550,
+  "standbyKw": 440,
+  "primeKva": 500,
+  "primeKw": 400,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "850L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "72 dBA @ 7m",
+  "image": "/assets/images/perkins-blue.jpg",
+  "galleryImages": [
+    "/assets/images/perkins-blue.jpg",
+    "/assets/images/open-skid.jpg"
+  ],
+  "brandBadgeText": "Cummins Heavy",
+  "shortDesc": "Heavy duty 500 kVA industrial diesel generator designed for spinning mills, RMG manufacturing, and data centers.",
+  "generalFeatures": [
+    "Turbocharged and aftercooled 6-cylinder heavy industrial diesel engine",
+    "Stamford industrial alternator with PMG excitation and digital AVR",
+    "Full ISO containerized acoustic enclosure with silencer",
+    "Deep Sea DSE8610 synchronizing & load sharing digital controller",
+    "High capacity sub-base fuel tank with auto replenishment"
+  ],
+  "specs": {
+    "engineBrand": "Cummins Heavy",
+    "engineModel": "QSZ13-G5",
+    "engineCylinders": "6 Cylinder In-line Turbo Aftercooled",
+    "aspiration": "Turbocharged & Air-to-Air Aftercooled",
+    "boreStroke": "130 x 163 mm",
+    "displacementL": "13.0 L",
+    "compressionRatio": "17.0:1",
+    "speedRpm": 1500,
+    "governorType": "Electronic ECM Governor",
+    "coolingMethod": "Heavy Duty Radiator (+50°C)",
+    "oilCapacityL": "45.0 L",
+    "coolantCapacityL": "68.0 L",
+    "fuelCons100": "102.0 L/h",
+    "fuelCons75": "77.0 L/h",
+    "fuelCons50": "52.0 L/h",
+    "alternatorBrand": "Stamford",
+    "alternatorModel": "HCI544C",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±0.5%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE8610 MKII Synchronizing",
+    "dimensionsMm": "4500 x 1600 x 2200 mm",
+    "weightKg": 4600
+  },
+  "optionalEquipment": [
+    {
+      "title": "Busbar Synchronizer",
+      "description": "Parallel multi-genset sync controller.",
+      "icon": "sync"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE"
+  ],
+  "documents": [
+    {
+      "title": "500 kVA Datasheet",
+      "code": "CUM-500K-DS",
+      "fileSize": "3.5 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-23",
+  "slug": "250kva-ricardo-silent-generator",
+  "name": "250 kVA Ricardo Generator | Silent Type",
+  "brand": "Ricardo",
+  "type": "Silent Canopy",
+  "priceText": "৳13,95,000",
+  "priceValueBDT": 1395000,
+  "standbyKva": 275,
+  "standbyKw": 220,
+  "primeKva": 250,
+  "primeKw": 200,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "450L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "70 dBA @ 7m",
+  "image": "/assets/images/canopy-white-20k.jpg",
+  "galleryImages": [
+    "/assets/images/canopy-white-20k.jpg",
+    "/assets/images/engine-circle.jpg"
+  ],
+  "brandBadgeText": "Ricardo",
+  "shortDesc": "250 kVA silent diesel generator for commercial complexes, poultry hatcheries, and medium industrial plants.",
+  "generalFeatures": [
+    "Turbocharged 6-cylinder intercooled heavy diesel engine",
+    "Stamford type pure copper alternator with AVR",
+    "Heavy soundproof canopy with dual residential mufflers",
+    "AMF digital control panel with low oil, high temp, overspeed shutdown",
+    "Large fuel reservoir for long continuous operation"
+  ],
+  "specs": {
+    "engineBrand": "Ricardo Series",
+    "engineModel": "R6110AZLD",
+    "engineCylinders": "6 Cylinder In-line Turbo",
+    "aspiration": "Turbocharged & Intercooled",
+    "boreStroke": "110 x 135 mm",
+    "displacementL": "7.7 L",
+    "compressionRatio": "17.0:1",
+    "speedRpm": 1500,
+    "governorType": "Electronic Governor",
+    "coolingMethod": "Water Cooled Radiator",
+    "oilCapacityL": "22.0 L",
+    "coolantCapacityL": "32.0 L",
+    "fuelCons100": "52.0 L/h",
+    "fuelCons75": "39.0 L/h",
+    "fuelCons50": "27.0 L/h",
+    "alternatorBrand": "Stamford Type",
+    "alternatorModel": "UCDI274K",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±1.0%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE6120",
+    "dimensionsMm": "3500 x 1250 x 1850 mm",
+    "weightKg": 2800
+  },
+  "optionalEquipment": [
+    {
+      "title": "ATS 400A",
+      "description": "Automatic transfer switch panel.",
+      "icon": "switch"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE"
+  ],
+  "documents": [
+    {
+      "title": "250 kVA Spec Sheet",
+      "code": "RIC-250K-DS",
+      "fileSize": "2.4 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-24",
+  "slug": "200kva-ricardo-silent-generator",
+  "name": "200 kVA Ricardo Generator | Silent Type",
+  "brand": "Ricardo",
+  "type": "Silent Canopy",
+  "priceText": "৳11,60,000",
+  "priceValueBDT": 1160000,
+  "standbyKva": 220,
+  "standbyKw": 176,
+  "primeKva": 200,
+  "primeKw": 160,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "380L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "70 dBA @ 7m",
+  "image": "/assets/images/yellow-silent.jpg",
+  "galleryImages": [
+    "/assets/images/yellow-silent.jpg",
+    "/assets/images/engine-circle.jpg"
+  ],
+  "brandBadgeText": "Ricardo",
+  "shortDesc": "200 kVA Ricardo diesel genset with soundproof canopy for commercial shopping complexes, institutions, and factories.",
+  "generalFeatures": [
+    "Turbocharged water-cooled 6-cylinder diesel engine",
+    "Stamford type 100% copper brushless alternator with AVR",
+    "Heavy acoustic canopy with rockwool acoustic insulation",
+    "Smart microprocessor digital telemetry controller",
+    "Integrated sub-base fuel tank with overflow drainage"
+  ],
+  "specs": {
+    "engineBrand": "Ricardo Series",
+    "engineModel": "R6105IZLD",
+    "engineCylinders": "6 Cylinder In-line Turbo",
+    "aspiration": "Turbocharged & Intercooled",
+    "boreStroke": "105 x 135 mm",
+    "displacementL": "7.01 L",
+    "compressionRatio": "17.0:1",
+    "speedRpm": 1500,
+    "governorType": "Electronic Governor",
+    "coolingMethod": "Water Cooled Radiator",
+    "oilCapacityL": "18.0 L",
+    "coolantCapacityL": "28.0 L",
+    "fuelCons100": "42.0 L/h",
+    "fuelCons75": "31.5 L/h",
+    "fuelCons50": "22.0 L/h",
+    "alternatorBrand": "Stamford Type",
+    "alternatorModel": "UCI274H",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±1.0%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE6120",
+    "dimensionsMm": "3200 x 1200 x 1750 mm",
+    "weightKg": 2350
+  },
+  "optionalEquipment": [
+    {
+      "title": "ATS 350A",
+      "description": "Automatic transfer switch.",
+      "icon": "switch"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE"
+  ],
+  "documents": [
+    {
+      "title": "200 kVA Spec Sheet",
+      "code": "RIC-200K-DS",
+      "fileSize": "2.2 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-25",
+  "slug": "300kva-diesel-generator",
+  "name": "300 kVA Diesel Generator",
+  "brand": "Cummins",
+  "type": "Open Skid",
+  "priceText": "৳18,50,000",
+  "priceValueBDT": 1850000,
+  "standbyKva": 330,
+  "standbyKw": 264,
+  "primeKva": 300,
+  "primeKw": 240,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "500L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "82 dBA @ 1m (Open)",
+  "image": "/assets/images/open-skid.jpg",
+  "galleryImages": [
+    "/assets/images/open-skid.jpg",
+    "/assets/images/gen-alternator-shaft.jpg"
+  ],
+  "brandBadgeText": "Cummins",
+  "shortDesc": "Open type 300 kVA heavy diesel generator mounted on anti-vibration steel skid for generator room installation.",
+  "generalFeatures": [
+    "Turbocharged 6-cylinder heavy-duty diesel engine",
+    "Stamford brushless alternator with PMG excitation option",
+    "Rigid channel steel skid base with lifting eyelets and forklift pockets",
+    "Deep Sea digital control module with engine instrumentation",
+    "Industrial silencer and flexible stainless exhaust bellow included"
+  ],
+  "specs": {
+    "engineBrand": "Cummins Heavy",
+    "engineModel": "6LTAA8.9-G2",
+    "engineCylinders": "6 Cylinder In-line Turbo",
+    "aspiration": "Turbocharged & Charge Air Cooled",
+    "boreStroke": "114 x 145 mm",
+    "displacementL": "8.9 L",
+    "compressionRatio": "16.6:1",
+    "speedRpm": 1500,
+    "governorType": "Electronic Governor",
+    "coolingMethod": "Water Cooled Radiator (+50°C)",
+    "oilCapacityL": "27.6 L",
+    "coolantCapacityL": "34.0 L",
+    "fuelCons100": "63.0 L/h",
+    "fuelCons75": "47.0 L/h",
+    "fuelCons50": "32.0 L/h",
+    "alternatorBrand": "Stamford",
+    "alternatorModel": "UCDI274K",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±0.5%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE7320 MKII",
+    "dimensionsMm": "2900 x 1100 x 1650 mm",
+    "weightKg": 2300
+  },
+  "optionalEquipment": [
+    {
+      "title": "Soundproof Canopy",
+      "description": "Convert to silent canopy enclosure.",
+      "icon": "canopy"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE"
+  ],
+  "documents": [
+    {
+      "title": "300 kVA Open Skid Datasheet",
+      "code": "CUM-300K-OPEN",
+      "fileSize": "2.7 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-26",
+  "slug": "400kva-cummins-diesel-generator",
+  "name": "400 kVA CUMMINS Diesel Generator",
+  "brand": "Cummins",
+  "type": "Open Skid",
+  "priceText": "৳48,00,000",
+  "priceValueBDT": 4800000,
+  "standbyKva": 440,
+  "standbyKw": 352,
+  "primeKva": 400,
+  "primeKw": 320,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "650L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "84 dBA @ 1m (Open)",
+  "image": "/assets/images/open-skid.jpg",
+  "galleryImages": [
+    "/assets/images/open-skid.jpg",
+    "/assets/images/gen-alternator-shaft.jpg"
+  ],
+  "brandBadgeText": "Cummins USA",
+  "shortDesc": "400 kVA Cummins heavy-duty diesel generator for continuous prime and standby utility in heavy manufacturing plants.",
+  "generalFeatures": [
+    "Cummins 6-cylinder turbocharged charge-air cooled diesel engine",
+    "Stamford Class H industrial alternator with AVR ±0.5%",
+    "Heavy duty base frame with anti-vibration rubber isolation pads",
+    "Deep Sea DSE7320 digital telemetry control panel",
+    "Large industrial radiator engineered for Bangladesh summer ambient"
+  ],
+  "specs": {
+    "engineBrand": "Cummins Heavy",
+    "engineModel": "NTA855-G4",
+    "engineCylinders": "6 Cylinder In-line Turbo",
+    "aspiration": "Turbocharged & Aftercooled",
+    "boreStroke": "140 x 152 mm",
+    "displacementL": "14.0 L",
+    "compressionRatio": "14.0:1",
+    "speedRpm": 1500,
+    "governorType": "Electronic Governor",
+    "coolingMethod": "Water Cooled Radiator (+50°C)",
+    "oilCapacityL": "38.6 L",
+    "coolantCapacityL": "66.0 L",
+    "fuelCons100": "85.0 L/h",
+    "fuelCons75": "64.0 L/h",
+    "fuelCons50": "44.0 L/h",
+    "alternatorBrand": "Stamford",
+    "alternatorModel": "HCI444F",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±0.5%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE7320 MKII",
+    "dimensionsMm": "3300 x 1350 x 1950 mm",
+    "weightKg": 3400
+  },
+  "optionalEquipment": [
+    {
+      "title": "Canopy Enclosure",
+      "description": "Soundproof outdoor acoustic canopy.",
+      "icon": "canopy"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE"
+  ],
+  "documents": [
+    {
+      "title": "400 kVA Datasheet",
+      "code": "CUM-400K-DS",
+      "fileSize": "3.1 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-27",
+  "slug": "100kva-cummins-silent-generator",
+  "name": "100 kVA CUMMINS Diesel Generator | Silent Type",
+  "brand": "Cummins",
+  "type": "Silent Canopy",
+  "priceText": "৳13,95,000",
+  "priceValueBDT": 1395000,
+  "standbyKva": 110,
+  "standbyKw": 88,
+  "primeKva": 100,
+  "primeKw": 80,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "240L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "68 dBA @ 7m",
+  "image": "/assets/images/yellow-silent.jpg",
+  "galleryImages": [
+    "/assets/images/yellow-silent.jpg",
+    "/assets/images/engine-circle.jpg"
+  ],
+  "brandBadgeText": "Cummins",
+  "shortDesc": "100 kVA Cummins silent diesel generator with soundproof acoustic canopy for commercial, banking, and hospital installations.",
+  "generalFeatures": [
+    "Cummins 6BT5.9 series turbocharged diesel engine",
+    "Stamford brushless alternator with Class H insulation",
+    "Soundproof outdoor canopy with residential silencer",
+    "Deep Sea DSE6120 digital auto mains failure module",
+    "Sub-base fuel tank with 12 hour continuous run capacity"
+  ],
+  "specs": {
+    "engineBrand": "Cummins",
+    "engineModel": "6BT5.9-G2",
+    "engineCylinders": "6 Cylinder In-line Turbo",
+    "aspiration": "Turbocharged",
+    "boreStroke": "102 x 120 mm",
+    "displacementL": "5.9 L",
+    "compressionRatio": "17.5:1",
+    "speedRpm": 1500,
+    "governorType": "Electronic Governor",
+    "coolingMethod": "Water Cooled Radiator",
+    "oilCapacityL": "14.2 L",
+    "coolantCapacityL": "24.0 L",
+    "fuelCons100": "21.0 L/h",
+    "fuelCons75": "15.8 L/h",
+    "fuelCons50": "11.2 L/h",
+    "alternatorBrand": "Stamford",
+    "alternatorModel": "UCI274C",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±1.0%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE6120",
+    "dimensionsMm": "2750 x 1080 x 1550 mm",
+    "weightKg": 1680
+  },
+  "optionalEquipment": [
+    {
+      "title": "ATS 200A",
+      "description": "Automated power transfer switch.",
+      "icon": "switch"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE"
+  ],
+  "documents": [
+    {
+      "title": "Cummins 100 kVA Datasheet",
+      "code": "CUM-100K-SILENT",
+      "fileSize": "2.6 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-28",
+  "slug": "60kva-cummins-silent-generator",
+  "name": "60 kVA CUMMINS Diesel Generator | Silent Type",
+  "brand": "Cummins",
+  "type": "Silent Canopy",
+  "priceText": "৳10,95,000",
+  "priceValueBDT": 1095000,
+  "standbyKva": 66,
+  "standbyKw": 52.8,
+  "primeKva": 60,
+  "primeKw": 48,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "180L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "68 dBA @ 7m",
+  "image": "/assets/images/canopy-white-20k.jpg",
+  "galleryImages": [
+    "/assets/images/canopy-white-20k.jpg",
+    "/assets/images/engine-circle.jpg"
+  ],
+  "brandBadgeText": "Cummins",
+  "shortDesc": "60 kVA Cummins silent diesel generator for commercial plazas, telecom hubs, and high-rise apartment towers.",
+  "generalFeatures": [
+    "Cummins 4BTA3.9 turbocharged and charge-air cooled diesel engine",
+    "Stamford brushless alternator with ±1.0% voltage regulation",
+    "Weatherproof and soundproof silent canopy with emergency stop",
+    "Microprocessor AMF controller with automatic fault shutdown",
+    "Heavy duty sub-base fuel tank with fuel level sensor"
+  ],
+  "specs": {
+    "engineBrand": "Cummins",
+    "engineModel": "4BTA3.9-G2",
+    "engineCylinders": "4 Cylinder In-line Turbo",
+    "aspiration": "Turbocharged & Intercooled",
+    "boreStroke": "102 x 120 mm",
+    "displacementL": "3.9 L",
+    "compressionRatio": "17.3:1",
+    "speedRpm": 1500,
+    "governorType": "Mechanical / Electronic",
+    "coolingMethod": "Water Cooled Radiator",
+    "oilCapacityL": "11.0 L",
+    "coolantCapacityL": "19.0 L",
+    "fuelCons100": "13.5 L/h",
+    "fuelCons75": "10.2 L/h",
+    "fuelCons50": "7.1 L/h",
+    "alternatorBrand": "Stamford",
+    "alternatorModel": "UCI224E",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±1.0%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE6120",
+    "dimensionsMm": "2450 x 1000 x 1400 mm",
+    "weightKg": 1350
+  },
+  "optionalEquipment": [
+    {
+      "title": "ATS 125A",
+      "description": "Automatic transfer switch.",
+      "icon": "switch"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE"
+  ],
+  "documents": [
+    {
+      "title": "Cummins 60kVA Datasheet",
+      "code": "CUM-60K-DS",
+      "fileSize": "2.1 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-29",
+  "slug": "50kva-cummins-diesel-generator",
+  "name": "50 kVA CUMMINS Diesel Generator , Silent Type",
+  "brand": "Cummins",
+  "type": "Silent Canopy",
+  "priceText": "৳9,95,000",
+  "priceValueBDT": 995000,
+  "standbyKva": 55,
+  "standbyKw": 44,
+  "primeKva": 50,
+  "primeKw": 40,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "160L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "68 dBA @ 7m",
+  "image": "/assets/images/yellow-silent.jpg",
+  "galleryImages": [
+    "/assets/images/yellow-silent.jpg",
+    "/assets/images/engine-circle.jpg"
+  ],
+  "brandBadgeText": "Cummins",
+  "shortDesc": "50 kVA Cummins silent diesel generator for commercial buildings, super-shops, and manufacturing setups.",
+  "generalFeatures": [
+    "Cummins 4BT3.9-G2 water-cooled turbocharged engine",
+    "Stamford 100% pure copper brushless alternator",
+    "Heavy soundproof canopy with acoustic foam insulation",
+    "Automatic digital AMF control panel with full engine monitoring",
+    "Sub-base fuel tank with quick drain and breather valve"
+  ],
+  "specs": {
+    "engineBrand": "Cummins",
+    "engineModel": "4BT3.9-G2",
+    "engineCylinders": "4 Cylinder In-line Turbo",
+    "aspiration": "Turbocharged",
+    "boreStroke": "102 x 120 mm",
+    "displacementL": "3.9 L",
+    "compressionRatio": "17.3:1",
+    "speedRpm": 1500,
+    "governorType": "Mechanical Governor",
+    "coolingMethod": "Water Cooled Radiator",
+    "oilCapacityL": "11.0 L",
+    "coolantCapacityL": "19.0 L",
+    "fuelCons100": "11.8 L/h",
+    "fuelCons75": "8.9 L/h",
+    "fuelCons50": "6.2 L/h",
+    "alternatorBrand": "Stamford",
+    "alternatorModel": "UCI224D",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±1.0%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE6120",
+    "dimensionsMm": "2350 x 950 x 1350 mm",
+    "weightKg": 1250
+  },
+  "optionalEquipment": [
+    {
+      "title": "ATS 100A",
+      "description": "Automatic transfer switch.",
+      "icon": "switch"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE"
+  ],
+  "documents": [
+    {
+      "title": "Cummins 50kVA Datasheet",
+      "code": "CUM-50K-DS",
+      "fileSize": "2.0 MB PDF"
+    }
+  ]
+},
+{
+  "id": "prod-30",
+  "slug": "40kva-cummins-diesel-generator",
+  "name": "40 kVA CUMMINS Generator, Silent Type",
+  "brand": "Cummins",
+  "type": "Silent Canopy",
+  "priceText": "৳9,50,000",
+  "priceValueBDT": 950000,
+  "standbyKva": 44,
+  "standbyKw": 35.2,
+  "primeKva": 40,
+  "primeKw": 32,
+  "fuelType": "DIESEL",
+  "fuelCapacity": "150L",
+  "frequencyHz": 50,
+  "voltage": "400V / 230V",
+  "phase": "3 Phase",
+  "noiseLevel": "68 dBA @ 7m",
+  "image": "/assets/images/yellow-silent.jpg",
+  "galleryImages": [
+    "/assets/images/yellow-silent.jpg",
+    "/assets/images/engine-circle.jpg"
+  ],
+  "brandBadgeText": "Cummins",
+  "shortDesc": "40 kVA Cummins silent diesel generator for residential complexes, clinics, and commercial showrooms.",
+  "generalFeatures": [
+    "Turbocharged 4-cylinder water-cooled Cummins diesel engine",
+    "Stamford brushless alternator with Class H insulation and AVR",
+    "Heavy duty silent soundproof canopy (<68 dBA @ 7m)",
+    "Digital AMF control panel with low oil pressure and high temp cutoff",
+    "Steel sub-base fuel tank with level gauge"
+  ],
+  "specs": {
+    "engineBrand": "Cummins",
+    "engineModel": "4BT3.9-G1",
+    "engineCylinders": "4 Cylinder In-line Turbo",
+    "aspiration": "Turbocharged",
+    "boreStroke": "102 x 120 mm",
+    "displacementL": "3.9 L",
+    "compressionRatio": "17.3:1",
+    "speedRpm": 1500,
+    "governorType": "Mechanical Governor",
+    "coolingMethod": "Water Cooled Radiator",
+    "oilCapacityL": "11.0 L",
+    "coolantCapacityL": "19.0 L",
+    "fuelCons100": "9.8 L/h",
+    "fuelCons75": "7.4 L/h",
+    "fuelCons50": "5.2 L/h",
+    "alternatorBrand": "Stamford",
+    "alternatorModel": "UCI224C",
+    "insulationClass": "Class H",
+    "protectionDegree": "IP23",
+    "voltageRegulation": "±1.0%",
+    "powerFactor": "0.8 Lagging",
+    "controllerBrand": "Deep Sea",
+    "controllerModel": "DSE6120",
+    "dimensionsMm": "2250 x 950 x 1300 mm",
+    "weightKg": 1180
+  },
+  "optionalEquipment": [
+    {
+      "title": "ATS 80A",
+      "description": "Automatic transfer switch.",
+      "icon": "switch"
+    }
+  ],
+  "certificates": [
+    "ISO 9001",
+    "CE"
+  ],
+  "documents": [
+    {
+      "title": "Cummins 40kVA Datasheet",
+      "code": "CUM-40K-DS",
+      "fileSize": "1.9 MB PDF"
+    }
+  ]
+}
+];
+
+// ============================================================================
+// GLOBAL PRODUCTS OBJECTS & DICTIONARIES
+// Single Source of Truth for All Pages and Sections
+// ============================================================================
+
+export const PRODUCTS_BY_SLUG: Record<string, GeneratorProduct> = PRODUCTS.reduce(
+  (acc, p) => {
+    acc[p.slug] = p;
+    return acc;
+  },
+  {} as Record<string, GeneratorProduct>
+);
+
+export const PRODUCTS_BY_ID: Record<string, GeneratorProduct> = PRODUCTS.reduce(
+  (acc, p) => {
+    acc[p.id] = p;
+    return acc;
+  },
+  {} as Record<string, GeneratorProduct>
+);
+
+// 4 Featured Supply Products for Homepage Section 5 ("What we supply")
+export const FEATURED_SUPPLY_SLUGS = [
+  "100kva-perkins-silent-genset",
+  "25kva-cummins-silent-generator",
+  "20kva-diesel-generator-ricardo",
+  "apd-110-a-diesel-generator"
+];
+
+// Price Directory by Application Categories for Homepage Section 5.5
+export const PRICE_DIRECTORY_CATEGORIES = [
+  {
+    category: "Residential Generator",
+    productSlugs: [
+      "30kva-diesel-generator",
+      "80kva-ricardo-generator",
+      "30kva-cummins-diesel-generator",
+      "100kva-ricardo-silent-generator",
+      "150kva-ricardo-silent-generator"
+    ]
+  },
+  {
+    category: "Commercial Generator",
+    productSlugs: [
+      "200kva-perkins-uk-generator",
+      "500kva-diesel-generator",
+      "250kva-ricardo-silent-generator",
+      "200kva-ricardo-silent-generator",
+      "300kva-diesel-generator"
+    ]
+  },
+  {
+    category: "Industrial Generator",
+    productSlugs: [
+      "400kva-cummins-diesel-generator",
+      "100kva-cummins-silent-generator",
+      "60kva-cummins-silent-generator",
+      "50kva-cummins-diesel-generator",
+      "40kva-cummins-diesel-generator"
+    ]
+  }
 ];
 
 export function getProductBySlug(slug: string): GeneratorProduct | undefined {
-  return PRODUCTS.find((p) => p.slug === slug);
+  return PRODUCTS_BY_SLUG[slug] || PRODUCTS.find((p) => p.slug === slug);
 }
