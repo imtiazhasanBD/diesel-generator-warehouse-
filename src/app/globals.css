@@ -1,16 +1,28 @@
 @import "tailwindcss";
 
 @theme {
+  --color-primary: #E04314;
+  --color-primary-hover: #C5360C;
+  --color-primary-dark: #A82B08;
+  --color-primary-light: #FFF2EB;
+  --color-dark: #0E1014;
+  --color-dark-surface: #14161C;
+  --color-dark-card: #181A20;
+  --color-border-light: #E4E5E8;
+  --color-border-dark: #272B33;
   --font-sans: var(--font-mona-sans), "Mona Sans", "Mona Sans Placeholder", sans-serif;
   --font-heading: var(--font-mona-sans), "Mona Sans", "Mona Sans Placeholder", sans-serif;
 }
 
 @layer base {
   :root {
-    --primary: #F25A24;
-    --primary-hover: #D94815;
+    --primary: #E04314;
+    --primary-hover: #C5360C;
+    --primary-dark: #A82B08;
+    --primary-light: #FFF2EB;
     --dark: #0E1014;
     --dark-surface: #14161C;
+    --dark-card: #181A20;
     --border-light: #E4E5E8;
     --border-dark: #272B33;
     --font-sans: var(--font-mona-sans), "Mona Sans", "Mona Sans Placeholder", sans-serif;
@@ -117,7 +129,7 @@
   width: 6px;
   height: 6px;
   border-radius: 1px;
-  background-color: #F25A24;
+  background-color: var(--primary);
 }
 
 /* Framer Button */
@@ -125,7 +137,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.85rem;
-  background-color: #D4380A;
+  background-color: var(--primary);
   color: #FFFFFF;
   padding: 0.35rem 0.35rem 0.35rem 1.2rem;
   border-radius: 6px 6px 14px 6px !important;
@@ -133,13 +145,13 @@
   font-size: 0.875rem;
   line-height: 1.2;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 8px rgba(212, 56, 10, 0.18);
+  box-shadow: 0 2px 8px rgba(224, 67, 20, 0.2);
 }
 
 .framer-btn-primary:hover {
-  background-color: #BA2F07;
+  background-color: var(--primary-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(212, 56, 10, 0.28);
+  box-shadow: 0 6px 16px rgba(224, 67, 20, 0.3);
 }
 
 .framer-btn-primary .btn-arrow-box {
@@ -186,7 +198,7 @@
   width: 2.1rem;
   height: 2.1rem;
   border-radius: 4px 4px 10px 4px !important;
-  background-color: #D4380A;
+  background-color: var(--primary);
   color: #FFFFFF;
   display: flex;
   align-items: center;
@@ -197,7 +209,7 @@
 
 .framer-btn-dark:hover .btn-arrow-box {
   transform: translateX(2px);
-  background-color: #E04314;
+  background-color: var(--primary-hover);
 }
 
 /* Standalone Chamfered Orange Icon Button */
@@ -205,7 +217,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #D4380A;
+  background-color: var(--primary);
   color: #FFFFFF;
   border-radius: 5px 5px 11px 5px !important;
   transition: all 0.22s ease;
@@ -213,7 +225,7 @@
 }
 
 .framer-icon-btn:hover {
-  background-color: #BA2F07;
+  background-color: var(--primary-hover);
   transform: scale(1.06);
 }
 

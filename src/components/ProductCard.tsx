@@ -55,7 +55,7 @@ export default function ProductCard({
         <div className="p-3 sm:p-4 md:p-5">
           {/* Generator Title */}
           <Link href={`/products/${product.slug}`} className="cursor-pointer">
-            <h3 className="font-heading font-bold text-xs sm:text-sm md:text-base text-slate-950 group-hover:text-[#F25A24] transition-colors leading-snug line-clamp-2 min-h-[34px] sm:min-h-[44px]">
+            <h3 className="font-heading font-bold text-xs sm:text-sm md:text-base text-slate-950 group-hover:text-primary transition-colors leading-snug line-clamp-2 min-h-[34px] sm:min-h-[44px]">
               {product.name}
             </h3>
           </Link>
@@ -84,19 +84,19 @@ export default function ProductCard({
           {/* Technical Bullet Points with Orange Accent Checkmarks */}
           <div className="space-y-1 sm:space-y-1.5 pt-2 border-t border-slate-100 text-[9.5px] sm:text-[11px] font-semibold text-slate-600">
             <div className="flex items-center gap-1 sm:gap-1.5">
-              <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#F25A24] shrink-0 stroke-[2.5]" />
+              <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary shrink-0 stroke-[2.5]" />
               <span className="uppercase truncate">
                 FUEL: <strong className="text-slate-900">{product.fuelType}</strong>
               </span>
             </div>
             <div className="flex items-center gap-1 sm:gap-1.5">
-              <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#F25A24] shrink-0 stroke-[2.5]" />
+              <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary shrink-0 stroke-[2.5]" />
               <span className="uppercase truncate">
                 CAPACITY: <strong className="text-slate-900">{product.fuelCapacity}</strong>
               </span>
             </div>
             <div className="flex items-center gap-1 sm:gap-1.5">
-              <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#F25A24] shrink-0 stroke-[2.5]" />
+              <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary shrink-0 stroke-[2.5]" />
               <span className="uppercase truncate">
                 HZ: <strong className="text-slate-900">{product.frequencyHz}</strong>
               </span>
@@ -109,7 +109,7 @@ export default function ProductCard({
       <div className="p-3 pt-0 sm:p-5 sm:pt-0">
         <Link
           href={`/products/${product.slug}`}
-          className="w-full flex items-center justify-center gap-1.5 sm:gap-2 bg-[#0E1014] hover:bg-[#F25A24] text-white py-2 sm:py-3 px-2 sm:px-4 rounded-md text-[11px] sm:text-xs font-bold transition-colors shadow-xs group/btn cursor-pointer"
+          className="w-full flex items-center justify-center gap-1.5 sm:gap-2 bg-dark hover:bg-primary text-white py-2 sm:py-3 px-2 sm:px-4 rounded-md text-[11px] sm:text-xs font-bold transition-colors shadow-xs group/btn cursor-pointer"
         >
           <span className="truncate">{displayPrice}</span>
           <ChevronRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white/80 group-hover/btn:translate-x-0.5 transition-transform shrink-0" />

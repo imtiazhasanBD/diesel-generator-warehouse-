@@ -85,7 +85,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   }, [product.id]);
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-[#F25A24] selection:text-white">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-primary selection:text-white">
       {/* Top Header */}
       <Header
         activePath="products"
@@ -98,23 +98,23 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
              1. BREADCRUMBS
              ========================================================= */}
         <nav className="flex items-center gap-2 text-xs text-slate-500 font-medium overflow-x-auto whitespace-nowrap scrollbar-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden py-1">
-          <Link href="/" className="hover:text-[#F25A24] transition-colors flex items-center gap-1">
+          <Link href="/" className="hover:text-primary transition-colors flex items-center gap-1">
             <Home className="w-3.5 h-3.5 text-slate-400" />
           </Link>
           <ChevronRight className="w-3 h-3 text-slate-400 shrink-0" />
-          <Link href="/products" className="hover:text-[#F25A24] transition-colors">
+          <Link href="/products" className="hover:text-primary transition-colors">
             Products
           </Link>
           <ChevronRight className="w-3 h-3 text-slate-400 shrink-0" />
-          <Link href="/products" className="hover:text-[#F25A24] transition-colors">
+          <Link href="/products" className="hover:text-primary transition-colors">
             Diesel Generator
           </Link>
           <ChevronRight className="w-3 h-3 text-slate-400 shrink-0" />
-          <Link href={`/products?brand=${product.brand}`} className="hover:text-[#F25A24] transition-colors">
+          <Link href={`/products?brand=${product.brand}`} className="hover:text-primary transition-colors">
             {product.brand} Generator
           </Link>
           <ChevronRight className="w-3 h-3 text-slate-400 shrink-0" />
-          <span className="text-[#F25A24] font-semibold truncate max-w-[280px]">
+          <span className="text-primary font-semibold truncate max-w-[280px]">
             {product.name}
           </span>
         </nav>
@@ -171,7 +171,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   key={idx}
                   onClick={() => setActiveImageIndex(idx)}
                   className={`h-20 sm:h-24 rounded-md border transition-all overflow-hidden p-0 block cursor-pointer ${activeImageIndex === idx
-                      ? "border-2 border-[#F25A24] shadow-xs"
+                      ? "border-2 border-primary shadow-xs"
                       : "border-slate-200 hover:border-slate-300 opacity-80 hover:opacity-100"
                     }`}
                 >
@@ -191,7 +191,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             {/* Price on the Top */}
             <div>
               <span className="text-xs font-medium text-slate-500 block">Price (Ex. VAT)</span>
-              <div className="text-3xl sm:text-4xl font-bold text-[#F25A24] tracking-tight leading-none mt-1">
+              <div className="text-3xl sm:text-4xl font-bold text-primary tracking-tight leading-none mt-1">
                 {formattedPrice}
               </div>
             </div>
@@ -218,7 +218,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <div className="bg-white rounded-md border border-slate-200/90 shadow-2xs p-4 sm:p-5 space-y-3">
               {/* Header with Orange Vertical Bar */}
               <div className="flex items-center gap-2.5">
-                <span className="w-1 h-5 rounded-sm bg-[#F25A24] shrink-0" />
+                <span className="w-1 h-5 rounded-sm bg-primary shrink-0" />
                 <h3 className="font-extrabold text-sm sm:text-base text-slate-950 tracking-tight">
                   Key Specifications
                 </h3>
@@ -267,7 +267,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <div className="space-y-2.5 pt-1">
               <button
                 onClick={() => setIsQuoteOpen(true)}
-                className="w-full bg-[#F25A24] hover:bg-[#d94815] text-white py-3.5 px-5 rounded-md font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-xs cursor-pointer"
+                className="w-full bg-primary hover:bg-primary-hover text-white py-3.5 px-5 rounded-md font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-xs cursor-pointer"
               >
                 <span>Request a Quote</span>
                 <ArrowRight className="w-4 h-4" />
@@ -306,7 +306,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <button
               onClick={() => setActiveTab("specifications")}
               className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${activeTab === "specifications"
-                  ? "bg-[#F25A24] text-white shadow-xs"
+                  ? "bg-primary text-white shadow-xs"
                   : "bg-transparent text-slate-600 hover:text-slate-950 font-semibold"
                 }`}
             >
@@ -315,7 +315,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <button
               onClick={() => setActiveTab("features")}
               className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${activeTab === "features"
-                  ? "bg-[#F25A24] text-white shadow-xs"
+                  ? "bg-primary text-white shadow-xs"
                   : "bg-transparent text-slate-600 hover:text-slate-950 font-semibold"
                 }`}
             >
@@ -324,7 +324,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <button
               onClick={() => setActiveTab("optional")}
               className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${activeTab === "optional"
-                  ? "bg-[#F25A24] text-white shadow-xs"
+                  ? "bg-primary text-white shadow-xs"
                   : "bg-transparent text-slate-600 hover:text-slate-950 font-semibold"
                 }`}
             >
@@ -333,7 +333,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             <button
               onClick={() => setActiveTab("certificates")}
               className={`px-5 py-2 rounded-sm font-bold text-xs sm:text-sm transition-all cursor-pointer ${activeTab === "certificates"
-                  ? "bg-[#F25A24] text-white shadow-xs"
+                  ? "bg-primary text-white shadow-xs"
                   : "bg-transparent text-slate-600 hover:text-slate-950 font-semibold"
                 }`}
             >
@@ -350,7 +350,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 {/* Technical Specifications Header & Tables */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
-                    <span className="w-5 h-1.5 rounded-sm bg-[#F25A24]" />
+                    <span className="w-5 h-1.5 rounded-sm bg-primary" />
                     <h2 className="text-base sm:text-lg font-bold text-slate-950">
                       Technical Specifications
                     </h2>
@@ -423,7 +423,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 {/* Key Features (4 Cards Row) */}
                 <div className="space-y-4 pt-4 border-t border-slate-100">
                   <div className="flex items-center gap-2">
-                    <span className="w-5 h-1.5 rounded-sm bg-[#F25A24]" />
+                    <span className="w-5 h-1.5 rounded-sm bg-primary" />
                     <h2 className="text-base sm:text-lg font-bold text-slate-950">
                       Key Features
                     </h2>
@@ -433,7 +433,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     {/* Feature 1 */}
                     <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-start gap-3">
                       <div className="w-9 h-9 rounded-sm bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
-                        <Settings className="w-4.5 h-4.5 text-[#F25A24]" />
+                        <Settings className="w-4.5 h-4.5 text-primary" />
                       </div>
                       <div>
                         <h4 className="font-bold text-xs sm:text-sm text-slate-900">
@@ -448,7 +448,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     {/* Feature 2 */}
                     <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-start gap-3">
                       <div className="w-9 h-9 rounded-sm bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
-                        <VolumeX className="w-4.5 h-4.5 text-[#F25A24]" />
+                        <VolumeX className="w-4.5 h-4.5 text-primary" />
                       </div>
                       <div>
                         <h4 className="font-bold text-xs sm:text-sm text-slate-900">
@@ -463,7 +463,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     {/* Feature 3 */}
                     <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-start gap-3">
                       <div className="w-9 h-9 rounded-sm bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
-                        <Zap className="w-4.5 h-4.5 text-[#F25A24]" />
+                        <Zap className="w-4.5 h-4.5 text-primary" />
                       </div>
                       <div>
                         <h4 className="font-bold text-xs sm:text-sm text-slate-900">
@@ -478,7 +478,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                     {/* Feature 4 */}
                     <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-start gap-3">
                       <div className="w-9 h-9 rounded-sm bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
-                        <ShieldCheck className="w-4.5 h-4.5 text-[#F25A24]" />
+                        <ShieldCheck className="w-4.5 h-4.5 text-primary" />
                       </div>
                       <div>
                         <h4 className="font-bold text-xs sm:text-sm text-slate-900">
@@ -498,7 +498,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             {activeTab === "features" && (
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
-                  <span className="w-5 h-1.5 rounded-sm bg-[#F25A24]" />
+                  <span className="w-5 h-1.5 rounded-sm bg-primary" />
                   <h2 className="text-base sm:text-lg font-bold text-slate-950">
                     Comprehensive System Features
                   </h2>
@@ -506,7 +506,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {product.generalFeatures.map((feat, idx) => (
                     <div key={idx} className="flex items-start gap-3 bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80">
-                      <Check className="w-4 h-4 text-[#F25A24] shrink-0 mt-0.5 stroke-[2.5]" />
+                      <Check className="w-4 h-4 text-primary shrink-0 mt-0.5 stroke-[2.5]" />
                       <span className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">{feat}</span>
                     </div>
                   ))}
@@ -518,7 +518,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             {activeTab === "optional" && (
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
-                  <span className="w-5 h-1.5 rounded-sm bg-[#F25A24]" />
+                  <span className="w-5 h-1.5 rounded-sm bg-primary" />
                   <h2 className="text-base sm:text-lg font-bold text-slate-950">
                     Optional Equipment & Upgrades
                   </h2>
@@ -527,7 +527,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   {product.optionalEquipment.map((opt, idx) => (
                     <div key={idx} className="bg-[#FAFBFD] p-5 rounded-md border border-slate-200/80 space-y-2">
                       <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
-                        <Wrench className="w-4 h-4 text-[#F25A24]" />
+                        <Wrench className="w-4 h-4 text-primary" />
                         <span>{opt.title}</span>
                       </div>
                       <p className="text-xs text-slate-600 leading-relaxed">
@@ -543,7 +543,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             {activeTab === "certificates" && (
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
-                  <span className="w-5 h-1.5 rounded-sm bg-[#F25A24]" />
+                  <span className="w-5 h-1.5 rounded-sm bg-primary" />
                   <h2 className="text-base sm:text-lg font-bold text-slate-950">
                     Compliance & Quality Certificates
                   </h2>
@@ -570,7 +570,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           {/* Left Card: Technical Documents (7 Cols) */}
           <div className="lg:col-span-7 bg-white rounded-md border border-slate-200/90 shadow-2xs p-6 space-y-4">
             <div className="flex items-center gap-2 text-slate-950 font-bold text-base">
-              <FileText className="w-4 h-4 text-[#F25A24]" />
+              <FileText className="w-4 h-4 text-primary" />
               <span>Technical Documents</span>
             </div>
 
@@ -589,7 +589,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 </div>
                 <button
                   onClick={() => window.print()}
-                  className="p-2 text-slate-500 hover:text-[#F25A24] transition-colors cursor-pointer"
+                  className="p-2 text-slate-500 hover:text-primary transition-colors cursor-pointer"
                   title="Download File"
                 >
                   <Download className="w-4 h-4" />
@@ -610,7 +610,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                 </div>
                 <button
                   onClick={() => window.print()}
-                  className="p-2 text-slate-500 hover:text-[#F25A24] transition-colors cursor-pointer"
+                  className="p-2 text-slate-500 hover:text-primary transition-colors cursor-pointer"
                   title="Download File"
                 >
                   <Download className="w-4 h-4" />
@@ -620,14 +620,14 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           </div>
 
           {/* Right Card: Warranty (5 Cols) */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-[#FFF9F6] to-[#FFF1EB] rounded-md border border-orange-200/70 p-6 flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:col-span-5 bg-gradient-to-br from-primary-light via-orange-50/40 to-primary-light/50 rounded-md border border-primary/20 p-6 flex flex-col justify-between relative overflow-hidden">
             <div className="absolute -bottom-6 -right-6 text-orange-400/15 pointer-events-none">
               <Shield className="w-40 h-40 stroke-[1.2]" />
             </div>
 
             <div className="relative z-10 space-y-3">
               <div className="flex items-center gap-2 text-slate-950 font-bold text-base">
-                <Shield className="w-4 h-4 text-[#F25A24]" />
+                <Shield className="w-4 h-4 text-primary" />
                 <span>Warranty</span>
               </div>
 
@@ -650,7 +650,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
         <div className="space-y-4 pt-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="w-5 h-1.5 rounded-sm bg-[#F25A24]" />
+              <span className="w-5 h-1.5 rounded-sm bg-primary" />
               <h2 className="text-base sm:text-lg font-bold text-slate-950">
                 Similar Generators
               </h2>
@@ -658,7 +658,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
             <Link
               href="/products"
-              className="text-xs sm:text-sm font-semibold text-[#F25A24] hover:underline flex items-center gap-1"
+              className="text-xs sm:text-sm font-semibold text-primary hover:underline flex items-center gap-1"
             >
               <span>View All Products</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -690,7 +690,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           >
             <button
               onClick={() => setIsLightboxOpen(false)}
-              className="absolute -top-12 right-0 text-white hover:text-[#F25A24] p-2 transition-colors cursor-pointer"
+              className="absolute -top-12 right-0 text-white hover:text-primary p-2 transition-colors cursor-pointer"
               aria-label="Close"
             >
               <X className="w-6 h-6" />

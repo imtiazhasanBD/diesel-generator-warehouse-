@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  --primary: #F25A24;
-  --primary-hover: #D94815;
+  --primary: #E04314;
+  --primary-hover: #C5360C;
   --primary-light: #FFF2EB;
-  --dark: #121316;
-  --dark-surface: #191B20;
-  --dark-card: #20232A;
+  --dark: #0E1014;
+  --dark-surface: #141518;
+  --dark-card: #1A1C22;
   --bg-light: #F7F7F8;
   --card-light: #FFFFFF;
   --border-light: #E4E5E8;
@@ -233,7 +233,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   top: 0;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, #F25A24, #FF8A50);
+  background: linear-gradient(90deg, var(--primary), var(--primary-hover));
   z-index: 100;
   width: 0%;
   transition: width 0.1s ease-out;

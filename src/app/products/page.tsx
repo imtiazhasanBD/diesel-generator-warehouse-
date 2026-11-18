@@ -102,15 +102,15 @@ export default function ProductsPage() {
           </h1>
 
           <div className="flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-sm text-slate-400 mt-3 sm:mt-4 font-medium overflow-x-auto scrollbar-none [scrollbar-width:none] [&::-webkit-scrollbar]:hidden whitespace-nowrap">
-            <Link href="/" className="hover:text-[#F25A24] transition-colors shrink-0">
+            <Link href="/" className="hover:text-primary transition-colors shrink-0">
               Home
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-slate-600 shrink-0" />
-            <Link href="/products" className="text-white hover:text-[#F25A24] transition-colors shrink-0">
+            <Link href="/products" className="text-white hover:text-primary transition-colors shrink-0">
               Products
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-slate-600 shrink-0" />
-            <span className="text-[#F25A24] shrink-0">Diesel Generators for Sale</span>
+            <span className="text-primary shrink-0">Diesel Generators for Sale</span>
           </div>
         </div>
       </section>
@@ -129,7 +129,7 @@ export default function ProductsPage() {
           <div className="block md:hidden space-y-3">
             {/* Mobile Header Title & Result Count */}
             <div>
-              <h2 className="font-heading text-base font-bold text-[#F25A24] tracking-tight uppercase">
+              <h2 className="font-heading text-base font-bold text-primary tracking-tight uppercase">
                 DIESEL GENERATORS
               </h2>
               <p className="text-[11px] text-slate-500 font-medium">
@@ -146,7 +146,7 @@ export default function ProductsPage() {
                   placeholder="Search kVA, model, brand..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-8 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-[#F25A24] shadow-2xs font-medium placeholder:text-slate-400"
+                  className="w-full pl-9 pr-8 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-primary shadow-2xs font-medium placeholder:text-slate-400"
                 />
                 {searchQuery && (
                   <button
@@ -167,10 +167,10 @@ export default function ProductsPage() {
                     : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
                 }`}
               >
-                <SlidersHorizontal className="w-3.5 h-3.5 text-[#F25A24]" />
+                <SlidersHorizontal className="w-3.5 h-3.5 text-primary" />
                 <span>Filters</span>
                 {activeFilterCount > 0 && (
-                  <span className="w-4 h-4 rounded-full bg-[#F25A24] text-white text-[10px] font-bold flex items-center justify-center">
+                  <span className="w-4 h-4 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center">
                     {activeFilterCount}
                   </span>
                 )}
@@ -186,7 +186,7 @@ export default function ProductsPage() {
                 }}
                 className={`text-[11px] px-3 py-1 rounded-full font-semibold transition-all shrink-0 cursor-pointer ${
                   selectedBrand === "All" && selectedType === "All"
-                    ? "bg-[#F25A24] text-white shadow-2xs"
+                    ? "bg-primary text-white shadow-2xs"
                     : "bg-white text-slate-600 border border-slate-200"
                 }`}
               >
@@ -229,7 +229,7 @@ export default function ProductsPage() {
                     setSortBy("default");
                     setSearchQuery("");
                   }}
-                  className="text-[11px] text-[#F25A24] font-bold px-2 py-1 shrink-0 flex items-center gap-1 hover:underline cursor-pointer"
+                  className="text-[11px] text-primary font-bold px-2 py-1 shrink-0 flex items-center gap-1 hover:underline cursor-pointer"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>Reset</span>
@@ -242,7 +242,7 @@ export default function ProductsPage() {
               <div className="bg-white rounded-xl border border-slate-200 shadow-lg p-4 space-y-4 animate-in fade-in duration-150">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900 uppercase tracking-wider">
-                    <Filter className="w-3.5 h-3.5 text-[#F25A24]" />
+                    <Filter className="w-3.5 h-3.5 text-primary" />
                     <span>Filter & Sort Options</span>
                   </div>
                   <button
@@ -261,7 +261,7 @@ export default function ProductsPage() {
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:border-[#F25A24]"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs font-semibold text-slate-900 focus:outline-none focus:border-primary"
                   >
                     <option value="default">Default sorting</option>
                     <option value="kva-asc">Capacity: Low to High (kVA)</option>
@@ -305,7 +305,7 @@ export default function ProductsPage() {
                         onClick={() => setSelectedType(t)}
                         className={`text-xs px-2.5 py-1 rounded-md font-semibold transition-all cursor-pointer ${
                           selectedType === t
-                            ? "bg-[#F25A24] text-white shadow-2xs"
+                            ? "bg-primary text-white shadow-2xs"
                             : "bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200"
                         }`}
                       >
@@ -332,7 +332,7 @@ export default function ProductsPage() {
 
                   <button
                     onClick={() => setIsMobileFilterOpen(false)}
-                    className="bg-[#F25A24] hover:bg-[#d4380a] text-white text-xs font-bold px-4 py-2 rounded-lg shadow-sm transition-colors cursor-pointer"
+                    className="bg-primary hover:bg-primary-hover text-white text-xs font-bold px-4 py-2 rounded-lg shadow-sm transition-colors cursor-pointer"
                   >
                     View {filteredProducts.length} Results
                   </button>
@@ -348,7 +348,7 @@ export default function ProductsPage() {
             {/* Top Row: Title + Count (Left) & Live Search Input (Right) */}
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-3.5">
               <div>
-                <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#F25A24] tracking-tight uppercase">
+                <h2 className="font-heading text-2xl lg:text-3xl font-bold text-primary tracking-tight uppercase">
                   BROWSE BY: DIESEL GENERATORS FOR SALE
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
@@ -365,7 +365,7 @@ export default function ProductsPage() {
                   placeholder="Search kVA, model, brand..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-8 pr-7 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-[#F25A24] focus:ring-2 focus:ring-[#F25A24]/15 shadow-2xs font-medium placeholder:text-slate-400"
+                  className="w-full pl-8 pr-7 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 shadow-2xs font-medium placeholder:text-slate-400"
                 />
                 {searchQuery && (
                   <button
@@ -386,7 +386,7 @@ export default function ProductsPage() {
                   <select
                     value={selectedBrand}
                     onChange={(e) => setSelectedBrand(e.target.value)}
-                    className="appearance-none bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:border-[#F25A24] focus:ring-2 focus:ring-[#F25A24]/15 shadow-2xs cursor-pointer transition-all"
+                    className="appearance-none bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 shadow-2xs cursor-pointer transition-all"
                   >
                     <option value="All">All Brands</option>
                     {brands.filter((b) => b !== "All").map((b) => (
@@ -401,7 +401,7 @@ export default function ProductsPage() {
                   <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
-                    className="appearance-none bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:border-[#F25A24] focus:ring-2 focus:ring-[#F25A24]/15 shadow-2xs cursor-pointer transition-all"
+                    className="appearance-none bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 shadow-2xs cursor-pointer transition-all"
                   >
                     <option value="All">All Enclosure Types</option>
                     {types.filter((t) => t !== "All").map((t) => (
@@ -416,7 +416,7 @@ export default function ProductsPage() {
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="appearance-none bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:border-[#F25A24] focus:ring-2 focus:ring-[#F25A24]/15 shadow-2xs cursor-pointer transition-all"
+                    className="appearance-none bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 shadow-2xs cursor-pointer transition-all"
                   >
                     <option value="default">Default sorting</option>
                     <option value="kva-asc">Capacity: Low to High (kVA)</option>
@@ -436,7 +436,7 @@ export default function ProductsPage() {
                       setSortBy("default");
                       setSearchQuery("");
                     }}
-                    className="text-xs text-[#F25A24] hover:text-[#d4380a] bg-[#F25A24]/8 hover:bg-[#F25A24]/15 px-3 py-2 rounded-lg font-bold shrink-0 flex items-center gap-1.5 cursor-pointer transition-colors"
+                    className="text-xs text-primary hover:text-primary-hover bg-primary/8 hover:bg-primary/15 px-3 py-2 rounded-lg font-bold shrink-0 flex items-center gap-1.5 cursor-pointer transition-colors"
                   >
                     <RotateCcw className="w-3 h-3" />
                     <span>Reset Filters</span>
@@ -529,7 +529,7 @@ export default function ProductsPage() {
             <button
               key={page}
               onClick={() => setCurrentPage(page)}
-              className={`w-8 h-8 sm:w-9 sm:h-9 rounded-sm font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${currentPage === page ? "bg-[#F25A24] text-white shadow-xs" : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
+              className={`w-8 h-8 sm:w-9 sm:h-9 rounded-sm font-bold text-xs flex items-center justify-center transition-colors cursor-pointer ${currentPage === page ? "bg-primary text-white shadow-xs" : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
                 }`}
             >
               {page}
@@ -563,28 +563,28 @@ export default function ProductsPage() {
              ========================================================= */}
         <section className="mt-10 sm:mt-16 bg-white rounded-md p-4 sm:p-8 lg:p-12 border border-slate-200 shadow-xs">
           <div className="space-y-3 sm:space-y-4 max-w-4xl">
-            <h3 className="font-heading text-lg sm:text-2xl font-bold text-[#F25A24] uppercase tracking-tight">
+            <h3 className="font-heading text-lg sm:text-2xl font-bold text-primary uppercase tracking-tight">
               DIESEL GENERATORS FOR SALE BY BRAND AND SIZE
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
               Browse diesel generators for sale from{" "}
-              <button onClick={() => setSelectedBrand("Perkins")} className="text-[#F25A24] font-bold hover:underline cursor-pointer">
+              <button onClick={() => setSelectedBrand("Perkins")} className="text-primary font-bold hover:underline cursor-pointer">
                 Perkins
               </button>
               ,{" "}
-              <button onClick={() => setSelectedBrand("Cummins")} className="text-[#F25A24] font-bold hover:underline cursor-pointer">
+              <button onClick={() => setSelectedBrand("Cummins")} className="text-primary font-bold hover:underline cursor-pointer">
                 Cummins
               </button>
               ,{" "}
-              <button onClick={() => setSelectedBrand("FG Wilson")} className="text-[#F25A24] font-bold hover:underline cursor-pointer">
+              <button onClick={() => setSelectedBrand("FG Wilson")} className="text-primary font-bold hover:underline cursor-pointer">
                 FG Wilson
               </button>
               ,{" "}
-              <button onClick={() => setSelectedBrand("Ricardo")} className="text-[#F25A24] font-bold hover:underline cursor-pointer">
+              <button onClick={() => setSelectedBrand("Ricardo")} className="text-primary font-bold hover:underline cursor-pointer">
                 Ricardo
               </button>
               , and{" "}
-              <button onClick={() => setSelectedBrand("Aksa")} className="text-[#F25A24] font-bold hover:underline cursor-pointer">
+              <button onClick={() => setSelectedBrand("Aksa")} className="text-primary font-bold hover:underline cursor-pointer">
                 Aksa
               </button>
               . Compare open and enclosed silent canopy sets across our 10 kVA to 2500 kVA warehouse stock, with larger industrial synchronizing options available up to 3000 kVA. Use the filters above to narrow the range, or contact our engineering team directly for load sizing calculations, on-site feasibility inspection, and prompt delivery across Dhaka, Chattogram, Sylhet, and Khulna.

@@ -85,10 +85,10 @@ export default function QuoteModal({
                 <div className="bg-[#FAFBFD] p-4 sm:p-5 rounded-md border border-slate-200 mb-6 space-y-3">
                   <div className="flex justify-between items-center text-xs font-semibold text-slate-700">
                     <span className="flex items-center gap-1.5">
-                      <Sliders className="w-3.5 h-3.5 text-[#F25A24]" />
+                      <Sliders className="w-3.5 h-3.5 text-primary" />
                       Estimated Connected Electrical Load:
                     </span>
-                    <span className="font-mono text-base font-bold text-[#F25A24]">{kwLoad} kW</span>
+                    <span className="font-mono text-base font-bold text-primary">{kwLoad} kW</span>
                   </div>
                   <input
                     type="range"
@@ -97,7 +97,7 @@ export default function QuoteModal({
                     step="10"
                     value={kwLoad}
                     onChange={(e) => setKwLoad(Number(e.target.value))}
-                    className="w-full accent-[#F25A24] cursor-pointer"
+                    className="w-full accent-primary cursor-pointer"
                   />
                   <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-200/80 text-xs">
                     <div>
@@ -119,7 +119,7 @@ export default function QuoteModal({
                         type="text"
                         required
                         placeholder="e.g. Apex Spinning Ltd."
-                        className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
+                        className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-primary"
                       />
                     </div>
                     <div>
@@ -128,7 +128,7 @@ export default function QuoteModal({
                         type="text"
                         required
                         placeholder="Full name & designation"
-                        className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
+                        className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-primary"
                       />
                     </div>
                   </div>
@@ -140,7 +140,7 @@ export default function QuoteModal({
                         type="tel"
                         required
                         placeholder="+880 17XX-XXXXXX"
-                        className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
+                        className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-primary"
                       />
                     </div>
                     <div>
@@ -148,7 +148,7 @@ export default function QuoteModal({
                       <select
                         value={selectedDivision}
                         onChange={(e) => setSelectedDivision(e.target.value)}
-                        className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24] bg-white"
+                        className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-primary bg-white"
                       >
                         <option>Dhaka Division (Gazipur, Savar, Narayanganj)</option>
                         <option>Chattogram Division (Port, KEPZ, Agrabad)</option>
@@ -165,7 +165,7 @@ export default function QuoteModal({
                     <textarea
                       rows={2}
                       placeholder="e.g. Need 4-pole ATS panel, dual sync, or underground fuel piping..."
-                      className="w-full px-4 py-2 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
+                      className="w-full px-4 py-2 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-primary"
                     />
                   </div>
 

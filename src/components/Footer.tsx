@@ -25,14 +25,14 @@ export default function Footer() {
         className="absolute -top-24 -right-24 w-[460px] h-[460px] sm:w-[620px] sm:h-[620px] rounded-full pointer-events-none select-none z-0 blur-[100px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(212, 56, 10, 0.56) 0%, rgba(160, 36, 7, 0.24) 45%, transparent 72%)",
+            "radial-gradient(circle, rgba(224, 67, 20, 0.56) 0%, rgba(160, 36, 7, 0.24) 45%, transparent 72%)",
         }}
       />
       <div
         className="absolute -bottom-32 -left-24 w-[460px] h-[460px] sm:w-[620px] sm:h-[620px] rounded-full pointer-events-none select-none z-0 blur-[105px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(212, 56, 10, 0.50) 0%, rgba(155, 34, 6, 0.22) 45%, transparent 72%)",
+            "radial-gradient(circle, rgba(224, 67, 20, 0.50) 0%, rgba(155, 34, 6, 0.22) 45%, transparent 72%)",
         }}
       />
 
@@ -99,7 +99,7 @@ export default function Footer() {
               <div className="space-y-3">
                 <Link
                   href="/"
-                  className="block text-[#D4380A] hover:text-[#F25A24] font-medium transition-colors"
+                  className="block text-primary hover:text-primary-hover font-medium transition-colors"
                 >
                   Home
                 </Link>
@@ -184,7 +184,7 @@ export default function Footer() {
             <div className="space-y-2.5 text-[13.5px] text-[#8E9096]">
               <p>Sat – Thu: 9:00am - 6:00pm</p>
               <p>Friday: Closed</p>
-              <p className="text-[#D4380A] font-medium">24/7 Field Support</p>
+              <p className="text-primary font-medium">24/7 Field Support</p>
             </div>
           </div>
         </div>

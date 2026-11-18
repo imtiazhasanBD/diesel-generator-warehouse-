@@ -270,7 +270,7 @@ function initIndustryTabs() {
           if (bulletsEl) {
             bulletsEl.innerHTML = data.bullets.map(b => `
               <li class="flex items-start gap-2.5 text-xs text-slate-700">
-                <span class="w-4 h-4 rounded-full bg-orange-100 text-[#F25A24] flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">✓</span>
+                <span class="w-4 h-4 rounded-full bg-orange-100 text-[#E04314] flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">✓</span>
                 <span>${b}</span>
               </li>
             `).join('');

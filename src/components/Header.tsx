@@ -32,33 +32,33 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
           <nav className="hidden lg:flex items-center gap-7 text-[13px] font-semibold text-slate-600">
             <Link
               href="/"
-              className={`hover:text-[#F25A24] transition-colors ${activePath === "home" ? "text-[#F25A24] font-bold" : "text-slate-950"}`}
+              className={`hover:text-primary transition-colors ${activePath === "home" ? "text-primary font-bold" : "text-slate-950"}`}
             >
               Home
             </Link>
-            <Link href="/#about" className="hover:text-[#F25A24] transition-colors">
+            <Link href="/#about" className="hover:text-primary transition-colors">
               About
             </Link>
-            <Link href="/#capabilities" className="hover:text-[#F25A24] transition-colors">
+            <Link href="/#capabilities" className="hover:text-primary transition-colors">
               Capabilities
             </Link>
-            <Link href="/#schematic" className="hover:text-[#F25A24] transition-colors">
+            <Link href="/#schematic" className="hover:text-primary transition-colors">
               Engineering
             </Link>
             <Link
               href="/products"
-              className={`hover:text-[#F25A24] transition-colors flex items-center gap-1.5 ${activePath === "products" ? "text-[#F25A24] font-bold" : "text-slate-950"}`}
+              className={`hover:text-primary transition-colors flex items-center gap-1.5 ${activePath === "products" ? "text-primary font-bold" : "text-slate-950"}`}
             >
               <span>Products</span>
-              <span className="w-1.5 h-1.5 rounded-sm bg-[#F25A24]" />
+              <span className="w-1.5 h-1.5 rounded-sm bg-primary" />
             </Link>
-            <Link href="/#industries" className="hover:text-[#F25A24] transition-colors">
+            <Link href="/#industries" className="hover:text-primary transition-colors">
               Industries
             </Link>
-            <Link href="/#projects" className="hover:text-[#F25A24] transition-colors">
+            <Link href="/#projects" className="hover:text-primary transition-colors">
               Case Studies
             </Link>
-            <Link href="/#blog" className="hover:text-[#F25A24] transition-colors">
+            <Link href="/#blog" className="hover:text-primary transition-colors">
               Blog
             </Link>
           </nav>
@@ -117,7 +117,7 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             <Link href="/#schematic" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">
               Engineering
             </Link>
-            <Link href="/products" onClick={() => setIsMobileMenuOpen(false)} className="block text-[#F25A24] font-bold py-1">
+            <Link href="/products" onClick={() => setIsMobileMenuOpen(false)} className="block text-primary font-bold py-1">
               Products Lineup (Browse 20-2500 kVA)
             </Link>
             <Link href="/#industries" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">

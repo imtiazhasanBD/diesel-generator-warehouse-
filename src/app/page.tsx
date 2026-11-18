@@ -292,7 +292,7 @@ export default function Home() {
 
       {/* Motion Scroll Progress Indicator Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-[#F25A24] origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-primary origin-left z-50"
         style={{ scaleX }}
       />
 
@@ -323,7 +323,7 @@ export default function Home() {
 
             {/* Top Pill Badge */}
             <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
-              <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+              <span className="w-10 h-[4px] bg-primary rounded-sm inline-block" />
               <span>Direct Diesel Generator Warehouse Stock & Engineering</span>
             </div>
 
@@ -333,7 +333,7 @@ export default function Home() {
               {/* Left Column: Giant Bold Headline */}
               <div className="lg:col-span-7">
                 <h1 className="font-heading text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-950 leading-[1.02]">
-                  From raw <span className="text-[#F25A24]">energy</span><br />
+                  From raw <span className="text-primary">energy</span><br />
                   to uninterrupted<br />
                   production
                 </h1>
@@ -369,7 +369,7 @@ export default function Home() {
               </div>
               <div className="text-center font-bold tracking-widest text-[11px] text-slate-400 flex items-center justify-center gap-2">
                 <span>SCROLL DOWN</span>
-                <ArrowDown className="w-3.5 h-3.5 text-[#F25A24]" />
+                <ArrowDown className="w-3.5 h-3.5 text-primary" />
               </div>
               <div className="text-right">
                 23.8103° N, 90.4125° E
@@ -439,7 +439,7 @@ export default function Home() {
               <div className="lg:col-span-4 flex flex-col items-start">
                 {/* Pill Badge */}
                 <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
-                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+                  <span className="w-10 h-[4px] bg-primary rounded-sm inline-block" />
                   <span>Who we are</span>
                 </div>
 
@@ -447,7 +447,7 @@ export default function Home() {
                 <div className="mt-9 relative w-fit mx-auto lg:mx-0">
                   {/* Top-Right Orange Sparkle Rays */}
                   <svg
-                    className="absolute -top-6 right-5 w-8 h-6 text-[#F25A24] pointer-events-none"
+                    className="absolute -top-6 right-5 w-8 h-6 text-primary pointer-events-none"
                     viewBox="0 0 36 28"
                     fill="none"
                     aria-hidden="true"
@@ -495,7 +495,7 @@ export default function Home() {
                   </div>
 
                   {/* Overlapping 10+ Experts Badge */}
-                  <div className="absolute -bottom-3 right-0 z-40 w-[74px] h-[68px] rounded-[16px] bg-gradient-to-br from-[#FF7024] to-[#F25A24] border-[2.5px] border-white shadow-[0_10px_24px_rgba(242,90,36,0.35)] flex flex-col items-center justify-center text-white">
+                  <div className="absolute -bottom-3 right-0 z-40 w-[74px] h-[68px] rounded-[16px] bg-gradient-to-br from-primary to-primary-dark border-[2.5px] border-white shadow-[0_10px_24px_rgba(224,67,20,0.35)] flex flex-col items-center justify-center text-white">
                     <span className="font-heading text-[22px] font-extrabold leading-none tracking-tight">
                       10+
                     </span>
@@ -507,7 +507,7 @@ export default function Home() {
 
                 {/* Bottom Caption with Vertical Orange Bar - Centered on Mobile */}
                 <div className="mt-8 flex items-stretch gap-3 mx-auto lg:mx-0">
-                  <span className="w-[3px] rounded-full bg-[#F25A24] shrink-0" />
+                  <span className="w-[3px] rounded-full bg-primary shrink-0" />
                   <p className="font-heading text-[18px] sm:text-[19px] font-bold text-[#11141A] leading-[1.25] tracking-[-0.02em]">
                     Team of passionate
                     <br />
@@ -519,7 +519,7 @@ export default function Home() {
               <div className="lg:col-span-8 space-y-6">
                 <h2 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-bold text-slate-950 leading-[1.05] tracking-tight">
                   Driven by technology, backed by experience, focused on
-                  <span className="text-[#F25A24]"> power</span> excellence
+                  <span className="text-primary"> power</span> excellence
                 </h2>
 
                 <p className="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
@@ -534,7 +534,7 @@ export default function Home() {
                     </div>
                   </a>
 
-                  <a href="#products" className="inline-flex items-center gap-2 text-sm font-medium text-[#D4380A] hover:text-[#B82E07] transition-colors cursor-pointer">
+                  <a href="#products" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-hover transition-colors cursor-pointer">
                     <span>Download brochure</span>
                     <Download className="w-4 h-4" />
                   </a>
@@ -548,7 +548,7 @@ export default function Home() {
               {/* Element 1: 10+ Global Brands */}
               <TiltCard className="flex flex-col items-center justify-center text-center p-3.5 sm:p-6 lg:p-8 bg-[#F6F7F9] rounded-full aspect-square max-w-[170px] sm:max-w-[220px] lg:max-w-[260px] mx-auto w-full border border-slate-200">
                 <span className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-950 leading-tight">
-                  10<span className="text-[#F25A24]">+</span>
+                  10<span className="text-primary">+</span>
                 </span>
                 <h4 className="font-heading font-bold text-slate-900 text-xs sm:text-sm mt-0.5 sm:mt-1">Global Brands</h4>
                 <p className="text-[10px] sm:text-xs text-slate-500 max-w-[125px] sm:max-w-[150px] mt-0.5 sm:mt-1 leading-tight line-clamp-2 sm:line-clamp-none">Perkins, Cummins, Ricardo, Stamford & CAT.</p>
@@ -564,12 +564,12 @@ export default function Home() {
                 <span className="font-mono text-[8.5px] sm:text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-0.5 sm:mb-1">
                   // 2005-2026 //
                 </span>
-                <span className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold text-[#F25A24] leading-tight">
+                <span className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold text-primary leading-tight">
                   20<span className="text-slate-950">+</span>
                 </span>
                 <p className="text-[10px] sm:text-xs text-slate-600 max-w-[125px] sm:max-w-[160px] mt-0.5 sm:mt-1 font-medium leading-tight line-clamp-2 sm:line-clamp-none">Delivering consistent engineering excellence.</p>
                 <div className="mt-1.5 sm:mt-3">
-                  <span className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-slate-950 text-white flex items-center justify-center group-hover:bg-[#F25A24] transition-colors">
+                  <span className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-slate-950 text-white flex items-center justify-center group-hover:bg-primary transition-colors">
                     <ArrowRight className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
                   </span>
                 </div>
@@ -604,11 +604,11 @@ export default function Home() {
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 lg:mb-16 gap-6">
               <div className="space-y-4">
                 <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
-                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+                  <span className="w-10 h-[4px] bg-primary rounded-sm inline-block" />
                   <span>Our Capabilities</span>
                 </div>
                 <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-950 tracking-tight leading-[1.08]">
-                  Scalable <span className="text-[#F25A24]">capabilities</span><br />
+                  Scalable <span className="text-primary">capabilities</span><br />
                   for every challenge
                 </h2>
               </div>
@@ -663,13 +663,13 @@ export default function Home() {
 
                     {/* 3. Title & Region Coverage */}
                     <div className="md:col-span-4 lg:col-span-3 space-y-1.5 pt-1">
-                      <h3 className="font-heading text-2xl lg:text-3xl font-extrabold text-slate-950 tracking-tight group-hover:text-[#F25A24] transition-colors leading-tight">
+                      <h3 className="font-heading text-2xl lg:text-3xl font-extrabold text-slate-950 tracking-tight group-hover:text-primary transition-colors leading-tight">
                         {region.title}
                       </h3>
                       <p className="text-xs font-medium text-slate-500">
                         {region.subtitle}
                       </p>
-                      <div className="pt-1 flex items-center gap-1.5 text-[11px] text-[#F25A24] font-semibold">
+                      <div className="pt-1 flex items-center gap-1.5 text-[11px] text-primary font-semibold">
                         <MapPin className="w-3.5 h-3.5 flex-shrink-0" />
                         <span className="line-clamp-1">{region.districts}</span>
                       </div>
@@ -683,7 +683,7 @@ export default function Home() {
                       <ul className="space-y-1.5">
                         {region.features.map((feature, idx) => (
                           <li key={idx} className="flex items-start gap-2 text-xs sm:text-[13px] text-slate-700 leading-snug">
-                            <span className="text-[#F25A24] font-bold text-xs select-none mt-0.5">✓</span>
+                            <span className="text-primary font-bold text-xs select-none mt-0.5">✓</span>
                             <span>{feature}</span>
                           </li>
                         ))}
@@ -710,8 +710,8 @@ export default function Home() {
             <div className="p-4 sm:p-5 rounded-md bg-white border border-slate-200 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6 group">
               {/* Left: Location Pin Circle + Coverage Text */}
               <div className="flex items-center gap-3.5 sm:gap-4">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-sm bg-[#FFF5F1] border border-[#FFE7DE] flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 text-[#F25A24]" />
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-sm bg-primary-light border border-primary/20 flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
                   <h4 className="font-heading font-bold text-sm sm:text-base text-slate-950 leading-snug">
@@ -738,14 +738,14 @@ export default function Home() {
                 </div>
                 <div className="h-8 w-px bg-slate-200 shrink-0" />
                 <div>
-                  <span className="block text-xs font-bold text-[#F25A24] leading-tight">
+                  <span className="block text-xs font-bold text-primary leading-tight">
                     Nationwide
                   </span>
                   <span className="block text-xs sm:text-sm font-bold text-slate-950 leading-tight whitespace-nowrap">
                     Sales & Service Network
                   </span>
                 </div>
-                <ArrowRight className="w-4 h-4 text-[#F25A24] group-hover/btn:translate-x-1 transition-transform shrink-0 ml-1" />
+                <ArrowRight className="w-4 h-4 text-primary group-hover/btn:translate-x-1 transition-transform shrink-0 ml-1" />
               </button>
             </div>
 
@@ -781,7 +781,7 @@ export default function Home() {
               "
               style={{
                 background:
-                  "linear-gradient(180deg, #EB4614 0%, #DF3A0C 28%, #BC2907 56%, #5A1404 80%, rgba(18,18,20,0) 100%)",
+                  "linear-gradient(180deg, #E04314 0%, #C5360C 28%, #A82B08 56%, #5A1404 80%, rgba(18,18,20,0) 100%)",
               }}
             />
 
@@ -805,7 +805,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-8 items-start mb-8 sm:mb-12 lg:mb-16">
               {/* Col 1: Badge */}
               <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold tracking-tight text-white">
-                <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+                <span className="w-10 h-[4px] bg-primary rounded-sm inline-block" />
                 <span>What we manufacture</span>
               </div>
 
@@ -815,7 +815,7 @@ export default function Home() {
               {/* Col 4: 50,000+ Metric */}
               <div className="lg:pl-6">
                 <div className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-none">
-                  50,000<span className="text-[#F25A24]">+</span>
+                  50,000<span className="text-primary">+</span>
                 </div>
                 <p className="text-xs text-slate-400 mt-1.5 sm:mt-2.5 max-w-[260px] leading-relaxed">
                   Precision-built diesel generators delivered to clients across industries and continents.
@@ -837,8 +837,8 @@ export default function Home() {
                   onClick={() => setActiveHotspot("canopy")}
                   className="absolute top-[48%] left-[7.5%] w-6 h-6 sm:w-7 sm:h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
                 >
-                  {activeHotspot === "canopy" && <span className="absolute inset-0 rounded-sm bg-[#F25A24]/40 animate-ping" />}
-                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[9px] sm:text-[10px] font-bold transition-all ${activeHotspot === "canopy" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
+                  {activeHotspot === "canopy" && <span className="absolute inset-0 rounded-sm bg-primary/40 animate-ping" />}
+                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[9px] sm:text-[10px] font-bold transition-all ${activeHotspot === "canopy" ? "bg-primary text-white scale-125 ring-4 ring-primary/50" : "bg-[#18181A] text-white hover:bg-primary"
                     }`}>
                     1
                   </span>
@@ -852,8 +852,8 @@ export default function Home() {
                   onClick={() => setActiveHotspot("engine")}
                   className="absolute top-[32%] left-[37%] w-6 h-6 sm:w-7 sm:h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
                 >
-                  {activeHotspot === "engine" && <span className="absolute inset-0 rounded-sm bg-[#F25A24]/40 animate-ping" />}
-                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[9px] sm:text-[10px] font-bold transition-all ${activeHotspot === "engine" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
+                  {activeHotspot === "engine" && <span className="absolute inset-0 rounded-sm bg-primary/40 animate-ping" />}
+                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[9px] sm:text-[10px] font-bold transition-all ${activeHotspot === "engine" ? "bg-primary text-white scale-125 ring-4 ring-primary/50" : "bg-[#18181A] text-white hover:bg-primary"
                     }`}>
                     2
                   </span>
@@ -867,8 +867,8 @@ export default function Home() {
                   onClick={() => setActiveHotspot("alternator")}
                   className="absolute top-[52%] left-[71.5%] w-6 h-6 sm:w-7 sm:h-7 -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
                 >
-                  {activeHotspot === "alternator" && <span className="absolute inset-0 rounded-sm bg-[#F25A24]/40 animate-ping" />}
-                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[9px] sm:text-[10px] font-bold transition-all ${activeHotspot === "alternator" ? "bg-[#F25A24] text-white scale-125 ring-4 ring-[#F25A24]/50" : "bg-[#18181A] text-white hover:bg-[#F25A24]"
+                  {activeHotspot === "alternator" && <span className="absolute inset-0 rounded-sm bg-primary/40 animate-ping" />}
+                  <span className={`relative flex items-center justify-center w-full h-full rounded-full border-2 border-white shadow-xl text-[9px] sm:text-[10px] font-bold transition-all ${activeHotspot === "alternator" ? "bg-primary text-white scale-125 ring-4 ring-primary/50" : "bg-[#18181A] text-white hover:bg-primary"
                     }`}>
                     3
                   </span>
@@ -880,7 +880,7 @@ export default function Home() {
 
               {/* Mobile Active Hotspot Indicator Banner */}
               <div className="sm:hidden mt-3 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 flex items-center gap-2 text-[11px] text-slate-300">
-                <span className="w-2 h-2 rounded-full bg-[#F25A24] animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 <span>Tap pins <strong className="text-white">1, 2, 3</strong> to inspect components below</span>
               </div>
             </div>
@@ -892,7 +892,7 @@ export default function Home() {
               <div
                 onClick={() => setActiveHotspot("engine")}
                 className={`p-3 sm:p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${activeHotspot === "engine"
-                  ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
+                  ? "border-primary bg-white/[0.07] ring-1 ring-primary/50 shadow-[0_0_24px_rgba(224,67,20,0.15)]"
                   : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
@@ -928,7 +928,7 @@ export default function Home() {
               <div
                 onClick={() => setActiveHotspot("canopy")}
                 className={`p-3 sm:p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${activeHotspot === "canopy"
-                  ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
+                  ? "border-primary bg-white/[0.07] ring-1 ring-primary/50 shadow-[0_0_24px_rgba(224,67,20,0.15)]"
                   : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
@@ -964,7 +964,7 @@ export default function Home() {
               <div
                 onClick={() => setActiveHotspot("controller")}
                 className={`p-3 sm:p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${activeHotspot === "controller"
-                  ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
+                  ? "border-primary bg-white/[0.07] ring-1 ring-primary/50 shadow-[0_0_24px_rgba(224,67,20,0.15)]"
                   : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
@@ -1000,7 +1000,7 @@ export default function Home() {
               <div
                 onClick={() => setActiveHotspot("alternator")}
                 className={`p-3 sm:p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${activeHotspot === "alternator"
-                  ? "border-[#F25A24] bg-white/[0.07] ring-1 ring-[#F25A24]/50 shadow-[0_0_24px_rgba(242,90,36,0.15)]"
+                  ? "border-primary bg-white/[0.07] ring-1 ring-primary/50 shadow-[0_0_24px_rgba(224,67,20,0.15)]"
                   : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
@@ -1072,11 +1072,11 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-14 gap-6">
               <div className="space-y-3">
                 <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
-                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+                  <span className="w-10 h-[4px] bg-primary rounded-sm inline-block" />
                   <span>What we supply</span>
                 </div>
                 <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-950 tracking-tight">
-                  50,000+ kVA <span className="text-[#F25A24]">delivered</span> across Bangladesh
+                  50,000+ kVA <span className="text-primary">delivered</span> across Bangladesh
                 </h2>
               </div>
 
@@ -1098,7 +1098,7 @@ export default function Home() {
                     <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
                       <img src="/assets/images/perkins-blue.jpg" alt="Perkins 100 kVA" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
                     </div>
-                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-[#F25A24] transition-colors line-clamp-2 leading-snug">Perkins 100 kVA Silent Genset</h3>
+                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-primary transition-colors line-clamp-2 leading-snug">Perkins 100 kVA Silent Genset</h3>
                   </Link>
 
                   <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
@@ -1112,7 +1112,7 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-baseline gap-1">
                       <span className="text-slate-400 shrink-0">Noise:</span>
-                      <span className="font-semibold text-[#F25A24] truncate text-right">68 dBA @ 7m</span>
+                      <span className="font-semibold text-primary truncate text-right">68 dBA @ 7m</span>
                     </div>
                     <div className="flex justify-between items-baseline gap-1">
                       <span className="text-slate-400 shrink-0">Controller:</span>
@@ -1121,7 +1121,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
-                  <Link href="/products/100kva-perkins-silent-genset" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-[#F25A24]">
+                  <Link href="/products/100kva-perkins-silent-genset" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-primary">
                     <span className="hidden sm:inline">View Specifications</span>
                     <span className="sm:hidden">View Specs</span>
                   </Link>
@@ -1138,7 +1138,7 @@ export default function Home() {
                     <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
                       <img src="/assets/images/project-green.jpg" alt="Cummins 25 kVA Silent Generator" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
                     </div>
-                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-[#F25A24] transition-colors line-clamp-2 leading-snug">Cummins 25 kVA Silent Generator</h3>
+                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-primary transition-colors line-clamp-2 leading-snug">Cummins 25 kVA Silent Generator</h3>
                   </Link>
 
                   <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
@@ -1152,7 +1152,7 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-baseline gap-1">
                       <span className="text-slate-400 shrink-0">Duty:</span>
-                      <span className="font-semibold text-[#F25A24] truncate text-right">Prime & Standby</span>
+                      <span className="font-semibold text-primary truncate text-right">Prime & Standby</span>
                     </div>
                     <div className="flex justify-between items-baseline gap-1">
                       <span className="text-slate-400 shrink-0">Controller:</span>
@@ -1161,7 +1161,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
-                  <Link href="/products/25kva-cummins-silent-generator" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-[#F25A24]">
+                  <Link href="/products/25kva-cummins-silent-generator" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-primary">
                     <span className="hidden sm:inline">View Specifications</span>
                     <span className="sm:hidden">View Specs</span>
                   </Link>
@@ -1178,7 +1178,7 @@ export default function Home() {
                     <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
                       <img src="/assets/images/canopy-white-20k.jpg" alt="Ricardo 30 kVA" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
                     </div>
-                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-[#F25A24] transition-colors line-clamp-2 leading-snug">Ricardo 30 kVA Silent Canopy</h3>
+                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-primary transition-colors line-clamp-2 leading-snug">Ricardo 30 kVA Silent Canopy</h3>
                   </Link>
 
                   <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
@@ -1192,7 +1192,7 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-baseline gap-1">
                       <span className="text-slate-400 shrink-0">Ideal:</span>
-                      <span className="font-semibold text-[#F25A24] truncate text-right">Offices & Commercial</span>
+                      <span className="font-semibold text-primary truncate text-right">Offices & Commercial</span>
                     </div>
                     <div className="flex justify-between items-baseline gap-1">
                       <span className="text-slate-400 shrink-0">Controller:</span>
@@ -1201,7 +1201,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
-                  <Link href="/products/30kva-diesel-generator" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-[#F25A24]">
+                  <Link href="/products/30kva-diesel-generator" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-primary">
                     <span className="hidden sm:inline">View Specifications</span>
                     <span className="sm:hidden">View Specs</span>
                   </Link>
@@ -1218,7 +1218,7 @@ export default function Home() {
                     <div className="h-28 sm:h-36 lg:h-44 w-full rounded-sm overflow-hidden bg-white mb-3 sm:mb-5 flex items-center justify-center p-1.5 sm:p-2 border border-slate-100 group">
                       <img src="/assets/images/yellow-silent.jpg" alt="APD 110 A" className="h-full w-full object-cover rounded-sm group-hover:scale-105 transition-transform duration-300" />
                     </div>
-                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-[#F25A24] transition-colors line-clamp-2 leading-snug">APD 110 A Industrial Diesel</h3>
+                    <h3 className="font-heading font-bold text-xs sm:text-sm lg:text-base text-slate-950 hover:text-primary transition-colors line-clamp-2 leading-snug">APD 110 A Industrial Diesel</h3>
                   </Link>
 
                   <div className="mt-2.5 sm:mt-4 pt-2.5 sm:pt-4 border-t border-slate-200/80 space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
@@ -1232,7 +1232,7 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-baseline gap-1">
                       <span className="text-slate-400 shrink-0">Duty:</span>
-                      <span className="font-semibold text-[#F25A24] truncate text-right">Export Zones & Mills</span>
+                      <span className="font-semibold text-primary truncate text-right">Export Zones & Mills</span>
                     </div>
                     <div className="flex justify-between items-baseline gap-1">
                       <span className="text-slate-400 shrink-0">Controller:</span>
@@ -1241,7 +1241,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="pt-3 sm:pt-5 mt-3 sm:mt-5 border-t border-slate-200 flex items-center justify-between">
-                  <Link href="/products/apd-110-a-diesel-generator" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-[#F25A24]">
+                  <Link href="/products/apd-110-a-diesel-generator" className="text-[11px] sm:text-xs font-bold text-slate-900 hover:text-primary">
                     <span className="hidden sm:inline">View Specifications</span>
                     <span className="sm:hidden">View Specs</span>
                   </Link>
@@ -1365,11 +1365,11 @@ export default function Home() {
             {/* Centered header lockup */}
             <div className="flex flex-col items-center text-center mb-10 sm:mb-12">
               <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-white border border-slate-200/90 shadow-[0_1px_2px_rgba(0,0,0,0.03)] text-[10px] font-medium text-slate-700 mb-3">
-                <span className="w-1.5 h-1.5 rounded-[1px] bg-[#D4400F]" />
+                <span className="w-1.5 h-1.5 rounded-[1px] bg-primary" />
                 <span>Build for every industry</span>
               </div>
               <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#141518] tracking-[-0.03em] leading-[1.08]">
-                Manufacturing <span className="text-[#D4400F]">solutions</span>
+                Manufacturing <span className="text-primary">solutions</span>
                 <br />
                 for every industry
               </h2>
@@ -1395,7 +1395,7 @@ export default function Home() {
                           <motion.span
                             layoutId="industryActiveTrack"
                             transition={{ type: "spring", stiffness: 420, damping: 34 }}
-                            className="absolute -left-[2px] top-0 bottom-0 w-[2px] bg-[#D4400F]"
+                            className="absolute -left-[2px] top-0 bottom-0 w-[2px] bg-primary"
                           />
                         )}
                         <span className="sm:whitespace-nowrap">{INDUSTRY_DATA[key].label}</span>
@@ -1458,7 +1458,7 @@ export default function Home() {
                               key={idx}
                               className="flex items-start gap-2 text-[11px] sm:text-[10.5px] leading-4 font-medium text-[#2A2B2F]"
                             >
-                              <Check className="w-2.5 h-2.5 text-[#D4400F] shrink-0 mt-[3px]" strokeWidth={2.5} />
+                              <Check className="w-2.5 h-2.5 text-primary shrink-0 mt-[3px]" strokeWidth={2.5} />
                               <span>{b}</span>
                             </li>
                           ))}
@@ -1481,11 +1481,11 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 lg:mb-10 gap-4">
               <div className="space-y-3">
                 <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
-                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+                  <span className="w-10 h-[4px] bg-primary rounded-sm inline-block" />
                   <span>Real-world success</span>
                 </div>
                 <h2 className="font-heading text-2xl sm:text-4xl lg:text-[40px] font-bold text-[#141518] tracking-[-0.03em] leading-[1.08]">
-                  Real <span className="text-[#D4380A]">results</span> from real projects
+                  Real <span className="text-primary">results</span> from real projects
                 </h2>
               </div>
 
@@ -1563,7 +1563,7 @@ export default function Home() {
                   <div className="p-3 sm:p-5 flex flex-col justify-between flex-1 min-w-0">
                     <div>
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 mb-1.5 sm:mb-2">
-                        <span className="inline-block px-1.5 sm:px-2.5 py-0.5 rounded-full bg-[#FFF3EE] text-[#D4380A] text-[9.5px] sm:text-[10.5px] font-semibold truncate self-start max-w-full">
+                        <span className="inline-block px-1.5 sm:px-2.5 py-0.5 rounded-full bg-primary-light text-primary text-[9.5px] sm:text-[10.5px] font-semibold truncate self-start max-w-full">
                           {project.spec}
                         </span>
                         <span className="text-[9.5px] sm:text-[11px] font-mono font-medium text-slate-400 truncate">
@@ -1571,7 +1571,7 @@ export default function Home() {
                         </span>
                       </div>
 
-                      <h3 className="font-heading font-bold text-xs sm:text-[16px] md:text-[17px] text-[#141518] group-hover:text-[#D4380A] transition-colors leading-snug mb-1 sm:mb-1.5 line-clamp-2">
+                      <h3 className="font-heading font-bold text-xs sm:text-[16px] md:text-[17px] text-[#141518] group-hover:text-primary transition-colors leading-snug mb-1 sm:mb-1.5 line-clamp-2">
                         {project.title}
                       </h3>
 
@@ -1581,7 +1581,7 @@ export default function Home() {
                     </div>
 
                     <div className="pt-2 sm:pt-3 mt-2 sm:mt-3 border-t border-slate-200/70 flex items-center justify-between">
-                      <span className="text-[10px] sm:text-[12px] font-semibold text-[#141518] group-hover:text-[#D4380A] transition-colors truncate">
+                      <span className="text-[10px] sm:text-[12px] font-semibold text-[#141518] group-hover:text-primary transition-colors truncate">
                         <span className="hidden sm:inline">View case study</span>
                         <span className="sm:hidden">Case study</span>
                       </span>
@@ -1637,7 +1637,7 @@ export default function Home() {
           {/* Subtle Left Ambient Orange Glow */}
           <div
             aria-hidden="true"
-            className="pointer-events-none select-none absolute -left-24 top-1/2 -translate-y-1/2 w-[380px] h-[380px] rounded-full bg-[#F25A24]/[0.07] blur-[110px] z-[1]"
+            className="pointer-events-none select-none absolute -left-24 top-1/2 -translate-y-1/2 w-[380px] h-[380px] rounded-full bg-primary/[0.07] blur-[110px] z-[1]"
           />
 
           {/* Clip Path Definition for Smoked Architectural Glass Overlay */}
@@ -1657,7 +1657,7 @@ export default function Home() {
               clipPath: "url(#section8-glass-clip)",
               WebkitClipPath: "url(#section8-glass-clip)",
               background:
-                "radial-gradient(circle at 53% 98%, rgba(242, 90, 36, 0.24) 0%, rgba(242, 90, 36, 0.07) 26%, rgba(9, 13, 20, 0.28) 60%, rgba(9, 13, 20, 0.42) 100%)",
+                "radial-gradient(circle at 53% 98%, rgba(224, 67, 20, 0.24) 0%, rgba(224, 67, 20, 0.07) 26%, rgba(9, 13, 20, 0.28) 60%, rgba(9, 13, 20, 0.42) 100%)",
             }}
           />
 
@@ -1670,17 +1670,17 @@ export default function Home() {
           >
             <defs>
               <linearGradient id="section8-orange-line" x1="51%" y1="100%" x2="100%" y2="14%">
-                <stop offset="0%" stopColor="#FF7A2F" stopOpacity="0.95" />
-                <stop offset="45%" stopColor="#F25A24" stopOpacity="0.55" />
-                <stop offset="84%" stopColor="#FF7A2F" stopOpacity="0.95" />
-                <stop offset="100%" stopColor="#FF8C42" stopOpacity="0.85" />
+                <stop offset="0%" stopColor="#E04314" stopOpacity="0.95" />
+                <stop offset="45%" stopColor="#C5360C" stopOpacity="0.55" />
+                <stop offset="84%" stopColor="#E04314" stopOpacity="0.95" />
+                <stop offset="100%" stopColor="#E04314" stopOpacity="0.85" />
               </linearGradient>
             </defs>
             {/* Outer soft orange glow */}
             <path
               d="M 742 720 L 1322 112 Q 1339 97 1362 97 L 1440 97"
               fill="none"
-              stroke="#F25A24"
+              stroke="#E04314"
               strokeWidth="7"
               strokeOpacity="0.3"
               vectorEffect="non-scaling-stroke"
@@ -1714,8 +1714,8 @@ export default function Home() {
               className="max-w-[650px]"
             >
               {/* Pill Badge */}
-              <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight text-white">
-                <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+              <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold tracking-tight text-white">
+                <span className="w-10 h-[4px] bg-primary rounded-sm inline-block" />
                 <span>Open a Conversation</span>
               </div>
 
@@ -1723,7 +1723,7 @@ export default function Home() {
               <h2 className="font-heading text-3xl sm:text-5xl lg:text-[48px] font-extrabold text-white tracking-[-0.025em] leading-[1.12]">
                 Ready to power your next
                 <br />
-                <span className="text-[#F25A24]">industrial project?</span>
+                <span className="text-primary">industrial project?</span>
               </h2>
 
               {/* Supporting Copy */}
@@ -1733,8 +1733,8 @@ export default function Home() {
 
               {/* 3 Glass Feature Pills */}
               <div className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-[600px]">
-                <div className="bg-[#121923]/80 backdrop-blur-md border border-white/[0.09] hover:border-[#F25A24]/35 transition-colors rounded-[8px] px-3.5 py-3 flex items-center gap-3">
-                  <Zap className="w-5 h-5 text-[#F25A24] shrink-0" strokeWidth={1.9} />
+                <div className="bg-[#121923]/80 backdrop-blur-md border border-white/[0.09] hover:border-primary/35 transition-colors rounded-[8px] px-3.5 py-3 flex items-center gap-3">
+                  <Zap className="w-5 h-5 text-primary shrink-0" strokeWidth={1.9} />
                   <span className="text-[12px] font-medium text-slate-200 leading-[1.3]">
                     100% Load-Bank
                     <br />
@@ -1742,8 +1742,8 @@ export default function Home() {
                   </span>
                 </div>
 
-                <div className="bg-[#121923]/80 backdrop-blur-md border border-white/[0.09] hover:border-[#F25A24]/35 transition-colors rounded-[8px] px-3.5 py-3 flex items-center gap-3">
-                  <ShieldCheck className="w-5 h-5 text-[#F25A24] shrink-0" strokeWidth={1.9} />
+                <div className="bg-[#121923]/80 backdrop-blur-md border border-white/[0.09] hover:border-primary/35 transition-colors rounded-[8px] px-3.5 py-3 flex items-center gap-3">
+                  <ShieldCheck className="w-5 h-5 text-primary shrink-0" strokeWidth={1.9} />
                   <span className="text-[12px] font-medium text-slate-200 leading-[1.3]">
                     Zero Downtime
                     <br />
@@ -1751,8 +1751,8 @@ export default function Home() {
                   </span>
                 </div>
 
-                <div className="bg-[#121923]/80 backdrop-blur-md border border-white/[0.09] hover:border-[#F25A24]/35 transition-colors rounded-[8px] px-3.5 py-3 flex items-center gap-3">
-                  <Headset className="w-5 h-5 text-[#F25A24] shrink-0" strokeWidth={1.9} />
+                <div className="bg-[#121923]/80 backdrop-blur-md border border-white/[0.09] hover:border-primary/35 transition-colors rounded-[8px] px-3.5 py-3 flex items-center gap-3">
+                  <Headset className="w-5 h-5 text-primary shrink-0" strokeWidth={1.9} />
                   <span className="text-[12px] font-medium text-slate-200 leading-[1.3]">
                     24/7 Rapid
                     <br />
@@ -1765,7 +1765,7 @@ export default function Home() {
               <div className="mt-7 flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => setIsQuoteModalOpen(true)}
-                  className="inline-flex items-center gap-3 bg-[#F25A24] hover:bg-[#D94815] text-white font-semibold text-[13.5px] px-6 py-3.5 rounded-[8px] shadow-[0_6px_20px_rgba(242,90,36,0.3)] transition-all cursor-pointer group"
+                  className="inline-flex items-center gap-3 bg-primary hover:bg-primary-hover text-white font-semibold text-[13.5px] px-6 py-3.5 rounded-[8px] shadow-[0_6px_20px_rgba(224,67,20,0.3)] transition-all cursor-pointer group"
                 >
                   <span>Schedule site inspection</span>
                   <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />
@@ -1795,7 +1795,7 @@ export default function Home() {
             {/* Soft diagonal grey light sweep */}
             <div className="absolute -top-20 right-[-10%] w-[55%] h-[130%] bg-gradient-to-br from-slate-100/70 via-slate-100/30 to-transparent -skew-x-[26deg]" />
             {/* Bottom-left subtle warm peach glow */}
-            <div className="absolute -bottom-24 -left-16 w-72 h-72 rounded-full bg-[#F25A24]/[0.07] blur-3xl" />
+            <div className="absolute -bottom-24 -left-16 w-72 h-72 rounded-full bg-primary/[0.07] blur-3xl" />
           </div>
 
           <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10">
@@ -1806,14 +1806,14 @@ export default function Home() {
                 {/* Badge with extending hairline */}
                 <div className="flex items-center gap-4 mb-6">
                   <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
-                    <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+                    <span className="w-10 h-[4px] bg-primary rounded-sm inline-block" />
                     <span>Build on Trust</span>
                   </div>
                   <div className="h-px flex-1 bg-gradient-to-r from-slate-200/80 to-transparent" />
                 </div>
 
                 <h2 className="font-heading text-3xl sm:text-5xl lg:text-[44px] font-extrabold text-[#0F172A] tracking-[-0.03em] leading-[1.08]">
-                  Trusted by <span className="text-[#F25A24]">clients,</span>
+                  Trusted by <span className="text-primary">clients,</span>
                   <br />
                   proven by results
                 </h2>
@@ -1823,10 +1823,10 @@ export default function Home() {
                 </p>
 
                 {/* Warm Peach Testimonial Box */}
-                <div className="mt-7 bg-[#FFF6F2] rounded-md p-6 sm:p-7 border border-[#F25A24]/10">
+                <div className="mt-7 bg-primary-light rounded-md p-6 sm:p-7 border border-primary/10">
                   {/* Double Quote Mark */}
                   <svg
-                    className="w-6 h-5 text-[#F25A24] fill-current mb-3"
+                    className="w-6 h-5 text-primary fill-current mb-3"
                     viewBox="0 0 28 22"
                     aria-hidden="true"
                   >
@@ -1843,7 +1843,7 @@ export default function Home() {
                       alt="Engr. Tariqul Islam"
                       className="w-11 h-11 rounded-[6px] object-cover object-top shrink-0"
                     />
-                    <div className="w-[1.5px] h-9 bg-[#F25A24]/60 shrink-0" />
+                    <div className="w-[1.5px] h-9 bg-primary/60 shrink-0" />
                     <div>
                       <h4 className="font-heading font-bold text-[#0F172A] text-[13.5px] leading-tight">
                         Engr. Tariqul Islam
@@ -1861,7 +1861,7 @@ export default function Home() {
                 {/* Skewed Top-Right Peach Decorative Frame Behind Card */}
                 <div
                   aria-hidden="true"
-                  className="hidden lg:block absolute -top-12 right-[12%] w-[260px] h-[140px] rounded-md border border-[#F25A24]/30 bg-gradient-to-br from-[#FFF4EF]/90 via-[#FFF8F5]/50 to-transparent -skew-x-[28deg] z-0"
+                  className="hidden lg:block absolute -top-12 right-[12%] w-[260px] h-[140px] rounded-md border border-primary/30 bg-gradient-to-br from-[#FFF4EF]/90 via-[#FFF8F5]/50 to-transparent -skew-x-[28deg] z-0"
                 />
 
                 <div className="relative z-10 bg-white rounded-md shadow-[0_14px_40px_rgba(15,23,42,0.08)] border border-slate-200/70 overflow-hidden">
@@ -1878,7 +1878,7 @@ export default function Home() {
                   <div className="relative z-10 mx-4 sm:mx-7 -mt-12 sm:-mt-16 bg-white rounded-md shadow-[0_10px_30px_rgba(15,23,42,0.08)] border border-slate-100 py-5 sm:py-6 px-3 sm:px-6">
                     <div className="grid grid-cols-3 divide-x divide-slate-200/80 text-center">
                       <div className="px-2">
-                        <Layers className="w-5 h-5 sm:w-6 sm:h-6 text-[#F25A24] mx-auto mb-2" strokeWidth={1.75} />
+                        <Layers className="w-5 h-5 sm:w-6 sm:h-6 text-primary mx-auto mb-2" strokeWidth={1.75} />
                         <div className="font-heading text-xl sm:text-[28px] font-extrabold text-[#0F172A] tracking-tight leading-none">
                           500+
                         </div>
@@ -1888,7 +1888,7 @@ export default function Home() {
                       </div>
 
                       <div className="px-2">
-                        <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-[#F25A24] mx-auto mb-2" strokeWidth={1.75} />
+                        <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-primary mx-auto mb-2" strokeWidth={1.75} />
                         <div className="font-heading text-xl sm:text-[28px] font-extrabold text-[#0F172A] tracking-tight leading-none">
                           99.8%
                         </div>
@@ -1898,7 +1898,7 @@ export default function Home() {
                       </div>
 
                       <div className="px-2">
-                        <Headset className="w-5 h-5 sm:w-6 sm:h-6 text-[#F25A24] mx-auto mb-2" strokeWidth={1.75} />
+                        <Headset className="w-5 h-5 sm:w-6 sm:h-6 text-primary mx-auto mb-2" strokeWidth={1.75} />
                         <div className="font-heading text-xl sm:text-[28px] font-extrabold text-[#0F172A] tracking-tight leading-none">
                           24/7
                         </div>
@@ -1916,7 +1916,7 @@ export default function Home() {
                       <br className="hidden sm:block" />{" "}
                       Collaborates
                     </span>
-                    <div className="hidden sm:block w-[1.5px] h-7 bg-[#F25A24]/70 shrink-0" />
+                    <div className="hidden sm:block w-[1.5px] h-7 bg-primary/70 shrink-0" />
                     <div className="w-full min-w-0 flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
                       <div className="flex w-max items-center animate-partner-marquee">
                         {[0, 1].map((dupIndex) => (
@@ -1966,11 +1966,11 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-12 gap-4 sm:gap-6">
               <div className="space-y-3 sm:space-y-4">
                 <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
-                  <span className="w-10 h-[4px] bg-[#F25A24] rounded-sm inline-block" />
+                  <span className="w-10 h-[4px] bg-primary rounded-sm inline-block" />
                   <span>Insights & Article</span>
                 </div>
                 <h2 className="font-heading text-2xl sm:text-5xl lg:text-[46px] font-bold text-[#141518] tracking-[-0.03em] leading-[1.08]">
-                  Latest from our <span className="text-[#D4380A]">blog</span>
+                  Latest from our <span className="text-primary">blog</span>
                 </h2>
               </div>
 
@@ -2024,7 +2024,7 @@ export default function Home() {
 
                     <div className="relative z-10 h-full flex flex-col justify-end p-5 sm:p-7">
                       <div className="flex items-center gap-2 mb-2 sm:mb-2.5">
-                        <span className="px-2 py-0.5 rounded-sm bg-[#F25A24] text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                        <span className="px-2 py-0.5 rounded-sm bg-primary text-white text-[10px] font-bold uppercase tracking-wider shadow-sm">
                           Featured
                         </span>
                         <span className="text-[11px] text-slate-300 font-medium">
@@ -2034,7 +2034,7 @@ export default function Home() {
                       <h3 className="font-heading font-semibold text-[18px] sm:text-[22px] text-white tracking-[-0.02em] leading-[1.22] mb-2 sm:mb-3">
                         {posts[0].title}
                       </h3>
-                      <span className="inline-flex items-center gap-1.5 text-[13px] font-medium text-[#F25A24] group-hover:translate-x-1 transition-transform">
+                      <span className="inline-flex items-center gap-1.5 text-[13px] font-medium text-primary group-hover:translate-x-1 transition-transform">
                         <span>Read full article</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </span>
@@ -2068,7 +2068,7 @@ export default function Home() {
                       {/* Content Area */}
                       <div className="flex-1 min-w-0 md:relative md:z-10 md:h-full md:flex md:flex-col md:justify-end md:p-6 sm:md:p-7">
                         <div className="flex items-center gap-2 mb-1 md:mb-2.5">
-                          <span className="text-[10px] font-bold text-[#D4380A] uppercase tracking-wider md:text-slate-300 md:font-semibold">
+                          <span className="text-[10px] font-bold text-primary uppercase tracking-wider md:text-slate-300 md:font-semibold">
                             {post.category}
                           </span>
                           <span className="text-[10px] text-slate-400 md:text-slate-400">
@@ -2078,7 +2078,7 @@ export default function Home() {
                         <h3 className="font-heading font-semibold text-[14px] sm:text-[15px] md:text-[20px] sm:md:text-[22px] text-slate-900 md:text-white tracking-[-0.02em] leading-snug line-clamp-2 md:line-clamp-none mb-1.5 md:mb-3">
                           {post.title}
                         </h3>
-                        <span className="inline-flex items-center gap-1 text-[12px] md:text-[13px] font-medium text-[#D4380A] group-hover:text-[#F25A24] md:underline md:underline-offset-4 md:decoration-[#D4380A] md:group-hover:decoration-[#F25A24] transition-colors">
+                        <span className="inline-flex items-center gap-1 text-[12px] md:text-[13px] font-medium text-primary group-hover:text-primary-hover md:underline md:underline-offset-4 md:decoration-primary md:group-hover:decoration-primary-hover transition-colors">
                           <span>Read full blog</span>
                           <ArrowRight className="w-3 h-3 md:hidden group-hover:translate-x-0.5 transition-transform" />
                         </span>
@@ -2133,7 +2133,7 @@ export default function Home() {
               <div className="bg-[#F7F7F8] p-5 rounded-md border border-slate-200 mb-6 space-y-4">
                 <div className="flex justify-between items-center text-xs font-bold text-slate-800">
                   <span>Estimated Facility Load (kW):</span>
-                  <span className="font-mono text-base font-bold text-[#F25A24]">{kwLoad} kW</span>
+                  <span className="font-mono text-base font-bold text-primary">{kwLoad} kW</span>
                 </div>
                 <input
                   type="range"
@@ -2142,23 +2142,23 @@ export default function Home() {
                   value={kwLoad}
                   step="5"
                   onChange={(e) => setKwLoad(parseInt(e.target.value, 10))}
-                  className="w-full accent-[#F25A24] cursor-pointer"
+                  className="w-full accent-primary cursor-pointer"
                 />
                 <div className="flex justify-between items-center text-xs text-slate-600 pt-2 border-t border-slate-200">
                   <span>Recommended Genset: <strong className="text-slate-950 font-bold">{recommendedKva} kVA</strong></span>
-                  <span className="font-mono text-[11px] text-[#F25A24]">~{fuelRate} L/hr</span>
+                  <span className="font-mono text-[11px] text-primary">~{fuelRate} L/hr</span>
                 </div>
               </div>
 
               <form onSubmit={(e) => { e.preventDefault(); alert("Quote request submitted! An engineer will call you within 2 hours."); setIsQuoteModalOpen(false); }} className="space-y-3">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">Company / Full Name</label>
-                  <input type="text" required placeholder="Hassan Ahmed" className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]" />
+                  <input type="text" required placeholder="Hassan Ahmed" className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-primary" />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-1">Phone Number</label>
-                    <input type="tel" required placeholder="+880 17XXXXXXXX" className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]" />
+                    <input type="tel" required placeholder="+880 17XXXXXXXX" className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-primary" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-1">Installation Division / City</label>
@@ -2167,7 +2167,7 @@ export default function Home() {
                       value={selectedRegion}
                       onChange={(e) => setSelectedRegion(e.target.value)}
                       placeholder="e.g. Dhaka, Gazipur, Sylhet, Khulna"
-                      className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-[#F25A24]"
+                      className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-primary"
                     />
                   </div>
                 </div>
@@ -2215,10 +2215,10 @@ export default function Home() {
               <div className="pt-3 space-y-2 text-xs">
                 <span className="font-mono text-[10px] text-slate-400 font-bold uppercase">// POPULAR SEARCHES //</span>
                 <div className="flex flex-wrap gap-2 pt-1">
-                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-[#F25A24] cursor-pointer">Perkins 100 kVA</span>
-                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-[#F25A24] cursor-pointer">Cummins 250 kVA</span>
-                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-[#F25A24] cursor-pointer">Deep Sea AMF Panel</span>
-                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-orange-50 hover:text-[#F25A24] cursor-pointer">Acoustic Canopy</span>
+                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-primary-light hover:text-primary cursor-pointer">Perkins 100 kVA</span>
+                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-primary-light hover:text-primary cursor-pointer">Cummins 250 kVA</span>
+                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-primary-light hover:text-primary cursor-pointer">Deep Sea AMF Panel</span>
+                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-primary-light hover:text-primary cursor-pointer">Acoustic Canopy</span>
                 </div>
               </div>
             </motion.div>

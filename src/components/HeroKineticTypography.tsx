@@ -154,7 +154,7 @@ function ConvergingRow({
             transition: { delay: 0.8, duration: 0.4 },
           }}
           exit={{ opacity: 0 }}
-          className="inline-block text-[#F45116] drop-shadow-[0_0_16px_rgba(244,81,22,0.9)]"
+          className="inline-block text-primary drop-shadow-[0_0_16px_rgba(224,67,20,0.9)]"
         >
           .
         </motion.span>
