@@ -20,6 +20,7 @@ import {
   Cpu,
   VolumeX as MuteIcon,
   Sliders,
+  FileText,
   Wrench,
   CheckCircle,
   Check,
@@ -1226,6 +1227,161 @@ export default function Home() {
                         </Link>
                       );
                     })}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+
+        {/* =========================================================
+             SECTION 5.6: HOW IT WORKS / FOUR SIMPLE STEPS
+             ========================================================= */}
+        <section className="py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-200/80">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
+
+            {/* Section Header */}
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-14 gap-5">
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
+                  <span className="w-10 h-[4px] bg-primary rounded-sm inline-block" />
+                  <span>How It Works</span>
+                </div>
+                <h2 className="font-heading text-2xl sm:text-4xl lg:text-[44px] font-bold text-[#141518] tracking-[-0.03em] leading-[1.12]">
+                  Four simple steps to <span className="text-primary">power your facility</span>
+                </h2>
+                <p className="text-slate-600 text-xs sm:text-[14px] max-w-2xl leading-relaxed">
+                  From initial load sizing to nationwide delivery and turnkey commissioning across Bangladesh.
+                </p>
+              </div>
+
+              <button
+                onClick={() => setIsQuoteModalOpen(true)}
+                className="framer-btn-primary self-start sm:self-auto cursor-pointer text-xs"
+              >
+                <span>Request load assessment</span>
+                <div className="btn-arrow-box">
+                  <ArrowRight className="w-3.5 h-3.5 text-white" />
+                </div>
+              </button>
+            </div>
+
+            {/* 4 Steps Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+              {[
+                {
+                  number: "01",
+                  title: "Share your requirements",
+                  desc: "Tell us your required kVA, machine starting loads, fuel preference, and facility location.",
+                  icon: Sliders,
+                },
+                {
+                  number: "02",
+                  title: "Engineering site survey",
+                  desc: "Our certified power engineers evaluate canopy acoustics, ventilation airflow, and ATS synchronization.",
+                  icon: HardHat,
+                },
+                {
+                  number: "03",
+                  title: "Receive custom quotation",
+                  desc: "Get itemized, transparent pricing for Perkins, Cummins, or Ricardo with fuel metrics and warranty.",
+                  icon: FileText,
+                },
+                {
+                  number: "04",
+                  title: "Turnkey commissioning",
+                  desc: "Nationwide delivery, civil foundation mounting, full-load bank testing, and 24/7 service support.",
+                  icon: Zap,
+                },
+              ].map((step, idx) => (
+                <div
+                  key={step.number}
+                  className="relative group bg-[#F8F9FA] hover:bg-white rounded-md p-6 sm:p-7 border border-slate-200/90 hover:border-primary/40 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                >
+                  {/* Step Connector Curved Arrow (Desktop only between cards) */}
+                  {idx < 3 && (
+                    <div className="hidden lg:block absolute -right-7 xl:-right-8 top-10 z-20 pointer-events-none text-primary group-hover:translate-x-1 group-hover:scale-105 transition-all duration-300">
+                      {idx === 1 ? (
+                        /* Middle Arrow: Curves downward (↘) */
+                        <svg
+                          width="52"
+                          height="28"
+                          viewBox="0 0 70 38"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-12 xl:w-14 h-auto drop-shadow-xs"
+                        >
+                          <path
+                            d="M1.5 1.5C14 1.5 25 10 37 20C47 28.5 56.5 31 65.5 30.5"
+                            stroke="currentColor"
+                            strokeWidth="3.2"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M55.5 35.5L66 30.5L57 21.5"
+                            stroke="currentColor"
+                            strokeWidth="3.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      ) : (
+                        /* First & Third Arrows: Curve upward (↗) */
+                        <svg
+                          width="52"
+                          height="28"
+                          viewBox="0 0 70 38"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="w-12 xl:w-14 h-auto drop-shadow-xs"
+                        >
+                          <path
+                            d="M1.5 35.5C14 35.5 25 27 37 17C47 8.5 56.5 6 65.5 6.5"
+                            stroke="currentColor"
+                            strokeWidth="3.2"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M55.5 1.5L66 6.5L57 15.5"
+                            stroke="currentColor"
+                            strokeWidth="3.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      )}
+                    </div>
+                  )}
+
+                  <div>
+                    {/* Top Row: Large Muted Step Number & Accent Icon */}
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="font-heading font-black text-4xl sm:text-5xl text-slate-300/80 group-hover:text-primary/30 transition-colors">
+                        {step.number}
+                      </span>
+                      <div className="w-10 h-10 rounded-lg bg-white border border-slate-200/80 group-hover:border-primary/30 text-primary flex items-center justify-center shadow-xs group-hover:bg-primary group-hover:text-white transition-all">
+                        <step.icon className="w-5 h-5" />
+                      </div>
+                    </div>
+
+                    {/* Step Title */}
+                    <h3 className="font-heading font-bold text-lg sm:text-[18px] text-[#141518] tracking-tight group-hover:text-primary transition-colors mb-2.5">
+                      {step.title}
+                    </h3>
+
+                    {/* Step Description */}
+                    <p className="text-slate-600 text-xs sm:text-[13px] leading-relaxed">
+                      {step.desc}
+                    </p>
+                  </div>
+
+                  {/* Step Indicator Dot */}
+                  <div className="mt-6 pt-4 border-t border-slate-200/60 flex items-center justify-between">
+                    <span className="text-[11px] font-mono font-semibold text-slate-400 uppercase tracking-wider">
+                      Phase 0{idx + 1}
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-primary transition-colors" />
                   </div>
                 </div>
               ))}
