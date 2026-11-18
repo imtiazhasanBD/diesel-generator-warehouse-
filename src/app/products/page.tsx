@@ -12,7 +12,8 @@ import {
   Fuel,
   Volume2,
   SlidersHorizontal,
-  RotateCcw
+  RotateCcw,
+  ChevronDown
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -341,10 +342,11 @@ export default function ProductsPage() {
           </div>
 
           {/* =========================================================
-               DESKTOP CONTROLS (>= md): ORIGINAL FULL HORIZONTAL BAR
+               DESKTOP CONTROLS (>= md): COMPACT DROPDOWN OPTIONS
                ========================================================= */}
           <div className="hidden md:block">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            {/* Top Row: Title + Count (Left) & Live Search Input (Right) */}
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-3.5">
               <div>
                 <h2 className="font-heading text-2xl lg:text-3xl font-bold text-[#F25A24] tracking-tight uppercase">
                   BROWSE BY: DIESEL GENERATORS FOR SALE
@@ -354,60 +356,21 @@ export default function ProductsPage() {
                 </p>
               </div>
 
-              {/* Sorting Dropdown */}
-              <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-md border border-slate-200 shadow-xs text-xs font-semibold">
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="bg-transparent font-bold text-slate-900 focus:outline-none cursor-pointer"
-                >
-                  <option value="default">Default sorting</option>
-                  <option value="kva-asc">Sort by kVA: Low to High</option>
-                  <option value="kva-desc">Sort by kVA: High to Low</option>
-                  <option value="price-asc">Sort by Price: Low to High</option>
-                  <option value="price-desc">Sort by Price: High to Low</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Interactive Filter Pills Strip */}
-            <div className="mt-6 flex items-center justify-between gap-4 pt-6 border-t border-slate-100">
-              {/* Brand Pills */}
-              <div className="flex items-center gap-2 overflow-x-auto pb-0 scrollbar-none">
-                <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
-                  <Filter className="w-3.5 h-3.5 text-[#F25A24]" />
-                  Brand:
-                </span>
-                {brands.map((b) => (
-                  <button
-                    key={b}
-                    onClick={() => setSelectedBrand(b)}
-                    className={`text-xs px-3.5 py-1.5 rounded-sm font-semibold transition-all shrink-0 cursor-pointer ${
-                      selectedBrand === b
-                        ? "bg-[#18181B] text-white shadow-xs"
-                        : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
-                    }`}
-                  >
-                    {b}
-                  </button>
-                ))}
-              </div>
-
               {/* Live Search Input */}
-              <div className="relative min-w-[260px]">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <div className="relative w-64 lg:w-72 shrink-0">
+                <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   id="product-search"
                   type="text"
                   placeholder="Search kVA, model, brand..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-8 py-2 rounded-md bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-[#F25A24] shadow-xs font-medium"
+                  className="w-full pl-8 pr-7 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-[#F25A24] focus:ring-2 focus:ring-[#F25A24]/15 shadow-2xs font-medium placeholder:text-slate-400"
                 />
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-900 text-xs"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 text-xs p-0.5"
                   >
                     ✕
                   </button>
@@ -415,37 +378,92 @@ export default function ProductsPage() {
               </div>
             </div>
 
-            {/* Quick Type Filter & Reset Strip */}
-            <div className="mt-3 flex items-center gap-1.5">
-              <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider shrink-0 mr-0.5">
-                Type:
-              </span>
-              {types.map((t) => (
-                <button
-                  key={t}
-                  onClick={() => setSelectedType(t)}
-                  className={`text-xs px-2.5 py-1 rounded-sm font-medium transition-all shrink-0 cursor-pointer ${
-                    selectedType === t
-                      ? "bg-[#F25A24] text-white shadow-xs font-semibold"
-                      : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
-                  }`}
-                >
-                  {t}
-                </button>
-              ))}
+            {/* Filter & Sort Dropdowns Row */}
+            <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                {/* Brand Dropdown */}
+                <div className="relative">
+                  <select
+                    value={selectedBrand}
+                    onChange={(e) => setSelectedBrand(e.target.value)}
+                    className="appearance-none bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:border-[#F25A24] focus:ring-2 focus:ring-[#F25A24]/15 shadow-2xs cursor-pointer transition-all"
+                  >
+                    <option value="All">All Brands</option>
+                    {brands.filter((b) => b !== "All").map((b) => (
+                      <option key={b} value={b}>Brand: {b}</option>
+                    ))}
+                  </select>
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                </div>
 
-              {(selectedBrand !== "All" || selectedType !== "All" || searchQuery) && (
-                <button
-                  onClick={() => {
-                    setSelectedBrand("All");
-                    setSelectedType("All");
-                    setSearchQuery("");
-                  }}
-                  className="text-xs text-[#F25A24] hover:underline font-bold shrink-0 ml-1.5 flex items-center gap-1 cursor-pointer py-1"
-                >
-                  <RotateCcw className="w-3 h-3" />
-                  <span>Reset all filters</span>
-                </button>
+                {/* Type Dropdown */}
+                <div className="relative">
+                  <select
+                    value={selectedType}
+                    onChange={(e) => setSelectedType(e.target.value)}
+                    className="appearance-none bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:border-[#F25A24] focus:ring-2 focus:ring-[#F25A24]/15 shadow-2xs cursor-pointer transition-all"
+                  >
+                    <option value="All">All Enclosure Types</option>
+                    {types.filter((t) => t !== "All").map((t) => (
+                      <option key={t} value={t}>Type: {t}</option>
+                    ))}
+                  </select>
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                </div>
+
+                {/* Sorting Dropdown */}
+                <div className="relative">
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="appearance-none bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 text-xs font-semibold rounded-lg pl-3 pr-8 py-2 focus:outline-none focus:border-[#F25A24] focus:ring-2 focus:ring-[#F25A24]/15 shadow-2xs cursor-pointer transition-all"
+                  >
+                    <option value="default">Default sorting</option>
+                    <option value="kva-asc">Capacity: Low to High (kVA)</option>
+                    <option value="kva-desc">Capacity: High to Low (kVA)</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                  </select>
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                </div>
+
+                {/* Reset Filters button */}
+                {activeFilterCount > 0 && (
+                  <button
+                    onClick={() => {
+                      setSelectedBrand("All");
+                      setSelectedType("All");
+                      setSortBy("default");
+                      setSearchQuery("");
+                    }}
+                    className="text-xs text-[#F25A24] hover:text-[#d4380a] bg-[#F25A24]/8 hover:bg-[#F25A24]/15 px-3 py-2 rounded-lg font-bold shrink-0 flex items-center gap-1.5 cursor-pointer transition-colors"
+                  >
+                    <RotateCcw className="w-3 h-3" />
+                    <span>Reset Filters</span>
+                  </button>
+                )}
+              </div>
+
+              {/* Active Filter Indicators Summary */}
+              {activeFilterCount > 0 && (
+                <div className="hidden xl:flex items-center gap-1.5 text-xs text-slate-500">
+                  <span className="font-medium text-slate-400">Active:</span>
+                  {selectedBrand !== "All" && (
+                    <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-800 text-[11px] font-semibold border border-slate-200">
+                      {selectedBrand}
+                    </span>
+                  )}
+                  {selectedType !== "All" && (
+                    <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-800 text-[11px] font-semibold border border-slate-200">
+                      {selectedType}
+                    </span>
+                  )}
+                  {sortBy !== "default" && (
+                    <span className="px-2 py-0.5 rounded-full bg-slate-100 text-slate-800 text-[11px] font-semibold border border-slate-200">
+                      Sorted
+                    </span>
+                  )}
+                </div>
               )}
             </div>
           </div>
