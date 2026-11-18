@@ -13,7 +13,7 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function ProductDetailPage({ params }: PageProps) {
+async function ProductDetailContent({ params }: PageProps) {
   const { slug } = await params;
   const product = getProductBySlug(slug);
 
@@ -21,9 +21,19 @@ export default async function ProductDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  return <ProductDetailClient product={product} />;
+}
+
+export default function ProductDetailPage({ params }: PageProps) {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#F8F9FA] flex items-center justify-center font-mono text-sm text-slate-500">Loading generator specifications...</div>}>
-      <ProductDetailClient product={product} />
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center font-mono text-sm text-slate-500">
+          Loading generator specifications...
+        </div>
+      }
+    >
+      <ProductDetailContent params={params} />
     </Suspense>
   );
 }
