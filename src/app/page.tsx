@@ -469,7 +469,7 @@ export default function Home() {
                     className="relative shrink-0 mb-6 sm:mb-8 lg:mb-9 cursor-pointer group"
                   >
                     <div
-                      className="rounded-[22px] sm:rounded-[26px] lg:rounded-[30px] overflow-hidden bg-slate-900 border border-white/60"
+                      className="rounded-[10px] sm:rounded-[12px] lg:rounded-[14px] overflow-hidden bg-slate-900 border border-white/60"
                       style={{
                         transform: "skewX(-18.5deg)",
                         transformOrigin: "center center",
@@ -499,7 +499,7 @@ export default function Home() {
                     className="relative shrink-0 mb-0 z-20 cursor-pointer group"
                   >
                     <div
-                      className="rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] overflow-hidden bg-slate-900 border border-white/80"
+                      className="rounded-[11px] sm:rounded-[13px] lg:rounded-[15px] overflow-hidden bg-slate-900 border border-white/80"
                       style={{
                         transform: "skewX(-18.5deg)",
                         transformOrigin: "center center",
@@ -529,7 +529,7 @@ export default function Home() {
                     className="relative shrink-0 mb-4 sm:mb-5 lg:mb-6 cursor-pointer group"
                   >
                     <div
-                      className="rounded-[22px] sm:rounded-[26px] lg:rounded-[30px] overflow-hidden bg-slate-900 border border-white/60"
+                      className="rounded-[10px] sm:rounded-[12px] lg:rounded-[14px] overflow-hidden bg-slate-900 border border-white/60"
                       style={{
                         transform: "skewX(-18.5deg)",
                         transformOrigin: "center center",
