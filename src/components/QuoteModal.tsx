@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Sliders, CheckCircle, ArrowRight } from "lucide-react";
 
@@ -108,6 +109,15 @@ export default function QuoteModal({
                       <span className="text-slate-400 block text-[10px] uppercase font-bold font-mono">Est. Fuel Burn</span>
                       <strong className="text-slate-900 font-bold text-sm">~{fuelRate} L/hr</strong> @ 75% prime load
                     </div>
+                  </div>
+                  <div className="pt-2 text-center border-t border-slate-100">
+                    <Link
+                      href="/calculator"
+                      onClick={onClose}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:underline"
+                    >
+                      <span>Need detailed appliance breakdown? Open Full Load Calculator &rarr;</span>
+                    </Link>
                   </div>
                 </div>
 

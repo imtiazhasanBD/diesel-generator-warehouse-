@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101e35"><title>DGW Generator Load Calculator Demo</title>
+<style>
+:root{--navy:#101e35;--red:#d62828;--muted:#64748b;--line:#e2e8f0;--bg:#f4f6f9}*{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px/1.45 Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#172033}.wrap{max-width:850px;margin:auto;padding:16px}.hero{background:var(--navy);color:white;border-radius:18px;padding:22px;margin-bottom:16px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;background:var(--red);border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:19px}.eyebrow{font-size:11px;letter-spacing:1.2px;color:#cbd5e1;font-weight:700}.hero h1{font-size:clamp(24px,5vw,34px);line-height:1.12;margin:20px 0 8px}.hero p{color:#d5deea;margin:0}.step{display:flex;align-items:center;justify-content:space-between;margin:18px 0 12px;font-weight:800}.pill{font-size:11px;background:#e8f7ee;color:#13733b;padding:6px 10px;border-radius:99px;font-weight:800}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0}.apps,.categories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.app,.cat{border:1px solid var(--line);border-radius:14px;background:white;padding:16px 10px;text-align:center;cursor:pointer;min-height:110px}.app .emoji{font-size:28px}.app strong,.cat strong{display:block;margin-top:7px}.app small,.cat small{color:var(--muted)}.app.active,.cat.active{border:2px solid var(--red);background:#fff5f5;padding:15px 9px}.cat{min-height:86px;text-align:left;display:flex;align-items:center;gap:10px;padding:12px}.cat .emoji{font-size:24px}.cat strong{margin:0}.hidden{display:none!important}.search,input,select{font:inherit}input[type=search],input[type=text],input[type=number],select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;background:white;color:#172033}.item{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:12px;padding:12px;margin:8px 0}.item small{display:block;color:var(--muted)}button{border:0;border-radius:10px;background:var(--red);color:white;font-weight:750;padding:11px 14px;cursor:pointer}button.secondary{background:white;color:#263449;border:1px solid var(--line)}button:disabled{opacity:.45;cursor:not-allowed}.qty{display:flex;align-items:center;gap:12px}.qty button{width:34px;height:34px;padding:0;border-radius:50%;font-size:19px}.qty b{min-width:18px;text-align:center}.selected{border:1px solid var(--line);border-radius:12px;padding:12px;margin:9px 0}.selected-top{display:flex;justify-content:space-between;gap:8px}.selected small{color:var(--muted)}.selected-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:10px}.summary{background:var(--navy);color:white;padding:18px;border-radius:14px}.summary .big{font-size:32px;font-weight:850}.summary small{color:#cbd5e1}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin:0 0 5px}.result{background:#f1f5f9;border-radius:12px;padding:13px}.result b{font-size:21px;display:block}.actions{display:flex;gap:8px;flex-wrap:wrap}.foot{text-align:center;color:var(--muted);font-size:11px;padding:18px}.hint{font-size:12px;color:var(--muted)}@media(min-width:650px){.apps{grid-template-columns:repeat(3,1fr)}.categories{grid-template-columns:repeat(3,1fr)}}
+
+/* DGW visual refresh: high-contrast, mobile-first */
+:root{--navy:#0b1730;--red:#e32636;--ink:#14213a;--muted:#64748b;--line:#dbe3ee;--bg:#f3f6fb;--surface:#fff}
+body{background:linear-gradient(180deg,#eaf0f8 0,#f7f9fc 360px);color:var(--ink);font-size:16px}
+.wrap{max-width:980px;padding:clamp(12px,3vw,28px)}
+.hero{position:relative;overflow:hidden;border-radius:24px;padding:clamp(24px,5vw,42px);margin-bottom:20px;background:radial-gradient(circle at 90% 15%,#263f67 0,transparent 32%),linear-gradient(135deg,#0b1730,#172d50);box-shadow:0 18px 45px #10213b25}
+.hero:after{content:"";position:absolute;width:190px;height:190px;border:28px solid #ffffff0b;border-radius:50%;right:-50px;bottom:-100px}
+.logo{width:54px;height:54px;border-radius:16px;font-size:20px;box-shadow:0 8px 20px #e3263640}
+.eyebrow{font-size:10px;letter-spacing:1.5px}
+.hero h1{font-size:clamp(30px,6vw,46px);max-width:650px;letter-spacing:-1.4px;margin:28px 0 12px}
+.hero p{font-size:16px;max-width:590px;line-height:1.65;color:#e0e8f3}
+.card{border:1px solid #e4eaf2;border-radius:22px;padding:clamp(16px,3vw,26px);margin:16px 0;box-shadow:0 8px 26px #14213a0a}
+.step{font-size:17px;letter-spacing:-.25px;margin:4px 0 18px;gap:10px}
+.pill{background:#fff0f1;color:#c91d2c;font-size:10px;letter-spacing:.7px;padding:7px 11px}
+.apps{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.app{color:var(--ink);background:linear-gradient(145deg,#fff,#f8faff);border:1.5px solid #dce4ef;border-radius:18px;min-height:142px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;box-shadow:0 4px 12px #172b4808;transition:.18s}
+.app .emoji{font-size:34px;line-height:1.2;margin-bottom:5px}
+.app strong{font-size:15px;line-height:1.25;color:#17243b;margin:0}
+.app small{font-size:11px;color:#718096}
+.app.active{border:2px solid var(--red);background:linear-gradient(145deg,#fff1f2,#fff);padding:17.5px 11.5px;box-shadow:0 0 0 4px #e3263610,0 8px 18px #e3263615}
+.app.active small{color:#c91d2c;font-weight:800}
+.categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cat{color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:15px;min-height:86px;padding:13px;text-align:left;box-shadow:0 3px 10px #14213a06}
+.cat strong{font-size:13px;color:#17243b}.cat small{font-size:11px;display:block;margin-top:4px}.cat .emoji{font-size:27px;flex:0 0 auto}
+.cat.active{border:2px solid var(--red);background:#fff4f4;padding:12.5px}
+input[type=search],input[type=text],input[type=number],select{border:1.5px solid #d7e0eb;border-radius:12px;padding:14px;font-size:16px;min-height:48px}
+.item{border:1px solid #e1e8f1;border-radius:15px;padding:14px;margin:10px 0;background:#fff}.item strong{font-size:15px}.item small{font-size:12px;margin-top:3px}
+button{background:var(--red);border-radius:12px;padding:13px 16px;min-height:44px;font-size:14px;box-shadow:0 5px 12px #e3263620}
+button.secondary{background:#fff;color:#263449;border:1px solid #dbe3ee;box-shadow:none}
+.qty{gap:14px}.qty button{width:40px;height:40px;min-height:40px;padding:0;font-size:22px;box-shadow:none}.qty b{font-size:17px}
+.selected{border:1px solid #dfe7f1;border-radius:15px;padding:15px;background:#fbfcfe}.selected strong{font-size:15px}
+.summary{background:linear-gradient(135deg,#0b1730,#1a355c);border-radius:18px;padding:22px;box-shadow:0 10px 24px #0b173026}
+.summary .big{font-size:clamp(34px,7vw,44px);letter-spacing:-1px;margin:4px 0}
+.result{border:1px solid #e1e8f1;background:#f7f9fc;border-radius:14px;padding:15px}.result small{color:#607089;font-size:11px}.result b{font-size:clamp(19px,4vw,24px);margin-top:5px;color:#132440}
+.field label{font-size:12px;letter-spacing:.2px;color:#53647c}.hint{font-size:13px;line-height:1.55}.foot{font-size:12px}.actions button{flex:1}
+@media(min-width:650px){.apps{grid-template-columns:repeat(3,1fr)}.categories{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:390px){.wrap{padding:10px}.hero{border-radius:19px;padding:22px 18px}.app{min-height:132px}.app strong{font-size:14px}.card{padding:15px}.step{font-size:15px}.cat{padding:10px}.cat .emoji{font-size:23px}}
+</style>
+<style>
+.equipment-group{border:1px solid #e0e7f0;border-radius:17px;padding:14px;margin:14px 0;background:#fbfcff}
+.equipment-title{display:flex;align-items:center;gap:10px;font-size:16px;margin:0 0 8px;color:#132440}
+.equipment-title .emoji{font-size:25px}
+.equipment-row{margin:7px 0;min-height:58px;padding:10px 12px;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.equipment-name strong{font-size:14px}
+.inline-control{flex:0 0 auto}
+.select-btn{min-width:82px;padding:9px 13px;min-height:38px}
+.qty{gap:10px}
+.qty button{width:36px;height:36px;min-height:36px}
+.selected-line{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border:1px solid #e1e8f1;border-radius:12px;margin:8px 0;background:#fff;font-size:14px}
+#equipmentHeading{font-size:17px}
+#changeProject{font-size:12px;padding:9px 11px;min-height:36px;box-shadow:none}
+#pdf{flex:1}
+@media(max-width:390px){.equipment-group{padding:10px}.equipment-row{padding:9px}.equipment-name strong{font-size:13px}.qty{gap:7px}.qty button{width:34px;height:34px;min-height:34px}}
+</style>
+
+<style>
+.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+.result-tile{border:1px solid #dce5f0;border-radius:15px;background:#f7f9fc;padding:16px}
+.result-tile small{display:block;color:#63738a;font-size:10px;font-weight:800;letter-spacing:.8px}
+.result-tile strong{display:block;font-size:clamp(22px,5vw,30px);color:#132440;margin-top:8px;letter-spacing:-.5px}
+.result-tile.recommended{grid-column:1/-1;background:linear-gradient(135deg,#0b1730,#1b365e);border:0}
+.result-tile.recommended small,.result-tile.recommended strong{color:white}
+.pdf-button,.request-button{width:100%;margin-top:12px;min-height:52px;font-size:15px;font-weight:800}
+#engineerForm label{display:flex;flex-direction:column;gap:7px;color:#42536b;font-size:12px;font-weight:700}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+#engineerForm input,#engineerForm textarea{width:100%;box-sizing:border-box;border:1.5px solid #d7e0eb;border-radius:12px;padding:13px;font:inherit;font-size:15px;background:white;color:#14213a}
+#engineerForm input{min-height:48px}
+#engineerForm textarea{resize:vertical}
+.message-label{margin-top:14px}
+@media(max-width:480px){.contact-grid{grid-template-columns:1fr}.result-grid{grid-template-columns:1fr 1fr}}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+.qty{display:flex;align-items:center;gap:9px}
+.qty button{width:36px;height:36px;min-height:36px;padding:0;border-radius:10px;font-size:22px;font-weight:700;line-height:1}
+.qty b{display:inline-flex;min-width:22px;justify-content:center;font-size:15px;color:#14213a}
+.qty-minus{background:#fff!important;color:#263449!important;border:1.5px solid #d5deea!important;box-shadow:none!important}
+.qty-plus{background:#e32636!important;color:#fff!important}
+.equipment-row{min-height:58px}
+</style>
+
+<style>
+/* DGW premium interface refresh */
+:root{--navy:#0c1a34;--red:#e22839;--ink:#1b2a40;--muted:#687991;--line:#dce5ef;--bg:#f3f6fb}
+body{background:linear-gradient(180deg,#eaf0f8 0,#f7f9fc 420px);color:var(--ink)}
+.wrap{max-width:920px;padding:clamp(12px,3vw,26px)}
+.hero{background:radial-gradient(circle at 88% 10%,#314c78 0,transparent 34%),linear-gradient(135deg,#0c1a34,#19345b);border-radius:24px;padding:clamp(23px,4vw,36px);box-shadow:0 18px 40px #10213b20}
+.hero h1{font-size:clamp(29px,5.5vw,42px);letter-spacing:-1.1px;line-height:1.08}
+.hero p{font-size:15px;line-height:1.6;color:#dce6f4}
+.card{border:1px solid #e1e8f1;border-radius:22px;background:#fff;box-shadow:0 9px 28px #14213a0b;padding:clamp(15px,3vw,24px)}
+.step{font-size:17px;font-weight:800;color:#14243d}
+.apps{gap:12px}
+.app{border:1.5px solid #dce5ef;border-radius:18px;background:linear-gradient(145deg,#fff,#f7faff);min-height:128px;padding:16px 12px;box-shadow:0 4px 12px #152b4809;transition:transform .16s,border-color .16s}
+.app:hover{transform:translateY(-2px);border-color:#e22839}
+.app.active{border:2px solid #e22839;background:#fff4f5;box-shadow:0 0 0 4px #e2283912}
+.app strong{font-size:14px}
+.equipment-group{border:1px solid #e0e7f0;border-radius:17px;padding:13px;margin:13px 0;background:linear-gradient(145deg,#fff,#fbfcff);box-shadow:0 4px 14px #12284908;overflow:hidden}
+.equipment-title{display:flex;align-items:center;gap:11px;padding:3px 2px 12px;border-bottom:1px solid #edf1f6;margin-bottom:6px}
+.category-icon{width:42px;height:42px;border-radius:13px;background:var(--group-tint);display:flex;align-items:center;justify-content:center;font-size:23px}
+.category-heading{display:flex;flex-direction:column;gap:3px;flex:1}
+.category-heading strong{font-size:14px;color:#17263e}
+.category-heading small{font-size:10px;color:#718096}
+.category-index{font-size:11px;font-weight:900;color:var(--group-accent);background:var(--group-tint);padding:6px 8px;border-radius:8px}
+.equipment-row{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:53px;margin:4px 0;padding:8px 10px;border:1px solid transparent;border-radius:12px;background:#f8fafc;transition:background .15s,border .15s}
+.equipment-row:nth-child(even){background:#fff}
+.equipment-row.is-selected{background:var(--group-tint);border-color:color-mix(in srgb,var(--group-accent) 28%,white)}
+.equipment-name{display:flex;align-items:center;gap:8px;min-width:0}
+.equipment-name strong{font-size:13px;font-weight:650;color:#273850}
+.added-tag{font-size:8px;letter-spacing:.5px;font-weight:900;color:var(--group-accent);background:#fff;padding:3px 6px;border-radius:5px}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:35px;height:35px;min-height:35px;padding:0;border-radius:10px;font-size:21px;font-weight:800;line-height:1;box-shadow:none}
+.qty b{display:inline-flex;min-width:22px;justify-content:center;font-size:15px;color:#14213a}
+.qty-minus{background:#fff!important;color:#43536a!important;border:1.5px solid #d3deea!important}
+.qty-plus{background:var(--group-accent)!important;color:#fff!important}
+.selected-line{background:#f8faff;border:1px solid #e1e9f3;border-radius:12px}
+.result-grid{gap:11px}
+.result-tile{border:1px solid #dfe7f0;border-radius:16px;padding:17px;background:linear-gradient(145deg,#fff,#f6f9fd)}
+.result-tile.recommended{background:linear-gradient(135deg,#0c1a34,#23436f);border:0}
+.pdf-button{background:linear-gradient(90deg,#e22839,#c91f32);border-radius:13px;min-height:54px;box-shadow:0 8px 18px #e2283930;font-weight:800;letter-spacing:.15px}
+.request-button{background:linear-gradient(90deg,#0c1a34,#23436f);border-radius:13px;min-height:54px;font-weight:800}
+#engineerSection{border-top:4px solid #e22839}
+#engineerForm input,#engineerForm textarea{border-radius:12px;border:1.5px solid #d8e2ee;background:#fbfcfe}
+#engineerForm input:focus,#engineerForm textarea:focus{outline:3px solid #e2283918;border-color:#e22839}
+@media(max-width:420px){.equipment-group{padding:10px}.equipment-row{padding:7px 8px}.equipment-name strong{font-size:12px}.qty{gap:6px}.qty button{width:33px;height:33px;min-height:33px}.app{min-height:116px}}
+</style>
+</head><body><main class="wrap">
+<header class="hero"><div class="brand"><div class="logo">DGW</div><div><b>DGW POWER</b><div class="eyebrow">DIESEL GENERATOR WAREHOUSE</div></div></div><h1>Find the right generator for your project.</h1><p>Choose your building type, select electrical equipment and get a preliminary generator size.</p></header>
+<section class="card" id="projectCard"><div class="step"><span>01 · What type of project?</span><span class="pill">STEP 1</span></div><div class="apps" id="apps"></div></section>
+<section class="card hidden" id="equipmentSection"><div class="step"><span id="equipmentHeading">Residential Building · Equipment</span><button class="secondary" id="changeProject" type="button">Change project</button></div><p class="hint">Tap an equipment item and set its quantity. For air conditioners, choose the capacity first.</p><div id="catalog"></div></section>
+<section class="card hidden" id="selectedSection"><div class="step"><span>Your selected equipment</span><span class="pill" id="count">0 SELECTED</span></div><div id="selected"></div><div class="actions" style="margin-top:16px"><button class="secondary" id="reset" type="button">Start again</button></div><p class="hint" id="pdfFeedback">Your PDF will include the selected equipment, quantities and estimated generator requirement.</p></section>
+<footer class="foot">DGW · Power Solutions. Ready When You Are. · Demo only — not a certified engineering design.</footer>
+
+<section class="card hidden" id="resultsSection">
+ <div class="step"><span>Estimated load & generator requirement</span><span class="pill">RESULT</span></div>
+ <div class="result-grid">
+  <div class="result-tile"><small>CONNECTED LOAD</small><strong id="resultKW">0.00 kW</strong></div>
+  <div class="result-tile"><small>ESTIMATED LOAD</small><strong id="resultKVA">0.00 kVA</strong></div>
+  <div class="result-tile recommended"><small>RECOMMENDED GENERATOR</small><strong id="resultGenerator">— kVA</strong></div>
+ </div>
+ <p class="hint">Preliminary estimate using indicative equipment ratings, 0.80 power factor and 20% reserve. Final sizing requires engineering verification.</p>
+ <button id="downloadPDF" type="button" class="pdf-button">Download calculation PDF</button>
+</section>
+<section class="card hidden" id="engineerSection">
+ <div class="step"><span>Need a complete generator offer?</span><span class="pill">ENGINEER SUPPORT</span></div>
+ <p class="hint">Leave your details. Our engineering team can contact you to discuss your project and prepare a complete offer.</p>
+ <form id="engineerForm">
+  <div class="contact-grid">
+   <label>Full name<input name="name" type="text" placeholder="Enter your name" required></label>
+   <label>Phone / WhatsApp<input name="phone" type="tel" placeholder="+880..." required></label>
+   <label>Email address<input name="email" type="email" placeholder="name@example.com"></label>
+   <label>Company / Project name<input name="company" type="text" placeholder="Company or project name"></label>
+  </div>
+  <label class="message-label">Additional details (optional)<textarea name="message" rows="3" placeholder="Tell us about your project or requirements"></textarea></label>
+  <button type="submit" class="request-button">Request an engineer call & complete offer</button>
+  <p id="formFeedback" class="hint" aria-live="polite"></p>
+ </form>
+</section>
+</main>
+<script>
+
+const projects=[
+ ['Residential Building','🏠'],['Commercial Building','🏢'],['Industry / Factory','🏭'],
+ ['Garments Factory','👕'],['Hospital','🏥'],['Educational Institute','🎓'],['Hotel','🏨'],
+ ['Shopping Mall','🛍️'],['Office Building','🏬'],['Construction Site','🚧'],
+ ['Restaurant','🍽️'],['Military Project','🪖'],['Retail Shop','🏪'],['Super Shop','🛒']
+];
+const libs={
+'Residential Building':[
+ ['Lighting','💡',[['LED Bulb',.012],['Tube Light',.04]]],
+ ['Fans','🌀',[['Ceiling Fan',.075],['Exhaust Fan',.04]]],
+ ['Air Conditioners','❄️',[['1 ton AC',1],['1.5 ton AC',1.5],['2 ton AC',2],['3 ton AC',3],['5 ton AC',5],['Central AC',5]]],
+ ['Water Pumps','💧',[['1.5 HP Water Pump',1.1],['2 HP Water Pump',1.5]]],
+ ['Refrigerators','🧊',[['Domestic Refrigerator',.2],['Large Refrigerator',.35],['Deep Freezer',.5]]],
+ ['CCTV & Security','📹',[['CCTV Camera',.012],['DVR / NVR System',.06]]],
+ ['Home & IT Appliances','🖥️',[['Television',.12],['Desktop Computer',.15],['Laptop',.07],['Microwave Oven',1.2],['Washing Machine',.8]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Commercial Building':[
+ ['Lighting','💡',[['LED / Tube Light',.04],['Downlight / Panel Light',.04],['Signage Lighting',.15]]],
+ ['Air Conditioning','❄️',[['1.5 ton AC',1.5],['2 ton AC',2],['3 ton AC',3],['5 ton AC',5],['Central HVAC Unit',15]]],
+ ['Ventilation','🌀',[['Ceiling Fan',.075],['Exhaust Fan',.15],['Fresh Air / Ventilation Fan',.5]]],
+ ['Water & Fire Pumps','💧',[['1.5 HP Water Pump',1.1],['2 HP Water Pump',1.5],['Fire Pump',15]]],
+ ['IT & Office Equipment','🖥️',[['Desktop Computer',.15],['Server Rack',1.5],['Printer / Copier',.8],['Network Equipment',.3]]],
+ ['Refrigeration','🧊',[['Commercial Refrigerator',.5],['Display Chiller',1.5],['Deep Freezer',.8]]],
+ ['Security','📹',[['CCTV Camera',.012],['DVR / NVR System',.06],['Access Control System',.2]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Industry / Factory':[
+ ['Production Machinery','⚙️',[['5 HP Production Motor',3.7],['10 HP Production Motor',7.5],['20 HP Production Motor',15],['30 HP Production Motor',22],['50 HP Production Motor',37]]],
+ ['Air Compressors','🛠️',[['5 HP Compressor',3.7],['10 HP Compressor',7.5],['20 HP Compressor',15],['30 HP Compressor',22]]],
+ ['Industrial Pumps','💧',[['5 HP Pump',3.7],['10 HP Pump',7.5],['20 HP Pump',15],['30 HP Pump',22]]],
+ ['Welding & Fabrication','🔧',[['Welding Machine',8],['Plasma / Cutting Machine',12],['Workshop Machine',5]]],
+ ['Factory Utilities','🏭',[['Boiler / Burner Controls',2],['Cooling Tower',7.5],['Industrial Chiller',15],['Air Handling Unit',7.5]]],
+ ['Lighting & Ventilation','💡',[['High Bay Light',.15],['LED / Tube Light',.04],['Industrial Exhaust Fan',.5]]],
+ ['Office & Security','🖥️',[['Computer',.15],['Server',1],['CCTV Camera',.012]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Garments Factory':[
+ ['Sewing & Production Machines','🧵',[['Single Needle Sewing Machine',.5],['Overlock Machine',.55],['Flatlock Machine',.6],['Button / Buttonhole Machine',.75],['Automatic Cutting Machine',3],['Fabric Spreading Machine',2]]],
+ ['Finishing & Ironing','♨️',[['Steam Iron',1.5],['Vacuum Ironing Table',1.2],['Fusing Machine',5],['Steam Generator / Boiler',15]]],
+ ['Washing & Laundry','🫧',[['Industrial Washing Machine',7.5],['Hydro Extractor',5],['Industrial Dryer',12],['Finishing Machine',5]]],
+ ['Air & Utility Systems','💨',[['Air Compressor',7.5],['Boiler Feed Pump',2.2],['Water Pump',3.7],['Cooling / Chiller Unit',10]]],
+ ['Lighting & Ventilation','💡',[['LED / Tube Light',.04],['High Bay Light',.15],['Industrial Exhaust Fan',.5],['Fresh Air Fan',.75]]],
+ ['Office & Safety','🖥️',[['Computer',.15],['Server / Network Rack',1],['CCTV Camera',.012],['Fire Pump',15]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Hospital':[
+ ['Lighting & Essential Power','💡',[['LED / Tube Light',.04],['Emergency Light',.02],['Operating Theatre Light',.5]]],
+ ['Medical Equipment','🩺',[['X-ray Machine',10],['CT Scanner',30],['MRI System',60],['Ultrasound Machine',1.5],['Ventilator',.5],['Patient Monitor',.2]]],
+ ['Air Conditioning & HVAC','❄️',[['1.5 ton AC',1.5],['2 ton AC',2],['3 ton AC',3],['Central HVAC Unit',15],['AHU / Ventilation Unit',7.5]]],
+ ['Laboratory & Sterilisation','🧪',[['Autoclave / Sterilizer',6],['Lab Analyzer',1.5],['Refrigerated Centrifuge',1]]],
+ ['IT & Cold Storage','🖥️',[['Server Rack',1.5],['Computer',.15],['Medical Refrigerator',.5],['Blood Bank Refrigerator',.7]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Hospital Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Water & Fire Pumps','💧',[['1.5 HP Water Pump',1.1],['2 HP Water Pump',1.5],['Fire Pump',15]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Educational Institute':[
+ ['Classroom & General Lighting','💡',[['LED / Tube Light',.04],['Projector',.35],['Interactive Display',.25]]],
+ ['Fans & Air Conditioning','🌀',[['Ceiling Fan',.075],['Exhaust Fan',.15],['1.5 ton AC',1.5],['2 ton AC',2],['3 ton AC',3]]],
+ ['Computer & Laboratory','🖥️',[['Desktop Computer',.15],['Computer Lab Set',.15],['Printer',.5],['Laboratory Equipment Set',2]]],
+ ['Water & Fire Pumps','💧',[['1.5 HP Water Pump',1.1],['2 HP Water Pump',1.5],['Fire Pump',15]]],
+ ['Canteen & Other','🍽️',[['Commercial Refrigerator',.5],['Water Dispenser',.5],['Kitchen Equipment',3]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Hotel':[
+ ['Guest Room Loads','🛏️',[['1.5 ton Room AC',1.5],['2 ton Room AC',2],['Room Refrigerator',.2],['Television',.12],['Hair Dryer',1.5]]],
+ ['Kitchen & Laundry','🍽️',[['Commercial Oven',6],['Dishwasher',5],['Commercial Refrigerator',1.5],['Laundry Washer',7.5],['Tumble Dryer',10],['Steam Iron',1.5]]],
+ ['HVAC & Ventilation','❄️',[['Central Chiller',25],['AHU',7.5],['Exhaust Fan',.5],['Fresh Air Fan',.75]]],
+ ['Lighting & Entertainment','💡',[['LED / Decorative Light',.04],['Lobby Lighting',1.5],['Audio / AV System',2]]],
+ ['IT & Security','📹',[['Server Rack',1.5],['CCTV Camera',.012],['DVR / NVR System',.06],['Access Control',.2]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Water & Fire Pumps','💧',[['1.5 HP Water Pump',1.1],['2 HP Water Pump',1.5],['Fire Pump',15]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Shopping Mall':[
+ ['Shop & Common Area Lighting','💡',[['LED / Panel Light',.04],['Display Lighting',.15],['Signage Lighting',.5]]],
+ ['HVAC & Ventilation','❄️',[['Central Chiller',25],['AHU',7.5],['Exhaust Fan',.5],['Fresh Air Fan',.75]]],
+ ['Fire & Water Systems','💧',[['Fire Pump',15],['Water Pump',3.7],['Booster Pump',5]]],
+ ['Retail & Food Court','🍽️',[['Commercial Refrigerator',1.5],['Display Chiller',1.5],['Food Court Kitchen Unit',5]]],
+ ['IT & Security','📹',[['CCTV Camera',.012],['DVR / NVR System',.06],['Server Rack',1.5],['POS / IT Equipment',.15]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Office Building':[
+ ['Lighting','💡',[['LED / Panel Light',.04],['Meeting Room Lighting',.3],['Emergency Light',.02]]],
+ ['Air Conditioning & Ventilation','❄️',[['1.5 ton AC',1.5],['2 ton AC',2],['3 ton AC',3],['Central HVAC Unit',15],['Ventilation Fan',.5]]],
+ ['Office IT Equipment','🖥️',[['Desktop Computer',.15],['Laptop',.07],['Printer / Copier',.8],['Server Rack',1.5],['Network Equipment',.3]]],
+ ['Security & Access','📹',[['CCTV Camera',.012],['DVR / NVR System',.06],['Access Control',.2]]],
+ ['Pantry & Other','☕',[['Refrigerator',.2],['Microwave Oven',1.2],['Water Dispenser',.5]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Water & Fire Pumps','💧',[['1.5 HP Water Pump',1.1],['2 HP Water Pump',1.5],['Fire Pump',15]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Construction Site':[
+ ['Construction Machinery','🏗️',[['Tower Crane',30],['Hoist / Material Lift',15],['Concrete Mixer',5],['Concrete Pump',30],['Rebar Cutting / Bending Machine',5]]],
+ ['Welding & Workshop','🔧',[['Welding Machine',8],['Air Compressor',7.5],['Workshop Tools',3]]],
+ ['Dewatering & Water Pumps','💧',[['1.5 HP Water Pump',1.1],['2 HP Water Pump',1.5]]],
+ ['Site Facilities','🏕️',[['Site Office AC',2],['Container Lighting',.5],['Temporary Lighting Tower',5],['Water Dispenser',.5]]],
+ ['Lighting & Security','💡',[['Flood Light',.2],['LED / Tube Light',.04],['CCTV Camera',.012]]],
+ ['Vertical Transport','🛗',[['Cargo Lift',7.5]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Restaurant':[
+ ['Kitchen & Cooking Equipment','🍳',[['Commercial Electric Oven',12],['Commercial Induction Cooker',8],['Electric Griddle / Hot Plate',6],['Commercial Microwave',1.5],['Rice Cooker',2],['Food Warmer',2]]],
+ ['Refrigeration & Cold Storage','🧊',[['Upright Commercial Refrigerator',.8],['Display Chiller',1.5],['Chest Freezer',.8],['Walk-in Cold Room',5],['Ice Maker',1.5]]],
+ ['Ventilation & Air Conditioning','🌬️',[['Kitchen Exhaust Hood Fan',1.5],['Fresh Air Fan',.75],['1.5 ton AC',1.5],['2 ton AC',2],['3 ton AC',3],['5 ton AC',5]]],
+ ['Water & Washing','💧',[['Dishwashing Machine',5],['Booster Water Pump',1.5],['Hot Water Boiler',6],['Water Purifier',.5]]],
+ ['Dining Area & Lighting','💡',[['LED / Decorative Lighting',.04],['Ceiling Fan',.075],['POS / Cash Register',.15],['Sound System',.5],['Television / Display Screen',.12]]],
+ ['Safety & Backup Systems','🧯',[['Fire Alarm System',.3],['CCTV Camera',.012],['Emergency Lighting',.2]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Military Project':[
+ ['Command & Communication','📡',[['Communications Equipment Rack',2],['Radio / Signal System',1],['Server & Network Rack',3],['Command Centre Workstations',.2]]],
+ ['Accommodation – Lighting','💡',[['LED Bulb',.012],['Tube Light',.04],['Outdoor / Corridor Lighting',.2],['Emergency Lighting',.2]]],
+ ['Accommodation – Fans','🌀',[['Ceiling Fan',.075],['Exhaust Fan',.15]]],
+ ['Accommodation – Air Conditioning','❄️',[['1 ton AC',1],['1.5 ton AC',1.5],['2 ton AC',2],['3 ton AC',3],['5 ton AC',5],['Central Air Conditioning',15]]],
+ ['Accommodation – Food & Kitchen','🍽️',[['Commercial Refrigerator',.8],['Deep Freezer',.8],['Rice Cooker',2],['Commercial Electric Cooker',6],['Microwave Oven',1.2],['Food Warmer',2],['Water Dispenser',.5],['Dishwashing Machine',5]]],
+ ['Medical & Support Facilities','🏥',[['Medical Equipment Cluster',5],['Medical Refrigerator',.5],['Laboratory Equipment',3],['Sterilisation Equipment',6]]],
+ ['Water, Fire & Utilities','💧',[['Water Supply Pump',5],['Borewell / Booster Pump',7.5],['Fire Pump',15],['Wastewater Treatment Unit',5]]],
+ ['Workshop & Maintenance','🔧',[['Workshop Air Compressor',7.5],['Welding Machine',8],['Battery Charging Station',3],['Maintenance Workshop Tools',5]]],
+ ['Lighting, Security & Site Systems','💡',[['Perimeter Flood Lighting',.2],['CCTV & Surveillance System',.5],['Access Control System',.2],['Security Gate Motor',1],['Emergency Lighting',.2]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Retail Shop':[
+ ['Lighting & Display','💡',[['LED Panel Light',.04],['Track / Display Spot Light',.03],['Signboard Lighting',.2],['Emergency Lighting',.2]]],
+ ['Air Conditioning & Ventilation','❄️',[['1 ton AC',1],['1.5 ton AC',1.5],['2 ton AC',2],['3 ton AC',3],['Exhaust / Ventilation Fan',.25]]],
+ ['Sales & IT Equipment','🖥️',[['POS Terminal',.15],['Desktop Computer',.2],['Laptop & Charger',.08],['Receipt / Barcode Printer',.1],['CCTV Camera',.012],['Network Router / Switch',.05]]],
+ ['Refrigeration & Appliances','🧊',[['Display Refrigerator',.8],['Beverage Chiller',.5],['Small Freezer',.5],['Water Dispenser',.5]]],
+ ['Utilities & Security','🔐',[['Small Water Pump',.75],['Roller Shutter Motor',.75],['Alarm / Security System',.2],['Fire Alarm Panel',.3]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+'Super Shop':[
+ ['Refrigeration & Cold Storage','🧊',[['Multi-deck Display Chiller',2],['Upright Commercial Refrigerator',.8],['Chest Freezer',.8],['Walk-in Cold Room',5],['Frozen Food Display Freezer',2],['Ice Maker',1.5]]],
+ ['Air Conditioning & Ventilation','❄️',[['1.5 ton AC',1.5],['2 ton AC',2],['3 ton AC',3],['5 ton AC',5],['Central HVAC / Package Unit',10],['Fresh Air / Exhaust Fan',.75]]],
+ ['Lighting & Signage','💡',[['LED Panel Light',.04],['Shelf / Display Lighting',.03],['External Signboard Lighting',.3],['Emergency Lighting',.2]]],
+ ['Checkout & IT Systems','🖥️',[['POS Checkout Counter',.2],['Barcode Scanner & Printer',.08],['Server / Network Rack',1.5],['CCTV Camera',.012],['Security Gate System',.5],['Office Computer',.2]]],
+ ['Food Preparation & Utilities','🍽️',[['Commercial Microwave',1.5],['Food Slicer',.5],['Water Pump',1.5],['Water Dispenser',.5],['Battery / UPS Charging',1]]],
+ ['Elevators & Lifts','🛗',[['6-person Lift',7.5],['8-person Lift',11],['10-person Lift',15],['12-person Lift',18],['Home Lift',5],['Cargo Lift',7.5]]],
+ ['Vehicle Access','🚗',[['Car Lift',5.5]]]],
+
+};
+let project=null, selected={};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function drawProjects(){
+ $('apps').innerHTML=projects.map(([n,ico])=>`<button type="button" class="app" data-project="${esc(n)}"><span class="emoji">${ico}</span><strong>${esc(n)}</strong><small>Tap to select</small></button>`).join('');
+ document.querySelectorAll('[data-project]').forEach(b=>b.onclick=()=>chooseProject(b.dataset.project));
+}
+function chooseProject(name){
+ project=name;selected={};
+ $('projectCard').classList.add('hidden');
+ $('equipmentSection').classList.remove('hidden');
+ $('selectedSection').classList.remove('hidden');
+ $('equipmentHeading').textContent=name+' · Select equipment';
+ renderEquipment();renderSelected();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+
+function renderEquipment(){
+ const list=libs[project]||[];
+ const accents=[['#eaf2ff','#2864c5'],['#fff1e8','#d66a24'],['#e9f8f1','#16845b'],['#f4edff','#7545b5'],['#fff0f3','#c83e60'],['#edf7fb','#187b9b']];
+ $('catalog').innerHTML=list.map((group,gi)=>{
+  const [tint,accent]=accents[gi%accents.length];
+  return `<section class="equipment-group" style="--group-tint:${tint};--group-accent:${accent}">
+   <div class="equipment-title">
+    <span class="category-icon">${group[1]}</span>
+    <div class="category-heading"><strong>${esc(group[0])}</strong><small>${group[2].length} equipment options</small></div>
+    <span class="category-index">${String(gi+1).padStart(2,'0')}</span>
+   </div>
+   <div class="variant-list">${group[2].map((v,vi)=>{
+    const key=project+'|'+gi+'|'+vi, item=selected[key], qty=item?item.qty:0;
+    return `<div class="item equipment-row ${qty>0?'is-selected':''}">
+      <div class="equipment-name"><strong>${esc(v[0])}</strong>${qty>0?'<span class="added-tag">ADDED</span>':''}</div>
+      <div class="inline-control"><div class="qty">
+       <button type="button" class="qty-minus" data-minus="${key}" aria-label="Decrease ${esc(v[0])}">−</button>
+       <b aria-live="polite">${qty}</b>
+       <button type="button" class="qty-plus" data-plus="${key}" aria-label="Increase ${esc(v[0])}">+</button>
+      </div></div>
+    </div>`;
+   }).join('')}</div>
+  </section>`;
+ }).join('');
+ document.querySelectorAll('[data-plus]').forEach(b=>b.onclick=()=>{
+  const [p,g,v]=b.dataset.plus.split('|'), row=libs[p][+g][2][+v], key=b.dataset.plus;
+  if(!selected[key])selected[key]={name:row[0],kw:row[1],qty:0};
+  selected[key].qty++;renderEquipment();renderSelected();
+ });
+ document.querySelectorAll('[data-minus]').forEach(b=>b.onclick=()=>{
+  const key=b.dataset.minus;if(selected[key]){selected[key].qty--;if(selected[key].qty<=0)delete selected[key];}
+  renderEquipment();renderSelected();
+ });
+}
+function renderSelected(){
+ const rows=Object.values(selected);
+ $('count').textContent=rows.reduce((n,x)=>n+x.qty,0)+' UNITS';
+ $('selected').innerHTML=rows.length?rows.map(x=>`<div class="selected-line"><span>${esc(x.name)}</span><strong>× ${x.qty}</strong></div>`).join(''):'<p class="hint">Your selected equipment and quantities will appear here.</p>';
+}
+function makeReport(){
+ const rows=Object.values(selected), total=rows.reduce((n,x)=>n+x.kw*x.qty,0), pf=.8, kva=total/pf*1.2;
+ const sizes=[5,7.5,10,12.5,15,20,25,30,40,45,50,60,80,100,125,150,180,200,225,250,275,300,350,400,450,500,550,600,625,700,750,800,900,1000,1250,1500,2000];
+ const size=sizes.find(x=>x>=kva)||Math.ceil(kva/100)*100;
+ const date=new Date().toLocaleDateString();
+ return `<!doctype html><html><head><meta charset="utf-8"><title>DGW Load Calculation</title><style>
+ body{font:14px Arial,sans-serif;color:#172033;margin:32px}header{background:#0b1730;color:white;padding:24px;border-radius:12px}h1{margin:0 0 6px;font-size:25px}small{color:#607089}.meta{margin:22px 0;display:flex;justify-content:space-between}.project{font-size:18px;font-weight:bold;color:#c91d2c}table{width:100%;border-collapse:collapse;margin-top:18px}th{background:#0b1730;color:white;text-align:left;padding:12px}td{padding:12px;border-bottom:1px solid #dbe3ee}.totals{margin-top:24px;padding:18px;background:#f1f5f9;border-radius:10px}.totals b{font-size:20px}.note{margin-top:24px;font-size:11px;color:#64748b;line-height:1.5}.print{margin:20px 0;padding:12px 20px;background:#e32636;color:white;border:0;border-radius:8px}@media print{body{margin:15mm}.print{display:none}}</style>
+<style>
+.equipment-group{border:1px solid #e0e7f0;border-radius:17px;padding:14px;margin:14px 0;background:#fbfcff}
+.equipment-title{display:flex;align-items:center;gap:10px;font-size:16px;margin:0 0 8px;color:#132440}
+.equipment-title .emoji{font-size:25px}
+.equipment-row{margin:7px 0;min-height:58px;padding:10px 12px;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.equipment-name strong{font-size:14px}
+.inline-control{flex:0 0 auto}
+.select-btn{min-width:82px;padding:9px 13px;min-height:38px}
+.qty{gap:10px}
+.qty button{width:36px;height:36px;min-height:36px}
+.selected-line{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border:1px solid #e1e8f1;border-radius:12px;margin:8px 0;background:#fff;font-size:14px}
+#equipmentHeading{font-size:17px}
+#changeProject{font-size:12px;padding:9px 11px;min-height:36px;box-shadow:none}
+#pdf{flex:1}
+@media(max-width:390px){.equipment-group{padding:10px}.equipment-row{padding:9px}.equipment-name strong{font-size:13px}.qty{gap:7px}.qty button{width:34px;height:34px;min-height:34px}}
+</style>
+
+<style>
+.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+.result-tile{border:1px solid #dce5f0;border-radius:15px;background:#f7f9fc;padding:16px}
+.result-tile small{display:block;color:#63738a;font-size:10px;font-weight:800;letter-spacing:.8px}
+.result-tile strong{display:block;font-size:clamp(22px,5vw,30px);color:#132440;margin-top:8px;letter-spacing:-.5px}
+.result-tile.recommended{grid-column:1/-1;background:linear-gradient(135deg,#0b1730,#1b365e);border:0}
+.result-tile.recommended small,.result-tile.recommended strong{color:white}
+.pdf-button,.request-button{width:100%;margin-top:12px;min-height:52px;font-size:15px;font-weight:800}
+#engineerForm label{display:flex;flex-direction:column;gap:7px;color:#42536b;font-size:12px;font-weight:700}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+#engineerForm input,#engineerForm textarea{width:100%;box-sizing:border-box;border:1.5px solid #d7e0eb;border-radius:12px;padding:13px;font:inherit;font-size:15px;background:white;color:#14213a}
+#engineerForm input{min-height:48px}
+#engineerForm textarea{resize:vertical}
+.message-label{margin-top:14px}
+@media(max-width:480px){.contact-grid{grid-template-columns:1fr}.result-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head><body>
+ <header><h1>DGW · Generator Load Calculation</h1><div>Diesel Generator Warehouse</div><small style="color:#dbe5f2">Power Solutions. Ready When You Are.</small></header>
+ <div class="meta"><div><div class="project">${esc(project||'Project')}</div><small>Project application</small></div><div><b>${date}</b><br><small>Calculation date</small></div></div>
+ <h2>Selected equipment schedule</h2><table><thead><tr><th>Equipment</th><th>Quantity</th></tr></thead><tbody>${rows.map(x=>`<tr><td>${esc(x.name)}</td><td>${x.qty}</td></tr>`).join('')}</tbody></table>
+ <div class="totals"><div>Estimated connected load: <b>${total.toFixed(2)} kW</b></div><p>Preliminary generator recommendation: <b>${rows.length?size+' kVA':'Not calculated'}</b></p></div>
+ <p class="note">Engineering note: This is a preliminary estimate based on indicative equipment loads, 0.80 power factor and 20% reserve. Actual generator selection must be verified against equipment nameplates, motor starting current, load sequencing, alternator performance, site conditions and manufacturer data by a qualified engineer. This report is not a certified electrical design.</p>
+ <button class="print" onclick="window.print()">Print / Save as PDF</button></body></html>`;
+}
+// Legacy PDF handler removed; the updated results panel has its own PDF action.
+$('changeProject').onclick=()=>{project=null;selected={};$('equipmentSection').classList.add('hidden');$('selectedSection').classList.add('hidden');$('projectCard').classList.remove('hidden');drawProjects();window.scrollTo({top:0,behavior:'smooth'});};
+$('reset').onclick=()=>{$('changeProject').click();};
+drawProjects();
+
+function getTotals(){
+ const rows=Object.values(selected);
+ const kw=rows.reduce((n,x)=>n+x.kw*x.qty,0);
+ const kva=kw/.8;
+ const required=kva*1.2;
+ const sizes=[5,7.5,10,12.5,15,20,25,30,40,45,50,60,80,100,125,150,180,200,225,250,275,300,350,400,450,500,550,600,625,700,750,800,900,1000,1250,1500,2000];
+ const generator=rows.length?(sizes.find(x=>x>=required)||Math.ceil(required/100)*100):0;
+ return {kw,kva,required,generator};
+}
+function updateResults(){
+ const t=getTotals();
+ $('resultKW').textContent=t.kw.toFixed(2)+' kW';
+ $('resultKVA').textContent=t.kva.toFixed(2)+' kVA';
+ $('resultGenerator').textContent=t.generator?t.generator+' kVA':'— kVA';
+ $('resultsSection').classList.toggle('hidden',!Object.keys(selected).length);
+ $('engineerSection').classList.toggle('hidden',!Object.keys(selected).length);
+}
+const oldRenderSelected=renderSelected;
+renderSelected=function(){oldRenderSelected();updateResults();};
+
+
+
+function openCalculationPDF(){
+ const t=getTotals(), rows=Object.values(selected);
+ if(!window.jspdf||!window.jspdf.jsPDF){alert('PDF library is not available. Please check your internet connection and try again.');return;}
+ const {jsPDF}=window.jspdf, doc=new jsPDF({unit:'mm',format:'a4'});
+ const navy=[12,26,52], navy2=[22,45,79], red=[226,40,57], blue=[44,105,190],
+       teal=[22,139,112], pale=[244,247,252], ink=[27,42,64], muted=[103,119,141], white=[255,255,255];
+ const W=210, date=new Date().toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
+ // Header panel
+ doc.setFillColor(...navy);doc.rect(0,0,W,48,'F');
+ doc.setFillColor(...red);doc.rect(0,45,W,3,'F');
+ doc.setFillColor(...red);doc.roundedRect(14,11,27,27,4,4,'F');
+ doc.setTextColor(...white);doc.setFont('helvetica','bold');doc.setFontSize(13);doc.text('DGW',27.5,27,{align:'center'});
+ doc.setFontSize(20);doc.text('DIESEL GENERATOR',49,20);
+ doc.setFontSize(11);doc.setTextColor(218,228,242);doc.text('WAREHOUSE',49,27);
+ doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(190,204,224);doc.text('POWER SOLUTIONS. READY WHEN YOU ARE.',49,34);
+ doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(...white);doc.text('LOAD ASSESSMENT',195,18,{align:'right'});
+ doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(190,204,224);doc.text('CUSTOMER CALCULATION REPORT',195,24,{align:'right'});
+ // Report title and meta
+ doc.setTextColor(...ink);doc.setFont('helvetica','bold');doc.setFontSize(17);doc.text('Your Project Load Summary',15,62);
+ doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...muted);doc.text('Equipment schedule and preliminary generator recommendation',15,68);
+ doc.setFillColor(...pale);doc.roundedRect(15,75,180,19,3,3,'F');
+ doc.setTextColor(...muted);doc.setFont('helvetica','bold');doc.setFontSize(6.5);
+ doc.text('PROJECT TYPE',21,82);doc.text('REPORT DATE',118,82);
+ doc.setTextColor(...ink);doc.setFontSize(9);doc.text(project||'Not specified',21,89);doc.text(date,118,89);
+ // Equipment table section
+ let y=106;
+ doc.setFillColor(234,241,251);doc.roundedRect(15,y-6,5,7,1,1,'F');
+ doc.setTextColor(...blue);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.text('01',23,y);doc.setTextColor(...ink);doc.text('SELECTED EQUIPMENT',32,y);
+ y+=6;
+ doc.setFillColor(...navy2);doc.roundedRect(15,y,180,9,1.5,1.5,'F');
+ doc.setTextColor(...white);doc.setFontSize(7);doc.text('EQUIPMENT DESCRIPTION',21,y+6);doc.text('QTY',188,y+6,{align:'right'});
+ y+=9;
+ const maxRows=18, shown=rows.slice(0,maxRows), rowH=rows.length>12?5.6:7;
+ shown.forEach((r,i)=>{
+  if(i%2===0)doc.setFillColor(247,249,252);else doc.setFillColor(255,255,255);
+  doc.rect(15,y,180,rowH,'F');
+  doc.setFillColor(...(i%3===0?blue:i%3===1?teal:red));doc.circle(20,y+rowH/2,1,'F');
+  doc.setTextColor(...ink);doc.setFont('helvetica','normal');doc.setFontSize(rows.length>12?7:8);doc.text(r.name,25,y+rowH*.68);
+  doc.setFillColor(235,241,249);doc.roundedRect(177,y+0.7,13,rowH-1.4,1,1,'F');
+  doc.setTextColor(...navy);doc.setFont('helvetica','bold');doc.setFontSize(7);doc.text(String(r.qty),183.5,y+rowH*.68,{align:'center'});
+  y+=rowH;
+ });
+ if(rows.length>maxRows){doc.setTextColor(...muted);doc.setFontSize(6.5);doc.text(`+ ${rows.length-maxRows} additional items included in the equipment count`,20,y+4);y+=6;}
+ y+=9;
+ // Results cards
+ doc.setFillColor(234,241,251);doc.roundedRect(15,y-6,5,7,1,1,'F');
+ doc.setTextColor(...blue);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.text('02',23,y);doc.setTextColor(...ink);doc.text('LOAD CALCULATION & GENERATOR SIZE',32,y);
+ y+=5;
+ const cards=[
+  {x:15,w:55,label:'CONNECTED LOAD',value:t.kw.toFixed(2),unit:'kW',c:blue,bg:[238,244,253]},
+  {x:73,w:55,label:'ESTIMATED LOAD',value:t.kva.toFixed(2),unit:'kVA',c:teal,bg:[235,248,244]},
+  {x:131,w:64,label:'DGW RECOMMENDATION',value:String(t.generator||'—'),unit:'kVA',c:red,bg:[255,240,242]}
+ ];
+ cards.forEach((c,i)=>{
+  doc.setFillColor(...c.bg);doc.roundedRect(c.x,y,c.w,27,3,3,'F');
+  doc.setFillColor(...c.c);doc.roundedRect(c.x,y,2,27,1,1,'F');
+  doc.setTextColor(...muted);doc.setFont('helvetica','bold');doc.setFontSize(6);doc.text(c.label,c.x+5,y+7);
+  doc.setTextColor(...c.c);doc.setFontSize(i===2?17:15);doc.text(c.value,c.x+5,y+18);
+  doc.setTextColor(...ink);doc.setFontSize(7);doc.text(c.unit,c.x+5,y+23);
+ });
+ y+=35;
+ // Calculation basis
+ doc.setFillColor(...navy);doc.roundedRect(15,y,180,18,3,3,'F');
+ doc.setTextColor(...white);doc.setFont('helvetica','bold');doc.setFontSize(7);doc.text('CALCULATION BASIS',21,y+7);
+ doc.setFont('helvetica','normal');doc.setFontSize(6.5);doc.setTextColor(213,224,240);
+ doc.text('Power factor: 0.80     |     Generator sizing reserve: 20%     |     Indicative equipment ratings',21,y+13);
+ y+=25;
+ doc.setTextColor(...muted);doc.setFont('helvetica','normal');doc.setFontSize(6);
+ const disclaimer='ENGINEERING NOTE: This is a preliminary estimate only. Final generator selection must be confirmed by a qualified engineer using equipment nameplates, motor starting current, load sequencing, alternator performance, site conditions and manufacturer data. This report is not a certified electrical design or a commercial quotation.';
+ doc.text(doc.splitTextToSize(disclaimer,178),15,Math.min(y,259));
+ // Footer
+ doc.setDrawColor(225,231,239);doc.line(15,278,195,278);
+ doc.setFillColor(...red);doc.roundedRect(15,282,5,5,1,1,'F');
+ doc.setTextColor(...ink);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.text('DGW  |  Diesel Generator Warehouse',23,286);
+ doc.setTextColor(...red);doc.setFont('helvetica','bold');doc.text('www.dgw.global',195,286,{align:'right'});
+ doc.setTextColor(...muted);doc.setFont('helvetica','normal');doc.setFontSize(6.5);doc.text('Sales & Engineering Enquiries  •  Power Solutions. Ready When You Are.',23,291);
+ doc.save('DGW-Project-Load-Assessment.pdf');
+}
+$('downloadPDF').onclick=openCalculationPDF;
+$('engineerForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const f=new FormData(e.currentTarget), t=getTotals();
+ const data={
+  project:project,
+  name:f.get('name'),phone:f.get('phone'),email:f.get('email'),
+  company:f.get('company'),message:f.get('message'),
+  equipment:Object.values(selected).map(x=>({name:x.name,quantity:x.qty})),
+  connectedLoadKW:t.kw.toFixed(2),estimatedLoadKVA:t.kva.toFixed(2),recommendedGeneratorKVA:t.generator
+ };
+ const textBody=[
+  'DGW ENGINEER CALL / COMPLETE OFFER REQUEST',
+  'Project: '+data.project,'Name: '+data.name,'Phone: '+data.phone,
+  'Email: '+(data.email||'Not provided'),'Company / Project: '+(data.company||'Not provided'),
+  'Equipment: '+data.equipment.map(x=>x.name+' × '+x.quantity).join('; '),
+  'Connected load: '+data.connectedLoadKW+' kW',
+  'Estimated load: '+data.estimatedLoadKVA+' kVA',
+  'Recommended generator: '+data.recommendedGeneratorKVA+' kVA',
+  'Additional details: '+(data.message||'None')
+ ].join('\\n');
+ const blob=new Blob([textBody],{type:'text/plain'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='DGW-engineer-enquiry.txt';a.click();URL.revokeObjectURL(a.href);
+ $('formFeedback').textContent='Your enquiry details have been prepared and downloaded. This demo does not submit the enquiry to DGW; the live website will need a form/CRM connection.';
+});
+</script>
+</body></html>

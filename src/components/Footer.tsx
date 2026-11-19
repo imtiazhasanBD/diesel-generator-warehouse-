@@ -121,6 +121,12 @@ export default function Footer() {
                 >
                   Blog
                 </Link>
+                <Link
+                  href="/calculator"
+                  className="block text-white/85 hover:text-white transition-colors"
+                >
+                  Load Calculator
+                </Link>
               </div>
 
               <div className="space-y-3">

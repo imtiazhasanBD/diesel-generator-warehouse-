@@ -1256,15 +1256,23 @@ export default function Home() {
                 </p>
               </div>
 
-              <button
-                onClick={() => setIsQuoteModalOpen(true)}
-                className="framer-btn-primary self-start sm:self-auto cursor-pointer text-xs"
-              >
-                <span>Request load assessment</span>
-                <div className="btn-arrow-box">
-                  <ArrowRight className="w-3.5 h-3.5 text-white" />
-                </div>
-              </button>
+              <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-auto">
+                <Link
+                  href="/calculator"
+                  className="framer-btn-primary cursor-pointer text-xs"
+                >
+                  <span>Launch Load Calculator</span>
+                  <div className="btn-arrow-box">
+                    <ArrowRight className="w-3.5 h-3.5 text-white" />
+                  </div>
+                </Link>
+                <button
+                  onClick={() => setIsQuoteModalOpen(true)}
+                  className="framer-btn-dark cursor-pointer text-xs"
+                >
+                  <span>Quick Quote</span>
+                </button>
+              </div>
             </div>
 
             {/* 4 Steps Grid */}
@@ -2259,6 +2267,15 @@ export default function Home() {
                 <div className="flex justify-between items-center text-xs text-slate-600 pt-2 border-t border-slate-200">
                   <span>Recommended Genset: <strong className="text-slate-950 font-bold">{recommendedKva} kVA</strong></span>
                   <span className="font-mono text-[11px] text-primary">~{fuelRate} L/hr</span>
+                </div>
+                <div className="pt-1 text-center">
+                  <Link
+                    href="/calculator"
+                    onClick={() => setIsQuoteModalOpen(false)}
+                    className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:underline"
+                  >
+                    <span>Need itemized appliance calculator? Open Full Load Sizing Engine &rarr;</span>
+                  </Link>
                 </div>
               </div>
 
