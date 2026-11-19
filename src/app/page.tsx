@@ -322,7 +322,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10 pt-8 pb-8 sm:pt-12 sm:pb-10 hidden">
+          <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10 pt-8 pb-8 sm:pt-12 sm:pb-10">
 
             {/* Top Pill Badge */}
             <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight">
