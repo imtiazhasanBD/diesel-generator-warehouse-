@@ -11,6 +11,7 @@ import { BLOG_POSTS } from "@/data/blogs";
 import {
   Search,
   ArrowRight,
+  ArrowUpRight,
   X,
   Play,
   Pause,
@@ -35,7 +36,9 @@ import {
   ShieldCheck,
   Headset,
   Zap,
-  MessageSquare
+  Award,
+  MessageSquare,
+  Calculator
 } from "lucide-react";
 
 // Interactive Hotspots Data
@@ -308,9 +311,274 @@ export default function Home() {
 
       <main>
         {/* =========================================================
-             SECTION 1: HERO SECTION (FRAMER TEMPLATE LAYOUT)
+             HERO SECTION: DGW B2B GENERATOR WHOLESALER (MODERN GEOMETRIC REFERENCE LAYOUT)
              ========================================================= */}
-        <section id="hero" className="relative bg-[#F4F4F6] text-slate-950 border-b border-slate-200">
+        <section
+          id="hero"
+          className="relative bg-[#FAFAFC] text-slate-950 overflow-hidden pt-10 sm:pt-14 lg:pt-18"
+        >
+          {/* Subtle Ambient Decorative Diagonal Bands */}
+          <div className="absolute top-0 right-0 w-[600px] h-full pointer-events-none select-none overflow-hidden hidden lg:block opacity-40">
+            <div className="absolute -top-20 right-16 w-32 h-[130%] bg-gradient-to-b from-slate-200/50 via-slate-100/20 to-transparent -skew-x-[16deg]" />
+            <div className="absolute -top-20 right-64 w-16 h-[130%] bg-gradient-to-b from-slate-200/30 via-slate-100/10 to-transparent -skew-x-[16deg]" />
+          </div>
+
+          <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-10">
+
+            {/* Top Row: Content & 3 Slanted Parallelogram Cards */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
+
+              {/* Left Column: Heading, Subheadings, Narrative, 2 Red Cards & CTAs */}
+              <div className="lg:col-span-6 xl:col-span-6 space-y-5 sm:space-y-6">
+
+                {/* Eyebrow Badge */}
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="inline-flex items-center gap-3"
+                >
+                  <span className="w-8 h-[3px] bg-[#E04314] rounded-full inline-block" />
+                  <span className="font-mono text-xs sm:text-[13px] font-bold text-slate-700 tracking-[0.18em] uppercase">
+                    DGW / B2B GENERATOR WHOLESALER
+                  </span>
+                </motion.div>
+
+                {/* Main Headline (Styled Exactly Like Reference Font) */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.08, ease: "easeOut" }}
+                  className="font-heading font-bold text-4xl sm:text-6xl lg:text-7xl xl:text-[76px] tracking-tight text-slate-950 leading-[1.02] uppercase"
+                >
+                  Powering <br />
+                  <span className="text-primary">wholesale.</span>
+                </motion.h1>
+
+                {/* Subheadings from Reference */}
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, delay: 0.16, ease: "easeOut" }}
+                  className="space-y-1"
+                >
+                  <h2 className="font-heading font-extrabold text-sm sm:text-base lg:text-[17px] tracking-wide text-slate-900 uppercase">
+                    DIESEL GENERATORS &bull; WHOLESALE DISTRIBUTION
+                  </h2>
+                  <p className="font-mono text-xs sm:text-[13px] text-slate-500 font-semibold tracking-[0.1em] uppercase">
+                    READY STOCK &bull; PERKINS &bull; CUMMINS &bull; RICARDO &bull; 30-500 KVA
+                  </p>
+                </motion.div>
+
+                {/* Description */}
+                <motion.p
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, delay: 0.24, ease: "easeOut" }}
+                  className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl font-normal"
+                >
+                  Bulk generator supply for dealers, distributors and project teams. Full-container and mixed-model orders, ready stock in Bangladesh.
+                </motion.p>
+
+                {/* 2 Red Wholesale Cards (01 & 02) - Reduced & Sleek */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-0.5 max-w-lg">
+                  {/* Card 1: Bulk Orders */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.32, ease: "easeOut" }}
+                    whileHover={{ y: -2 }}
+                    className="bg-[#E04314] rounded-lg py-2.5 px-3.5 sm:py-3 sm:px-4 text-white shadow-sm relative overflow-hidden group hover:brightness-105 transition-all"
+                  >
+                    <span className="text-white/80 font-mono text-[11px] font-bold block mb-0.5">
+                      01
+                    </span>
+                    <h3 className="font-heading font-bold text-sm sm:text-[15px] text-white uppercase tracking-tight leading-tight">
+                      BULK ORDERS
+                    </h3>
+                    <p className="text-white/90 text-[11px] sm:text-xs mt-0.5 leading-snug font-normal">
+                      Flexible wholesale quantities
+                    </p>
+                  </motion.div>
+
+                  {/* Card 2: Full-Container */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
+                    whileHover={{ y: -2 }}
+                    className="bg-[#E04314] rounded-lg py-2.5 px-3.5 sm:py-3 sm:px-4 text-white shadow-sm relative overflow-hidden group hover:brightness-105 transition-all"
+                  >
+                    <span className="text-white/80 font-mono text-[11px] font-bold block mb-0.5">
+                      02
+                    </span>
+                    <h3 className="font-heading font-bold text-sm sm:text-[15px] text-white uppercase tracking-tight leading-tight">
+                      FULL-CONTAINER
+                    </h3>
+                    <p className="text-white/90 text-[11px] sm:text-xs mt-0.5 leading-snug font-normal">
+                      Container-load shipments
+                    </p>
+                  </motion.div>
+                </div>
+
+                {/* Actions (Reduced Compact Buttons) */}
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.48, ease: "easeOut" }}
+                  className="flex flex-wrap items-center gap-3 pt-1"
+                >
+                  <Link
+                    href="/products"
+                    className="inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-lg bg-[#14161B] hover:bg-[#20242e] text-white font-heading font-bold text-xs tracking-wider uppercase transition-all shadow-sm hover:shadow group cursor-pointer"
+                  >
+                    <span>EXPLORE SUPPLY RANGE</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+                  </Link>
+
+                  <Link
+                    href="/calculator"
+                    className="inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-lg bg-white hover:bg-slate-50 border border-slate-300 hover:border-primary/50 text-slate-800 hover:text-primary font-heading font-bold text-xs tracking-wider uppercase transition-all shadow-xs group cursor-pointer"
+                  >
+                    <Calculator className="w-3.5 h-3.5 text-primary shrink-0" />
+                    <span>LOAD CALCULATOR</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
+                  </Link>
+                </motion.div>
+
+              </div>
+
+              {/* Right Column: 3 Parallelogram Cards — exact reference match */}
+              <div className="lg:col-span-6 xl:col-span-6 relative flex items-center justify-center lg:justify-end pt-8 lg:pt-0 pb-10 lg:pb-12">
+
+                {/* Soft Peach Ambient Blob behind right cards */}
+                <div
+                  className="absolute -bottom-6 -right-6 sm:-right-10 w-64 sm:w-80 lg:w-96 h-64 sm:h-80 lg:h-96 rounded-[120px_90px_140px_100px] bg-[#fed7aa]/55 pointer-events-none z-0"
+                  style={{ filter: "blur(24px)" }}
+                />
+
+                {/* Diagonal Cards Row */}
+                <div className="relative z-10 flex items-end gap-3 sm:gap-4 lg:gap-4.5 pr-2 sm:pr-4">
+
+                  {/* Card 1: Engine (Left) — shorter, starts lower, ends higher */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 28 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+                    whileHover={{ y: -8, transition: { duration: 0.25 } }}
+                    className="relative shrink-0 mb-6 sm:mb-8 lg:mb-9 cursor-pointer group"
+                  >
+                    <div
+                      className="rounded-[22px] sm:rounded-[26px] lg:rounded-[30px] overflow-hidden bg-slate-900 border border-white/60"
+                      style={{
+                        transform: "skewX(-18.5deg)",
+                        transformOrigin: "center center",
+                        width: "clamp(105px, 11.5vw, 165px)",
+                        height: "clamp(215px, 23.5vw, 335px)",
+                        boxShadow: "0 18px 40px -12px rgba(0,0,0,0.22)",
+                      }}
+                    >
+                      <img
+                        src="/assets/images/gen-alternator-shaft.jpg"
+                        alt="Industrial Diesel Engine"
+                        className="w-full h-full object-cover brightness-[0.88] contrast-[1.1] transition-transform duration-700 group-hover:scale-[1.46]"
+                        style={{
+                          transform: "skewX(18.5deg) scale(1.38)",
+                          transformOrigin: "center center",
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Card 2: Yellow Generator (Center) — tallest and widest, reaches highest and lowest */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 36 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.28, ease: "easeOut" }}
+                    whileHover={{ y: -8, transition: { duration: 0.25 } }}
+                    className="relative shrink-0 mb-0 z-20 cursor-pointer group"
+                  >
+                    <div
+                      className="rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] overflow-hidden bg-slate-900 border border-white/80"
+                      style={{
+                        transform: "skewX(-18.5deg)",
+                        transformOrigin: "center center",
+                        width: "clamp(135px, 15vw, 215px)",
+                        height: "clamp(275px, 30.5vw, 425px)",
+                        boxShadow: "0 24px 50px -12px rgba(0,0,0,0.30)",
+                      }}
+                    >
+                      <img
+                        src="/assets/images/yellow-silent.jpg"
+                        alt="Industrial Diesel Generator Canopy"
+                        className="w-full h-full object-cover brightness-[0.98] contrast-[1.04] transition-transform duration-700 group-hover:scale-[1.46]"
+                        style={{
+                          transform: "skewX(18.5deg) scale(1.38)",
+                          transformOrigin: "center center",
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Card 3: Engineer (Right) with Orange L-Accent */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 44 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.40, ease: "easeOut" }}
+                    whileHover={{ y: -8, transition: { duration: 0.25 } }}
+                    className="relative shrink-0 mb-4 sm:mb-5 lg:mb-6 cursor-pointer group"
+                  >
+                    <div
+                      className="rounded-[22px] sm:rounded-[26px] lg:rounded-[30px] overflow-hidden bg-slate-900 border border-white/60"
+                      style={{
+                        transform: "skewX(-18.5deg)",
+                        transformOrigin: "center center",
+                        width: "clamp(120px, 13vw, 180px)",
+                        height: "clamp(230px, 25vw, 350px)",
+                        boxShadow: "0 18px 40px -12px rgba(0,0,0,0.22)",
+                      }}
+                    >
+                      <img
+                        src="/assets/images/engineer-hero.jpg"
+                        alt="Power Systems Engineer"
+                        className="w-full h-full object-cover brightness-[0.88] contrast-[1.1] transition-transform duration-700 group-hover:scale-[1.46]"
+                        style={{
+                          transform: "skewX(18.5deg) scale(1.38)",
+                          transformOrigin: "center center",
+                        }}
+                      />
+                    </div>
+
+                    {/* Orange Accent L-Bracket — hugging bottom-right of Card 3 */}
+                    <div
+                      className="absolute -right-2.5 sm:-right-3.5 -bottom-1 sm:-bottom-2 pointer-events-none z-30"
+                      style={{
+                        width: "clamp(90px, 10vw, 140px)",
+                        height: "clamp(50px, 5.5vw, 80px)",
+                        filter: "drop-shadow(0 10px 18px rgba(224, 67, 20, 0.45))",
+                      }}
+                    >
+                      <svg viewBox="0 0 120 70" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+                        <path
+                          d="M96 0L117 0C118.8 0 120 1.4 119.3 3.1L103 49C100.5 57 93.5 63 84.5 63L8 63C5.2 63 3.8 59.5 5.8 57.5L16.5 47C18 45.5 20 44.5 22.2 44.5L79 44.5C82.8 44.5 86 42 87 38.2L96 0Z"
+                          fill="#E04314"
+                        />
+                      </svg>
+                    </div>
+                  </motion.div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================================
+             PREVIOUS HERO SECTION (HIDDEN AS REQUESTED)
+             ========================================================= */}
+        <section id="hero-previous" className="hidden relative bg-[#F4F4F6] text-slate-950 border-b border-slate-200">
 
           {/* Subtle Vertical Architectural Grid Lines */}
           <div className="absolute inset-0 max-w-[1400px] mx-auto px-6 sm:px-10 pointer-events-none z-0 hidden lg:block">
