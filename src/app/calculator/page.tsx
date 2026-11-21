@@ -2,26 +2,21 @@
 
 import React, { useState, useMemo, useRef } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
 import {
   ChevronRight,
-  ChevronLeft,
-  Search,
+  ArrowLeft,
+  ArrowRight,
   Plus,
   Minus,
   Download,
   RotateCcw,
   Sparkles,
-  ArrowRight,
-  Fuel,
-  SlidersHorizontal,
   Copy,
   Check,
-  Trash2,
-  Sliders,
-  Wrench,
   X,
-  FileText
+  PhoneCall,
+  SlidersHorizontal,
+  HelpCircle,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -30,96 +25,108 @@ import {
   PROJECT_TYPES,
   STANDARD_GENERATOR_SIZES,
   SelectedItem,
+  ProjectType,
 } from "@/data/calculatorData";
 import { PRODUCTS, GeneratorProduct } from "@/data/products";
 import { generateCalculationPDF } from "@/utils/generateCalculationPDF";
 
+// Themed visual styles for category cards matching reference design
+const CATEGORY_STYLES = [
+  {
+    iconBg: "bg-[#EBF5FF] text-[#2563EB]",
+    badgeBg: "bg-[#EBF5FF]",
+    badgeText: "text-[#2563EB]",
+    btnBg: "bg-[#2563EB] hover:bg-[#1D4ED8]",
+  },
+  {
+    iconBg: "bg-[#FFF4ED] text-[#EA580C]",
+    badgeBg: "bg-[#FFF4ED]",
+    badgeText: "text-[#EA580C]",
+    btnBg: "bg-[#EA580C] hover:bg-[#C2410C]",
+  },
+  {
+    iconBg: "bg-[#E6F4EA] text-[#059669]",
+    badgeBg: "bg-[#E6F4EA]",
+    badgeText: "text-[#059669]",
+    btnBg: "bg-[#059669] hover:bg-[#047857]",
+  },
+  {
+    iconBg: "bg-[#F0FDF4] text-[#16A34A]",
+    badgeBg: "bg-[#F0FDF4]",
+    badgeText: "text-[#16A34A]",
+    btnBg: "bg-[#16A34A] hover:bg-[#15803D]",
+  },
+  {
+    iconBg: "bg-[#EEF2FF] text-[#4F46E5]",
+    badgeBg: "bg-[#EEF2FF]",
+    badgeText: "text-[#4F46E5]",
+    btnBg: "bg-[#4F46E5] hover:bg-[#4338CA]",
+  },
+  {
+    iconBg: "bg-[#F5F3FF] text-[#7C3AED]",
+    badgeBg: "bg-[#F5F3FF]",
+    badgeText: "text-[#7C3AED]",
+    btnBg: "bg-[#7C3AED] hover:bg-[#6D28D9]",
+  },
+  {
+    iconBg: "bg-[#FFF1F2] text-[#E11D48]",
+    badgeBg: "bg-[#FFF1F2]",
+    badgeText: "text-[#E11D48]",
+    btnBg: "bg-[#E11D48] hover:bg-[#BE123C]",
+  },
+  {
+    iconBg: "bg-[#FFFBEB] text-[#D97706]",
+    badgeBg: "bg-[#FFFBEB]",
+    badgeText: "text-[#D97706]",
+    btnBg: "bg-[#D97706] hover:bg-[#B45309]",
+  },
+  {
+    iconBg: "bg-[#ECFEFF] text-[#0891B2]",
+    badgeBg: "bg-[#ECFEFF]",
+    badgeText: "text-[#0891B2]",
+    btnBg: "bg-[#0891B2] hover:bg-[#0E7490]",
+  },
+];
+
 export default function LoadCalculatorPage() {
-  // Selected Project Type & Dialog State
+  // Navigation / Step State: "projects" (Screen 1) or "equipment" (Screen 2)
+  const [currentStep, setCurrentStep] = useState<"projects" | "equipment">("projects");
   const [selectedProjectId, setSelectedProjectId] = useState<string>("residential");
-  const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
-  const [projectSearchQuery, setProjectSearchQuery] = useState("");
-
-  const currentProject = useMemo(() => {
-    return PROJECT_TYPES.find((p) => p.id === selectedProjectId) || PROJECT_TYPES[0];
-  }, [selectedProjectId]);
-
-  const filteredProjects = useMemo(() => {
-    if (!projectSearchQuery.trim()) return PROJECT_TYPES;
-    const q = projectSearchQuery.toLowerCase().trim();
-    return PROJECT_TYPES.filter(
-      (p) =>
-        p.name.toLowerCase().includes(q) ||
-        p.description.toLowerCase().includes(q)
-    );
-  }, [projectSearchQuery]);
 
   // Selected Equipment Map
   const [selectedItems, setSelectedItems] = useState<Record<string, SelectedItem>>({});
 
-  // Active Category Tab & Search
-  const [activeCategory, setActiveCategory] = useState<string>("All");
-  const [searchQuery, setSearchQuery] = useState("");
-
   // Engineering Tuning
   const [powerFactor, setPowerFactor] = useState<number>(0.8);
-  const [reserveMargin, setReserveMargin] = useState<number>(0.2); // 20%
+  const [reserveMargin, setReserveMargin] = useState<number>(0.2); // 20% inrush safety buffer
   const [showTuning, setShowTuning] = useState(false);
 
-  // Custom Item Modal State
-  const [isAddingCustom, setIsAddingCustom] = useState(false);
-  const [customName, setCustomName] = useState("");
-  const [customKW, setCustomKW] = useState<number>(5);
-  const [customQty, setCustomQty] = useState<number>(1);
-
-  // Actions State
+  // Quote & PDF Actions State
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
 
-  // Category Scroll Ref & Auto-Slide Handlers
-  const categoryScrollRef = useRef<HTMLDivElement>(null);
+  // Current Project Object
+  const currentProject: ProjectType = useMemo(() => {
+    return PROJECT_TYPES.find((p) => p.id === selectedProjectId) || PROJECT_TYPES[0];
+  }, [selectedProjectId]);
 
-  const handleCategorySelect = (cat: string, e?: React.MouseEvent<HTMLButtonElement>) => {
-    setActiveCategory(cat);
-    if (e?.currentTarget) {
-      e.currentTarget.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
+  // Handle Project Selection -> Switches completely to Screen 2 (No in-page scrolling)
+  const handleSelectProject = (projectId: string) => {
+    setSelectedProjectId(projectId);
+    setCurrentStep("equipment");
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "instant" });
     }
   };
 
-  const scrollCategories = (direction: "left" | "right") => {
-    if (categoryScrollRef.current) {
-      const scrollAmount = direction === "right" ? 180 : -180;
-      categoryScrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  // Handle Back to Screen 1
+  const handleBackToProjects = () => {
+    setCurrentStep("projects");
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "instant" });
     }
   };
-
-  // Group Categories for Selected Project
-  const categories = useMemo(() => {
-    return ["All", ...currentProject.groups.map((g) => g.name)];
-  }, [currentProject]);
-
-  // Flat Equipment List for Filtering
-  const displayedItems = useMemo(() => {
-    const list: { name: string; kw: number; category: string }[] = [];
-    currentProject.groups.forEach((group) => {
-      if (activeCategory === "All" || activeCategory === group.name) {
-        group.items.forEach((item) => {
-          if (
-            !searchQuery ||
-            item.name.toLowerCase().includes(searchQuery.toLowerCase())
-          ) {
-            list.push({ ...item, category: group.name });
-          }
-        });
-      }
-    });
-    return list;
-  }, [currentProject, activeCategory, searchQuery]);
 
   // Stepper handlers
   const updateQty = (name: string, kw: number, category: string, delta: number) => {
@@ -155,31 +162,7 @@ export default function LoadCalculatorPage() {
     });
   };
 
-  // Add Custom Machinery
-  const handleAddCustom = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!customName.trim() || customKW <= 0 || customQty <= 0) return;
-
-    const key = `custom|${Date.now()}`;
-    setSelectedItems((prev) => ({
-      ...prev,
-      [key]: {
-        id: key,
-        name: customName.trim(),
-        kw: customKW,
-        qty: customQty,
-        category: "Custom Load",
-        isCustom: true,
-      },
-    }));
-
-    setCustomName("");
-    setCustomKW(5);
-    setCustomQty(1);
-    setIsAddingCustom(false);
-  };
-
-  // Quick Preset Loader
+  // Quick Preset Loader (1-Click Fill)
   const handleLoadPreset = () => {
     if (!currentProject.quickPreset) return;
     const newItems: Record<string, SelectedItem> = {};
@@ -204,8 +187,9 @@ export default function LoadCalculatorPage() {
     setSelectedItems(newItems);
   };
 
-  // Calculations
+  // Automatic Real-Time Calculations
   const itemsList = useMemo(() => Object.values(selectedItems), [selectedItems]);
+
   const totalConnectedKW = useMemo(() => {
     return itemsList.reduce((sum, item) => sum + item.kw * item.qty, 0);
   }, [itemsList]);
@@ -222,24 +206,26 @@ export default function LoadCalculatorPage() {
   const recommendedGeneratorKVA = useMemo(() => {
     if (itemsList.length === 0 || requiredKVA <= 0) return 0;
     const match = STANDARD_GENERATOR_SIZES.find((s) => s >= requiredKVA);
-    return match || Math.ceil(requiredKVA / 100) * 100;
+    return match || Math.ceil(requiredKVA / 50) * 50;
   }, [requiredKVA, itemsList.length]);
 
   const estimatedFuelLPH = useMemo(() => {
     return (recommendedGeneratorKVA * 0.22).toFixed(1);
   }, [recommendedGeneratorKVA]);
 
-  // Top Matched In-Stock Model
+  // Top Matched Generator in Inventory
   const matchedGenset: GeneratorProduct | undefined = useMemo(() => {
     if (!recommendedGeneratorKVA) return undefined;
-    return PRODUCTS.find(
-      (p) =>
-        p.standbyKva >= recommendedGeneratorKVA * 0.95 &&
-        p.standbyKva <= recommendedGeneratorKVA * 1.4
-    ) || PRODUCTS[0];
+    return (
+      PRODUCTS.find(
+        (p) =>
+          p.standbyKva >= recommendedGeneratorKVA * 0.95 &&
+          p.standbyKva <= recommendedGeneratorKVA * 1.45
+      ) || PRODUCTS[0]
+    );
   }, [recommendedGeneratorKVA]);
 
-  // Download PDF
+  // Download PDF Report
   const handleDownloadPDF = () => {
     setIsGeneratingPDF(true);
     try {
@@ -260,7 +246,7 @@ export default function LoadCalculatorPage() {
     }
   };
 
-  // Copy Summary
+  // Copy Summary to Clipboard
   const handleCopySummary = () => {
     if (typeof window === "undefined") return;
     const summary = [
@@ -268,9 +254,9 @@ export default function LoadCalculatorPage() {
       `Facility: ${currentProject.name}`,
       `Connected Load: ${totalConnectedKW.toFixed(2)} kW`,
       `Running Load: ${runningKVA.toFixed(2)} kVA (PF: ${powerFactor})`,
-      `Recommended Generator: ${recommendedGeneratorKVA} kVA (+${Math.round(reserveMargin * 100)}% reserve)`,
-      `Fuel Rate: ~${estimatedFuelLPH} L/hr (75% load)`,
-      `Schedule:`,
+      `Recommended Generator: ${recommendedGeneratorKVA} kVA (+${Math.round(reserveMargin * 100)}% starting buffer)`,
+      `Estimated Fuel Rate: ~${estimatedFuelLPH} L/hr (75% load)`,
+      `Selected Appliances:`,
       ...itemsList.map((i) => ` • ${i.name} × ${i.qty} (${(i.kw * i.qty).toFixed(2)} kW)`),
     ].join("\n");
 
@@ -280,608 +266,327 @@ export default function LoadCalculatorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] text-slate-900 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#F4F6F9] text-slate-900 flex flex-col font-sans">
       <Header
         activePath="calculator"
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
-      {/* =========================================================
-           CLEAN PAGE HEADER
-           ========================================================= */}
-      <section className="bg-white border-b border-slate-200/80 pt-8 pb-9">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
-          <nav aria-label="Breadcrumb" className="mb-3">
-            <ol className="flex items-center gap-1.5 text-xs font-semibold text-slate-500">
-              <li>
-                <Link href="/" className="hover:text-primary transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-              </li>
-              <li className="text-primary font-bold">Load Calculator</li>
-            </ol>
-          </nav>
+      {/* Main Content Container matching reference app wrapper */}
+      <main className="flex-1 max-w-[940px] mx-auto px-3 sm:px-6 py-4 sm:py-6 w-full">
 
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <div className="inline-flex items-center gap-2.5 text-xs font-bold text-slate-900 tracking-tight mb-1.5">
-                <span className="w-8 h-[3px] bg-primary rounded-sm inline-block" />
-                <span>Electrical Sizing Engine</span>
+        {/* =========================================================
+             SCREEN 1: STEP 1 - SELECT WHAT TYPE OF PROJECT
+             ========================================================= */}
+        {currentStep === "projects" && (
+          <div className="bg-white rounded-md p-4 sm:p-5 lg:p-5 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-slate-200/80">
+            {/* Header: "01 · What type of project? [STEP 1]" */}
+            <div className="flex items-center justify-between pb-3 sm:pb-3.5 border-b border-slate-100 mb-3.5 sm:mb-4">
+              <div className="flex items-center gap-2">
+                <span className="font-heading font-black text-base sm:text-lg text-slate-900">
+                  01 ·
+                </span>
+                <h1 className="font-heading font-bold text-base sm:text-lg text-slate-900">
+                  What type of project?
+                </h1>
               </div>
-              <h1 className="font-heading text-2xl sm:text-4xl lg:text-[40px] font-bold text-[#141518] tracking-[-0.03em] leading-tight">
-                Generator Load &amp; <span className="text-primary">kVA Calculator</span>
-              </h1>
-              <p className="text-slate-600 text-xs sm:text-sm mt-1 max-w-xl">
-                Select your building type, add electrical equipment, and receive an instant commercial generator rating.
-              </p>
-            </div>
-
-            {/* Quick Reset */}
-            {itemsList.length > 0 && (
-              <button
-                type="button"
-                onClick={() => setSelectedItems({})}
-                className="inline-flex items-center gap-1 text-xs text-slate-500 hover:text-red-600 cursor-pointer self-start sm:self-auto transition-colors"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-                <span>Reset all loads</span>
-              </button>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-           FACILITY SELECTOR BAR (CLICK TO OPEN DIALOG)
-           ========================================================= */}
-      <section className="bg-white border-b border-slate-200/80 py-3 sticky top-20 z-20 shadow-xs">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-10 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider hidden sm:inline">
-              Project Type:
-            </span>
-            <button
-              type="button"
-              onClick={() => {
-                setProjectSearchQuery("");
-                setIsProjectModalOpen(true);
-              }}
-              className="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-sm bg-slate-900 hover:bg-black text-white transition-all cursor-pointer shadow-xs text-xs font-semibold group"
-            >
-              <span className="text-base">{currentProject.icon}</span>
-              <span className="font-bold text-sm">{currentProject.name}</span>
-              <span className="text-primary font-bold text-[11px] font-mono ml-1.5 flex items-center gap-0.5 group-hover:underline">
-                Change ▾
+              <span className="px-2 py-0.5 rounded-sm bg-[#FEE2E2]/70 text-[#EF4444] font-bold text-[10px] sm:text-[11px] uppercase tracking-wider">
+                STEP 1
               </span>
-            </button>
-            <span className="text-xs text-slate-500 hidden md:inline">
-              {currentProject.description.split(",")[0]}
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {currentProject.quickPreset && (
-              <button
-                type="button"
-                onClick={handleLoadPreset}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-primary-light text-primary hover:bg-primary-hover hover:text-white text-xs font-bold cursor-pointer transition-colors"
-                title={`Load baseline equipment for ${currentProject.quickPreset.label}`}
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Load {currentProject.quickPreset.label}</span>
-              </button>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-           MAIN INTERACTIVE LAYOUT (2 COLUMNS)
-           ========================================================= */}
-      <main className="flex-1 max-w-[1400px] mx-auto px-4 sm:px-10 py-8 sm:py-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-
-          {/* LEFT 7 COLS: EQUIPMENT WORKSPACE */}
-          <div className="lg:col-span-7 space-y-4">
-
-            {/* Sub-header: Category Tabs + Search */}
-            <div className="bg-white rounded-lg p-4 border border-slate-200/90 shadow-xs space-y-3">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                {/* Search Bar */}
-                <div className="relative flex-1">
-                  <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search appliances (e.g. AC, Lift, Pump)..."
-                    className="w-full bg-slate-50 border border-slate-200 rounded-sm pl-8 pr-3 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary"
-                  />
-                  {searchQuery && (
-                    <button
-                      onClick={() => setSearchQuery("")}
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600"
-                    >
-                      ✕
-                    </button>
-                  )}
-                </div>
-
-                {/* Custom Item Trigger & Preset Button */}
-                <div className="flex items-center gap-2 shrink-0">
-                  {currentProject.quickPreset && (
-                    <button
-                      type="button"
-                      onClick={handleLoadPreset}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-semibold cursor-pointer transition-colors"
-                      title="Load typical baseline equipment"
-                    >
-                      <Sparkles className="w-3 h-3 text-primary" />
-                      <span>Load preset</span>
-                    </button>
-                  )}
-
-                  <button
-                    type="button"
-                    onClick={() => setIsAddingCustom(true)}
-                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-sm bg-slate-900 hover:bg-black text-white text-xs font-semibold cursor-pointer transition-colors"
-                  >
-                    <Plus className="w-3 h-3" />
-                    <span>Custom</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Category Filter Pills with Auto-Slide & Slide Controls */}
-              <div className="relative flex items-center pt-1">
-                {/* Left Slide Arrow */}
-                <button
-                  type="button"
-                  onClick={() => scrollCategories("left")}
-                  className="hidden sm:flex absolute -left-2 z-10 w-6 h-6 rounded-full bg-white shadow-md border border-slate-200 items-center justify-center text-slate-600 hover:text-black cursor-pointer hover:scale-105 transition-all"
-                  aria-label="Slide left"
-                >
-                  <ChevronLeft className="w-3.5 h-3.5" />
-                </button>
-
-                {/* Scrollable Pills Container */}
-                <div
-                  ref={categoryScrollRef}
-                  className="flex items-center gap-1.5 overflow-x-auto scrollbar-none scroll-smooth px-1 py-0.5 w-full"
-                >
-                  {categories.map((cat) => {
-                    const isCatActive = activeCategory === cat;
-                    return (
-                      <button
-                        key={cat}
-                        type="button"
-                        onClick={(e) => handleCategorySelect(cat, e)}
-                        className={`px-3 py-1.5 rounded-sm text-xs font-semibold whitespace-nowrap cursor-pointer transition-all shrink-0 ${
-                          isCatActive
-                            ? "bg-slate-900 text-white shadow-xs"
-                            : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-                        }`}
-                      >
-                        {cat}
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Right Slide Arrow */}
-                <button
-                  type="button"
-                  onClick={() => scrollCategories("right")}
-                  className="hidden sm:flex absolute -right-2 z-10 w-6 h-6 rounded-full bg-white shadow-md border border-slate-200 items-center justify-center text-slate-600 hover:text-black cursor-pointer hover:scale-105 transition-all"
-                  aria-label="Slide right"
-                >
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
             </div>
 
-            {/* Custom Item Form Modal / Drawer */}
-            {isAddingCustom && (
-              <form
-                onSubmit={handleAddCustom}
-                className="bg-primary-light/50 border border-primary/30 rounded-lg p-4 space-y-3"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-primary">
-                    Add Custom Machinery / Load
+            {/* Compact 2-col on mobile, 3 on sm, 4 on md, 5 on lg */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-2.5 lg:gap-2.5">
+              {PROJECT_TYPES.map((proj) => {
+                const isSelected = selectedProjectId === proj.id;
+                return (
+                  <button
+                    key={proj.id}
+                    type="button"
+                    onClick={() => handleSelectProject(proj.id)}
+                    className={`p-2.5 sm:p-3 lg:py-3 lg:px-2 rounded-md border transition-all duration-200 cursor-pointer flex flex-col items-center justify-center text-center group active:scale-[0.98] min-h-[105px] sm:min-h-[115px] lg:min-h-[110px] ${
+                      isSelected
+                        ? "bg-white border-primary shadow-sm ring-1 ring-primary/20"
+                        : "bg-white border-slate-200/90 hover:border-slate-300 hover:shadow-sm"
+                    }`}
+                  >
+                    {/* Centered Emoji / Icon */}
+                    <div className="text-2xl sm:text-[26px] lg:text-2xl mb-1 group-hover:scale-110 transition-transform select-none">
+                      {proj.icon}
+                    </div>
+
+                    {/* Centered Bold Title */}
+                    <h2 className="font-heading font-bold text-xs sm:text-[13px] lg:text-[12.5px] text-slate-900 leading-snug line-clamp-2">
+                      {proj.name}
+                    </h2>
+
+                    {/* Subtitle: "Tap to select" */}
+                    <p className="text-[10px] sm:text-[11px] lg:text-[10.5px] text-slate-400 mt-0.5 font-medium group-hover:text-primary transition-colors">
+                      Tap to select
+                    </p>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* =========================================================
+             SCREEN 2: STEP 2 - SELECT EQUIPMENT & CAPACITIES (COMPACT MATCHING STEP 1)
+             ========================================================= */}
+        {currentStep === "equipment" && (
+          <div className="space-y-3 sm:space-y-3.5">
+            {/* Top Container: Header with Back button, Title & Real-Time Capacity Banner */}
+            <div className="bg-white rounded-md p-3 sm:p-3.5 shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-slate-200/80">
+              {/* Header Bar */}
+              <div className="flex items-center justify-between pb-2 sm:pb-2.5 border-b border-slate-100 mb-2 sm:mb-2.5">
+                <button
+                  type="button"
+                  onClick={handleBackToProjects}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-[13px] font-bold transition-all cursor-pointer shadow-2xs"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5 text-slate-600" />
+                  <span>Back</span>
+                </button>
+
+                <div className="flex items-center gap-1.5">
+                  <span className="font-heading font-black text-base sm:text-lg text-slate-900">
+                    02 ·
                   </span>
-                  <button
-                    type="button"
-                    onClick={() => setIsAddingCustom(false)}
-                    className="text-xs text-slate-400 hover:text-slate-600"
-                  >
-                    Cancel
-                  </button>
+                  <h2 className="font-heading font-bold text-base sm:text-lg text-slate-900">
+                    {currentProject.name}
+                  </h2>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-2.5">
-                  <div className="sm:col-span-6">
-                    <input
-                      type="text"
-                      value={customName}
-                      onChange={(e) => setCustomName(e.target.value)}
-                      placeholder="Equipment Name (e.g. CNC Machine)"
-                      required
-                      className="w-full px-3 py-1.5 text-xs bg-white border border-slate-300 rounded-sm focus:outline-none focus:border-primary"
-                    />
-                  </div>
-                  <div className="sm:col-span-3">
-                    <input
-                      type="number"
-                      step="0.1"
-                      min="0.1"
-                      value={customKW}
-                      onChange={(e) => setCustomKW(parseFloat(e.target.value) || 0)}
-                      placeholder="Power (kW)"
-                      required
-                      className="w-full px-3 py-1.5 text-xs bg-white border border-slate-300 rounded-sm focus:outline-none focus:border-primary"
-                    />
-                  </div>
-                  <div className="sm:col-span-3">
-                    <input
-                      type="number"
-                      min="1"
-                      value={customQty}
-                      onChange={(e) => setCustomQty(parseInt(e.target.value, 10) || 1)}
-                      placeholder="Quantity"
-                      required
-                      className="w-full px-3 py-1.5 text-xs bg-white border border-slate-300 rounded-sm focus:outline-none focus:border-primary"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex justify-end pt-1">
-                  <button
-                    type="submit"
-                    className="framer-btn-primary rounded-sm text-xs py-1 px-3 cursor-pointer"
-                  >
-                    <span>Add item</span>
-                    <div className="btn-arrow-box">
-                      <ArrowRight className="w-3 h-3 text-white" />
-                    </div>
-                  </button>
-                </div>
-              </form>
-            )}
-
-            {/* Clean Equipment Rows */}
-            <div className="bg-white rounded-lg border border-slate-200/90 shadow-xs divide-y divide-slate-100 overflow-hidden">
-              {displayedItems.length === 0 ? (
-                <div className="py-12 text-center text-xs text-slate-400">
-                  No matching appliances found for &ldquo;{searchQuery}&rdquo;.
-                </div>
-              ) : (
-                displayedItems.map((item) => {
-                  const key = `${selectedProjectId}|${item.name}`;
-                  const currentQty = selectedItems[key]?.qty || 0;
-
-                  return (
-                    <div
-                      key={item.name}
-                      className={`px-4 py-3 flex items-center justify-between gap-3 transition-colors ${
-                        currentQty > 0
-                          ? "bg-primary-light/30 border-l-2 border-primary"
-                          : "hover:bg-slate-50/70"
-                      }`}
-                    >
-                      <div className="min-w-0">
-                        <div className="text-xs sm:text-[13px] font-semibold text-slate-900 truncate">
-                          {item.name}
-                        </div>
-                        <div className="flex items-center gap-2 text-[11px] text-slate-500 font-mono mt-0.5">
-                          <span>{item.kw} kW</span>
-                          <span className="text-slate-300">&bull;</span>
-                          <span className="text-slate-400">{item.category}</span>
-                        </div>
-                      </div>
-
-                      {/* Stepper */}
-                      <div className="flex items-center gap-1 shrink-0">
-                        <button
-                          type="button"
-                          onClick={() =>
-                            updateQty(item.name, item.kw, item.category, -1)
-                          }
-                          disabled={currentQty === 0}
-                          className="w-7 h-7 rounded-sm border border-slate-200 bg-white hover:bg-slate-100 disabled:opacity-30 flex items-center justify-center text-slate-700 cursor-pointer disabled:cursor-not-allowed transition-colors"
-                          aria-label={`Decrease ${item.name}`}
-                        >
-                          <Minus className="w-3 h-3" />
-                        </button>
-
-                        <span
-                          className={`w-9 text-center font-mono text-xs font-bold ${
-                            currentQty > 0 ? "text-primary" : "text-slate-400"
-                          }`}
-                        >
-                          {currentQty}
-                        </span>
-
-                        <button
-                          type="button"
-                          onClick={() =>
-                            updateQty(item.name, item.kw, item.category, 1)
-                          }
-                          className="w-7 h-7 rounded-sm bg-primary hover:bg-primary-hover text-white flex items-center justify-center cursor-pointer transition-colors shadow-xs"
-                          aria-label={`Increase ${item.name}`}
-                        >
-                          <Plus className="w-3 h-3" />
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })
-              )}
-            </div>
-
-          </div>
-
-          {/* RIGHT 5 COLS: CLEAN EXECUTIVE SUMMARY (STICKY) */}
-          <div className="lg:col-span-5 space-y-4 lg:sticky lg:top-36">
-
-            {/* SIZING RESULT CARD */}
-            <div className="bg-[#141518] rounded-md p-6 text-white border border-slate-800 shadow-md">
-              <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-5">
-                <span className="text-[11px] font-mono text-primary font-bold uppercase tracking-wider">
-                  Recommended Generator
-                </span>
-                <span className="text-xs text-slate-400">
-                  {itemsList.length} items added
+                <span className="px-2 py-0.5 rounded-sm bg-[#E6F4EA] text-[#059669] font-bold text-[10px] sm:text-[11px] uppercase tracking-wider">
+                  STEP 2
                 </span>
               </div>
 
-              {/* Giant Recommendation Display */}
-              <div className="mb-6">
-                <div className="flex items-baseline gap-2">
-                  <span className="font-heading font-black text-4xl sm:text-5xl text-primary tracking-tight">
-                    {recommendedGeneratorKVA ? `${recommendedGeneratorKVA}` : "—"}
-                  </span>
-                  <span className="text-xl font-bold text-white">kVA</span>
-                  <span className="text-xs text-slate-400 font-mono ml-auto">
-                    Standby / Prime
-                  </span>
-                </div>
-                <div className="text-xs text-slate-400 mt-1">
-                  Includes 20% inrush starting buffer &bull; 50 Hz, 3-Phase
-                </div>
-              </div>
+              {/* Subtitle matching reference */}
+              <p className="text-xs text-slate-500 mb-2.5">
+                Tap an equipment item and set its quantity. The required generator capacity calculates automatically.
+              </p>
 
-              {/* 3 Metrics Strip */}
-              <div className="grid grid-cols-3 gap-2 py-3 px-3.5 rounded-lg bg-white/5 border border-white/10 text-center mb-6">
+              {/* Real-Time Generator Capacity Banner */}
+              <div className="p-2.5 sm:p-3 rounded-md bg-gradient-to-r from-[#141518] to-[#1e222d] text-white flex flex-col md:flex-row md:items-center justify-between gap-2.5 shadow-md">
                 <div>
-                  <div className="text-[10px] font-mono text-slate-400 uppercase">
-                    Connected
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5 mb-0.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Recommended Generator Size</span>
                   </div>
-                  <div className="text-sm font-bold text-white font-mono mt-0.5">
-                    {totalConnectedKW.toFixed(2)} <span className="text-[10px] text-slate-400">kW</span>
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="font-heading font-black text-2xl sm:text-3xl text-primary tracking-tight">
+                      {recommendedGeneratorKVA || 0}
+                    </span>
+                    <span className="text-base font-bold text-white">kVA</span>
+                    <span className="text-[10px] sm:text-[11px] text-slate-400 font-mono ml-1.5">
+                      (20% inrush buffer included)
+                    </span>
                   </div>
-                </div>
-                <div className="border-x border-white/10">
-                  <div className="text-[10px] font-mono text-slate-400 uppercase">
-                    Running Load
-                  </div>
-                  <div className="text-sm font-bold text-white font-mono mt-0.5">
-                    {runningKVA.toFixed(2)} <span className="text-[10px] text-slate-400">kVA</span>
-                  </div>
-                </div>
-                <div>
-                  <div className="text-[10px] font-mono text-slate-400 uppercase">
-                    Fuel Burn
-                  </div>
-                  <div className="text-sm font-bold text-primary font-mono mt-0.5">
-                    ~{estimatedFuelLPH} <span className="text-[10px] text-slate-400">L/h</span>
+                  <div className="flex flex-wrap items-center gap-2 text-[10.5px] sm:text-[11.5px] text-slate-300 mt-0.5 font-medium">
+                    <span>Connected: <strong className="text-white">{totalConnectedKW.toFixed(1)} kW</strong></span>
+                    <span>•</span>
+                    <span>Running: <strong className="text-white">{runningKVA.toFixed(1)} kVA</strong></span>
+                    <span>•</span>
+                    <span>Fuel: <strong className="text-primary">~{estimatedFuelLPH} L/h</strong></span>
                   </div>
                 </div>
-              </div>
 
-              {/* Action Buttons */}
-              <div className="space-y-2.5">
-                <button
-                  type="button"
-                  onClick={handleDownloadPDF}
-                  disabled={itemsList.length === 0 || isGeneratingPDF}
-                  className="w-full framer-btn-primary rounded-sm justify-between cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed text-xs"
-                >
-                  <span className="flex items-center gap-2">
-                    <Download className="w-3.5 h-3.5 text-white" />
-                    <span>{isGeneratingPDF ? "Generating PDF..." : "Download Calculation PDF"}</span>
-                  </span>
-                  <div className="btn-arrow-box">
-                    <ArrowRight className="w-3 h-3 text-white" />
-                  </div>
-                </button>
-
-                <div className="grid grid-cols-2 gap-2">
+                {/* Quick Actions */}
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                   <button
                     type="button"
                     onClick={() => setIsQuoteOpen(true)}
                     disabled={itemsList.length === 0}
-                    className="w-full framer-btn-dark rounded-sm justify-center text-xs cursor-pointer disabled:opacity-40"
+                    className="framer-btn-primary py-1.5 px-3 text-xs font-bold rounded-sm cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed justify-center shadow-md shadow-primary/25"
                   >
                     <span>Request Quote</span>
+                    <div className="btn-arrow-box">
+                      <ArrowRight className="w-3 h-3 text-white" />
+                    </div>
                   </button>
 
                   <button
                     type="button"
-                    onClick={handleCopySummary}
-                    disabled={itemsList.length === 0}
-                    className="w-full px-3 py-2 rounded-sm bg-white/10 hover:bg-white/15 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors cursor-pointer disabled:opacity-40"
+                    onClick={handleDownloadPDF}
+                    disabled={itemsList.length === 0 || isGeneratingPDF}
+                    className="py-1.5 px-2.5 rounded-sm bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer disabled:opacity-40"
                   >
-                    {isCopied ? (
-                      <>
-                        <Check className="w-3 h-3 text-emerald-400" />
-                        <span className="text-emerald-300">Copied</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3 h-3 text-slate-300" />
-                        <span>Copy Summary</span>
-                      </>
-                    )}
+                    <Download className="w-3.5 h-3.5 text-primary" />
+                    <span>{isGeneratingPDF ? "Generating..." : "PDF"}</span>
                   </button>
+
+                  {currentProject.quickPreset && (
+                    <button
+                      type="button"
+                      onClick={handleLoadPreset}
+                      className="py-1.5 px-2.5 rounded-sm bg-white/10 hover:bg-white/20 text-white text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+                      title="1-Click fill typical baseline setup"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                      <span>1-Click Fill</span>
+                    </button>
+                  )}
+
+                  {itemsList.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => setSelectedItems({})}
+                      className="py-1.5 px-2 rounded-sm border border-white/20 hover:bg-red-500/20 text-slate-300 hover:text-red-300 text-xs font-bold transition-colors cursor-pointer"
+                      title="Reset all"
+                    >
+                      <RotateCcw className="w-3.5 h-3.5" />
+                    </button>
+                  )}
                 </div>
               </div>
+            </div>
 
-              {/* Collapsible Tuning */}
-              <div className="mt-4 pt-3 border-t border-white/10">
-                <button
-                  type="button"
-                  onClick={() => setShowTuning(!showTuning)}
-                  className="w-full flex items-center justify-between text-[11px] text-slate-400 hover:text-white transition-colors cursor-pointer"
-                >
-                  <span className="flex items-center gap-1.5 font-mono">
-                    <SlidersHorizontal className="w-3 h-3 text-primary" />
-                    PF: {powerFactor} &bull; Reserve: {Math.round(reserveMargin * 100)}%
-                  </span>
-                  <span className="text-primary underline">
-                    {showTuning ? "Hide" : "Adjust"}
-                  </span>
-                </button>
+            {/* Equipment Category Cards (2-Column Grid on md+, 1-Column on mobile - Compact matching Step 1) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-3 items-start">
+              {currentProject.groups.map((group, groupIdx) => {
+                const theme = CATEGORY_STYLES[groupIdx % CATEGORY_STYLES.length];
+                const sectionNumber = String(groupIdx + 1).padStart(2, "0");
 
-                {showTuning && (
-                  <div className="mt-3 p-3 rounded-md bg-black/40 border border-white/10 space-y-2.5 text-xs">
-                    <div>
-                      <div className="flex justify-between text-slate-300 text-[11px] mb-1">
-                        <span>Power Factor (cos &phi;):</span>
-                        <span className="font-mono text-primary font-bold">{powerFactor}</span>
+                return (
+                  <div
+                    key={group.name}
+                    className="bg-white rounded-md p-3 sm:p-3.5 shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-slate-200/80"
+                  >
+                    {/* Category Header */}
+                    <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+                      <div className="flex items-center gap-2.5">
+                        {/* Soft Rounded Icon Box */}
+                        <div
+                          className={`w-7.5 h-7.5 sm:w-8 sm:h-8 rounded-sm flex items-center justify-center text-sm sm:text-base shrink-0 ${theme.iconBg}`}
+                        >
+                          {group.icon}
+                        </div>
+
+                        <div>
+                          <h3 className="font-heading font-bold text-xs sm:text-sm text-slate-900 leading-tight">
+                            {group.name}
+                          </h3>
+                          <p className="text-[10px] sm:text-[11px] text-slate-400 font-medium mt-0.5">
+                            {group.items.length} equipment options
+                          </p>
+                        </div>
                       </div>
-                      <div className="flex gap-1">
-                        {[0.8, 0.85, 0.9, 1.0].map((pf) => (
-                          <button
-                            key={pf}
-                            type="button"
-                            onClick={() => setPowerFactor(pf)}
-                            className={`flex-1 py-0.5 rounded-sm text-[10px] font-mono font-bold ${
-                              powerFactor === pf
-                                ? "bg-primary text-white"
-                                : "bg-white/10 text-slate-300"
+
+                      {/* Number Badge (e.g. 01, 02, 03) */}
+                      <span
+                        className={`px-1.5 py-0.5 rounded-sm text-[10px] font-bold font-mono ${theme.badgeBg} ${theme.badgeText}`}
+                      >
+                        {sectionNumber}
+                      </span>
+                    </div>
+
+                    {/* Equipment Rows Stack */}
+                    <div className="space-y-1.5">
+                      {group.items.map((item) => {
+                        const key = `${selectedProjectId}|${item.name}`;
+                        const currentQty = selectedItems[key]?.qty || 0;
+                        const isSelected = currentQty > 0;
+
+                        return (
+                          <div
+                            key={item.name}
+                            className={`flex items-center justify-between py-1.5 px-2.5 sm:py-2 sm:px-3 rounded-sm transition-colors ${
+                              isSelected
+                                ? "bg-orange-50/50 border border-primary/20"
+                                : "bg-slate-50/80 hover:bg-slate-100/70"
                             }`}
                           >
-                            {pf}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
+                            {/* Equipment Name on Left */}
+                            <div className="min-w-0 pr-2">
+                              <span className="font-heading font-bold text-xs sm:text-sm text-slate-800 block truncate">
+                                {item.name}
+                              </span>
+                              <span className="text-[10px] sm:text-[11px] text-slate-400 font-mono">
+                                {item.kw >= 1 ? `${item.kw} kW` : `${Math.round(item.kw * 1000)} W`} each
+                              </span>
+                            </div>
 
-                    <div>
-                      <div className="flex justify-between text-slate-300 text-[11px] mb-1">
-                        <span>Inrush Reserve Buffer:</span>
-                        <span className="font-mono text-primary font-bold">
-                          {Math.round(reserveMargin * 100)}%
-                        </span>
-                      </div>
-                      <input
-                        type="range"
-                        min="0.1"
-                        max="0.4"
-                        step="0.05"
-                        value={reserveMargin}
-                        onChange={(e) => setReserveMargin(parseFloat(e.target.value))}
-                        className="w-full accent-primary cursor-pointer"
-                      />
+                            {/* Stepper on Right: [-] 0 [+] */}
+                            <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                              {/* Minus Button */}
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  updateQty(item.name, item.kw, group.name, -1)
+                                }
+                                disabled={currentQty === 0}
+                                className="w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-sm border border-slate-200 bg-white hover:bg-slate-100 disabled:opacity-25 disabled:cursor-not-allowed flex items-center justify-center text-slate-700 cursor-pointer transition-all shadow-2xs active:scale-95"
+                                aria-label={`Decrease ${item.name}`}
+                              >
+                                <Minus className="w-3.5 h-3.5 stroke-[2.5]" />
+                              </button>
+
+                              {/* Direct Quantity Display */}
+                              <span
+                                className={`w-6 sm:w-7 text-center font-heading font-black text-xs sm:text-sm tabular-nums ${
+                                   isSelected ? "text-primary" : "text-slate-800"
+                                }`}
+                              >
+                                {currentQty}
+                              </span>
+
+                              {/* Themed Colored Plus Button */}
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  updateQty(item.name, item.kw, group.name, 1)
+                                }
+                                className={`w-7 h-7 sm:w-7.5 sm:h-7.5 rounded-sm ${theme.btnBg} text-white flex items-center justify-center cursor-pointer transition-all shadow-2xs active:scale-95`}
+                                aria-label={`Increase ${item.name}`}
+                              >
+                                <Plus className="w-3.5 h-3.5 stroke-[2.5]" />
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
-                )}
-              </div>
+                );
+              })}
             </div>
 
-            {/* SELECTED EQUIPMENT DRAWER (CLEAN TABLE) */}
-            <div className="bg-white rounded-lg p-4 border border-slate-200/90 shadow-xs">
-              <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-slate-100">
-                <span className="font-heading font-bold text-xs text-slate-900 uppercase tracking-wider">
-                  Configured Schedule ({itemsList.length})
-                </span>
-                {itemsList.length > 0 && (
-                  <button
-                    type="button"
-                    onClick={() => setSelectedItems({})}
-                    className="text-[11px] text-slate-400 hover:text-red-600 transition-colors cursor-pointer"
-                  >
-                    Clear
-                  </button>
-                )}
-              </div>
-
-              {itemsList.length === 0 ? (
-                <div className="py-6 text-center text-xs text-slate-400">
-                  No loads selected yet. Use Step 2 or load a preset.
-                </div>
-              ) : (
-                <div className="max-h-48 overflow-y-auto space-y-1.5 pr-1 scrollbar-thin">
-                  {itemsList.map((item) => (
-                    <div
-                      key={item.id}
-                      className="flex items-center justify-between text-xs py-1.5 px-2 rounded-sm bg-slate-50 hover:bg-slate-100/80 group"
-                    >
-                      <div className="min-w-0 pr-2">
-                        <span className="font-medium text-slate-900 truncate block">
-                          {item.name}
-                        </span>
-                        <span className="text-[10px] text-slate-400 font-mono">
-                          {item.kw} kW &times; {item.qty}
-                        </span>
-                      </div>
-
-                      <div className="flex items-center gap-2 shrink-0">
-                        <span className="font-mono text-xs font-bold text-slate-800">
-                          {(item.kw * item.qty).toFixed(2)} kW
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => removeItem(item.id)}
-                          className="text-slate-300 hover:text-red-500 opacity-60 group-hover:opacity-100 transition-opacity"
-                        >
-                          <X className="w-3 h-3" />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* MATCHED IN-STOCK PRODUCT CARD (1 CLEAN COMPACT CARD) */}
+            {/* In-Stock Matched Generator Card */}
             {recommendedGeneratorKVA > 0 && matchedGenset && (
-              <div className="bg-white rounded-lg p-4 border border-slate-200/90 shadow-xs">
-                <div className="flex items-center justify-between mb-2.5">
-                  <span className="text-[11px] font-mono font-bold text-primary uppercase tracking-wider">
-                    In-Stock Matched Unit
+              <div className="bg-white rounded-md p-3 sm:p-3.5 shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-slate-200/80">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-[11px] sm:text-xs font-bold text-primary uppercase tracking-wider">
+                    Matched In-Stock Generator Unit
                   </span>
                   <Link
                     href={`/products/${matchedGenset.slug}`}
-                    className="text-[11px] font-semibold text-slate-500 hover:text-primary"
+                    className="text-[11px] sm:text-xs font-bold text-slate-500 hover:text-primary transition-colors"
                   >
-                    Full specs &rarr;
+                    View Specs &rarr;
                   </Link>
                 </div>
 
                 <Link
                   href={`/products/${matchedGenset.slug}`}
-                  className="flex items-center gap-3 p-2.5 rounded-md bg-slate-50 hover:bg-primary-light/30 border border-slate-200/80 transition-all group block"
+                  className="flex items-center gap-3 p-2.5 sm:p-3 rounded-md bg-slate-50 hover:bg-orange-50/50 border border-slate-200 transition-all group block"
                 >
                   <img
                     src={matchedGenset.image}
                     alt={matchedGenset.name}
-                    className="w-12 h-12 object-contain bg-white rounded-sm p-1 border border-slate-200 shrink-0"
+                    className="w-11 h-11 sm:w-12 sm:h-12 object-contain bg-white rounded-sm p-1 border border-slate-200 shrink-0"
                   />
                   <div className="flex-1 min-w-0">
-                    <div className="text-xs font-bold text-slate-900 group-hover:text-primary truncate">
+                    <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-primary truncate">
                       {matchedGenset.name}
                     </div>
-                    <div className="text-[11px] text-slate-500 font-mono">
+                    <div className="text-[10px] sm:text-[11px] text-slate-500 font-mono mt-0.5">
                       {matchedGenset.standbyKva} kVA &bull; {matchedGenset.type}
                     </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <span className="font-mono text-xs font-bold text-primary block">
+                    <span className="font-mono text-xs sm:text-sm font-bold text-primary block">
                       {matchedGenset.priceValueBDT > 0
                         ? `৳${matchedGenset.priceValueBDT.toLocaleString("en-IN")}`
                         : matchedGenset.priceText}
@@ -890,115 +595,45 @@ export default function LoadCalculatorPage() {
                 </Link>
               </div>
             )}
-
           </div>
+        )}
 
-        </div>
+        {/* =========================================================
+             MOBILE STICKY BOTTOM RESULT BAR (< 1024px)
+             ========================================================= */}
+        {currentStep === "equipment" && (
+          <div className="fixed bottom-0 left-0 right-0 z-30 p-3 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-2xl flex items-center justify-between gap-3 px-4 max-w-[1020px] mx-auto">
+            <div>
+              <span className="text-[10px] font-bold text-slate-500 uppercase block">
+                Recommended Generator:
+              </span>
+              <div className="flex items-baseline gap-1">
+                <span className="font-heading font-black text-2xl text-primary">
+                  {recommendedGeneratorKVA || 0}
+                </span>
+                <span className="font-bold text-xs text-slate-900">kVA</span>
+                <span className="text-[11px] text-slate-400 font-mono ml-1.5">
+                  ({itemsList.length} items)
+                </span>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setIsQuoteOpen(true)}
+              disabled={itemsList.length === 0}
+              className="framer-btn-primary py-2.5 px-4 text-xs rounded-sm font-bold cursor-pointer disabled:opacity-40"
+            >
+              <span>Get Quote</span>
+              <div className="btn-arrow-box">
+                <ArrowRight className="w-3.5 h-3.5 text-white" />
+              </div>
+            </button>
+          </div>
+        )}
       </main>
 
       <Footer />
-
-      {/* Project Selection Modal Dialog */}
-      <AnimatePresence>
-        {isProjectModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsProjectModalOpen(false)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 10 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 10 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-white rounded-xl max-w-3xl w-full p-6 sm:p-7 shadow-2xl border border-slate-200 relative overflow-hidden max-h-[85vh] flex flex-col"
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setIsProjectModalOpen(false)}
-                className="absolute top-5 right-5 w-8 h-8 rounded-sm bg-slate-100 flex items-center justify-center text-slate-500 hover:text-black hover:bg-slate-200 transition-colors cursor-pointer"
-                aria-label="Close"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
-              {/* Modal Header */}
-              <div className="mb-4 pr-10">
-                <div className="inline-flex items-center gap-2 text-[11px] font-mono text-primary font-bold uppercase tracking-wider mb-1">
-                  <span>// STEP 1: FACILITY PROFILE //</span>
-                </div>
-                <h3 className="font-heading font-bold text-xl sm:text-2xl text-slate-950">
-                  Select What Type of Project
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                  Choose your facility category to load verified equipment ratings and electrical schedules.
-                </p>
-              </div>
-
-              {/* Search Box */}
-              <div className="relative mb-4">
-                <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                <input
-                  type="text"
-                  value={projectSearchQuery}
-                  onChange={(e) => setProjectSearchQuery(e.target.value)}
-                  placeholder="Search project types (e.g. Factory, Garments, Hospital, Residential)..."
-                  className="w-full bg-slate-50 border border-slate-200 rounded-sm pl-9 pr-3 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-primary"
-                />
-              </div>
-
-              {/* 14 Project Grid */}
-              <div className="overflow-y-auto flex-1 pr-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 scrollbar-thin">
-                {filteredProjects.map((proj) => {
-                  const isSelected = selectedProjectId === proj.id;
-                  return (
-                    <button
-                      key={proj.id}
-                      type="button"
-                      onClick={() => {
-                        setSelectedProjectId(proj.id);
-                        setActiveCategory("All");
-                        setSelectedItems({});
-                        setIsProjectModalOpen(false);
-                      }}
-                      className={`p-3.5 rounded-lg border text-left transition-all cursor-pointer flex items-start gap-3 relative ${
-                        isSelected
-                          ? "bg-primary-light/60 border-primary ring-1 ring-primary shadow-xs"
-                          : "bg-slate-50/70 border-slate-200/90 hover:bg-white hover:border-slate-300 hover:shadow-xs"
-                      }`}
-                    >
-                      <span className="text-2xl shrink-0 mt-0.5">{proj.icon}</span>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between gap-1">
-                          <strong className={`block text-xs font-bold ${isSelected ? "text-primary" : "text-slate-900"}`}>
-                            {proj.name}
-                          </strong>
-                          {isSelected && (
-                            <span className="w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center shrink-0 text-[10px]">
-                              ✓
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-[11px] text-slate-500 line-clamp-2 mt-1 leading-snug">
-                          {proj.description}
-                        </p>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Footer Note */}
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
-                <span>Selecting a new project resets the equipment schedule.</span>
-                <span className="font-mono">{filteredProjects.length} options</span>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Quote Modal with Pre-filled Load */}
       {isQuoteOpen && (

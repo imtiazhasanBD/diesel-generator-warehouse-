@@ -512,6 +512,18 @@ export const PROJECT_TYPES: ProjectType[] = [
     name: "Educational Institute",
     icon: "🎓",
     description: "Universities, technical institutes, colleges, and training complexes",
+    quickPreset: {
+      label: "Typical College / Institute Building",
+      items: [
+        { name: "LED / Tube Light", qty: 40 },
+        { name: "Ceiling Fan", qty: 25 },
+        { name: "2 ton AC", qty: 6 },
+        { name: "Desktop Computer", qty: 30 },
+        { name: "Projector", qty: 4 },
+        { name: "2 HP Water Pump", qty: 2 },
+        { name: "8-person Lift", qty: 1 }
+      ]
+    },
     groups: [
       {
         name: "Classroom & General Lighting",
@@ -568,6 +580,19 @@ export const PROJECT_TYPES: ProjectType[] = [
     name: "Hotel / Hospitality",
     icon: "🏨",
     description: "Hotels, resorts, guest houses, and banquet facilities",
+    quickPreset: {
+      label: "Typical 30-Room Boutique Hotel",
+      items: [
+        { name: "1.5 ton Room AC", qty: 25 },
+        { name: "Room Refrigerator", qty: 25 },
+        { name: "Television", qty: 25 },
+        { name: "Commercial Oven", qty: 1 },
+        { name: "Commercial Refrigerator", qty: 2 },
+        { name: "8-person Lift", qty: 2 },
+        { name: "2 HP Water Pump", qty: 2 },
+        { name: "Fire Pump", qty: 1 }
+      ]
+    },
     groups: [
       {
         name: "Guest Room Loads",
@@ -618,6 +643,18 @@ export const PROJECT_TYPES: ProjectType[] = [
     name: "Shopping Mall",
     icon: "🛍️",
     description: "Multi-level shopping centers, food courts, and anchor retail complexes",
+    quickPreset: {
+      label: "Typical Shopping Complex",
+      items: [
+        { name: "LED / Panel Light", qty: 80 },
+        { name: "Display Lighting", qty: 30 },
+        { name: "Central Chiller", qty: 2 },
+        { name: "AHU", qty: 4 },
+        { name: "10-person Lift", qty: 2 },
+        { name: "Fire Pump", qty: 1 },
+        { name: "Water Pump", qty: 2 }
+      ]
+    },
     groups: [
       {
         name: "Shop & Common Area Lighting",
@@ -664,6 +701,18 @@ export const PROJECT_TYPES: ProjectType[] = [
     name: "Office Building",
     icon: "🏬",
     description: "IT hubs, corporate offices, finance facilities, and co-working spaces",
+    quickPreset: {
+      label: "Corporate Office Floor (50 Desks)",
+      items: [
+        { name: "LED / Panel Light", qty: 50 },
+        { name: "Desktop Computer", qty: 40 },
+        { name: "Laptop", qty: 15 },
+        { name: "2 ton AC", qty: 8 },
+        { name: "Server Rack", qty: 1 },
+        { name: "8-person Lift", qty: 2 },
+        { name: "Fire Pump", qty: 1 }
+      ]
+    },
     groups: [
       {
         name: "Lighting & Workstations",
@@ -712,6 +761,18 @@ export const PROJECT_TYPES: ProjectType[] = [
     name: "Construction Site",
     icon: "🚧",
     description: "Civil infrastructure, bridge & highway sites, building construction",
+    quickPreset: {
+      label: "Active Civil Construction Site",
+      items: [
+        { name: "Tower Crane", qty: 1 },
+        { name: "Concrete Mixer", qty: 2 },
+        { name: "Welding Machine", qty: 2 },
+        { name: "Air Compressor", qty: 1 },
+        { name: "2 HP Water Pump", qty: 2 },
+        { name: "Flood Light", qty: 8 },
+        { name: "Site Office AC", qty: 2 }
+      ]
+    },
     groups: [
       {
         name: "Construction Machinery",
@@ -751,6 +812,18 @@ export const PROJECT_TYPES: ProjectType[] = [
     name: "Restaurant / Cloud Kitchen",
     icon: "🍽️",
     description: "Commercial dining, central kitchens, bakeries, and fast-food chains",
+    quickPreset: {
+      label: "Typical 80-Seat Restaurant",
+      items: [
+        { name: "Commercial Electric Oven", qty: 1 },
+        { name: "Upright Commercial Refrigerator", qty: 2 },
+        { name: "Display Chiller", qty: 1 },
+        { name: "Kitchen Exhaust Hood Fan", qty: 2 },
+        { name: "3 ton AC", qty: 3 },
+        { name: "Commercial Microwave", qty: 2 },
+        { name: "Dishwashing Machine", qty: 1 }
+      ]
+    },
     groups: [
       {
         name: "Kitchen & Cooking Equipment",
@@ -840,6 +913,17 @@ export const PROJECT_TYPES: ProjectType[] = [
     name: "Retail Shop / Showroom",
     icon: "🏪",
     description: "Boutiques, brand outlets, electronic showrooms, and retail stores",
+    quickPreset: {
+      label: "Standard Retail Brand Outlet",
+      items: [
+        { name: "LED Panel Light", qty: 20 },
+        { name: "Track / Display Spot Light", qty: 15 },
+        { name: "2 ton AC", qty: 2 },
+        { name: "POS Terminal", qty: 2 },
+        { name: "Signboard Lighting", qty: 1 },
+        { name: "CCTV Camera", qty: 4 }
+      ]
+    },
     groups: [
       {
         name: "Lighting & Display",
@@ -886,6 +970,17 @@ export const PROJECT_TYPES: ProjectType[] = [
     name: "Super Shop / Grocery Mart",
     icon: "🛒",
     description: "Supermarkets, hypermarkets, departmental stores, and cold-chain groceries",
+    quickPreset: {
+      label: "Medium Supermarket / Mart",
+      items: [
+        { name: "Multi-deck Display Chiller", qty: 3 },
+        { name: "Upright Commercial Refrigerator", qty: 2 },
+        { name: "Chest Freezer", qty: 2 },
+        { name: "3 ton AC", qty: 4 },
+        { name: "LED Panel Light", qty: 35 },
+        { name: "POS Checkout Counter", qty: 3 }
+      ]
+    },
     groups: [
       {
         name: "Refrigeration & Cold Storage",
