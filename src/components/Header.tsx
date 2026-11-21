@@ -72,17 +72,18 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
                   e.preventDefault();
                   document.getElementById("load-calculator")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="hover:text-primary transition-colors flex items-center gap-1.5 text-slate-950 cursor-pointer"
+                className="text-primary font-bold hover:text-primary-hover transition-colors flex items-center gap-1.5 cursor-pointer"
               >
-                <span>Calculator</span>
+                <span>Load Calculator</span>
+                <span className="w-1.5 h-1.5 rounded-xs bg-primary" />
               </a>
             ) : (
               <Link
                 href="/#load-calculator"
-                className={`hover:text-primary transition-colors flex items-center gap-1.5 ${activePath === "calculator" ? "text-primary font-bold" : "text-slate-950"}`}
+                className="text-primary font-bold hover:text-primary-hover transition-colors flex items-center gap-1.5 cursor-pointer"
               >
-                <span>Calculator</span>
-                {activePath === "calculator" && <span className="w-1.5 h-1.5 rounded-sm bg-primary" />}
+                <span>Load Calculator</span>
+                <span className="w-1.5 h-1.5 rounded-xs bg-primary" />
               </Link>
             )}
           </nav>
@@ -161,13 +162,19 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
                   setIsMobileMenuOpen(false);
                   document.getElementById("load-calculator")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="block py-1 text-slate-700 hover:text-primary cursor-pointer"
+                className="flex items-center gap-2 py-1 text-primary font-bold hover:text-primary-hover cursor-pointer"
               >
-                Load Calculator
+                <span>Load Calculator</span>
+                <span className="w-1.5 h-1.5 rounded-xs bg-primary" />
               </a>
             ) : (
-              <Link href="/#load-calculator" onClick={() => setIsMobileMenuOpen(false)} className={`block py-1 ${activePath === "calculator" ? "text-primary font-bold" : "text-slate-700"}`}>
-                Load Calculator
+              <Link
+                href="/#load-calculator"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center gap-2 py-1 text-primary font-bold hover:text-primary-hover cursor-pointer"
+              >
+                <span>Load Calculator</span>
+                <span className="w-1.5 h-1.5 rounded-xs bg-primary" />
               </Link>
             )}
             <div className="pt-3">
