@@ -65,13 +65,26 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
               <span>Blog</span>
               {activePath === "blog" && <span className="w-1.5 h-1.5 rounded-sm bg-primary" />}
             </Link>
-            <Link
-              href="/calculator"
-              className={`hover:text-primary transition-colors flex items-center gap-1.5 ${activePath === "calculator" ? "text-primary font-bold" : "text-slate-950"}`}
-            >
-              <span>Calculator</span>
-              {activePath === "calculator" && <span className="w-1.5 h-1.5 rounded-sm bg-primary" />}
-            </Link>
+            {activePath === "home" ? (
+              <a
+                href="#load-calculator"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("load-calculator")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="hover:text-primary transition-colors flex items-center gap-1.5 text-slate-950 cursor-pointer"
+              >
+                <span>Calculator</span>
+              </a>
+            ) : (
+              <Link
+                href="/#load-calculator"
+                className={`hover:text-primary transition-colors flex items-center gap-1.5 ${activePath === "calculator" ? "text-primary font-bold" : "text-slate-950"}`}
+              >
+                <span>Calculator</span>
+                {activePath === "calculator" && <span className="w-1.5 h-1.5 rounded-sm bg-primary" />}
+              </Link>
+            )}
           </nav>
 
           {/* Right Action Buttons */}
@@ -140,9 +153,23 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className={`block py-1 ${activePath === "blog" ? "text-primary font-bold" : "text-slate-700"}`}>
               Blog
             </Link>
-            <Link href="/calculator" onClick={() => setIsMobileMenuOpen(false)} className={`block py-1 ${activePath === "calculator" ? "text-primary font-bold" : "text-slate-700"}`}>
-              Load Calculator
-            </Link>
+            {activePath === "home" ? (
+              <a
+                href="#load-calculator"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsMobileMenuOpen(false);
+                  document.getElementById("load-calculator")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="block py-1 text-slate-700 hover:text-primary cursor-pointer"
+              >
+                Load Calculator
+              </a>
+            ) : (
+              <Link href="/#load-calculator" onClick={() => setIsMobileMenuOpen(false)} className={`block py-1 ${activePath === "calculator" ? "text-primary font-bold" : "text-slate-700"}`}>
+                Load Calculator
+              </Link>
+            )}
             <div className="pt-3">
               <button
                 onClick={() => {

@@ -552,7 +552,7 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
       : STANDARD_RATINGS.find((r) => r >= neededKva) ?? "2000+";
 
   return (
-    <section className="pb-12 sm:pb-16 pt-4">
+    <section id="load-calculator" className="pb-12 sm:pb-16 pt-4 scroll-mt-24">
       <div className="px-4 sm:px-6">
         {/* Section Eyebrow & Title matching the site's typography & primary color */}
         <div className="mb-4">

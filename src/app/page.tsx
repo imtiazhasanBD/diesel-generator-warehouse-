@@ -437,14 +437,18 @@ export default function Home() {
                     <ArrowUpRight className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
                   </Link>
 
-                  <Link
-                    href="/calculator"
+                  <a
+                    href="#load-calculator"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById("load-calculator")?.scrollIntoView({ behavior: "smooth" });
+                    }}
                     className="inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-lg bg-white hover:bg-slate-50 border border-slate-300 hover:border-primary/50 text-slate-800 hover:text-primary font-heading font-bold text-xs tracking-wider uppercase transition-all shadow-xs group cursor-pointer"
                   >
                     <Calculator className="w-3.5 h-3.5 text-primary shrink-0" />
                     <span>LOAD CALCULATOR</span>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-primary group-hover:translate-x-0.5 transition-all shrink-0" />
-                  </Link>
+                  </a>
                 </motion.div>
 
               </div>
@@ -1526,15 +1530,19 @@ export default function Home() {
               </div>
 
               <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-auto">
-                <Link
-                  href="/calculator"
+                <a
+                  href="#load-calculator"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("load-calculator")?.scrollIntoView({ behavior: "smooth" });
+                  }}
                   className="framer-btn-primary cursor-pointer text-xs"
                 >
                   <span>Launch Load Calculator</span>
                   <div className="btn-arrow-box">
                     <ArrowRight className="w-3.5 h-3.5 text-white" />
                   </div>
-                </Link>
+                </a>
                 <button
                   onClick={() => setIsQuoteModalOpen(true)}
                   className="framer-btn-dark cursor-pointer text-xs"
@@ -2548,13 +2556,19 @@ export default function Home() {
                   <span className="font-mono text-[11px] text-primary">~{fuelRate} L/hr</span>
                 </div>
                 <div className="pt-1 text-center">
-                  <Link
-                    href="/calculator"
-                    onClick={() => setIsQuoteModalOpen(false)}
-                    className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:underline"
+                  <a
+                    href="#load-calculator"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsQuoteModalOpen(false);
+                      setTimeout(() => {
+                        document.getElementById("load-calculator")?.scrollIntoView({ behavior: "smooth" });
+                      }, 100);
+                    }}
+                    className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:underline cursor-pointer"
                   >
-                    <span>Need itemized appliance calculator? Open Full Load Sizing Engine &rarr;</span>
-                  </Link>
+                    <span>Need itemized appliance calculator? Open Free Load Calculator &rarr;</span>
+                  </a>
                 </div>
               </div>
 
