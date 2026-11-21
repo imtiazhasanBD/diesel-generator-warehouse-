@@ -465,7 +465,7 @@ export default function Home() {
                 {/* Diagonal Cards Row */}
                 <div className="relative z-10 flex items-end gap-3 sm:gap-4 lg:gap-4.5 pr-2 sm:pr-4">
 
-                  {/* Card 1: Engine (Left) — shorter, starts lower, ends higher */}
+                  {/* Card 1: Warehouse Generator (Left) — shorter, starts lower, ends higher */}
                   <motion.div
                     initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -474,7 +474,7 @@ export default function Home() {
                     className="relative shrink-0 mb-6 sm:mb-8 lg:mb-9 cursor-pointer group"
                   >
                     <div
-                      className="rounded-[10px] sm:rounded-[12px] lg:rounded-[14px] overflow-hidden bg-slate-900 border border-white/60"
+                      className="rounded-[10px] sm:rounded-[12px] lg:rounded-[14px] overflow-hidden bg-slate-900 border border-white/60 relative"
                       style={{
                         transform: "skewX(-18.5deg)",
                         transformOrigin: "center center",
@@ -484,12 +484,16 @@ export default function Home() {
                       }}
                     >
                       <img
-                        src="/assets/images/HERO_PICTURE/58545380-86f5-45c1-94be-dbf16e6919bc.png"
-                        alt="Industrial Diesel Generator Canopy"
-                        className="w-full h-full object-cover brightness-[0.95] contrast-[1.05] transition-transform duration-700 group-hover:scale-[1.46]"
+                        src="/assets/images/HERO_PICTURE/HERO_PICTURE/4d94ad03-1ce2-4b85-a487-b20120400a1b.png"
+                        alt="DGW Industrial Generator Wholesale Warehouse"
+                        className="h-full object-cover brightness-[0.95] contrast-[1.05] transition-transform duration-700 group-hover:scale-105"
                         style={{
-                          transform: "skewX(18.5deg) scale(1.38)",
+                          width: "175%",
+                          maxWidth: "none",
+                          marginLeft: "-37.5%",
+                          transform: "skewX(18.5deg)",
                           transformOrigin: "center center",
+                          objectPosition: "34% 50%",
                         }}
                       />
                     </div>
@@ -504,7 +508,7 @@ export default function Home() {
                     className="relative shrink-0 mb-0 z-20 cursor-pointer group"
                   >
                     <div
-                      className="rounded-[11px] sm:rounded-[13px] lg:rounded-[15px] overflow-hidden bg-slate-900 border border-white/80"
+                      className="rounded-[11px] sm:rounded-[13px] lg:rounded-[15px] overflow-hidden bg-slate-900 border border-white/80 relative"
                       style={{
                         transform: "skewX(-18.5deg)",
                         transformOrigin: "center center",
@@ -514,18 +518,22 @@ export default function Home() {
                       }}
                     >
                       <img
-                        src="/assets/images/HERO_PICTURE/DGW%20Generator%20Wholesale%20Loading%20Dock.png"
-                        alt="DGW Generator Wholesale Loading Dock"
-                        className="w-full h-full object-cover brightness-[0.98] contrast-[1.04] transition-transform duration-700 group-hover:scale-[1.46]"
+                        src="/assets/images/HERO_PICTURE/HERO_PICTURE/7ba6d30d-636c-4a2c-b42b-b36c26e95022.png"
+                        alt="DGW Generator Wholesale Distribution & Loading Dock"
+                        className="h-full object-cover brightness-[0.98] contrast-[1.04] transition-transform duration-700 group-hover:scale-105"
                         style={{
-                          transform: "skewX(18.5deg) scale(1.38)",
+                          width: "175%",
+                          maxWidth: "none",
+                          marginLeft: "-37.5%",
+                          transform: "skewX(18.5deg)",
                           transformOrigin: "center center",
+                          objectPosition: "46% 50%",
                         }}
                       />
                     </div>
                   </motion.div>
 
-                  {/* Card 3: Heavy Industrial Power (Right) with Orange/Red L-Accent */}
+                  {/* Card 3: Service Engineer & Maintenance (Right) with Orange/Red L-Accent */}
                   <motion.div
                     initial={{ opacity: 0, y: 44 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -534,7 +542,7 @@ export default function Home() {
                     className="relative shrink-0 mb-4 sm:mb-5 lg:mb-6 cursor-pointer group"
                   >
                     <div
-                      className="rounded-[10px] sm:rounded-[12px] lg:rounded-[14px] overflow-hidden bg-slate-900 border border-white/60"
+                      className="rounded-[10px] sm:rounded-[12px] lg:rounded-[14px] overflow-hidden bg-slate-900 border border-white/60 relative"
                       style={{
                         transform: "skewX(-18.5deg)",
                         transformOrigin: "center center",
@@ -544,12 +552,16 @@ export default function Home() {
                       }}
                     >
                       <img
-                        src="/assets/images/HERO_PICTURE/d97427e3-f0ed-4699-9e06-89e443fa40e0.png"
-                        alt="Industrial Power Installation"
-                        className="w-full h-full object-cover brightness-[0.95] contrast-[1.05] transition-transform duration-700 group-hover:scale-[1.46]"
+                        src="/assets/images/HERO_PICTURE/HERO_PICTURE/598416fa-c485-4adc-ba36-a8360ed18256.png"
+                        alt="DGW Power Systems Engineer Maintenance"
+                        className="h-full object-cover brightness-[0.95] contrast-[1.05] transition-transform duration-700 group-hover:scale-105"
                         style={{
-                          transform: "skewX(18.5deg) scale(1.38)",
+                          width: "175%",
+                          maxWidth: "none",
+                          marginLeft: "-37.5%",
+                          transform: "skewX(18.5deg)",
                           transformOrigin: "center center",
+                          objectPosition: "62% 50%",
                         }}
                       />
                     </div>
