@@ -566,10 +566,12 @@ export default function Home() {
                       />
                     </div>
 
-                    {/* Orange Accent L-Bracket — hugging bottom-right of Card 3 */}
+                    {/* Red Accent L-Bracket — hugging bottom-right corner of Card 3 with zero gap */}
                     <div
-                      className="absolute -right-2.5 sm:-right-3.5 -bottom-1 sm:-bottom-2 pointer-events-none z-30"
+                      className="absolute pointer-events-none z-30"
                       style={{
+                        right: "clamp(12px, 1.3vw, 18px)",
+                        bottom: "clamp(-16px, -1.15vw, -10px)",
                         width: "clamp(90px, 10vw, 140px)",
                         height: "clamp(50px, 5.5vw, 80px)",
                         filter: "drop-shadow(0 10px 18px rgba(224, 5, 1, 0.45))",
@@ -1455,7 +1457,7 @@ export default function Home() {
              SECTION 5.5: BANGLADESH GENERATOR PRICE DIRECTORY
              (RESIDENTIAL / COMMERCIAL / INDUSTRIAL)
              ========================================================= */}
-        <section id="prices" className="py-10 md:py-16 bg-white">
+        <section id="prices" className="py-10 md:py-16 bg-white hidden">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
 
             {/* Clean Section Header (No description, matching site style) */}
