@@ -299,7 +299,7 @@ export default function Home() {
 
       {/* Motion Scroll Progress Indicator Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-primary origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-[3px] bg-primary origin-left z-[51]"
         style={{ scaleX }}
       />
 
@@ -734,7 +734,7 @@ export default function Home() {
                 </div>
 
                 {/* Staggered 4-Portrait Team Collage - Centered on Mobile */}
-                <div className="mt-9 relative w-fit mx-auto lg:mx-0">
+                <div className="mt-9 relative w-fit mx-auto lg:mx-0 isolate">
                   {/* Top-Right Orange Sparkle Rays */}
                   <svg
                     className="absolute -top-6 right-5 w-8 h-6 text-primary pointer-events-none"
@@ -785,7 +785,7 @@ export default function Home() {
                   </div>
 
                   {/* Overlapping 10+ Experts Badge */}
-                  <div className="absolute -bottom-3 right-0 z-40 w-[74px] h-[68px] rounded-[16px] bg-gradient-to-br from-primary to-primary-dark border-[2.5px] border-white shadow-[0_10px_24px_rgba(224,5,1,0.35)] flex flex-col items-center justify-center text-white">
+                  <div className="absolute -bottom-3 right-0 z-20 w-[74px] h-[68px] rounded-[16px] bg-gradient-to-br from-primary to-primary-dark border-[2.5px] border-white shadow-[0_10px_24px_rgba(224,5,1,0.35)] flex flex-col items-center justify-center text-white">
                     <span className="font-heading text-[22px] font-extrabold leading-none tracking-tight">
                       10+
                     </span>
@@ -2527,7 +2527,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
+            className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
@@ -2629,7 +2629,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-start justify-center pt-24 px-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[60] flex items-start justify-center pt-24 px-4 bg-black/60 backdrop-blur-sm"
           >
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}

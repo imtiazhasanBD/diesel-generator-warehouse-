@@ -15,7 +15,7 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
         <div className="flex items-center justify-between h-20">
 
