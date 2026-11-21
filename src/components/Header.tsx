@@ -42,7 +42,10 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             >
               Products
             </Link>
-            <Link href="/#brands" className="hover:text-primary transition-colors">
+            <Link
+              href="/brands"
+              className={`hover:text-primary transition-colors ${activePath === "brands" ? "text-primary font-bold" : ""}`}
+            >
               Brands
             </Link>
             <Link href="/#services" className="hover:text-primary transition-colors">
@@ -141,9 +144,9 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
               Products
             </Link>
             <Link
-              href="/#brands"
+              href="/brands"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-1.5 text-slate-800 hover:text-primary transition-colors"
+              className={`block py-1.5 transition-colors ${activePath === "brands" ? "text-primary font-bold" : "text-slate-800"}`}
             >
               Brands
             </Link>

@@ -1342,7 +1342,6 @@ export default function Home() {
         {/* =========================================================
              SECTION 5: WHAT WE SUPPLY / TECHNICAL PRODUCT LINEUP
              ========================================================= */}
-        <div id="brands" className="scroll-mt-24" />
         <section id="products" className=" pt-10 md:pt-20 lg:pt-28 bg-[#FFFFFF]">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
 
