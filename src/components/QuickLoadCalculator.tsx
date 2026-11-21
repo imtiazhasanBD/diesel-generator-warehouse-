@@ -586,7 +586,7 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
                   className={`relative flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-1 sm:px-3 rounded-sm font-heading font-bold text-xs sm:text-[13px] tracking-tight transition-all duration-200 cursor-pointer overflow-hidden ${
                     isActive
                       ? "bg-primary text-white shadow-xs -translate-y-0.5"
-                      : "bg-[#1E222B] text-slate-200 hover:bg-[#282D39] hover:text-white border border-slate-700/60"
+                      : "bg-black text-slate-200 hover:bg-neutral-900 hover:text-white border border-neutral-800"
                   }`}
                   aria-pressed={isActive}
                 >
@@ -665,9 +665,9 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
             })}
           </div>
 
-          {/* Right Column: Soft Charcoal Carbon Result Panel with Angled Primary Wedge */}
+          {/* Right Column: Deep Black Result Panel with Angled Primary Wedge */}
           <div
-            className="relative overflow-hidden text-white p-5 sm:p-6 lg:p-7 flex flex-col justify-center bg-gradient-to-b from-[#222530] to-[#181B23] border-t md:border-t-0 md:border-l border-slate-700/30 min-h-[190px] cursor-pointer group"
+            className="relative overflow-hidden text-white p-5 sm:p-6 lg:p-7 flex flex-col justify-center bg-black border-t md:border-t-0 md:border-l border-neutral-900 min-h-[190px] cursor-pointer group"
             onClick={() => {
               if (onOpenQuote) {
                 onOpenQuote(Math.round(runningKw) || 15, recommendedKva);
@@ -682,7 +682,7 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
             />
 
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase text-slate-300 mb-1.5">
+              <div className="inline-flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase text-neutral-400 mb-1.5">
                 <span className="w-2 h-2 rounded-xs bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
                 <span>Recommended Generator</span>
               </div>
@@ -700,10 +700,10 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
                 </span>
               </div>
 
-              <div className="mt-2 text-xs text-slate-300 font-medium flex items-center gap-1.5">
+              <div className="mt-2 text-xs text-neutral-400 font-medium flex items-center gap-1.5">
                 <span>Total Running Load:</span>
                 <span className="text-white font-bold">{runningKw.toFixed(1)} kW</span>
-                <span className="text-slate-500">•</span>
+                <span className="text-neutral-600">•</span>
                 <span className="text-primary font-bold">20% Inrush Reserve</span>
               </div>
 

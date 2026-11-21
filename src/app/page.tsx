@@ -484,9 +484,9 @@ export default function Home() {
                       }}
                     >
                       <img
-                        src="/assets/images/gen-alternator-shaft.jpg"
-                        alt="Industrial Diesel Engine"
-                        className="w-full h-full object-cover brightness-[0.88] contrast-[1.1] transition-transform duration-700 group-hover:scale-[1.46]"
+                        src="/assets/images/HERO_PICTURE/58545380-86f5-45c1-94be-dbf16e6919bc.png"
+                        alt="Industrial Diesel Generator Canopy"
+                        className="w-full h-full object-cover brightness-[0.95] contrast-[1.05] transition-transform duration-700 group-hover:scale-[1.46]"
                         style={{
                           transform: "skewX(18.5deg) scale(1.38)",
                           transformOrigin: "center center",
@@ -495,7 +495,7 @@ export default function Home() {
                     </div>
                   </motion.div>
 
-                  {/* Card 2: Yellow Generator (Center) — tallest and widest, reaches highest and lowest */}
+                  {/* Card 2: Wholesale Loading Dock (Center) — tallest and widest, reaches highest and lowest */}
                   <motion.div
                     initial={{ opacity: 0, y: 36 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -514,8 +514,8 @@ export default function Home() {
                       }}
                     >
                       <img
-                        src="/assets/images/yellow-silent.jpg"
-                        alt="Industrial Diesel Generator Canopy"
+                        src="/assets/images/HERO_PICTURE/DGW%20Generator%20Wholesale%20Loading%20Dock.png"
+                        alt="DGW Generator Wholesale Loading Dock"
                         className="w-full h-full object-cover brightness-[0.98] contrast-[1.04] transition-transform duration-700 group-hover:scale-[1.46]"
                         style={{
                           transform: "skewX(18.5deg) scale(1.38)",
@@ -525,7 +525,7 @@ export default function Home() {
                     </div>
                   </motion.div>
 
-                  {/* Card 3: Engineer (Right) with Orange L-Accent */}
+                  {/* Card 3: Heavy Industrial Power (Right) with Orange/Red L-Accent */}
                   <motion.div
                     initial={{ opacity: 0, y: 44 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -544,9 +544,9 @@ export default function Home() {
                       }}
                     >
                       <img
-                        src="/assets/images/engineer-hero.jpg"
-                        alt="Power Systems Engineer"
-                        className="w-full h-full object-cover brightness-[0.88] contrast-[1.1] transition-transform duration-700 group-hover:scale-[1.46]"
+                        src="/assets/images/HERO_PICTURE/d97427e3-f0ed-4699-9e06-89e443fa40e0.png"
+                        alt="Industrial Power Installation"
+                        className="w-full h-full object-cover brightness-[0.95] contrast-[1.05] transition-transform duration-700 group-hover:scale-[1.46]"
                         style={{
                           transform: "skewX(18.5deg) scale(1.38)",
                           transformOrigin: "center center",
