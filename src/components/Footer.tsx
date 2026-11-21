@@ -20,19 +20,19 @@ export default function Footer() {
       id="contact"
       className="relative bg-[#111113] text-white pt-24 lg:pt-32 pb-20 lg:pb-28 overflow-hidden"
     >
-      {/* Ambient Diagonal Warm Orange Glows (Top-Right & Bottom-Left) */}
+      {/* Ambient Diagonal Red Glows (Top-Right & Bottom-Left) */}
       <div
         className="absolute -top-24 -right-24 w-[460px] h-[460px] sm:w-[620px] sm:h-[620px] rounded-full pointer-events-none select-none z-0 blur-[100px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(224, 67, 20, 0.56) 0%, rgba(160, 36, 7, 0.24) 45%, transparent 72%)",
+            "radial-gradient(circle, rgba(224, 5, 1, 0.45) 0%, rgba(160, 2, 1, 0.20) 45%, transparent 72%)",
         }}
       />
       <div
         className="absolute -bottom-32 -left-24 w-[460px] h-[460px] sm:w-[620px] sm:h-[620px] rounded-full pointer-events-none select-none z-0 blur-[105px]"
         style={{
           background:
-            "radial-gradient(circle, rgba(224, 67, 20, 0.50) 0%, rgba(155, 34, 6, 0.22) 45%, transparent 72%)",
+            "radial-gradient(circle, rgba(224, 5, 1, 0.40) 0%, rgba(155, 2, 1, 0.18) 45%, transparent 72%)",
         }}
       />
 

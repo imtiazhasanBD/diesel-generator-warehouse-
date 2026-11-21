@@ -655,7 +655,7 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
                       }
                       className="w-full h-[6.5px] rounded-full appearance-none cursor-pointer outline-none bg-slate-200 accent-primary"
                       style={{
-                        background: `linear-gradient(to right, #E04314 0%, #E04314 ${pct}%, #E2E8F0 ${pct}%, #E2E8F0 100%)`,
+                        background: `linear-gradient(to right, #E00501 0%, #E00501 ${pct}%, #E2E8F0 ${pct}%, #E2E8F0 100%)`,
                       }}
                     />
                   </div>

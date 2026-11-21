@@ -63,7 +63,7 @@ export default function BlogDetailClient({
           className="absolute -top-24 -right-24 w-[480px] h-[480px] rounded-full pointer-events-none select-none z-0 blur-[110px]"
           style={{
             background:
-              "radial-gradient(circle, rgba(224, 67, 20, 0.40) 0%, rgba(160, 36, 7, 0.12) 50%, transparent 75%)",
+              "radial-gradient(circle, rgba(224, 5, 1, 0.35) 0%, rgba(160, 2, 1, 0.12) 50%, transparent 75%)",
           }}
         />
 

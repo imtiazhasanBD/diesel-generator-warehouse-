@@ -339,7 +339,7 @@ export default function Home() {
                   transition={{ duration: 0.5, ease: "easeOut" }}
                   className="inline-flex items-center gap-3"
                 >
-                  <span className="w-8 h-[3px] bg-[#E04314] rounded-full inline-block" />
+                  <span className="w-8 h-[3px] bg-[#E00501] rounded-full inline-block" />
                   <span className="font-mono text-xs sm:text-[13px] font-bold text-slate-700 tracking-[0.18em] uppercase">
                     DGW / B2B GENERATOR WHOLESALER
                   </span>
@@ -389,7 +389,7 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.32, ease: "easeOut" }}
                     whileHover={{ y: -2 }}
-                    className="bg-[#E04314] rounded-lg py-2.5 px-3.5 sm:py-3 sm:px-4 text-white shadow-sm relative overflow-hidden group hover:brightness-105 transition-all"
+                    className="bg-[#E00501] rounded-lg py-2.5 px-3.5 sm:py-3 sm:px-4 text-white shadow-sm relative overflow-hidden group hover:brightness-105 transition-all"
                   >
                     <span className="text-white/80 font-mono text-[11px] font-bold block mb-0.5">
                       01
@@ -408,7 +408,7 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4, ease: "easeOut" }}
                     whileHover={{ y: -2 }}
-                    className="bg-[#E04314] rounded-lg py-2.5 px-3.5 sm:py-3 sm:px-4 text-white shadow-sm relative overflow-hidden group hover:brightness-105 transition-all"
+                    className="bg-[#E00501] rounded-lg py-2.5 px-3.5 sm:py-3 sm:px-4 text-white shadow-sm relative overflow-hidden group hover:brightness-105 transition-all"
                   >
                     <span className="text-white/80 font-mono text-[11px] font-bold block mb-0.5">
                       02
@@ -560,13 +560,13 @@ export default function Home() {
                       style={{
                         width: "clamp(90px, 10vw, 140px)",
                         height: "clamp(50px, 5.5vw, 80px)",
-                        filter: "drop-shadow(0 10px 18px rgba(224, 67, 20, 0.45))",
+                        filter: "drop-shadow(0 10px 18px rgba(224, 5, 1, 0.45))",
                       }}
                     >
                       <svg viewBox="0 0 120 70" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                         <path
                           d="M96 0L117 0C118.8 0 120 1.4 119.3 3.1L103 49C100.5 57 93.5 63 84.5 63L8 63C5.2 63 3.8 59.5 5.8 57.5L16.5 47C18 45.5 20 44.5 22.2 44.5L79 44.5C82.8 44.5 86 42 87 38.2L96 0Z"
-                          fill="#E04314"
+                          fill="#E00501"
                         />
                       </svg>
                     </div>
@@ -771,7 +771,7 @@ export default function Home() {
                   </div>
 
                   {/* Overlapping 10+ Experts Badge */}
-                  <div className="absolute -bottom-3 right-0 z-40 w-[74px] h-[68px] rounded-[16px] bg-gradient-to-br from-primary to-primary-dark border-[2.5px] border-white shadow-[0_10px_24px_rgba(224,67,20,0.35)] flex flex-col items-center justify-center text-white">
+                  <div className="absolute -bottom-3 right-0 z-40 w-[74px] h-[68px] rounded-[16px] bg-gradient-to-br from-primary to-primary-dark border-[2.5px] border-white shadow-[0_10px_24px_rgba(224,5,1,0.35)] flex flex-col items-center justify-center text-white">
                     <span className="font-heading text-[22px] font-extrabold leading-none tracking-tight">
                       10+
                     </span>
@@ -1057,7 +1057,7 @@ export default function Home() {
               "
               style={{
                 background:
-                  "linear-gradient(180deg, #E04314 0%, #C5360C 28%, #A82B08 56%, #5A1404 80%, rgba(18,18,20,0) 100%)",
+                  "linear-gradient(180deg, #E00501 0%, #C50301 28%, #A00201 56%, #5A0101 80%, rgba(18,18,20,0) 100%)",
               }}
             />
 
@@ -1168,7 +1168,7 @@ export default function Home() {
               <div
                 onClick={() => setActiveHotspot("engine")}
                 className={`p-3 sm:p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${activeHotspot === "engine"
-                  ? "border-primary bg-white/[0.07] ring-1 ring-primary/50 shadow-[0_0_24px_rgba(224,67,20,0.15)]"
+                  ? "border-primary bg-white/[0.07] ring-1 ring-primary/50 shadow-[0_0_24px_rgba(224,5,1,0.15)]"
                   : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
@@ -1204,7 +1204,7 @@ export default function Home() {
               <div
                 onClick={() => setActiveHotspot("canopy")}
                 className={`p-3 sm:p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${activeHotspot === "canopy"
-                  ? "border-primary bg-white/[0.07] ring-1 ring-primary/50 shadow-[0_0_24px_rgba(224,67,20,0.15)]"
+                  ? "border-primary bg-white/[0.07] ring-1 ring-primary/50 shadow-[0_0_24px_rgba(224,5,1,0.15)]"
                   : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
@@ -1240,7 +1240,7 @@ export default function Home() {
               <div
                 onClick={() => setActiveHotspot("controller")}
                 className={`p-3 sm:p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${activeHotspot === "controller"
-                  ? "border-primary bg-white/[0.07] ring-1 ring-primary/50 shadow-[0_0_24px_rgba(224,67,20,0.15)]"
+                  ? "border-primary bg-white/[0.07] ring-1 ring-primary/50 shadow-[0_0_24px_rgba(224,5,1,0.15)]"
                   : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
@@ -1276,7 +1276,7 @@ export default function Home() {
               <div
                 onClick={() => setActiveHotspot("alternator")}
                 className={`p-3 sm:p-5 rounded-md bg-[#16171A]/90 border transition-all duration-300 cursor-pointer flex flex-col justify-between ${activeHotspot === "alternator"
-                  ? "border-primary bg-white/[0.07] ring-1 ring-primary/50 shadow-[0_0_24px_rgba(224,67,20,0.15)]"
+                  ? "border-primary bg-white/[0.07] ring-1 ring-primary/50 shadow-[0_0_24px_rgba(224,5,1,0.15)]"
                   : "border-white/[0.08] hover:border-white/20"
                   }`}
               >
@@ -2086,7 +2086,7 @@ export default function Home() {
               clipPath: "url(#section8-glass-clip)",
               WebkitClipPath: "url(#section8-glass-clip)",
               background:
-                "radial-gradient(circle at 53% 98%, rgba(224, 67, 20, 0.24) 0%, rgba(224, 67, 20, 0.07) 26%, rgba(9, 13, 20, 0.28) 60%, rgba(9, 13, 20, 0.42) 100%)",
+                "radial-gradient(circle at 53% 98%, rgba(224, 5, 1, 0.24) 0%, rgba(224, 5, 1, 0.07) 26%, rgba(9, 13, 20, 0.28) 60%, rgba(9, 13, 20, 0.42) 100%)",
             }}
           />
 
@@ -2099,17 +2099,17 @@ export default function Home() {
           >
             <defs>
               <linearGradient id="section8-orange-line" x1="51%" y1="100%" x2="100%" y2="14%">
-                <stop offset="0%" stopColor="#E04314" stopOpacity="0.95" />
-                <stop offset="45%" stopColor="#C5360C" stopOpacity="0.55" />
-                <stop offset="84%" stopColor="#E04314" stopOpacity="0.95" />
-                <stop offset="100%" stopColor="#E04314" stopOpacity="0.85" />
+                <stop offset="0%" stopColor="#E00501" stopOpacity="0.95" />
+                <stop offset="45%" stopColor="#C50301" stopOpacity="0.55" />
+                <stop offset="84%" stopColor="#E00501" stopOpacity="0.95" />
+                <stop offset="100%" stopColor="#E00501" stopOpacity="0.85" />
               </linearGradient>
             </defs>
-            {/* Outer soft orange glow */}
+            {/* Outer soft red glow */}
             <path
               d="M 742 720 L 1322 112 Q 1339 97 1362 97 L 1440 97"
               fill="none"
-              stroke="#E04314"
+              stroke="#E00501"
               strokeWidth="7"
               strokeOpacity="0.3"
               vectorEffect="non-scaling-stroke"
@@ -2194,7 +2194,7 @@ export default function Home() {
               <div className="mt-7 flex flex-wrap items-center gap-4">
                 <button
                   onClick={() => setIsQuoteModalOpen(true)}
-                  className="inline-flex items-center gap-3 bg-primary hover:bg-primary-hover text-white font-semibold text-[13.5px] px-6 py-3.5 rounded-[8px] shadow-[0_6px_20px_rgba(224,67,20,0.3)] transition-all cursor-pointer group"
+                  className="inline-flex items-center gap-3 bg-primary hover:bg-primary-hover text-white font-semibold text-[13.5px] px-6 py-3.5 rounded-[8px] shadow-[0_6px_20px_rgba(224,5,1,0.3)] transition-all cursor-pointer group"
                 >
                   <span>Schedule site inspection</span>
                   <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />

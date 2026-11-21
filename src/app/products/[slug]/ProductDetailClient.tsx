@@ -432,7 +432,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     {/* Feature 1 */}
                     <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-sm bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+                      <div className="w-9 h-9 rounded-sm bg-red-50 border border-red-100 flex items-center justify-center shrink-0">
                         <Settings className="w-4.5 h-4.5 text-primary" />
                       </div>
                       <div>
@@ -447,7 +447,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
                     {/* Feature 2 */}
                     <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-sm bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+                      <div className="w-9 h-9 rounded-sm bg-red-50 border border-red-100 flex items-center justify-center shrink-0">
                         <VolumeX className="w-4.5 h-4.5 text-primary" />
                       </div>
                       <div>
@@ -462,7 +462,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
                     {/* Feature 3 */}
                     <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-sm bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+                      <div className="w-9 h-9 rounded-sm bg-red-50 border border-red-100 flex items-center justify-center shrink-0">
                         <Zap className="w-4.5 h-4.5 text-primary" />
                       </div>
                       <div>
@@ -477,7 +477,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
 
                     {/* Feature 4 */}
                     <div className="bg-[#FAFBFD] p-4 rounded-md border border-slate-200/80 flex items-start gap-3">
-                      <div className="w-9 h-9 rounded-sm bg-orange-50 border border-orange-100 flex items-center justify-center shrink-0">
+                      <div className="w-9 h-9 rounded-sm bg-red-50 border border-red-100 flex items-center justify-center shrink-0">
                         <ShieldCheck className="w-4.5 h-4.5 text-primary" />
                       </div>
                       <div>
@@ -620,8 +620,8 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           </div>
 
           {/* Right Card: Warranty (5 Cols) */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-primary-light via-orange-50/40 to-primary-light/50 rounded-md border border-primary/20 p-6 flex flex-col justify-between relative overflow-hidden">
-            <div className="absolute -bottom-6 -right-6 text-orange-400/15 pointer-events-none">
+          <div className="lg:col-span-5 bg-gradient-to-br from-primary-light via-red-50/40 to-primary-light/50 rounded-md border border-primary/20 p-6 flex flex-col justify-between relative overflow-hidden">
+            <div className="absolute -bottom-6 -right-6 text-red-400/15 pointer-events-none">
               <Shield className="w-40 h-40 stroke-[1.2]" />
             </div>
 

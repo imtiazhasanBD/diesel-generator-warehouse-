@@ -25,7 +25,7 @@ export function generateCalculationPDF(data: PDFCalculationData) {
 
   // Color Palette
   const navy: [number, number, number] = [14, 16, 20]; // #0E1014
-  const primaryRed: [number, number, number] = [224, 67, 20]; // #E04314
+  const primaryRed: [number, number, number] = [224, 5, 1]; // #E00501
   const darkCard: [number, number, number] = [20, 21, 24]; // #141518
   const pale: [number, number, number] = [248, 250, 252];
   const ink: [number, number, number] = [17, 24, 39];

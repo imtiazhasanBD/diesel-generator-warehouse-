@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #E04314;
-  --color-primary-hover: #C5360C;
-  --color-primary-dark: #A82B08;
-  --color-primary-light: #FFF2EB;
+  --color-primary: #E00501;
+  --color-primary-hover: #C50301;
+  --color-primary-dark: #A00201;
+  --color-primary-light: #FEEDED;
   --color-dark: #0E1014;
   --color-dark-surface: #14161C;
   --color-dark-card: #181A20;
@@ -16,10 +16,10 @@
 
 @layer base {
   :root {
-    --primary: #E04314;
-    --primary-hover: #C5360C;
-    --primary-dark: #A82B08;
-    --primary-light: #FFF2EB;
+    --primary: #E00501;
+    --primary-hover: #C50301;
+    --primary-dark: #A00201;
+    --primary-light: #FEEDED;
     --dark: #0E1014;
     --dark-surface: #14161C;
     --dark-card: #181A20;
@@ -145,13 +145,13 @@
   font-size: 0.875rem;
   line-height: 1.2;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 8px rgba(224, 67, 20, 0.2);
+  box-shadow: 0 2px 8px rgba(224, 5, 1, 0.2);
 }
 
 .framer-btn-primary:hover {
   background-color: var(--primary-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(224, 67, 20, 0.3);
+  box-shadow: 0 6px 16px rgba(224, 5, 1, 0.3);
 }
 
 .framer-btn-primary .btn-arrow-box {

@@ -39,10 +39,10 @@ const CATEGORY_STYLES = [
     btnBg: "bg-[#2563EB] hover:bg-[#1D4ED8]",
   },
   {
-    iconBg: "bg-[#FFF4ED] text-[#EA580C]",
-    badgeBg: "bg-[#FFF4ED]",
-    badgeText: "text-[#EA580C]",
-    btnBg: "bg-[#EA580C] hover:bg-[#C2410C]",
+    iconBg: "bg-[#FEEDED] text-[#E00501]",
+    badgeBg: "bg-[#FEEDED]",
+    badgeText: "text-[#E00501]",
+    btnBg: "bg-[#E00501] hover:bg-[#C50301]",
   },
   {
     iconBg: "bg-[#E6F4EA] text-[#059669]",
@@ -494,7 +494,7 @@ export default function LoadCalculatorPage() {
                             key={item.name}
                             className={`flex items-center justify-between py-1.5 px-2.5 sm:py-2 sm:px-3 rounded-sm transition-colors ${
                               isSelected
-                                ? "bg-orange-50/50 border border-primary/20"
+                                ? "bg-red-50/60 border border-primary/20"
                                 : "bg-slate-50/80 hover:bg-slate-100/70"
                             }`}
                           >
@@ -570,7 +570,7 @@ export default function LoadCalculatorPage() {
 
                 <Link
                   href={`/products/${matchedGenset.slug}`}
-                  className="flex items-center gap-3 p-2.5 sm:p-3 rounded-md bg-slate-50 hover:bg-orange-50/50 border border-slate-200 transition-all group block"
+                  className="flex items-center gap-3 p-2.5 sm:p-3 rounded-md bg-slate-50 hover:bg-red-50/60 border border-slate-200 transition-all group block"
                 >
                   <img
                     src={matchedGenset.image}
