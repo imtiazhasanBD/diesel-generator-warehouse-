@@ -29,41 +29,27 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 text-[13px] font-semibold text-slate-600">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-7 text-[13px] font-semibold text-slate-700 whitespace-nowrap">
             <Link
               href="/"
-              className={`hover:text-primary transition-colors ${activePath === "home" ? "text-primary font-bold" : "text-slate-950"}`}
+              className={`hover:text-primary transition-colors ${activePath === "home" ? "text-primary font-bold" : ""}`}
             >
               Home
             </Link>
-            <Link href="/#about" className="hover:text-primary transition-colors">
-              About
-            </Link>
-            <Link href="/#capabilities" className="hover:text-primary transition-colors">
-              Capabilities
-            </Link>
-            <Link href="/#schematic" className="hover:text-primary transition-colors">
-              Engineering
-            </Link>
             <Link
               href="/products"
-              className={`hover:text-primary transition-colors flex items-center gap-1.5 ${activePath === "products" ? "text-primary font-bold" : "text-slate-950"}`}
+              className={`hover:text-primary transition-colors ${activePath === "products" ? "text-primary font-bold" : ""}`}
             >
-              <span>Products</span>
-              <span className="w-1.5 h-1.5 rounded-sm bg-primary" />
+              Products
             </Link>
-            <Link href="/#industries" className="hover:text-primary transition-colors">
-              Industries
+            <Link href="/#brands" className="hover:text-primary transition-colors">
+              Brands
+            </Link>
+            <Link href="/#services" className="hover:text-primary transition-colors">
+              Services
             </Link>
             <Link href="/#projects" className="hover:text-primary transition-colors">
-              Case Studies
-            </Link>
-            <Link
-              href="/blog"
-              className={`hover:text-primary transition-colors flex items-center gap-1.5 ${activePath === "blog" ? "text-primary font-bold" : "text-slate-950"}`}
-            >
-              <span>Blog</span>
-              {activePath === "blog" && <span className="w-1.5 h-1.5 rounded-sm bg-primary" />}
+              Projects
             </Link>
             {activePath === "home" ? (
               <a
@@ -72,20 +58,30 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
                   e.preventDefault();
                   document.getElementById("load-calculator")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="text-primary font-bold hover:text-primary-hover transition-colors flex items-center gap-1.5 cursor-pointer"
+                className="hover:text-primary transition-colors cursor-pointer"
               >
-                <span>Load Calculator</span>
-                <span className="w-1.5 h-1.5 rounded-xs bg-primary" />
+                Load Calculator
               </a>
             ) : (
               <Link
-                href="/#load-calculator"
-                className="text-primary font-bold hover:text-primary-hover transition-colors flex items-center gap-1.5 cursor-pointer"
+                href="/calculator"
+                className={`hover:text-primary transition-colors ${activePath === "calculator" ? "text-primary font-bold" : ""}`}
               >
-                <span>Load Calculator</span>
-                <span className="w-1.5 h-1.5 rounded-xs bg-primary" />
+                Load Calculator
               </Link>
             )}
+            <Link
+              href="/blog"
+              className={`hover:text-primary transition-colors ${activePath === "blog" ? "text-primary font-bold" : ""}`}
+            >
+              Blog
+            </Link>
+            <Link href="/#about" className="hover:text-primary transition-colors">
+              About
+            </Link>
+            <Link href="/#contact" className="hover:text-primary transition-colors">
+              Contact
+            </Link>
           </nav>
 
           {/* Right Action Buttons */}
@@ -128,31 +124,42 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden border-t border-slate-200 bg-white px-6 py-5 space-y-3 text-sm font-semibold overflow-hidden"
+            className="lg:hidden border-t border-slate-200 bg-white px-6 py-5 space-y-2.5 text-sm font-semibold overflow-hidden"
           >
-            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-900 py-1">
+            <Link
+              href="/"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block py-1.5 transition-colors ${activePath === "home" ? "text-primary font-bold" : "text-slate-800"}`}
+            >
               Home
             </Link>
-            <Link href="/#about" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">
-              About
+            <Link
+              href="/products"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block py-1.5 transition-colors ${activePath === "products" ? "text-primary font-bold" : "text-slate-800"}`}
+            >
+              Products
             </Link>
-            <Link href="/#capabilities" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">
-              Capabilities
+            <Link
+              href="/#brands"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block py-1.5 text-slate-800 hover:text-primary transition-colors"
+            >
+              Brands
             </Link>
-            <Link href="/#schematic" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">
-              Engineering
+            <Link
+              href="/#services"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block py-1.5 text-slate-800 hover:text-primary transition-colors"
+            >
+              Services
             </Link>
-            <Link href="/products" onClick={() => setIsMobileMenuOpen(false)} className="block text-primary font-bold py-1">
-              Products Lineup (Browse 20-2500 kVA)
-            </Link>
-            <Link href="/#industries" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">
-              Industries
-            </Link>
-            <Link href="/#projects" onClick={() => setIsMobileMenuOpen(false)} className="block text-slate-700 py-1">
-              Case Studies
-            </Link>
-            <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)} className={`block py-1 ${activePath === "blog" ? "text-primary font-bold" : "text-slate-700"}`}>
-              Blog
+            <Link
+              href="/#projects"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block py-1.5 text-slate-800 hover:text-primary transition-colors"
+            >
+              Projects
             </Link>
             {activePath === "home" ? (
               <a
@@ -162,21 +169,40 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
                   setIsMobileMenuOpen(false);
                   document.getElementById("load-calculator")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="flex items-center gap-2 py-1 text-primary font-bold hover:text-primary-hover cursor-pointer"
+                className="block py-1.5 text-slate-800 hover:text-primary transition-colors cursor-pointer"
               >
-                <span>Load Calculator</span>
-                <span className="w-1.5 h-1.5 rounded-xs bg-primary" />
+                Load Calculator
               </a>
             ) : (
               <Link
-                href="/#load-calculator"
+                href="/calculator"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center gap-2 py-1 text-primary font-bold hover:text-primary-hover cursor-pointer"
+                className={`block py-1.5 transition-colors ${activePath === "calculator" ? "text-primary font-bold" : "text-slate-800"}`}
               >
-                <span>Load Calculator</span>
-                <span className="w-1.5 h-1.5 rounded-xs bg-primary" />
+                Load Calculator
               </Link>
             )}
+            <Link
+              href="/blog"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block py-1.5 transition-colors ${activePath === "blog" ? "text-primary font-bold" : "text-slate-800"}`}
+            >
+              Blog
+            </Link>
+            <Link
+              href="/#about"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block py-1.5 text-slate-800 hover:text-primary transition-colors"
+            >
+              About
+            </Link>
+            <Link
+              href="/#contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block py-1.5 text-slate-800 hover:text-primary transition-colors"
+            >
+              Contact
+            </Link>
             <div className="pt-3">
               <button
                 onClick={() => {

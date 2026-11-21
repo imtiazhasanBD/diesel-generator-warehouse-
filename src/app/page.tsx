@@ -873,6 +873,7 @@ export default function Home() {
         {/* =========================================================
              SECTION 3: WHAT WE DO / SCALABLE CAPABILITIES (FRAMER STACKING CARDS)
              ========================================================= */}
+        <div id="services" className="scroll-mt-24" />
         <section id="capabilities" className="py-10 md:py-20 lg:py-28">
           <div className="max-w-[1400px] mx-auto px-6 sm:px-10">
 
@@ -1341,6 +1342,7 @@ export default function Home() {
         {/* =========================================================
              SECTION 5: WHAT WE SUPPLY / TECHNICAL PRODUCT LINEUP
              ========================================================= */}
+        <div id="brands" className="scroll-mt-24" />
         <section id="products" className=" pt-10 md:pt-20 lg:pt-28 bg-[#FFFFFF]">
           <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
 
