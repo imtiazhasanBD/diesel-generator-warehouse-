@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { ArrowRight } from "lucide-react";
 
 type Appliance = {
   name: string;
@@ -552,23 +553,23 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
       : STANDARD_RATINGS.find((r) => r >= neededKva) ?? "2000+";
 
   return (
-    <section id="load-calculator" className="pb-12 sm:pb-16 pt-4 scroll-mt-24">
-      <div className="px-4 sm:px-6">
-        {/* Section Eyebrow & Title matching the site's typography & primary color */}
-        <div className="mb-4">
-          <div className="inline-flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-[0.16em]">
-            <span className="w-6 h-[3px] bg-primary rounded-xs inline-block" />
+    <section id="load-calculator" className="py-12 sm:py-16 lg:py-20 bg-white border-b border-slate-200/80 scroll-mt-24">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-10">
+        {/* Section Header matching the site's typography & primary color */}
+        <div className="mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-slate-900 tracking-tight mb-2">
+            <span className="w-10 h-[4px] bg-primary rounded-xs inline-block" />
             <span>Free Load Calculator</span>
           </div>
-          <h2 className="font-heading font-black italic uppercase text-2xl sm:text-4xl lg:text-[40px] text-[#141518] tracking-[-0.02em] leading-[1.02] mt-1.5 mb-4">
-            Know your generator size in <span className="text-primary italic">30 seconds</span>
+          <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-950 tracking-tight leading-tight">
+            Know your generator size in <span className="text-primary">30 seconds</span>
           </h2>
         </div>
 
-        {/* 5 Building Profile Tabs - Layout identical to image, styled with GENPRO colors */}
+        {/* 5 Building Profile Tabs */}
         <div className="relative mb-5">
           <div
-            className="grid grid-cols-5 gap-1.5 sm:gap-2.5 p-1 bg-slate-200/80 rounded-md sm:rounded-xl border border-slate-300/80"
+            className="grid grid-cols-5 gap-1.5 sm:gap-2 p-1 bg-slate-100 rounded-md border border-slate-200"
             role="group"
             aria-label="Building type"
           >
@@ -582,10 +583,10 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
                   }}
                   type="button"
                   onClick={() => handleCategorySelect(cat.key, idx)}
-                  className={`relative flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-1 sm:px-3 rounded-lg sm:rounded-md font-heading font-bold text-[11px] sm:text-[14px] transition-all duration-200 cursor-pointer overflow-hidden ${
+                  className={`relative flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-2 py-2.5 px-1 sm:px-3 rounded-sm font-heading font-bold text-xs sm:text-[13px] tracking-tight transition-all duration-200 cursor-pointer overflow-hidden ${
                     isActive
-                      ? "bg-primary text-white shadow-md shadow-primary/30 -translate-y-0.5"
-                      : "bg-[#252833] text-slate-200 hover:bg-[#2E3340] hover:text-white border border-[#333745]/70"
+                      ? "bg-primary text-white shadow-xs -translate-y-0.5"
+                      : "bg-[#1E222B] text-slate-200 hover:bg-[#282D39] hover:text-white border border-slate-700/60"
                   }`}
                   aria-pressed={isActive}
                 >
@@ -612,8 +613,8 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
           />
         </div>
 
-        {/* Main Box: Exactly identical to image layout */}
-        <div className="rounded-md overflow-hidden bg-white border border-slate-300 shadow-[0_12px_32px_rgba(20,21,24,0.06)] grid grid-cols-1 md:grid-cols-[1.6fr_1fr]">
+        {/* Main Box */}
+        <div className="rounded-md overflow-hidden bg-white border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-[1.6fr_1fr]">
           {/* Left Column: 2-column appliances grid */}
           <div className="p-4 sm:p-5 lg:p-6 grid grid-cols-2 gap-x-3.5 sm:gap-x-5 gap-y-3.5 sm:gap-y-4 bg-white">
             {appliances.map((l, idx) => {
@@ -621,7 +622,7 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
               return (
                 <div key={l.name} className="flex flex-col justify-between">
                   <div className="flex items-center gap-2 mb-1.5 min-w-0">
-                    <span className="w-6 h-6 rounded-sm bg-primary text-white flex items-center justify-center shrink-0">
+                    <span className="w-6 h-6 rounded-xs bg-primary text-white flex items-center justify-center shrink-0">
                       <svg
                         viewBox="0 0 24 24"
                         fill="none"
@@ -633,15 +634,15 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
                         dangerouslySetInnerHTML={{ __html: l.icon }}
                       />
                     </span>
-                    <b className="font-heading font-bold text-[13px] sm:text-[14.5px] text-slate-800 truncate flex-1 leading-tight">
+                    <b className="font-heading font-bold text-[13px] sm:text-[14px] text-slate-800 truncate flex-1 leading-tight tracking-tight">
                       {l.name}
                     </b>
-                    <span className="font-heading font-black text-base sm:text-[19px] text-primary tabular-nums shrink-0 leading-none">
+                    <span className="font-heading font-extrabold text-base sm:text-lg text-primary tabular-nums shrink-0 leading-none">
                       {l.qty}
                     </span>
                   </div>
 
-                  {/* Range Slider styled with Primary Orange & Slate Track */}
+                  {/* Range Slider styled with Primary Red & Slate Track */}
                   <div className="py-1">
                     <input
                       type="range"
@@ -653,7 +654,7 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
                       onChange={(e) =>
                         handleSliderChange(idx, parseInt(e.target.value, 10) || 0)
                       }
-                      className="w-full h-[6.5px] rounded-full appearance-none cursor-pointer outline-none bg-slate-200 accent-primary"
+                      className="w-full h-[6.5px] rounded-xs appearance-none cursor-pointer outline-none bg-slate-200 accent-primary"
                       style={{
                         background: `linear-gradient(to right, #E00501 0%, #E00501 ${pct}%, #E2E8F0 ${pct}%, #E2E8F0 100%)`,
                       }}
@@ -681,25 +682,25 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
             />
 
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.16em] uppercase text-slate-200 mb-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
+              <div className="inline-flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase text-slate-300 mb-1.5">
+                <span className="w-2 h-2 rounded-xs bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
                 <span>Recommended Generator</span>
               </div>
 
-              <div className="flex items-baseline gap-2.5 mt-1">
+              <div className="flex items-baseline gap-2 mt-1">
                 <span
-                  className={`font-heading font-black italic text-6xl sm:text-7xl lg:text-[78px] text-primary tracking-tight leading-none transition-transform duration-150 ${
+                  className={`font-heading font-extrabold text-5xl sm:text-6xl lg:text-[72px] text-primary tracking-tight leading-none transition-transform duration-150 ${
                     pop ? "scale-105" : "scale-100"
                   }`}
                 >
                   {recommendedKva}
                 </span>
-                <span className="font-heading font-black italic text-2xl sm:text-3xl text-white">
+                <span className="font-heading font-bold text-xl sm:text-2xl text-white ml-1.5 tracking-tight">
                   kVA
                 </span>
               </div>
 
-              <div className="mt-2 text-[11.5px] text-slate-300 font-medium flex items-center gap-1.5">
+              <div className="mt-2 text-xs text-slate-300 font-medium flex items-center gap-1.5">
                 <span>Total Running Load:</span>
                 <span className="text-white font-bold">{runningKw.toFixed(1)} kW</span>
                 <span className="text-slate-500">•</span>
@@ -716,16 +717,10 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
                       onOpenQuote(Math.round(runningKw) || 15, recommendedKva);
                     }
                   }}
-                  className="inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-md bg-primary hover:bg-primary-hover text-white font-heading font-bold text-xs sm:text-[13px] tracking-tight shadow-md shadow-primary/25 transition-all cursor-pointer group/btn"
+                  className="inline-flex items-center justify-center gap-2 py-2 px-4 rounded-sm bg-primary hover:bg-primary-hover text-white font-heading font-bold text-xs sm:text-[13px] tracking-tight shadow-md shadow-primary/25 transition-all cursor-pointer group/btn"
                 >
                   <span>Request Quote</span>
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
                 </button>
               </div>
             </div>
@@ -733,7 +728,7 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
         </div>
 
         {/* Footer Fine Print */}
-        <p className="text-xs text-slate-500 mt-2.5">
+        <p className="text-xs text-slate-500 mt-3 font-normal">
           Estimate only. Our certified engineers confirm the final electrical site survey before you buy.
         </p>
       </div>
