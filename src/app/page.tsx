@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "mot
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroKineticTypography from "@/components/HeroKineticTypography";
+import QuickLoadCalculator from "@/components/QuickLoadCalculator";
 import { PRODUCTS, PRODUCTS_BY_SLUG, FEATURED_SUPPLY_SLUGS, PRICE_DIRECTORY_CATEGORIES } from "@/data/products";
 import { BLOG_POSTS } from "@/data/blogs";
 import {
@@ -1665,6 +1666,16 @@ export default function Home() {
 
           </div>
         </section>
+
+        {/* =========================================================
+             SECTION 5.7: QUICK LOAD CALCULATION FOR CLIENT
+             ========================================================= */}
+        <QuickLoadCalculator
+          onOpenQuote={(kw) => {
+            setKwLoad(kw);
+            setIsQuoteModalOpen(true);
+          }}
+        />
 
         {/* =========================================================
              SECTION 6: BUILT FOR EVERY INDUSTRY (VERTICAL TABS)
