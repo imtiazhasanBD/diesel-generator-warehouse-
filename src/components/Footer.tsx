@@ -155,6 +155,12 @@ export default function Footer() {
                   Industries
                 </Link>
                 <Link
+                  href="/contact"
+                  className="block text-white/85 hover:text-white transition-colors"
+                >
+                  Contact
+                </Link>
+                <Link
                   href="/#about"
                   className="block text-white/85 hover:text-white transition-colors"
                 >

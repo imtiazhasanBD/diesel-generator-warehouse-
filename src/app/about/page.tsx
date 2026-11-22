@@ -635,7 +635,7 @@ export default function AboutPage() {
             {/* Giant Full-Width Industrial Banner (Matching Reference) */}
             <div className="relative rounded-md overflow-hidden min-h-[360px] sm:min-h-[460px] lg:min-h-[520px] shadow-2xl border border-slate-900 flex flex-col justify-between p-6 sm:p-12 lg:p-16 text-white group">
               <img
-                src="/assets/images/about/about_img_28.jpg"
+                src="/assets/images/HERO_PICTURE/DGW Generator Wholesale Loading Dock.png"
                 alt="Industrial Heavy Manufacturing Floor and Molten Steel Operations"
                 className="absolute inset-0 w-full h-full object-cover object-center brightness-[0.82] contrast-[1.1] transition-transform duration-1000 group-hover:scale-105"
               />
@@ -835,16 +835,19 @@ export default function AboutPage() {
           <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-10">
             <div className="bg-gradient-to-r from-slate-900 to-slate-900/90 border border-slate-800 rounded-md p-8 sm:p-14 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl">
               <div className="space-y-4 max-w-2xl text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-xs font-semibold text-primary-light">
-                  <Zap className="w-3 h-3 text-primary" />
-                  <span>Turnkey Power Solutions</span>
+                {/* Category Accent Line + Badge matching site typography */}
+                <div className="flex flex-col sm:flex-row items-center lg:items-start gap-2.5">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-md rounded-xs border border-white/15 text-[11px] font-mono font-bold tracking-widest uppercase text-white">
+                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    <span>TURNKEY POWER SOLUTIONS</span>
+                  </div>
                 </div>
 
-                <h2 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-extrabold text-white tracking-tight leading-tight">
+                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-[-0.025em] leading-[1.08]">
                   Need an engineering assessment for your facility?
                 </h2>
 
-                <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal max-w-xl">
                   Speak directly with our senior electrical and mechanical engineers to calculate accurate starting inrush loads, select genuine European engines, and design custom acoustic attenuation.
                 </p>
               </div>
@@ -852,17 +855,17 @@ export default function AboutPage() {
               <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto shrink-0">
                 <button
                   onClick={() => handleOpenQuote("Corporate Power Engineering Consultation")}
-                  className="w-full sm:w-auto framer-btn-primary rounded-sm cursor-pointer justify-center"
+                  className="w-full sm:w-auto framer-btn-primary rounded-md cursor-pointer justify-center"
                 >
-                  <span>Request free quote</span>
-                  <div className="btn-arrow-box rounded-sm">
+                  <span className="font-heading font-bold text-xs uppercase tracking-wider">Request free quote</span>
+                  <div className="btn-arrow-box rounded-md">
                     <ArrowRight className="w-3.5 h-3.5 text-white" />
                   </div>
                 </button>
 
                 <a
-                  href="tel:+8801700000000"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-sm border border-slate-700 hover:border-slate-500 bg-slate-800/80 hover:bg-slate-800 text-white font-semibold text-sm transition-all shadow-xs"
+                  href="tel:+8801713456789"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-md border border-white/20 hover:border-white/40 bg-white/10 hover:bg-white/15 text-white font-heading font-bold text-xs uppercase tracking-wider transition-all shadow-xs"
                 >
                   <Phone className="w-4 h-4 text-primary" />
                   <span>Call 24/7 Hotline</span>

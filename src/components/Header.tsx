@@ -85,7 +85,10 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             >
               About
             </Link>
-            <Link href="/#contact" className="hover:text-primary transition-colors">
+            <Link
+              href="/contact"
+              className={`hover:text-primary transition-colors ${activePath === "contact" ? "text-primary font-bold" : ""}`}
+            >
               Contact
             </Link>
           </nav>
@@ -203,9 +206,9 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
               About
             </Link>
             <Link
-              href="/#contact"
+              href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-1.5 text-slate-800 hover:text-primary transition-colors"
+              className={`block py-1.5 transition-colors ${activePath === "contact" ? "text-primary font-bold" : "text-slate-800 hover:text-primary"}`}
             >
               Contact
             </Link>
