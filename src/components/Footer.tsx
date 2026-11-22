@@ -110,6 +110,12 @@ export default function Footer() {
                   Products
                 </Link>
                 <Link
+                  href="/about"
+                  className="block text-white/85 hover:text-white transition-colors"
+                >
+                  About Us
+                </Link>
+                <Link
                   href="/#capabilities"
                   className="block text-white/85 hover:text-white transition-colors"
                 >
