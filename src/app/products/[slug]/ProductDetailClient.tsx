@@ -21,9 +21,7 @@ import {
   Home,
   Wrench
 } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import QuoteModal from "@/components/QuoteModal";
+import { useModal } from "@/context/ModalContext";
 import ProductCard from "@/components/ProductCard";
 import { GeneratorProduct, PRODUCTS } from "@/data/products";
 
@@ -60,7 +58,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   const [activeTab, setActiveTab] = useState<"specifications" | "features" | "optional" | "certificates">("specifications");
 
   // Quote Modal state
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const { openQuote } = useModal();
 
   // Gallery navigation
   const handlePrevImage = () => {
@@ -85,14 +83,8 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
   }, [product.id]);
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-primary selection:text-white">
-      {/* Top Header */}
-      <Header
-        activePath="products"
-        onOpenQuote={() => setIsQuoteOpen(true)}
-      />
-
-      <main className="max-w-[1240px] mx-auto px-4 py-6 sm:py-8 w-full flex-1 space-y-8 bg-white">
+    <div className="bg-white text-slate-900 flex flex-col font-sans selection:bg-primary selection:text-white">
+      <div className="max-w-[1240px] mx-auto px-4 py-6 sm:py-8 w-full flex-1 space-y-8 bg-white">
 
         {/* =========================================================
              1. BREADCRUMBS
@@ -266,7 +258,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
             {/* Action Buttons */}
             <div className="space-y-2.5 pt-1">
               <button
-                onClick={() => setIsQuoteOpen(true)}
+                onClick={() => openQuote(product.name, product.standbyKva)}
                 className="w-full bg-primary hover:bg-primary-hover text-white py-3.5 px-5 rounded-md font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-xs cursor-pointer"
               >
                 <span>Request a Quote</span>
@@ -673,10 +665,7 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           </div>
         </div>
 
-      </main>
-
-      {/* Footer */}
-      <Footer />
+      </div>
 
       {/* Lightbox Modal */}
       {isLightboxOpen && (
@@ -706,14 +695,6 @@ export default function ProductDetailClient({ product }: ProductDetailClientProp
           </div>
         </div>
       )}
-
-      {/* Quote Modal */}
-      <QuoteModal
-        isOpen={isQuoteOpen}
-        onClose={() => setIsQuoteOpen(false)}
-        defaultGeneratorName={product.name}
-        defaultKva={product.standbyKva}
-      />
     </div>
   );
 }

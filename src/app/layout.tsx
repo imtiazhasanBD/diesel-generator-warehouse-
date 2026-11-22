@@ -3,6 +3,9 @@ import localFont from "next/font/local";
 import { Geist_Mono } from "next/font/google";
 import "@fontsource-variable/mona-sans";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { ModalProvider } from "@/context/ModalContext";
 
 const monaSans = localFont({
   src: [
@@ -42,7 +45,11 @@ export default function RootLayout({
       className={`${monaSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans bg-white text-slate-900 selection:bg-primary selection:text-white">
-        {children}
+        <ModalProvider>
+          <Header />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </ModalProvider>
       </body>
     </html>
   );

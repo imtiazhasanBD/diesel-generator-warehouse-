@@ -3,9 +3,6 @@
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import { Search, ArrowRight, ChevronRight, Clock, RotateCcw } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import QuoteModal from "@/components/QuoteModal";
 import { BLOG_POSTS } from "@/data/blogs";
 
 const CATEGORIES = [
@@ -21,7 +18,6 @@ const CATEGORIES = [
 export default function BlogListingPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
   // Filter posts
   const filteredPosts = useMemo(() => {
@@ -40,11 +36,7 @@ export default function BlogListingPage() {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] text-slate-900 flex flex-col font-sans">
-      <Header
-        activePath="blog"
-        onOpenQuote={() => setIsQuoteOpen(true)}
-      />
+    <div className="bg-[#F8F9FA] text-slate-900 flex flex-col font-sans">
 
       {/* =========================================================
            HEADER SECTION (SIMPLE & CLEAN)
@@ -126,7 +118,7 @@ export default function BlogListingPage() {
       {/* =========================================================
            BLOG GRID (CLEAN 3-COLUMN LAYOUT)
            ========================================================= */}
-      <main className="flex-1 max-w-[1400px] mx-auto px-6 sm:px-10 py-10 sm:py-14 w-full">
+      <div className="flex-1 max-w-[1400px] mx-auto px-6 sm:px-10 py-10 sm:py-14 w-full">
         {filteredPosts.length === 0 ? (
           <div className="text-center py-16 bg-white rounded-lg border border-slate-200 p-8">
             <h3 className="text-lg font-heading font-bold text-slate-800 mb-2">
@@ -214,14 +206,7 @@ export default function BlogListingPage() {
             ))}
           </div>
         )}
-      </main>
-
-      <Footer />
-
-      {/* Quote Modal */}
-      {isQuoteOpen && (
-        <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
-      )}
+      </div>
     </div>
   );
 }

@@ -15,9 +15,7 @@ import {
   RotateCcw,
   ChevronDown
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import QuoteModal from "@/components/QuoteModal";
+import { useModal } from "@/context/ModalContext";
 import ProductCard from "@/components/ProductCard";
 import { PRODUCTS, GeneratorProduct } from "@/data/products";
 
@@ -38,8 +36,7 @@ export default function ProductsPage() {
     (searchQuery.trim() !== "" ? 1 : 0);
 
   // Quote Modal State
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
-  const [selectedQuoteProduct, setSelectedQuoteProduct] = useState<GeneratorProduct | null>(null);
+  const { openQuote } = useModal();
 
   // Always format price in BDT (৳)
   const formatPrice = (bdtPrice: number) => {
@@ -71,20 +68,15 @@ export default function ProductsPage() {
   const types = ["All", "Silent Canopy", "Open Skid", "Portable"];
 
   const handleOpenQuote = (product?: GeneratorProduct) => {
-    if (product) setSelectedQuoteProduct(product);
-    setIsQuoteOpen(true);
+    if (product) {
+      openQuote(product.name, product.standbyKva);
+    } else {
+      openQuote();
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] text-slate-900 flex flex-col font-sans">
-      <Navbar
-        activePath="products"
-        onOpenQuote={() => handleOpenQuote()}
-        onOpenSearch={() => {
-          const searchInput = document.getElementById("product-search");
-          if (searchInput) searchInput.focus();
-        }}
-      />
+    <div className="bg-[#F8F9FA] text-slate-900 flex flex-col font-sans">
 
       {/* =========================================================
            TOP BANNER & BREADCRUMBS (MATCHING REFERENCE IMAGE 1)
@@ -118,7 +110,7 @@ export default function ProductsPage() {
       {/* =========================================================
            MAIN BROWSE & PRODUCTS GRID SECTION (IMAGE 1 LAYOUT)
            ========================================================= */}
-      <main className="max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-10 py-6 sm:py-10 lg:py-14 w-full flex-1">
+      <div className="max-w-[1400px] mx-auto px-3 sm:px-8 lg:px-10 py-6 sm:py-10 lg:py-14 w-full flex-1">
 
         {/* Section Heading & Category Title (Matching Image 1) */}
         <div className="border-b border-slate-200 pb-4 sm:pb-6 mb-5 sm:mb-8">
@@ -606,20 +598,7 @@ export default function ProductsPage() {
           </div>
         </section>
 
-      </main>
-
-      <Footer />
-
-      {/* Quote Modal */}
-      <QuoteModal
-        isOpen={isQuoteOpen}
-        onClose={() => {
-          setIsQuoteOpen(false);
-          setSelectedQuoteProduct(null);
-        }}
-        defaultGeneratorName={selectedQuoteProduct?.name}
-        defaultKva={selectedQuoteProduct?.standbyKva}
-      />
+      </div>
     </div>
   );
 }

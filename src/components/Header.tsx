@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Search, ArrowRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { useModal } from "@/context/ModalContext";
 
 export interface HeaderProps {
   onOpenQuote?: () => void;
@@ -13,6 +15,37 @@ export interface HeaderProps {
 
 export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname() || "";
+  const modal = useModal();
+
+  // Determine active route automatically from pathname if not explicitly passed
+  const active = activePath || (
+    pathname === "/" ? "home" :
+    pathname.startsWith("/products") ? "products" :
+    pathname.startsWith("/brands") ? "brands" :
+    pathname.startsWith("/calculator") ? "calculator" :
+    pathname.startsWith("/blog") ? "blog" :
+    pathname.startsWith("/about") ? "about" :
+    pathname.startsWith("/contact") ? "contact" : ""
+  );
+
+  const handleQuoteClick = () => {
+    if (onOpenQuote) {
+      onOpenQuote();
+    } else {
+      modal.openQuote();
+    }
+  };
+
+  const handleSearchClick = () => {
+    if (onOpenSearch) {
+      onOpenSearch();
+    } else {
+      modal.openSearch();
+    }
+  };
+
+  const isHome = pathname === "/";
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all">
@@ -32,19 +65,19 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
           <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-7 text-[13px] font-semibold text-slate-700 whitespace-nowrap">
             <Link
               href="/"
-              className={`hover:text-primary transition-colors ${activePath === "home" ? "text-primary font-bold" : ""}`}
+              className={`hover:text-primary transition-colors ${active === "home" ? "text-primary font-bold" : ""}`}
             >
               Home
             </Link>
             <Link
               href="/products"
-              className={`hover:text-primary transition-colors ${activePath === "products" ? "text-primary font-bold" : ""}`}
+              className={`hover:text-primary transition-colors ${active === "products" ? "text-primary font-bold" : ""}`}
             >
               Products
             </Link>
             <Link
               href="/brands"
-              className={`hover:text-primary transition-colors ${activePath === "brands" ? "text-primary font-bold" : ""}`}
+              className={`hover:text-primary transition-colors ${active === "brands" ? "text-primary font-bold" : ""}`}
             >
               Brands
             </Link>
@@ -54,7 +87,7 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             <Link href="/#projects" className="hover:text-primary transition-colors">
               Projects
             </Link>
-            {activePath === "home" ? (
+            {isHome ? (
               <a
                 href="#load-calculator"
                 onClick={(e) => {
@@ -68,26 +101,26 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             ) : (
               <Link
                 href="/calculator"
-                className={`hover:text-primary transition-colors ${activePath === "calculator" ? "text-primary font-bold" : ""}`}
+                className={`hover:text-primary transition-colors ${active === "calculator" ? "text-primary font-bold" : ""}`}
               >
                 Load Calculator
               </Link>
             )}
             <Link
               href="/blog"
-              className={`hover:text-primary transition-colors ${activePath === "blog" ? "text-primary font-bold" : ""}`}
+              className={`hover:text-primary transition-colors ${active === "blog" ? "text-primary font-bold" : ""}`}
             >
               Blog
             </Link>
             <Link
               href="/about"
-              className={`hover:text-primary transition-colors ${activePath === "about" ? "text-primary font-bold" : ""}`}
+              className={`hover:text-primary transition-colors ${active === "about" ? "text-primary font-bold" : ""}`}
             >
               About
             </Link>
             <Link
               href="/contact"
-              className={`hover:text-primary transition-colors ${activePath === "contact" ? "text-primary font-bold" : ""}`}
+              className={`hover:text-primary transition-colors ${active === "contact" ? "text-primary font-bold" : ""}`}
             >
               Contact
             </Link>
@@ -96,7 +129,7 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
           {/* Right Action Buttons */}
           <div className="flex items-center gap-3 sm:gap-4">
             <button
-              onClick={onOpenSearch}
+              onClick={handleSearchClick}
               aria-label="Search generators"
               className="w-9 h-9 rounded-md flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
             >
@@ -104,7 +137,7 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             </button>
 
             <button
-              onClick={onOpenQuote}
+              onClick={handleQuoteClick}
               className="hidden sm:inline-flex framer-btn-primary rounded-sm cursor-pointer"
             >
               <span>Get a quote</span>
@@ -138,21 +171,21 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             <Link
               href="/"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`block py-1.5 transition-colors ${activePath === "home" ? "text-primary font-bold" : "text-slate-800"}`}
+              className={`block py-1.5 transition-colors ${active === "home" ? "text-primary font-bold" : "text-slate-800"}`}
             >
               Home
             </Link>
             <Link
               href="/products"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`block py-1.5 transition-colors ${activePath === "products" ? "text-primary font-bold" : "text-slate-800"}`}
+              className={`block py-1.5 transition-colors ${active === "products" ? "text-primary font-bold" : "text-slate-800"}`}
             >
               Products
             </Link>
             <Link
               href="/brands"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`block py-1.5 transition-colors ${activePath === "brands" ? "text-primary font-bold" : "text-slate-800"}`}
+              className={`block py-1.5 transition-colors ${active === "brands" ? "text-primary font-bold" : "text-slate-800"}`}
             >
               Brands
             </Link>
@@ -170,7 +203,7 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             >
               Projects
             </Link>
-            {activePath === "home" ? (
+            {isHome ? (
               <a
                 href="#load-calculator"
                 onClick={(e) => {
@@ -186,7 +219,7 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
               <Link
                 href="/calculator"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block py-1.5 transition-colors ${activePath === "calculator" ? "text-primary font-bold" : "text-slate-800"}`}
+                className={`block py-1.5 transition-colors ${active === "calculator" ? "text-primary font-bold" : "text-slate-800"}`}
               >
                 Load Calculator
               </Link>
@@ -194,21 +227,21 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             <Link
               href="/blog"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`block py-1.5 transition-colors ${activePath === "blog" ? "text-primary font-bold" : "text-slate-800"}`}
+              className={`block py-1.5 transition-colors ${active === "blog" ? "text-primary font-bold" : "text-slate-800"}`}
             >
               Blog
             </Link>
             <Link
               href="/about"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`block py-1.5 transition-colors ${activePath === "about" ? "text-primary font-bold" : "text-slate-800 hover:text-primary"}`}
+              className={`block py-1.5 transition-colors ${active === "about" ? "text-primary font-bold" : "text-slate-800 hover:text-primary"}`}
             >
               About
             </Link>
             <Link
               href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`block py-1.5 transition-colors ${activePath === "contact" ? "text-primary font-bold" : "text-slate-800 hover:text-primary"}`}
+              className={`block py-1.5 transition-colors ${active === "contact" ? "text-primary font-bold" : "text-slate-800 hover:text-primary"}`}
             >
               Contact
             </Link>
@@ -216,7 +249,7 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
-                  if (onOpenQuote) onOpenQuote();
+                  handleQuoteClick();
                 }}
                 className="w-full framer-btn-primary justify-between cursor-pointer"
               >
@@ -232,4 +265,3 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
     </header>
   );
 }
-

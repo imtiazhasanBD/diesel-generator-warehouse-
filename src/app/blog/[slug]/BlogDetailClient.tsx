@@ -21,9 +21,7 @@ import {
   Wrench,
   Copy
 } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import QuoteModal from "@/components/QuoteModal";
+import { useModal } from "@/context/ModalContext";
 import { BlogPost } from "@/data/blogs";
 
 interface BlogDetailClientProps {
@@ -35,7 +33,7 @@ export default function BlogDetailClient({
   post,
   relatedPosts,
 }: BlogDetailClientProps) {
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const { openQuote } = useModal();
   const [copied, setCopied] = useState(false);
 
   const handleCopyLink = () => {
@@ -47,12 +45,7 @@ export default function BlogDetailClient({
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] text-slate-900 flex flex-col font-sans">
-      <Header
-        activePath="blog"
-        onOpenQuote={() => setIsQuoteOpen(true)}
-        onOpenSearch={() => {}}
-      />
+    <div className="bg-[#F8F9FA] text-slate-900 flex flex-col font-sans">
 
       {/* =========================================================
            ARTICLE HERO & HEADER SECTION
@@ -163,7 +156,7 @@ export default function BlogDetailClient({
               </button>
 
               <button
-                onClick={() => setIsQuoteOpen(true)}
+                onClick={() => openQuote(`Engineering inquiry regarding: ${post.title}`)}
                 className="framer-btn-primary rounded-sm cursor-pointer text-xs"
               >
                 <span>Ask engineer</span>
@@ -179,7 +172,7 @@ export default function BlogDetailClient({
       {/* =========================================================
            ARTICLE MAIN READING CONTENT
            ========================================================= */}
-      <main className="flex-1 max-w-[1080px] mx-auto px-6 sm:px-10 py-12 lg:py-16 w-full">
+      <div className="flex-1 max-w-[1080px] mx-auto px-6 sm:px-10 py-12 lg:py-16 w-full">
         <article>
           {/* Main Hero Image */}
           <div className="relative rounded-2xl overflow-hidden aspect-[21/9] sm:aspect-[16/8] shadow-md border border-slate-200/80 mb-10 bg-slate-900">
@@ -348,7 +341,7 @@ export default function BlogDetailClient({
             </div>
 
             <button
-              onClick={() => setIsQuoteOpen(true)}
+              onClick={() => openQuote(`Engineering inquiry regarding: ${post.title}`)}
               className="framer-btn-primary rounded-sm cursor-pointer shrink-0"
             >
               <span>Get free consultation</span>
@@ -450,14 +443,7 @@ export default function BlogDetailClient({
             </div>
           </section>
         )}
-      </main>
-
-      <Footer />
-
-      {/* Quote Modal */}
-      {isQuoteOpen && (
-        <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
-      )}
+      </div>
     </div>
   );
 }

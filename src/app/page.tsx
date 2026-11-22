@@ -3,8 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "motion/react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { useModal } from "@/context/ModalContext";
 import HeroKineticTypography from "@/components/HeroKineticTypography";
 import QuickLoadCalculator from "@/components/QuickLoadCalculator";
 import { PRODUCTS, PRODUCTS_BY_SLUG, FEATURED_SUPPLY_SLUGS, PRICE_DIRECTORY_CATEGORIES } from "@/data/products";
@@ -264,14 +263,13 @@ export default function Home() {
   const fuelRate = (recommendedKva * 0.22).toFixed(1);
 
   // Modals
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const { openQuote, openSearch } = useModal();
   const [selectedRegion, setSelectedRegion] = useState("Dhaka Division");
-  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   // Helper to open quote pre-populated with division
   const openQuoteForLocation = (region: string) => {
     setSelectedRegion(region);
-    setIsQuoteModalOpen(true);
+    openQuote(`Regional Sizing Inquiry — ${region}`);
   };
 
   // Video Controls
@@ -303,14 +301,7 @@ export default function Home() {
         style={{ scaleX }}
       />
 
-      {/* Header Navigation */}
-      <Header
-        onOpenQuote={() => setIsQuoteModalOpen(true)}
-        onOpenSearch={() => setIsSearchModalOpen(true)}
-        activePath="home"
-      />
-
-      <main>
+      <div>
         {/* =========================================================
              HERO SECTION: DGW B2B GENERATOR WHOLESALER (MODERN GEOMETRIC REFERENCE LAYOUT)
              ========================================================= */}
@@ -1339,7 +1330,7 @@ export default function Home() {
                   <Download className="w-4 h-4 text-slate-400" />
                 </a>
                 <button
-                  onClick={() => setIsQuoteModalOpen(true)}
+                  onClick={() => openQuote("Industrial Generators Catalog Inquiry")}
                   className="framer-btn-primary cursor-pointer w-full sm:w-auto justify-center"
                 >
                   <span>View all products</span>
@@ -1559,7 +1550,7 @@ export default function Home() {
                   </div>
                 </a>
                 <button
-                  onClick={() => setIsQuoteModalOpen(true)}
+                  onClick={() => openQuote("Quick Quote Inquiry")}
                   className="framer-btn-dark cursor-pointer text-xs"
                 >
                   <span>Quick Quote</span>
@@ -1696,7 +1687,10 @@ export default function Home() {
         <QuickLoadCalculator
           onOpenQuote={(kw) => {
             setKwLoad(kw);
-            setIsQuoteModalOpen(true);
+            openQuote(
+              `Facility Load Sizing — ${kw} kW (${Math.ceil((kw / 0.8) * 1.25)} kVA)`,
+              Math.ceil((kw / 0.8) * 1.25)
+            );
           }}
         />
 
@@ -1935,7 +1929,7 @@ export default function Home() {
 
               <button
                 type="button"
-                onClick={() => setIsQuoteModalOpen(true)}
+                onClick={() => openQuote("Project Discussion Inquiry")}
                 className="framer-btn-dark self-start sm:self-auto cursor-pointer"
               >
                 <span>Discuss your project</span>
@@ -1987,7 +1981,7 @@ export default function Home() {
               ].map((project, idx) => (
                 <div
                   key={idx}
-                  onClick={() => setIsQuoteModalOpen(true)}
+                  onClick={() => openQuote(`Project Case Study Inquiry — ${project.title}`)}
                   className="bg-[#FAFBFD] hover:bg-white rounded-[8px] overflow-hidden border border-slate-200/90 hover:border-slate-300 hover:shadow-[0_10px_28px_rgba(15,23,42,0.06)] transition-all duration-300 group flex flex-col sm:flex-row cursor-pointer"
                 >
                   {/* Left Compact Photo */}
@@ -2208,7 +2202,7 @@ export default function Home() {
               {/* 2 Action Buttons */}
               <div className="mt-7 flex flex-wrap items-center gap-4">
                 <button
-                  onClick={() => setIsQuoteModalOpen(true)}
+                  onClick={() => openQuote("Schedule Site Inspection Inquiry")}
                   className="inline-flex items-center gap-3 bg-primary hover:bg-primary-hover text-white font-semibold text-[13.5px] px-6 py-3.5 rounded-[8px] shadow-[0_6px_20px_rgba(224,5,1,0.3)] transition-all cursor-pointer group"
                 >
                   <span>Schedule site inspection</span>
@@ -2513,156 +2507,7 @@ export default function Home() {
 
           </div>
         </section>
-      </main>
-
-      {/* Footer */}
-      <Footer />
-
-      {/* =========================================================
-           MODAL 1: GET A QUOTE WITH LOAD CALCULATOR
-           ========================================================= */}
-      <AnimatePresence>
-        {isQuoteModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white rounded-md max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-slate-200"
-            >
-              <button
-                onClick={() => setIsQuoteModalOpen(false)}
-                className="absolute top-5 right-5 w-8 h-8 rounded-sm bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors"
-                aria-label="Close"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
-              <div className="framer-badge mb-3">
-                <span className="framer-badge-dot" />
-                <span>Instant kVA Calculator</span>
-              </div>
-
-              <h3 className="font-heading text-2xl font-bold text-slate-950 mb-1">Request Engineering Quote</h3>
-              <p className="text-xs text-slate-500 mb-6">Calculate the required generator kVA rating for your electrical load.</p>
-
-              {/* Calculator */}
-              <div className="bg-[#F7F7F8] p-5 rounded-md border border-slate-200 mb-6 space-y-4">
-                <div className="flex justify-between items-center text-xs font-bold text-slate-800">
-                  <span>Estimated Facility Load (kW):</span>
-                  <span className="font-mono text-base font-bold text-primary">{kwLoad} kW</span>
-                </div>
-                <input
-                  type="range"
-                  min="5"
-                  max="1000"
-                  value={kwLoad}
-                  step="5"
-                  onChange={(e) => setKwLoad(parseInt(e.target.value, 10))}
-                  className="w-full accent-primary cursor-pointer"
-                />
-                <div className="flex justify-between items-center text-xs text-slate-600 pt-2 border-t border-slate-200">
-                  <span>Recommended Genset: <strong className="text-slate-950 font-bold">{recommendedKva} kVA</strong></span>
-                  <span className="font-mono text-[11px] text-primary">~{fuelRate} L/hr</span>
-                </div>
-                <div className="pt-1 text-center">
-                  <a
-                    href="#load-calculator"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setIsQuoteModalOpen(false);
-                      setTimeout(() => {
-                        document.getElementById("load-calculator")?.scrollIntoView({ behavior: "smooth" });
-                      }, 100);
-                    }}
-                    className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:underline cursor-pointer"
-                  >
-                    <span>Need itemized appliance calculator? Open Free Load Calculator &rarr;</span>
-                  </a>
-                </div>
-              </div>
-
-              <form onSubmit={(e) => { e.preventDefault(); alert("Quote request submitted! An engineer will call you within 2 hours."); setIsQuoteModalOpen(false); }} className="space-y-3">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Company / Full Name</label>
-                  <input type="text" required placeholder="Hassan Ahmed" className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-primary" />
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Phone Number</label>
-                    <input type="tel" required placeholder="+880 17XXXXXXXX" className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-primary" />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Installation Division / City</label>
-                    <input
-                      type="text"
-                      value={selectedRegion}
-                      onChange={(e) => setSelectedRegion(e.target.value)}
-                      placeholder="e.g. Dhaka, Gazipur, Sylhet, Khulna"
-                      className="w-full px-4 py-2.5 rounded-sm border border-slate-200 text-xs focus:outline-none focus:border-primary"
-                    />
-                  </div>
-                </div>
-                <button type="submit" className="framer-btn-primary w-full justify-between mt-3 cursor-pointer">
-                  <span>Submit Request</span>
-                  <div className="btn-arrow-box">
-                    <ArrowRight className="w-3.5 h-3.5 text-white" />
-                  </div>
-                </button>
-              </form>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* =========================================================
-           MODAL 2: SEARCH MODAL
-           ========================================================= */}
-      <AnimatePresence>
-        {isSearchModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex items-start justify-center pt-24 px-4 bg-black/60 backdrop-blur-sm"
-          >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-white rounded-md max-w-lg w-full p-5 shadow-2xl border border-slate-200"
-            >
-              <div className="flex items-center gap-3 border-b border-slate-200 pb-3">
-                <Search className="w-4 h-4 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Search generators, brands, specs..."
-                  className="w-full text-xs focus:outline-none"
-                  autoFocus
-                />
-                <button onClick={() => setIsSearchModalOpen(false)} className="text-slate-400 hover:text-slate-600">
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-              <div className="pt-3 space-y-2 text-xs">
-                <span className="font-mono text-[10px] text-slate-400 font-bold uppercase">// POPULAR SEARCHES //</span>
-                <div className="flex flex-wrap gap-2 pt-1">
-                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-primary-light hover:text-primary cursor-pointer">Perkins 100 kVA</span>
-                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-primary-light hover:text-primary cursor-pointer">Cummins 250 kVA</span>
-                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-primary-light hover:text-primary cursor-pointer">Deep Sea AMF Panel</span>
-                  <span className="px-3 py-1 rounded-sm bg-slate-100 text-slate-700 hover:bg-primary-light hover:text-primary cursor-pointer">Acoustic Canopy</span>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
+      </div>
     </div>
   );
 }

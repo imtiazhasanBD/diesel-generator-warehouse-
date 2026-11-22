@@ -18,9 +18,7 @@ import {
   SlidersHorizontal,
   HelpCircle,
 } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import QuoteModal from "@/components/QuoteModal";
+import { useModal } from "@/context/ModalContext";
 import {
   PROJECT_TYPES,
   STANDARD_GENERATOR_SIZES,
@@ -102,7 +100,7 @@ export default function LoadCalculatorPage() {
   const [showTuning, setShowTuning] = useState(false);
 
   // Quote & PDF Actions State
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const { openQuote } = useModal();
   const [isCopied, setIsCopied] = useState(false);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
 
@@ -266,14 +264,9 @@ export default function LoadCalculatorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F4F6F9] text-slate-900 flex flex-col font-sans">
-      <Header
-        activePath="calculator"
-        onOpenQuote={() => setIsQuoteOpen(true)}
-      />
-
+    <div className="bg-[#F4F6F9] text-slate-900 flex flex-col font-sans">
       {/* Main Content Container matching reference app wrapper */}
-      <main className="flex-1 max-w-[940px] mx-auto px-3 sm:px-6 py-4 sm:py-6 w-full">
+      <div className="flex-1 max-w-[940px] mx-auto px-3 sm:px-6 py-4 sm:py-6 w-full">
 
         {/* =========================================================
              SCREEN 1: STEP 1 - SELECT WHAT TYPE OF PROJECT
@@ -620,7 +613,12 @@ export default function LoadCalculatorPage() {
 
             <button
               type="button"
-              onClick={() => setIsQuoteOpen(true)}
+              onClick={() =>
+                openQuote(
+                  `${currentProject.name} — Recommended ${recommendedGeneratorKVA || 100} kVA`,
+                  recommendedGeneratorKVA || 100
+                )
+              }
               disabled={itemsList.length === 0}
               className="framer-btn-primary py-2.5 px-4 text-xs rounded-sm font-bold cursor-pointer disabled:opacity-40"
             >
@@ -631,19 +629,7 @@ export default function LoadCalculatorPage() {
             </button>
           </div>
         )}
-      </main>
-
-      <Footer />
-
-      {/* Quote Modal with Pre-filled Load */}
-      {isQuoteOpen && (
-        <QuoteModal
-          isOpen={isQuoteOpen}
-          onClose={() => setIsQuoteOpen(false)}
-          defaultKva={recommendedGeneratorKVA || 100}
-          defaultGeneratorName={`${currentProject.name} — Recommended ${recommendedGeneratorKVA || 100} kVA`}
-        />
-      )}
+      </div>
     </div>
   );
 }

@@ -29,9 +29,7 @@ import {
   Check,
   Globe
 } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import QuoteModal from "@/components/QuoteModal";
+import { useModal } from "@/context/ModalContext";
 
 // Certified Brand Partners
 const partnerBrands = [
@@ -121,7 +119,7 @@ const faqs = [
 ];
 
 export default function ContactPage() {
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const { openQuote } = useModal();
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
 
   // Form states
@@ -160,11 +158,8 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] text-[#11141A] flex flex-col font-sans selection:bg-primary selection:text-white relative">
-      {/* Top Header */}
-      <Header activePath="contact" onOpenQuote={() => setIsQuoteOpen(true)} />
-
-      <main className="flex-grow">
+    <div className="bg-[#F8F9FA] text-[#11141A] flex flex-col font-sans selection:bg-primary selection:text-white relative">
+      <div className="flex-grow">
         {/* =========================================================================
             SECTION 1: HERO CONTACT SPLIT (MATCHING SITE TYPOGRAPHY & DESIGN SYSTEM)
             ========================================================================= */}
@@ -932,7 +927,7 @@ export default function ContactPage() {
                 </a>
                 <button
                   type="button"
-                  onClick={() => setIsQuoteOpen(true)}
+                  onClick={() => openQuote("Engineering Consultation Inquiry")}
                   className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-hover text-white font-heading font-bold text-xs uppercase tracking-wider rounded-md transition-colors cursor-pointer"
                 >
                   <span>Quick Load Calculator</span>
@@ -941,13 +936,7 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-      </main>
-
-      {/* Shared Footer */}
-      <Footer />
-
-      {/* Global Interactive Quote Modal */}
-      <QuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
+      </div>
     </div>
   );
 }

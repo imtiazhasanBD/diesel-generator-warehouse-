@@ -21,9 +21,7 @@ import {
   Mail,
   Sparkles,
 } from "lucide-react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import QuoteModal from "@/components/QuoteModal";
+import { useModal } from "@/context/ModalContext";
 
 // --- SOCIAL SVG ICONS ---
 const IconLinkedIn = () => (
@@ -202,23 +200,18 @@ const CERTIFICATIONS = [
 ];
 
 export default function AboutPage() {
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
-  const [selectedQuoteSubject, setSelectedQuoteSubject] = useState("General Industrial Inquiry");
+  const { openQuote } = useModal();
   const [activeLeaderIndex, setActiveLeaderIndex] = useState(0);
 
   const activeLeader = TEAM_MEMBERS[activeLeaderIndex];
 
   const handleOpenQuote = (subject?: string) => {
-    if (subject) setSelectedQuoteSubject(subject);
-    setIsQuoteOpen(true);
+    openQuote(subject || "Request an Engineering Consultation");
   };
 
   return (
-    <div className="min-h-screen bg-[#FBFBFA] text-slate-900 flex flex-col font-sans selection:bg-primary/10 selection:text-primary">
-      {/* Shared Site Header */}
-      <Header activePath="about" onOpenQuote={() => handleOpenQuote("Request an Engineering Consultation")} />
-
-      <main className="flex-1">
+    <div className="bg-[#FBFBFA] text-slate-900 flex flex-col font-sans selection:bg-primary/10 selection:text-primary">
+      <div className="flex-1">
         {/* =========================================================
             SECTION 1: HERO SECTION (Exact Reference Match)
             ========================================================= */}
@@ -874,19 +867,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-      </main>
-
-      {/* Shared Site Footer */}
-      <Footer />
-
-      {/* Corporate RFQ Quote Modal */}
-      {isQuoteOpen && (
-        <QuoteModal
-          isOpen={isQuoteOpen}
-          onClose={() => setIsQuoteOpen(false)}
-          defaultGeneratorName={selectedQuoteSubject}
-        />
-      )}
+      </div>
     </div>
   );
 }
