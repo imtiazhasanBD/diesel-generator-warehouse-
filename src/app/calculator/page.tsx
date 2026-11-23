@@ -390,7 +390,12 @@ export default function LoadCalculatorPage() {
                 <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                   <button
                     type="button"
-                    onClick={() => setIsQuoteOpen(true)}
+                    onClick={() =>
+                      openQuote(
+                        `${currentProject.name} — Recommended ${recommendedGeneratorKVA || 100} kVA`,
+                        recommendedGeneratorKVA || 100
+                      )
+                    }
                     disabled={itemsList.length === 0}
                     className="framer-btn-primary py-1.5 px-3 text-xs font-bold rounded-sm cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed justify-center shadow-md shadow-primary/25"
                   >

@@ -11,7 +11,7 @@ export default function BrandsPage() {
     <div className="bg-[#F8F9FA] text-slate-900 flex flex-col font-sans">
       <div className="flex-1">
         <BrandsSection
-          onOpenQuote={(brandName) =>
+          onOpenQuote={(brandName?: string) =>
             openQuote(brandName ? `Brand Inquiries — ${brandName}` : "Brand Consultation Inquiry")
           }
           isStandalonePage={true}
