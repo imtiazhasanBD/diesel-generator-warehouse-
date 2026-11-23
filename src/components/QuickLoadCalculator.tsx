@@ -694,7 +694,7 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
       : STANDARD_RATINGS.find((r) => r >= neededKva) ?? "2000+";
 
   return (
-    <section id="load-calculator" className="py-12 sm:py-16 lg:py-20 bg-white border-b border-slate-200/80 scroll-mt-24">
+    <section id="load-calculator" className="pb-12 sm:pb-16 lg:pb-20 bg-white border-b border-slate-200/80 scroll-mt-24">
       {/* Component Styles for reference file animations */}
       <style>{`
         /* Title text shimmer and pulse beat */
@@ -1019,7 +1019,7 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
 
             {/* Right Column: Deep Black Result Panel with Angled Primary Wedge */}
             <div
-              className="relative overflow-hidden text-white p-5 sm:p-6 lg:p-7 flex flex-col justify-center bg-black border-t md:border-t-0 md:border-l border-neutral-900 min-h-[190px] cursor-pointer group"
+              className="relative overflow-hidden text-white p-5 sm:p-6 lg:p-7 pr-10 sm:pr-14 lg:pr-16 flex flex-col justify-center bg-black border-t md:border-t-0 md:border-l border-neutral-900 min-h-[190px] cursor-pointer group"
               onClick={() => {
                 if (onOpenQuote) {
                   onOpenQuote(Math.round(runningKw) || 15, recommendedKva);
@@ -1029,13 +1029,13 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
             >
               {/* Signature Angled Primary Wedge */}
               <div
-                className="absolute -right-8 top-0 bottom-0 w-20 bg-primary transform -skew-x-18 pointer-events-none group-hover:scale-105 transition-transform"
+                className="absolute -right-8 top-0 bottom-0 w-24 bg-primary transform -skew-x-18 pointer-events-none group-hover:scale-105 transition-transform"
                 aria-hidden="true"
               />
 
               <div className="relative z-10">
                 <div className="inline-flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase text-neutral-400 mb-1.5">
-                  <span className="w-2 h-2 rounded-xs bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
+                  <span className="w-2.5 h-2.5 rounded-xs bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
                   <span>Recommended Generator</span>
                 </div>
 
@@ -1053,36 +1053,36 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
                     </span>
                   </div>
 
-                  {/* Real Load & Needed Margin Badges from reference */}
-                  <div className="grid grid-cols-2 gap-2 w-full pt-1">
-                    <div className="bg-[#1f1f1f] border border-[#3a3a3a] rounded-sm px-2.5 py-1.5">
-                      <small className="block text-[9px] sm:text-[9.5px] font-bold tracking-wider uppercase text-neutral-400">
-                        Real load
-                      </small>
-                      <b className="font-heading font-black text-sm sm:text-base text-white block leading-tight">
-                        {runningKw.toFixed(1)} kW
+                  {/* Real Load & Needed without boxes */}
+                  <div className="grid grid-cols-2 gap-4 sm:gap-6 w-full pt-1">
+                    <div>
+                      <span className="block text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-neutral-400 mb-1">
+                        REAL LOAD
+                      </span>
+                      <b className="font-heading font-black text-base sm:text-lg text-white block leading-snug tracking-tight">
+                        {runningKw >= 100 ? Math.round(runningKw) : (Math.round(runningKw * 10) / 10).toFixed(1)} kW
                       </b>
-                      <em className="not-italic text-[10px] sm:text-[11px] text-neutral-300 block">
-                        {(runningKw / PF).toFixed(1)} kVA
-                      </em>
+                      <span className="text-xs text-neutral-400 block mt-0.5 font-medium">
+                        {(runningKw / PF) >= 100 ? Math.round(runningKw / PF) : (Math.round((runningKw / PF) * 10) / 10).toFixed(1)} kVA
+                      </span>
                     </div>
 
-                    <div className="bg-[#1f1f1f] border border-[#3a3a3a] rounded-sm px-2.5 py-1.5">
-                      <small className="block text-[9px] sm:text-[9.5px] font-bold tracking-wider uppercase text-neutral-400">
-                        Needed
-                      </small>
-                      <b className="font-heading font-black text-sm sm:text-base text-primary block leading-tight">
-                        {neededKva.toFixed(1)} kVA
+                    <div>
+                      <span className="block text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-neutral-400 mb-1">
+                        NEEDED
+                      </span>
+                      <b className="font-heading font-black text-base sm:text-lg text-primary block leading-snug tracking-tight">
+                        {neededKva >= 100 ? Math.round(neededKva) : (Math.round(neededKva * 10) / 10).toFixed(1)} kVA
                       </b>
-                      <em className="not-italic text-[10px] sm:text-[11px] text-neutral-300 block">
+                      <span className="text-xs text-neutral-400 block mt-0.5 font-medium">
                         incl. 20% margin
-                      </em>
+                      </span>
                     </div>
                   </div>
                 </div>
 
                 {/* Request Quote Button */}
-                <div className="mt-4 pt-3 border-t border-white/10">
+                <div className="mt-4 pt-3.5 border-t border-neutral-800/80">
                   <button
                     type="button"
                     onClick={(e) => {
@@ -1091,7 +1091,7 @@ export default function QuickLoadCalculator({ onOpenQuote }: QuickLoadCalculator
                         onOpenQuote(Math.round(runningKw) || 15, recommendedKva);
                       }
                     }}
-                    className="inline-flex items-center justify-center gap-2 py-2 px-4 rounded-sm bg-primary hover:bg-primary-hover text-white font-heading font-bold text-xs sm:text-[13px] tracking-tight shadow-md shadow-primary/25 transition-all cursor-pointer group/btn"
+                    className="inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-sm bg-primary hover:bg-primary-hover text-white font-heading font-bold text-xs sm:text-[13px] tracking-tight shadow-md shadow-primary/25 transition-all cursor-pointer group/btn"
                   >
                     <span>Request Quote</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />
