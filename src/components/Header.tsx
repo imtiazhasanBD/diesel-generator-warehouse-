@@ -23,6 +23,7 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
     pathname === "/" ? "home" :
     pathname.startsWith("/products") ? "products" :
     pathname.startsWith("/brands") ? "brands" :
+    pathname.startsWith("/services") ? "services" :
     pathname.startsWith("/calculator") ? "calculator" :
     pathname.startsWith("/blog") ? "blog" :
     pathname.startsWith("/about") ? "about" :
@@ -81,7 +82,10 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
             >
               Brands
             </Link>
-            <Link href="/#services" className="hover:text-primary transition-colors">
+            <Link
+              href="/services"
+              className={`hover:text-primary transition-colors ${active === "services" ? "text-primary font-bold" : ""}`}
+            >
               Services
             </Link>
             <Link href="/#projects" className="hover:text-primary transition-colors">
@@ -190,9 +194,9 @@ export default function Header({ onOpenQuote, onOpenSearch, activePath = "" }: H
               Brands
             </Link>
             <Link
-              href="/#services"
+              href="/services"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block py-1.5 text-slate-800 hover:text-primary transition-colors"
+              className={`block py-1.5 transition-colors ${active === "services" ? "text-primary font-bold" : "text-slate-800 hover:text-primary"}`}
             >
               Services
             </Link>
